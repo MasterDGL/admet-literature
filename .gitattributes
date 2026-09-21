@@ -1,5 +1,5 @@
-* text=auto
+* text=auto eol=lf
 *.md text eol=lf
 *.json text eol=lf
 *.py text eol=lf
-*.csv -text
+*.csv text eol=lf

@@ -180,7 +180,7 @@ ADMET 指吸收、分布、代谢、排泄和毒性。相关理化性质与人�
 
 ''' + '\n\n'.join(sections) + '\n'
     buf = io.StringIO(newline='')
-    writer = csv.writer(buf)
+    writer = csv.writer(buf, lineterminator='\n')
     writer.writerow(['ID','论文简称','完整题名','分类','主题','期刊或会议','发表时间','日期口径','发表状态','主要痛点','数据集','方法','结论','评测设置','限制','原文URL','代码URL','代码状态','核验日期','核对范围'])
     for p in papers:
         pub = p['publication']
