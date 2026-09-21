@@ -13,7 +13,7 @@ from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
 GROUPS = ['核心论文', '专题补读', '数据与基准', '观点文章', '预印本']
-REQUIRED = ['id', 'name', 'title', 'topic', 'group', 'publication', 'tags',
+REQUIRED = ['id', 'name', 'title', 'one_liner', 'topic', 'group', 'publication', 'tags',
             'pain_point', 'datasets', 'method', 'conclusion', 'limitations',
             'evaluation', 'paper_url', 'sources', 'verified_on', 'verification_scope']
 
@@ -29,7 +29,7 @@ def validate(papers):
         if p['id'] in ids or p['title'].casefold() in titles:
             raise ValueError(f'Duplicate: {p["id"]}')
         ids.add(p['id']); titles.add(p['title'].casefold())
-        if p['group'] == '核心论文' and not p.get('one_liner', '').strip():
+        if not p['one_liner'].strip():
             raise ValueError(f'{p["id"]}: missing one_liner for README')
         if p['group'] not in GROUPS or p['topic'] != 'admet':
             raise ValueError(f'Unsupported group/topic: {p["id"]}')
@@ -117,6 +117,22 @@ def build(papers):
     core = table(['论文', '期刊/会议', '发表时间', '一句话概括'], [
         [f'[{p["name"]}]({note_path(p)})', p['publication']['venue'], p['publication']['date'], p['one_liner']]
         for p in papers if p['group'] == '核心论文'])
+    overview = []
+    for group in GROUPS:
+        overview.append(f'### {group}')
+        for p in papers:
+            if p['group'] != group:
+                continue
+            links = f'[论文原文]({p["paper_url"]}) · [评测细节与局限]({note_path(p)})'
+            if p.get('code_url'):
+                links += f' · [代码/项目]({p["code_url"]})'
+            fields = [['发表期刊/会议与时间', p['publication']['citation']],
+                      ['主要痛点', p['pain_point']], ['数据集', p['datasets']],
+                      ['方法', p['method']], ['结论', p['conclusion']]]
+            overview.append(f'#### {p["name"]}\n\n**{p["title"]}**\n\n'
+                            f'**一句话概括：** {p["one_liner"]}\n\n'
+                            + table(['字段', '内容'], fields) + '\n\n' + links)
+    readme_papers = '\n\n'.join(overview)
     artifacts['README.md'] = f'''# Awesome AIDD Papers
 
 AI-aided drug discovery papers with structured, source-linked research notes.
@@ -129,6 +145,7 @@ AI-aided drug discovery papers with structured, source-linked research notes.
 
 - [ADMET 论文总表](topics/admet.md)：按研究用途分类，逐篇保留五项核心信息。
 - [优先精读](#优先精读)：先建立研究问题、数据和方法的认识。
+- [论文梳理](#论文梳理)：直接在本页查看全部 {len(papers)} 篇的一句话概括、发表信息、痛点、数据集、方法和结论。
 - [筛选与 SOTA 判定](docs/curation.md)：如何判断结论可比、证据充分。
 - [AIDD 研究范围](docs/scope.md)：当前覆盖与后续专题。
 - [贡献方式](CONTRIBUTING.md)：推荐论文、纠正信息或补充实验依据。
@@ -147,6 +164,14 @@ AI-aided drug discovery papers with structured, source-linked research notes.
 领先结论必须对应 **任务、数据版本、数据划分、指标、比较对象和时间**。本仓库保留论文报告和公开榜单的适用范围，不将历史领先结果统一标为当前最优。所有条目均为文献整理，尚未由本仓库独立复现实验。
 
 每篇论文有独立解读页；代码入口、权重可用性与实验复现分别记录。正式发表的 Perspective 也会明确标注，避免当作新模型的性能证据。
+
+## 论文梳理
+
+[核心论文](#核心论文) · [专题补读](#专题补读) · [数据与基准](#数据与基准) · [观点文章](#观点文章) · [预印本](#预印本)
+
+下列内容均在本页展开。结论保留原文的比较范围；更完整的评测设置和局限见各条目的解读页。
+
+{readme_papers}
 
 ## 数据与维护
 

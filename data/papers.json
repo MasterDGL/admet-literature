@@ -386,7 +386,8 @@
         }
       ],
       "verified_on": "2026-09-19",
-      "verification_scope": "书目、正文关键部分及相关官方资源"
+      "verification_scope": "书目、正文关键部分及相关官方资源",
+      "one_liner": "让原子、子结构和整个分子之间交换信息，用层级图神经网络预测分子性质及部分 ADMET 指标。"
     },
     {
       "id": "molmcl-2025",
@@ -427,7 +428,8 @@
         }
       ],
       "verified_on": "2026-09-19",
-      "verification_scope": "书目、正文关键部分及相关官方资源"
+      "verification_scope": "书目、正文关键部分及相关官方资源",
+      "one_liner": "从分子整体、骨架和局部环境等层面学习表示，再按任务组合这些信息，用于性质和生物活性预测。"
     },
     {
       "id": "admetlab-3-2024",
@@ -465,7 +467,8 @@
         }
       ],
       "verified_on": "2026-09-19",
-      "verification_scope": "书目、摘要及可访问项目说明"
+      "verification_scope": "书目、摘要及可访问项目说明",
+      "one_liner": "提供覆盖多类 ADMET 及理化性质的在线预测平台，并加入不确定性评估、API 和决策支持功能。"
     },
     {
       "id": "admetsar-3-2024",
@@ -507,7 +510,8 @@
         }
       ],
       "verified_on": "2026-09-19",
-      "verification_scope": "书目、摘要及可访问项目说明"
+      "verification_scope": "书目、摘要及可访问项目说明",
+      "one_liner": "把 ADMET 数据查询、性质预测和结构优化建议整合到一个平台，帮助寻找更合适的候选分子。"
     },
     {
       "id": "tdc-2021",
@@ -552,7 +556,8 @@
         }
       ],
       "verified_on": "2026-09-19",
-      "verification_scope": "书目、正文关键部分及相关官方资源"
+      "verification_scope": "书目、正文关键部分及相关官方资源",
+      "one_liner": "把药物发现中的多类数据和任务整理成统一接口与基准，让不同预测方法能够按共同规则比较。"
     },
     {
       "id": "pharmabench-2024",
@@ -593,7 +598,8 @@
         }
       ],
       "verified_on": "2026-09-19",
-      "verification_scope": "书目、正文关键部分及相关官方资源"
+      "verification_scope": "书目、正文关键部分及相关官方资源",
+      "one_liner": "用大语言模型辅助提取实验条件，再清洗和统一 ADMET 记录，构建条件更明确的评测数据集。"
     },
     {
       "id": "openadmet-avoidome-2026",
@@ -635,7 +641,8 @@
         }
       ],
       "verified_on": "2026-09-19",
-      "verification_scope": "书目、正文关键部分及相关官方资源"
+      "verification_scope": "书目、正文关键部分及相关官方资源",
+      "one_liner": "提出结合开放实验数据、蛋白质结构、主动学习和盲测挑战，从机制上改进 ADMET 预测的研究路线。"
     },
     {
       "id": "maplight-2023",
@@ -677,7 +684,8 @@
         }
       ],
       "verified_on": "2026-09-19",
-      "verification_scope": "书目、正文关键部分及相关官方资源"
+      "verification_scope": "书目、正文关键部分及相关官方资源",
+      "one_liner": "组合多种分子指纹和描述符，用 CatBoost 建立 ADMET 预测模型，检验传统特征方法的竞争力。"
     },
     {
       "id": "tdc-audit-2026",
@@ -719,7 +727,8 @@
         }
       ],
       "verified_on": "2026-09-19",
-      "verification_scope": "书目、摘要及可访问项目说明"
+      "verification_scope": "书目、摘要及可访问项目说明",
+      "one_liner": "检查 TDC 榜单领先模型能否运行、有无数据泄漏，以及报告的 ADMET 成绩能否复现。"
     },
     {
       "id": "trimole-hybrid-2026",
@@ -760,7 +769,8 @@
         }
       ],
       "verified_on": "2026-09-19",
-      "verification_scope": "书目、摘要及可访问项目说明"
+      "verification_scope": "书目、摘要及可访问项目说明",
+      "one_liner": "融合分子序列、分子图、三维结构和化学先验，并按 ADMET 任务选择预测模型或集成方案。"
     },
     {
       "id": "admet-evo-2026",
@@ -801,7 +811,8 @@
         }
       ],
       "verified_on": "2026-09-19",
-      "verification_scope": "书目、正文关键部分及相关官方资源"
+      "verification_scope": "书目、正文关键部分及相关官方资源",
+      "one_liner": "让研究智能体针对不同 ADMET 任务探索特征和模型，并通过固定测试流程评价预测效果与研究效率。"
     }
   ]
 }
