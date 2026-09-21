@@ -41,7 +41,8 @@
         }
       ],
       "verified_on": "2026-09-19",
-      "verification_scope": "书目、正文关键部分及相关官方资源"
+      "verification_scope": "书目、正文关键部分及相关官方资源",
+      "one_liner": "在小样本、陌生分子结构和类别不均衡等条件下比较多类模型，检验 ADMET 预测在实际研究中是否可靠。"
     },
     {
       "id": "caliciboost-2025",
@@ -87,7 +88,8 @@
         }
       ],
       "verified_on": "2026-09-19",
-      "verification_scope": "书目、正文关键部分及相关官方资源"
+      "verification_scope": "书目、正文关键部分及相关官方资源",
+      "one_liner": "比较分子指纹和理化描述符，结合自动机器学习预测分子通过肠道细胞模型（Caco-2）的能力。"
     },
     {
       "id": "pksmart-2025",
@@ -129,7 +131,8 @@
         }
       ],
       "verified_on": "2026-09-19",
-      "verification_scope": "书目、正文关键部分及相关官方资源"
+      "verification_scope": "书目、正文关键部分及相关官方资源",
+      "one_liner": "先预测动物体内的药代参数，再结合分子结构预测人体静脉给药后的清除率、分布容积和半衰期等指标。"
     },
     {
       "id": "dcpm-admet-2026",
@@ -171,7 +174,8 @@
         }
       ],
       "verified_on": "2026-09-19",
-      "verification_scope": "书目、正文关键部分及相关官方资源"
+      "verification_scope": "书目、正文关键部分及相关官方资源",
+      "one_liner": "将两种预训练模型学到的分子表示与化学指纹结合，用于预测 97 项 ADMET 性质。"
     },
     {
       "id": "kpgt-2023",
@@ -212,7 +216,8 @@
         }
       ],
       "verified_on": "2026-09-19",
-      "verification_scope": "书目、正文关键部分及相关官方资源"
+      "verification_scope": "书目、正文关键部分及相关官方资源",
+      "one_liner": "把分子指纹和理化描述符融入图预训练，让模型学到更适合预测 ADMET 等性质的分子表示。"
     },
     {
       "id": "mole-2024",
@@ -253,7 +258,8 @@
         }
       ],
       "verified_on": "2026-09-19",
-      "verification_scope": "书目、正文关键部分及相关官方资源"
+      "verification_scope": "书目、正文关键部分及相关官方资源",
+      "one_liner": "先在海量分子图上预训练，再利用生物学任务数据进一步训练，最后用于 ADMET 性质预测。"
     },
     {
       "id": "admet-ai-2024",
@@ -295,7 +301,8 @@
         }
       ],
       "verified_on": "2026-09-19",
-      "verification_scope": "书目、正文关键部分及相关官方资源"
+      "verification_scope": "书目、正文关键部分及相关官方资源",
+      "one_liner": "将图神经网络用于网页和本地预测工具，一次预测多项 ADMET 性质，方便快速筛选大规模化合物库。"
     },
     {
       "id": "mtgl-admet-2023",
@@ -341,7 +348,8 @@
         }
       ],
       "verified_on": "2026-09-19",
-      "verification_scope": "书目、正文关键部分及相关官方资源"
+      "verification_scope": "书目、正文关键部分及相关官方资源",
+      "one_liner": "为每个 ADMET 预测任务自动挑选有帮助的辅助任务，减少多任务联合训练时的相互干扰。"
     },
     {
       "id": "himnet-2026",

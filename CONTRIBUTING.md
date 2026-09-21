@@ -12,6 +12,8 @@
 
 编辑 `data/papers.json` 中的命名字段，然后运行：
 
+进入 README 的核心论文还需填写 `one_liner`，用一句直白的中文说明“研究什么、主要怎么做”。避免仅列关键词或用“达到 SOTA”等评价代替内容概括。
+
 ```bash
 python scripts/build.py
 python scripts/build.py --check

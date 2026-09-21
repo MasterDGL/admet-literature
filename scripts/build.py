@@ -29,6 +29,8 @@ def validate(papers):
         if p['id'] in ids or p['title'].casefold() in titles:
             raise ValueError(f'Duplicate: {p["id"]}')
         ids.add(p['id']); titles.add(p['title'].casefold())
+        if p['group'] == '核心论文' and not p.get('one_liner', '').strip():
+            raise ValueError(f'{p["id"]}: missing one_liner for README')
         if p['group'] not in GROUPS or p['topic'] != 'admet':
             raise ValueError(f'Unsupported group/topic: {p["id"]}')
         pub = p['publication']
@@ -112,8 +114,8 @@ def build(papers):
     nav = table(['专题', '当前内容', '入口'], [
         ['ADMET 与药代动力学', f'{len(papers)} 篇；其中 {count["核心论文"]} 篇优先精读', '[论文总表](topics/admet.md)'],
         ['其他 AIDD 方向', '扩展计划，尚未纳入独立专题', '[研究范围](docs/scope.md)']])
-    core = table(['论文', '期刊/会议', '发表时间', '阅读重点'], [
-        [f'[{p["name"]}]({note_path(p)})', p['publication']['venue'], p['publication']['date'], '、'.join(p['tags'])]
+    core = table(['论文', '期刊/会议', '发表时间', '一句话概括'], [
+        [f'[{p["name"]}]({note_path(p)})', p['publication']['venue'], p['publication']['date'], p['one_liner']]
         for p in papers if p['group'] == '核心论文'])
     artifacts['README.md'] = f'''# Awesome AIDD Papers
 
