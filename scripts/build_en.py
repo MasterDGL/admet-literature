@@ -18,6 +18,10 @@ FIELDS = ['name', 'one_liner', 'tags', 'pain_point', 'datasets', 'method',
           'conclusion', 'evaluation', 'limitations', 'code_status', 'verification_scope']
 
 
+def recent_first(papers):
+    return sorted(papers, key=lambda p: p['publication']['date'], reverse=True)
+
+
 def source_hash(paper):
     raw = json.dumps(paper, ensure_ascii=False, sort_keys=True, separators=(',', ':'))
     return hashlib.sha256(raw.encode('utf-8')).hexdigest()
@@ -64,6 +68,7 @@ def core_fields(p):
 
 
 def build(papers, table):
+    papers = recent_first(papers)
     artifacts = {}
     for p in papers:
         pub = p['publication']
@@ -102,17 +107,18 @@ Sources reviewed: **{p['verified_on']}**. {p['verification_scope']}
 {sources}
 '''
     overview = []
-    for group, title in GROUPS.items():
-        overview.append(f'### {title}')
-        for p in papers:
-            if p['group'] != group:
-                continue
-            links = f'[Paper]({p["paper_url"]}) · [Detailed notes](en/{note(p)})'
-            if p.get('code_url'):
-                links += f' · [Code/project]({p["code_url"]})'
-            overview.append(f'#### {p["name"]}\n\n**{p["title"]}**\n\n'
-                            f'**In one sentence:** {p["one_liner"]}\n\n'
-                            + table(['Field', 'Details'], core_fields(p)) + '\n\n' + links)
+    year = None
+    for p in papers:
+        if p['publication']['year'] != year:
+            year = p['publication']['year']
+            overview.append(f'### {year}')
+        links = f'[Paper]({p["paper_url"]}) · [Detailed notes](en/{note(p)})'
+        if p.get('code_url'):
+            links += f' · [Code/project]({p["code_url"]})'
+        overview.append(f'#### {p["name"]}\n\n**{p["title"]}**\n\n'
+                        f'Date: **{p["publication"]["date"]}** · Category: {GROUPS[p["group"]]}.\n\n'
+                        f'**In one sentence:** {p["one_liner"]}\n\n'
+                        + table(['Field', 'Details'], core_fields(p)) + '\n\n' + links)
     core = table(['Paper', 'Journal/conference', 'Date', 'In one sentence'], [
         [f'[{p["name"]}](en/{note(p)})', p['publication']['venue'], p['publication']['date'], p['one_liner']]
         for p in papers if p['group'] == '核心论文'])
@@ -124,7 +130,7 @@ Sources reviewed: **{p['verified_on']}**. {p['verification_scope']}
     core_count = sum(p['group'] == '核心论文' for p in papers)
     latest = max(p['verified_on'] for p in papers)
     overview_text = '\n\n'.join(overview)
-    group_nav = ' · '.join(f'[{g}](#{g.lower().replace(" ", "-")})' for g in GROUPS.values())
+    year_nav = ' · '.join(f'[{year}](#{year})' for year in dict.fromkeys(p['publication']['year'] for p in papers))
     artifacts['README.md'] = f'''# ADMET Literature
 
 Research notes on **ADMET and pharmacokinetic prediction**, with representative papers, datasets and code. Each entry starts with a one-sentence summary and covers **publication venue and date, research problem, datasets, method and findings**. Papers on molecular representations and benchmarks provide the foundations.
@@ -139,7 +145,7 @@ Start with data and molecular representations, then explore property prediction,
 
 ## Navigation
 
-- [ADMET paper index](en/topics/admet.md): papers grouped by research role, with all five core fields.
+- [ADMET paper index](en/topics/admet.md): papers ordered from newest to oldest, with all five core fields.
 - [Methods and benchmarks](en/topics/foundations.md): Chemprop, AttentiveFP, MoleculeNet and MoleculeACE.
 - [Knowledge map](en/docs/knowledge-map.md): connect research questions, methods and reading routes.
 - [Core reading](#core-reading): a starting point for research questions, data and methods.
@@ -159,7 +165,7 @@ Start with data and molecular representations, then explore property prediction,
 
 {core}
 
-Suggested route: **practical evaluation → individual endpoints and human PK → representation learning and multitask methods → platforms**. Data benchmarks, reviews, perspectives and preprints have separate categories in the index.
+Suggested route: **practical evaluation → individual endpoints and human PK → representation learning and multitask methods → platforms**. The index lists all papers from newest to oldest and labels their research categories.
 
 ## Reading and comparison
 
@@ -167,9 +173,9 @@ Compare **prediction tasks, data sources, train/test splits, metrics and baselin
 
 ## Paper notes
 
-{group_nav}
+{year_nav}
 
-Each entry below explains the research problem, method and main findings. Follow the detailed notes for experimental settings, analysis and references.
+Papers below are ordered by publication date, newest first. Each entry explains the research problem, method and main findings. Follow the detailed notes for experimental settings, analysis and references.
 
 {overview_text}
 
@@ -191,16 +197,12 @@ The organization draws on topic navigation in [awesome-AIDD](https://github.com/
 Original notes and maintenance scripts use the [MIT License](LICENSE). Referenced papers, datasets and third-party code retain their own licenses; this repository provides links and original summaries.
 '''
     for topic, title in TOPICS.items():
-        sections = []
-        for group, heading in GROUPS.items():
-            entries = sorted([p for p in papers if p['topic'] == topic and p['group'] == group],
-                             key=lambda p: p['publication']['date'], reverse=True)
-            if not entries:
-                continue
-            rows = [[f'[{p["name"]}](../{note(p)}) · [Paper]({p["paper_url"]})',
-                     p['publication']['citation'], p['pain_point'], p['datasets'], p['method'], p['conclusion']]
-                    for p in entries]
-            sections.append(f'## {heading}\n\n' + table(['Paper and notes', 'Publication and date', 'Research problem', 'Datasets', 'Method', 'Findings'], rows))
+        entries = [p for p in papers if p['topic'] == topic]
+        rows = [[p['publication']['date'],
+                 f'[{p["name"]}](../{note(p)}) · [Paper]({p["paper_url"]})<br>{GROUPS[p["group"]]}',
+                 p['publication']['citation'], p['pain_point'], p['datasets'], p['method'], p['conclusion']]
+                for p in entries]
+        listing = table(['Date', 'Paper and category', 'Publication and date', 'Research problem', 'Datasets', 'Method', 'Findings'], rows)
         intro = ('ADMET covers absorption, distribution, metabolism, excretion and toxicity. Related physicochemical properties and human PK are also included.'
                  if topic == 'admet' else
                  'These papers introduce molecular representations, public datasets and evaluation methods for reading ADMET research. MoleculeACE focuses on bioactivity cliffs.')
@@ -210,9 +212,9 @@ Original notes and maintenance scripts use the [MIT License](LICENSE). Reference
 
 {intro}
 
-**{counts[topic]} papers**, sorted by publication date within each category. Follow a paper title for its summary, experiments, analysis and sources.
+**{counts[topic]} papers**, sorted by publication date, newest first. Follow a paper title for its summary, experiments, analysis and sources.
 
-''' + '\n\n'.join(sections) + '\n'
+''' + listing + '\n'
     buf = io.StringIO(newline='')
     writer = csv.writer(buf, lineterminator='\n')
     writer.writerow(['ID', 'Short name', 'Full title', 'One-sentence summary', 'Topic', 'Category', 'Tags', 'Journal/conference', 'Publication date', 'Date basis', 'Publication status', 'Research problem', 'Datasets', 'Method', 'Findings', 'Experimental setup', 'Analysis', 'Paper URL', 'Code URL', 'Code status', 'Review date', 'Review scope'])

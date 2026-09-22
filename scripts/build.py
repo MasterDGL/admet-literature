@@ -114,6 +114,7 @@ def card(p):
 
 
 def build(papers):
+    papers = build_en.recent_first(papers)
     artifacts = {note_path(p): card(p) for p in papers}
     count = Counter(p['group'] for p in papers)
     topic_count = Counter(p['topic'] for p in papers)
@@ -127,20 +128,22 @@ def build(papers):
         [f'[{p["name"]}]({note_path(p)})', p['publication']['venue'], p['publication']['date'], p['one_liner']]
         for p in papers if p['group'] == '核心论文'])
     overview = []
-    for group in GROUPS:
-        overview.append(f'### {group}')
-        for p in papers:
-            if p['group'] != group:
-                continue
-            links = f'[论文原文]({p["paper_url"]}) · [详细解读]({note_path(p)})'
-            if p.get('code_url'):
-                links += f' · [代码/项目]({p["code_url"]})'
-            fields = [['发表期刊/会议与时间', p['publication']['citation']],
-                      ['主要痛点', p['pain_point']], ['数据集', p['datasets']],
-                      ['方法', p['method']], ['结论', p['conclusion']]]
-            overview.append(f'#### {p["name"]}\n\n**{p["title"]}**\n\n'
-                            f'**一句话概括：** {p["one_liner"]}\n\n'
-                            + table(['字段', '内容'], fields) + '\n\n' + links)
+    year = None
+    for p in papers:
+        if p['publication']['year'] != year:
+            year = p['publication']['year']
+            overview.append(f'### {year}')
+        links = f'[论文原文]({p["paper_url"]}) · [详细解读]({note_path(p)})'
+        if p.get('code_url'):
+            links += f' · [代码/项目]({p["code_url"]})'
+        fields = [['发表期刊/会议与时间', p['publication']['citation']],
+                  ['主要痛点', p['pain_point']], ['数据集', p['datasets']],
+                  ['方法', p['method']], ['结论', p['conclusion']]]
+        overview.append(f'#### {p["name"]}\n\n**{p["title"]}**\n\n'
+                        f'发表时间：**{p["publication"]["date"]}** · 分类：{p["group"]}。\n\n'
+                        f'**一句话概括：** {p["one_liner"]}\n\n'
+                        + table(['字段', '内容'], fields) + '\n\n' + links)
+    year_nav = ' · '.join(f'[{year}](#{year})' for year in dict.fromkeys(p['publication']['year'] for p in papers))
     readme_papers = '\n\n'.join(overview)
     artifacts['README.md'] = f'''# ADMET 文献整理
 
@@ -158,7 +161,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 ## 导航
 
-- [ADMET 论文总表](topics/admet.md)：按研究用途分类，逐篇保留五项核心信息。
+- [ADMET 论文总表](topics/admet.md)：按发表时间从新到旧排列，逐篇保留五项核心信息。
 - [基础方法与基准](topics/foundations.md)：Chemprop、AttentiveFP、MoleculeNet、MoleculeACE。
 - [知识地图说明](docs/knowledge-map.md)：从研究问题找到方法、任务和阅读入口。
 - [优先精读](#优先精读)：先建立研究问题、数据和方法的认识。
@@ -174,7 +177,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 {core}
 
-建议顺序：**真实场景评测 → 单端点与人体 PK → 表示学习与多任务方法 → 平台应用**。专题总表另列数据基准、综述、观点文章和预印本，方便按阅读目的查找。
+建议顺序：**真实场景评测 → 单端点与人体 PK → 表示学习与多任务方法 → 平台应用**。专题总表按发表时间倒序排列，并标注研究分类，方便按阅读目的查找。
 
 ## 阅读与比较
 
@@ -182,9 +185,9 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 ## 论文梳理
 
-[核心论文](#核心论文) · [专题补读](#专题补读) · [基础方法](#基础方法) · [数据与基准](#数据与基准) · [综述](#综述) · [观点文章](#观点文章) · [预印本](#预印本)
+{year_nav}
 
-下列条目介绍每篇论文的研究问题、方法与主要发现；实验设置、结果分析和参考资料见详细解读。
+下列论文按发表时间从新到旧排列，介绍每篇的研究问题、方法与主要发现；实验设置、结果分析和参考资料见详细解读。
 
 {readme_papers}
 
@@ -206,16 +209,12 @@ python scripts/build.py --check
 原创整理内容和维护脚本采用 [MIT License](LICENSE)。所引用论文、数据与第三方代码遵循各自的许可；本仓库提供链接与原创摘要，不分发论文全文。
 '''
     for topic, title in TOPICS.items():
-        sections = []
-        for group in GROUPS:
-            entries = sorted([p for p in papers if p['topic'] == topic and p['group'] == group],
-                             key=lambda p: p['publication']['date'], reverse=True)
-            if not entries:
-                continue
-            rows = [[f'[{p["name"]}](../{note_path(p)}) · [原文]({p["paper_url"]})',
-                     p['publication']['citation'], p['pain_point'], p['datasets'], p['method'], p['conclusion']]
-                    for p in entries]
-            sections.append(f'## {group}\n\n' + table(['论文与解读', '期刊/会议与时间', '主要痛点', '数据集', '方法', '结论'], rows))
+        entries = [p for p in papers if p['topic'] == topic]
+        rows = [[p['publication']['date'],
+                 f'[{p["name"]}](../{note_path(p)}) · [原文]({p["paper_url"]})<br>{p["group"]}',
+                 p['publication']['citation'], p['pain_point'], p['datasets'], p['method'], p['conclusion']]
+                for p in entries]
+        listing = table(['发表时间', '论文与分类', '期刊/会议与时间', '主要痛点', '数据集', '方法', '结论'], rows)
         intro = ('ADMET 指吸收、分布、代谢、排泄和毒性；相关理化性质与人体 PK 也在本专题范围内。'
                  if topic == 'admet' else
                  '这些文献介绍分子表示、公共数据与评测方法，为阅读 ADMET 研究提供基础。MoleculeACE 专门讨论生物活性悬崖。')
@@ -225,9 +224,9 @@ python scripts/build.py --check
 
 {intro}
 
-本专题共 **{topic_count[topic]} 篇**，组内按发表日期倒序排列。点击论文名查看一句话概括、实验设置、结果分析和资料来源。
+本专题共 **{topic_count[topic]} 篇**，按发表日期从新到旧排列。点击论文名查看一句话概括、实验设置、结果分析和资料来源。
 
-''' + '\n\n'.join(sections) + '\n'
+''' + listing + '\n'
     buf = io.StringIO(newline='')
     writer = csv.writer(buf, lineterminator='\n')
     writer.writerow(['ID','论文简称','完整题名','一句话概括','专题','分类','主题','期刊或会议','发表时间','日期口径','发表状态','主要痛点','数据集','方法','结论','评测设置','限制','原文URL','代码URL','代码状态','核验日期','核对范围'])
