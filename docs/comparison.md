@@ -8,7 +8,7 @@
 
 TDC 使用骨架划分并保留 20% 作为测试集。方法名区分 Chemprop-RDKit、MapLight + GNN 等具体实现。表中选取仓库已收录的方法；AUROC/AUPRC 越高越好，MAE 越低越好。
 
-[TDC 评测协议](https://tdcommons.ai/benchmark/admet_group/overview/) · [CSV](../data/comparison.csv) · [交互表（下载后用浏览器打开）](comparison.html)
+[TDC 评测协议](https://tdcommons.ai/benchmark/admet_group/overview/) · [CSV](../data/comparison.csv)
 
 ## Caco-2 — Caco2_Wang
 

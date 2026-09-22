@@ -8,7 +8,7 @@
 
 TDC holds out 20% for testing and uses scaffold splits. The method names identify specific implementations, including Chemprop-RDKit and MapLight + GNN. This selection compares catalog methods rather than reproducing the complete leaderboard. AUROC and AUPRC increase with performance; MAE decreases.
 
-[TDC protocol](https://tdcommons.ai/benchmark/admet_group/overview/) · [CSV](../../data/comparison.csv) · [Interactive table (download and open in a browser)](../../docs/comparison.html)
+[TDC protocol](https://tdcommons.ai/benchmark/admet_group/overview/) · [CSV](../../data/comparison.csv)
 
 ## Caco-2 — Caco2_Wang
 

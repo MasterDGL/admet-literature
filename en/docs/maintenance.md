@@ -18,7 +18,7 @@ python -m unittest discover -s scripts -p "test_*.py"
 
 ## Datasets and comparisons
 
-`data/datasets.json` holds the dataset dictionary; `data/comparison.json` records implementations, datasets, protocols, metrics, means, standard deviations, sources and snapshot dates. The build generates bilingual pages, CSVs and the interactive table. Review all rows for a dataset together when updating its comparison, keeping protocol and snapshot date consistent.
+`data/datasets.json` holds the dataset dictionary; `data/comparison.json` records implementations, datasets, protocols, metrics, means, standard deviations, sources and snapshot dates. The build generates bilingual pages and CSVs. Review all rows for a dataset together when updating its comparison, keeping protocol and snapshot date consistent.
 
 Check data versions, labels, test splits and metrics before adding scores. Other experiments remain in individual paper notes. Publication labels come from paper metadata; update both language entries when a preprint is published.
 

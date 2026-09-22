@@ -71,11 +71,10 @@ def build(papers, table):
                  f'覆盖 {endpoint_count} 类端点、已收录方法的 {len(records)} 条结果，最近快照日期：**{snapshot}**。每张表对应一个 TDC 数据集、指标和骨架测试协议；均值和标准差取自榜单提交记录。')
         protocol = ('TDC holds out 20% for testing and uses scaffold splits. The method names identify specific implementations, including Chemprop-RDKit and MapLight + GNN. This selection compares catalog methods rather than reproducing the complete leaderboard. AUROC and AUPRC increase with performance; MAE decreases.' if en else
                     'TDC 使用骨架划分并保留 20% 作为测试集。方法名区分 Chemprop-RDKit、MapLight + GNN 等具体实现。表中选取仓库已收录的方法；AUROC/AUPRC 越高越好，MAE 越低越好。')
-        interactive = '../../docs/comparison.html' if en else 'comparison.html'
         content = f'# {title}\n\n{switch.format(page="comparison")}\n\n'
         content += f'[{"Home" if en else "返回首页"}]({back}) · [{"Dataset dictionary" if en else "数据集字典"}](datasets.md)\n\n{intro}\n\n{protocol}\n\n'
         content += ('[TDC protocol](https://tdcommons.ai/benchmark/admet_group/overview/) · ' if en else '[TDC 评测协议](https://tdcommons.ai/benchmark/admet_group/overview/) · ')
-        content += f'[CSV]({data_prefix}comparison.csv) · [{"Interactive table (download and open in a browser)" if en else "交互表（下载后用浏览器打开）"}]({interactive})\n\n'
+        content += f'[CSV]({data_prefix}comparison.csv)\n\n'
         for dataset in dict.fromkeys(r['dataset'] for r in records):
             entries = [r for r in records if r['dataset'] == dataset]
             first = entries[0]
@@ -109,7 +108,4 @@ def build(papers, table):
         content += ('Use `benchmark_group` for the comparison protocol; calling a single-task loader with its defaults can produce a different split. BBBP (MoleculeNet, 2,039) and BBB_Martins (TDC, 1,975) retain distinct entries. HIV measures antiviral activity and is included as a representation-learning benchmark.\n' if en else
                     '方法对比使用 `benchmark_group` 的划分；单任务加载器的默认划分可能不同。BBBP（MoleculeNet，2,039）与 BBB_Martins（TDC，1,975）分别保留。HIV 测量抗病毒活性，在这里作为表示学习基准。\n')
         artifacts[prefix + 'docs/datasets.md'] = content
-    template = (ROOT / 'templates/comparison.html').read_text(encoding='utf-8')
-    enriched = [dict(r, publication=by_id[r['paper_id']]['publication']['status']) for r in records]
-    artifacts['docs/comparison.html'] = template.replace('__RECORDS__', json.dumps(enriched, ensure_ascii=True).replace('<', '\\u003c'))
     return artifacts
