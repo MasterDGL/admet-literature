@@ -4,7 +4,7 @@
 
 [返回ADMET 与药代动力学总表](../../topics/admet.md) · [返回首页](../../README.zh-CN.md)
 
-*Journal of Pharmaceutical Analysis · 2025-08* · 已发表 · 核心论文
+*Journal of Pharmaceutical Analysis · 2025-04-16* · 已发表 · 核心论文
 
 **内容概述：** 融合 SMILES、指纹和分子图，分别判断分子是否抑制 P-gp、是否会被 P-gp 转运。
 
@@ -12,8 +12,8 @@
 
 | 字段 | 内容 |
 | --- | --- |
-| 发表期刊/会议与时间 | Journal of Pharmaceutical Analysis 15(8), 101313；2025-08 卷期（PubMed article date：2025-04-16） |
-| 日期口径 | 采用期刊卷期月份；另列 PubMed article date，二者不混用 |
+| 发表期刊/会议与时间 | Journal of Pharmaceutical Analysis 15(8), 101313；2025-04-16 在线发表，2025-08 卷期。 |
+| 日期口径 | 论文在线发表日期；卷期月份另列 |
 | 发表状态 | 正式期刊论文 |
 | 主要痛点 | 单一表示难以覆盖 P-gp 相关结构信息；抑制剂与底物需要区分，并检验新来源化合物上的表现。 |
 | 数据集 | 公开数据库/文献汇编：抑制剂数据集共 5,943 个分子（4,558 阳性、1,385 阴性），底物集共 4,018（2,455 阳性、1,563 阴性）；独立外部集分别为 140 和 185 个分子。 |

@@ -1,0 +1,107 @@
+{
+  "routes": [
+    {
+      "id": "absorption-distribution",
+      "zh": {
+        "title": "吸收与分布",
+        "intro": "围绕肠道通透性、血脑屏障和 P-gp 转运，理解分子能否被吸收、到达作用部位以及受到哪些转运机制影响。",
+        "questions": ["标签描述通透率、屏障通过性，还是转运体底物或抑制剂？", "换用新骨架或外部来源分子后，性能变化多大？", "模型预测是否有体外实验支持，实验模型与最终应用场景如何衔接？"]
+      },
+      "en": {
+        "title": "Absorption and distribution",
+        "intro": "Explore intestinal permeability, the blood–brain barrier and P-gp transport to understand absorption, tissue access and transporter effects.",
+        "questions": ["Does the label measure permeability, barrier penetration, or transporter substrate/inhibitor status?", "How does performance change on new scaffolds or external data?", "Which predictions have in vitro support, and how does the assay relate to the intended application?"]
+      },
+      "papers": ["tdc-2021", "caliciboost-2025", "bbb-megamolbart-2024", "mc-pgp-2025", "mtgl-admet-2023", "admet-ai-2024", "admetlab-3-2024", "admetsar-3-2024", "pksmart-2025"],
+      "steps": [
+        {"paper": "tdc-2021", "zh": "先区分 Caco-2、BBB、P-gp 和血浆蛋白结合等端点及其评价指标。", "en": "Distinguish Caco-2, BBB, P-gp and plasma protein binding endpoints and their metrics."},
+        {"paper": "caliciboost-2025", "zh": "看 Caco-2 专门模型如何处理数据整理、特征与模型选择。", "en": "Study data preparation, features and model selection for a dedicated Caco-2 predictor."},
+        {"paper": "bbb-megamolbart-2024", "zh": "追踪 BBB 预测从分子语言模型到体外验证的过程。", "en": "Follow BBB prediction from a molecular language model to in vitro validation."},
+        {"paper": "mc-pgp-2025", "zh": "比较 P-gp 抑制剂与底物两项任务，以及随机、骨架和外部测试结果。", "en": "Compare P-gp inhibition and substrate prediction across random, scaffold and external tests."}
+      ]
+    },
+    {
+      "id": "metabolism-pk",
+      "zh": {
+        "title": "代谢与药代动力学",
+        "intro": "从 CYP 与微粒体代谢稳定性出发，连接人体清除率、半衰期和分布容积，理解体外端点如何服务于体内 PK 预测。",
+        "questions": ["研究预测的是 CYP 抑制/底物、体外稳定性，还是体内 PK 参数？物种和单位是什么？", "跨物种信息来自实测值还是模型预测值，测试阶段能否获得这些输入？", "随机划分、骨架划分和外部验证分别检验了什么泛化能力？"]
+      },
+      "en": {
+        "title": "Metabolism and pharmacokinetics",
+        "intro": "Connect CYP activity and microsomal stability with human clearance, half-life and volume of distribution to understand how in vitro endpoints inform in vivo PK prediction.",
+        "questions": ["Is the target CYP inhibition/substrate status, in vitro stability, or an in vivo PK parameter? Which species and units are used?", "Are cross-species inputs measured or predicted, and will those inputs be available at test time?", "What generalization question does each random, scaffold or external evaluation address?"]
+      },
+      "papers": ["tdc-2021", "himnet-2026", "pksmart-2025", "mtgl-admet-2023", "pharmabench-2024", "admet-ai-2024", "admetlab-3-2024", "admetsar-3-2024"],
+      "steps": [
+        {"paper": "tdc-2021", "zh": "先认识 CYP、微粒体/肝细胞清除率与半衰期的数据定义。", "en": "Start with definitions of CYP, microsomal/hepatocyte clearance and half-life tasks."},
+        {"paper": "pharmabench-2024", "zh": "理解实验条件和数据清洗为何会影响标签与模型比较。", "en": "Examine how assay conditions and data cleaning affect labels and model comparisons."},
+        {"paper": "himnet-2026", "zh": "阅读代谢稳定性专门模型，检查层级分子表示带来的贡献。", "en": "Study a dedicated stability model and the contribution of hierarchical molecular representations."},
+        {"paper": "pksmart-2025", "zh": "进一步看跨物种建模如何预测人体 PK，并检查外部验证。", "en": "Explore cross-species modeling for human PK and examine external validation."}
+      ]
+    },
+    {
+      "id": "toxicity",
+      "zh": {
+        "title": "毒性预测",
+        "intro": "以 hERG 心脏安全性、AMES 致突变性和 Tox21 毒性筛查为主线，比较实验标签、类别不均衡和专门模型。",
+        "questions": ["标签对应具体实验、机制端点还是临床毒性？不同标签之间能否直接比较？", "类别比例、菌株和实验条件如何影响模型及评价指标？", "是否测试新来源或新骨架分子，是否报告预测不确定性？"]
+      },
+      "en": {
+        "title": "Toxicity prediction",
+        "intro": "Follow hERG cardiac safety, AMES mutagenicity and Tox21 screening to compare assay labels, class imbalance and endpoint-specific models.",
+        "questions": ["Does the label describe an assay, a mechanistic endpoint or clinical toxicity, and which labels are comparable?", "How do class balance, bacterial strains and assay conditions affect modeling and evaluation?", "Are new sources or scaffolds tested, and is predictive uncertainty reported?"]
+      },
+      "papers": ["ai-toxicity-review-2023", "tox21-library-2020", "ssl-gcn-2021", "tox21-conformal-2021", "cardiotox-net-2021", "hergai-2025", "ames-multitask-2022", "amesnet-2026", "openadmet-avoidome-2026", "domain-aware-pbrics-2023", "tdc-2021"],
+      "steps": [
+        {"paper": "ai-toxicity-review-2023", "zh": "先建立毒性任务、数据来源和方法的整体认识。", "en": "Build an overview of toxicity tasks, data sources and methods."},
+        {"paper": "tox21-library-2020", "zh": "回到实验数据来源，理解筛查设计与质量控制。", "en": "Examine the experimental origin of screening data and its quality control."},
+        {"paper": "cardiotox-net-2021", "zh": "用 hERG 案例学习如何比较集成模型与外部测试。", "en": "Use hERG to examine ensemble models and external testing."},
+        {"paper": "ames-multitask-2022", "zh": "理解菌株级多任务标签与总体 AMES 判断的关系。", "en": "Understand strain-specific multitask labels and overall AMES prediction."},
+        {"paper": "amesnet-2026", "zh": "继续看实验条件和分布变化如何进入致突变性建模。", "en": "Examine how assay conditions and distribution shifts enter mutagenicity modeling."}
+      ]
+    },
+    {
+      "id": "representations-learning",
+      "zh": {
+        "title": "分子表示与学习方法",
+        "intro": "从指纹和描述符基线出发，比较图神经网络、预训练、多任务学习与模型集成如何支持 ADMET 预测。",
+        "questions": ["性能提升来自表示、预训练数据、辅助任务，还是集成与调参？", "与指纹/描述符基线比较时，数据划分、搜索预算和训练数据是否一致？", "预训练目标和下游端点有什么联系，消融实验支持哪些设计？"]
+      },
+      "en": {
+        "title": "Molecular representations and learning methods",
+        "intro": "Start with fingerprint and descriptor baselines, then compare graph networks, pretraining, multitask learning and ensembles for ADMET prediction.",
+        "questions": ["Does the gain come from representation, pretraining data, auxiliary tasks, ensembling or tuning?", "Are splits, search budgets and training data matched when comparing against fingerprint/descriptor baselines?", "How does the pretraining objective relate to downstream endpoints, and which designs are supported by ablations?"]
+      },
+      "papers": ["chemprop-dmpnn-2019", "attentivefp-2019", "molmapnet-2021", "maplight-2023", "kpgt-2023", "mole-2024", "molmcl-2025", "mtgl-admet-2023", "dcpm-admet-2026", "trimole-hybrid-2026", "admet-evo-2026", "uni-qsar-2023", "domain-aware-pbrics-2023", "ssl-gcn-2021", "moleculenet-2018"],
+      "steps": [
+        {"paper": "molmapnet-2021", "zh": "认识指纹和描述符的另一种组织方式，建立结构化特征基线。", "en": "Study how fingerprints and descriptors can be organized into structured feature maps."},
+        {"paper": "chemprop-dmpnn-2019", "zh": "理解有向键消息传递，并关注描述符基线与划分方式。", "en": "Understand directed bond message passing, descriptor baselines and data splits."},
+        {"paper": "attentivefp-2019", "zh": "看注意力如何参与原子邻域聚合和分子级读出。", "en": "Examine attention in atomic neighborhood aggregation and molecular readout."},
+        {"paper": "kpgt-2023", "zh": "看化学知识如何进入图预训练，并检查各任务的迁移效果。", "en": "Follow chemical knowledge into graph pretraining and assess transfer across tasks."},
+        {"paper": "mtgl-admet-2023", "zh": "理解辅助任务选择，以及多任务学习中的负迁移。", "en": "Study auxiliary-task selection and negative transfer in multitask learning."}
+      ]
+    },
+    {
+      "id": "reliability-validation",
+      "zh": {
+        "title": "可靠性与实验验证",
+        "intro": "沿数据划分、活性悬崖、不确定性和实验验证，检查预测在哪些分子上有效，以及失败时能否被识别。",
+        "questions": ["测试是否真正隔离了新分子、新骨架和新数据来源？", "平均指标之外，是否分析活性悬崖、误差分布和不确定性校准？", "新实验检验了什么预测，结果支持到哪个层次？"]
+      },
+      "en": {
+        "title": "Reliability and experimental validation",
+        "intro": "Use data splits, activity cliffs, uncertainty and experimental validation to assess where predictions work and whether failures can be detected.",
+        "questions": ["Does testing isolate new molecules, new scaffolds and new data sources?", "Beyond average scores, are activity cliffs, error distributions and uncertainty calibration examined?", "Which predictions were tested in new experiments, and what conclusions do those experiments support?"]
+      },
+      "papers": ["admet-reliability-2026", "tdc-audit-2026", "moleculeace-2022", "atom-uncertainty-2023", "tox21-conformal-2021", "bbb-megamolbart-2024", "pksmart-2025", "molmcl-2025", "pharmabench-2024", "moleculenet-2018", "openadmet-avoidome-2026"],
+      "steps": [
+        {"paper": "moleculenet-2018", "zh": "先理解基准、任务和数据划分如何决定评价问题。", "en": "Start with how benchmarks, tasks and splits define an evaluation question."},
+        {"paper": "moleculeace-2022", "zh": "检查平均成绩是否掩盖相似分子间的大幅活性变化。", "en": "Examine whether average scores hide large activity differences among similar molecules."},
+        {"paper": "atom-uncertainty-2023", "zh": "理解原子级不确定性与分子预测误差、结构解释的联系。", "en": "Connect atom-level uncertainty to molecular prediction errors and structural interpretation."},
+        {"paper": "admet-reliability-2026", "zh": "对照小样本和泛化评测，检查常用模型在哪些条件下失效。", "en": "Examine model failures under small-data and generalization evaluations."},
+        {"paper": "bbb-megamolbart-2024", "zh": "最后追踪一次体外实验验证，区分模型分数与实验观察。", "en": "Follow an in vitro validation study and distinguish model scores from experimental observations."}
+      ]
+    }
+  ]
+}

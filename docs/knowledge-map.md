@@ -24,9 +24,17 @@ ADMET 位于预测层，为分子设计提供吸收、分布、代谢、排泄�
 
 ## 从哪里开始读
 
-1. **建立数据与方法基础**：MoleculeNet → Chemprop/D-MPNN → AttentiveFP → TDC。先区分任务、标签、特征、划分和指标。
-2. **进入具体 ADMET 问题**：hERG 可读 [CardioTox net](../papers/admet/cardiotox-net-2021.md) → [HERGAI](../papers/admet/hergai-2025.md)；转运体读 [MC-PGP](../papers/admet/mc-pgp-2025.md)；致突变性读 [AMES 多任务 DNN](../papers/admet/ames-multitask-2022.md) → [AmesNet](../papers/admet/amesnet-2026.md)。沿同一主题比较数据、模型和实验设计的变化。
-3. **检查可靠性和实验支持**：结合 [ADMET 可靠性评测](../papers/admet/admet-reliability-2026.md)、MoleculeACE 与 BBB 实验案例，分析平均指标是否掩盖失败情形、结论是否适用于新分子。
+五层地图说明研究之间的联系；[五条专题阅读路线](reading-routes.md)帮助你从具体问题开始阅读，每条包含建议顺序、比较问题和按时间排序的论文列表。
+
+| 你的问题 | 阅读入口 | 对应层级 |
+| --- | --- | --- |
+| 分子能否被吸收、进入脑部或受到转运体影响？ | [吸收与分布](../topics/absorption-distribution.md) | 数据、预测、实验验证 |
+| 分子如何被代谢，能否预测人体暴露相关参数？ | [代谢与药代动力学](../topics/metabolism-pk.md) | 数据、预测 |
+| 是否存在 hERG、致突变性等安全风险？ | [毒性预测](../topics/toxicity.md) | 数据、预测 |
+| 指纹、描述符、分子图与预训练各解决什么问题？ | [分子表示与学习方法](../topics/representations-learning.md) | 表示、预测 |
+| 预测何时可信，如何用误差分析和实验检验？ | [可靠性与实验验证](../topics/reliability-validation.md) | 贯穿各层 |
+
+初学者可先读 MoleculeNet → [MolMapNet](../papers/foundations/molmapnet-2021.md) → Chemprop/D-MPNN → TDC，建立数据、描述符与图模型的认识；随后选择一个 ADMET 端点深入。可靠性路线将 [MoleculeACE](../papers/foundations/moleculeace-2022.md)、[原子级不确定性](../papers/foundations/atom-uncertainty-2023.md)和 BBB 实验案例连起来，帮助理解平均分数、预测置信度与实验观察各自说明什么。
 
 专题入口：用 [AI 药物毒性预测综述](../papers/admet/ai-toxicity-review-2023.md)了解毒性任务、数据和工具；沿 [SSL-GCN](../papers/admet/ssl-gcn-2021.md)学习如何利用无标签分子，沿 [Domain-aware / pBRICS](../papers/admet/domain-aware-pbrics-2023.md)了解化学片段与模型解释，沿 [Uni-QSAR](../papers/admet/uni-qsar-2023.md)了解多种分子表示的自动选择与集成。
 

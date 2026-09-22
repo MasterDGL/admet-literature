@@ -4,7 +4,7 @@
 
 [ADMET and pharmacokinetics index](../../topics/admet.md) · [Home](../../../README.md)
 
-*iScience · 2023-11* · Published · Core papers
+*iScience · 2023-10-24* · Published · Core papers
 
 **Overview:** Selects useful auxiliary tasks for each ADMET endpoint to reduce interference during multitask training.
 
@@ -12,8 +12,8 @@ Topics: Multitask learning, Auxiliary tasks, Negative transfer.
 
 | Field | Details |
 | --- | --- |
-| Publication and date | iScience 26(11), 108285; November 2023 issue. Preceded by a RECOMB 2023 conference paper. |
-| Date basis | Journal issue month |
+| Publication and date | iScience 26(11), 108285; published online 2023-10-24, November 2023 issue. A preceding conference version appeared at RECOMB 2023. |
+| Date basis | Online publication date; issue month listed separately. |
 | Publication status | Journal article |
 | Research problem | Training all ADMET tasks together can cause negative transfer; each primary task may need a different auxiliary-task set. |
 | Datasets | 24 endpoints collected from 8 publications: 18 classification and 6 regression tasks, covering 43,291 compounds and including ADMET plus 2 physicochemical endpoints. |

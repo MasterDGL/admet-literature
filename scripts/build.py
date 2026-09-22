@@ -13,6 +13,7 @@ from pathlib import Path
 from urllib.parse import urlparse
 import build_en
 import build_resources
+import build_routes
 
 ROOT = Path(__file__).resolve().parents[1]
 GROUPS = ['核心论文', '专题补读', '基础方法', '数据与基准', '综述', '观点文章', '预印本']
@@ -164,6 +165,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 ## 导航
 
+- [按研究问题阅读](docs/reading-routes.md)：吸收与分布、代谢与 PK、毒性、分子表示、可靠性与实验验证五条路线。
 - [ADMET 论文总表](topics/admet.md)：按发表时间从新到旧排列，逐篇保留五项核心信息。
 - [方法对比](docs/comparison.md)：按端点查看同一 TDC 基准下的成绩，附 CSV。
 - [数据集字典](docs/datasets.md)：数据规模、端点、来源、许可与加载入口。
@@ -286,7 +288,7 @@ def bilingual(papers, translations):
             switch = f'**English** | [简体中文]({target})' if lang == 'en' else f'[English]({target}) | **简体中文**'
             heading, body = store[path].split('\n', 1)
             store[path] = heading + '\n\n' + switch + '\n' + body
-    return chinese | english | build_resources.build(papers, table)
+    return chinese | english | build_resources.build(papers, table) | build_routes.build(papers, translations, table)
 
 
 def main():

@@ -22,6 +22,10 @@ python -m unittest discover -s scripts -p "test_*.py"
 
 新增成绩先核对数据版本、标签、测试划分和指标。论文中的其他实验保留在单篇笔记；预印本状态由论文元数据生成，正式发表后同步更新双语条目。
 
+## 更新专题阅读路线
+
+`data/reading_routes.json` 保存五条路线的论文归属、阅读顺序及中英文引导文字。标题、日期、发表状态和内容概述直接取自论文数据；运行构建命令即可更新全部专题页。新增论文至少归入一条路线，可按研究内容交叉引用。构建检查无效编号、重复条目、缺失翻译和未归类论文。
+
 ## 代码链接巡检
 
 每周一 02:23 UTC 自动检查，也可以在 [Check code links](https://github.com/MasterDGL/admet-literature/actions/workflows/links.yml) 中手动运行。CSV 报告保留 30 天，可从该次 Actions 运行的 Artifacts 下载。

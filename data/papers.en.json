@@ -202,15 +202,15 @@
       "code_status": "The authors provide a public code/project page.",
       "verification_scope": "Checked STAR Methods, the 24-endpoint collection and Table 1",
       "publication": {
-        "citation": "iScience 26(11), 108285; November 2023 issue. Preceded by a RECOMB 2023 conference paper.",
-        "date_basis": "Journal issue month"
+        "citation": "iScience 26(11), 108285; published online 2023-10-24, November 2023 issue. A preceding conference version appeared at RECOMB 2023.",
+        "date_basis": "Online publication date; issue month listed separately."
       },
       "source_labels": [
         "Full text",
         "Alternative full text",
         "Author code"
       ],
-      "source_sha256": "a7664ff3d57a752d0fa635cd4963b2564bc9180761bd1c41c857cf5defae3a5e"
+      "source_sha256": "7e0ab5ead9078c1a8bf18f7800d020d565a6b188e6aee2aa57bdf4205c9d7fa4"
     },
     "himnet-2026": {
       "tags": [
@@ -593,15 +593,15 @@
       "code_status": "Public availability of the complete training implementation remains to be verified.",
       "verification_scope": "Checked training protocol, external-set descriptions and Tables 2–5",
       "publication": {
-        "citation": "Journal of Pharmaceutical Analysis 15(8), 101313; August 2025 issue (PubMed article date: 2025-04-16).",
-        "date_basis": "Journal issue month; PubMed article date listed separately"
+        "citation": "Journal of Pharmaceutical Analysis 15(8), 101313; published online 2025-04-16, August 2025 issue.",
+        "date_basis": "Online publication date; issue month listed separately."
       },
       "source_labels": [
         "Open full text and result tables",
         "Journal page",
         "TDC P-gp task definition"
       ],
-      "source_sha256": "0f8d9e19b436173ba3799b8deaf301f236040c974953e96d7e974c4c1f4a245e"
+      "source_sha256": "665f67f59e4835d758f38015214bfeab63b6e5cb82b096c2f135748b1a1fda5c"
     },
     "ames-multitask-2022": {
       "name": "AMES multitask DNN",

@@ -16,6 +16,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 ## 导航
 
+- [按研究问题阅读](docs/reading-routes.md)：吸收与分布、代谢与 PK、毒性、分子表示、可靠性与实验验证五条路线。
 - [ADMET 论文总表](topics/admet.md)：按发表时间从新到旧排列，逐篇保留五项核心信息。
 - [方法对比](docs/comparison.md)：按端点查看同一 TDC 基准下的成绩，附 CSV。
 - [数据集字典](docs/datasets.md)：数据规模、端点、来源、许可与加载入口。
@@ -45,12 +46,12 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 | [ADMET可靠性评测](papers/admet/admet-reliability-2026.md) | Journal of Cheminformatics | 2026-05-18 | 在小样本、陌生分子结构和类别不均衡等条件下比较多类模型，检验 ADMET 预测在实际研究中是否可靠。 |
 | [CaliciBoost](papers/admet/caliciboost-2025.md) | Journal of Cheminformatics | 2025-12-22 | 比较分子指纹和理化描述符，结合自动机器学习预测分子通过肠道细胞模型（Caco-2）的能力。 |
 | [PKSmart](papers/admet/pksmart-2025.md) | Journal of Cheminformatics | 2025-09-26 | 先预测动物体内的药代参数，再结合分子结构预测人体静脉给药后的清除率、分布容积和半衰期等指标。 |
-| [MC-PGP](papers/admet/mc-pgp-2025.md) | Journal of Pharmaceutical Analysis | 2025-08 | 融合 SMILES、指纹和分子图，分别判断分子是否抑制 P-gp、是否会被 P-gp 转运。 |
 | [HERGAI](papers/admet/hergai-2025.md) | Journal of Cheminformatics | 2025-07-24 | 结合分子对接与集成模型，从大量候选分子中识别可能阻断 hERG 心脏离子通道的化合物。 |
+| [MC-PGP](papers/admet/mc-pgp-2025.md) | Journal of Pharmaceutical Analysis | 2025-04-16 | 融合 SMILES、指纹和分子图，分别判断分子是否抑制 P-gp、是否会被 P-gp 转运。 |
 | [MolE](papers/admet/mole-2024.md) | Nature Communications | 2024-11-12 | 先在海量分子图上预训练，再利用生物学任务数据进一步训练，最后用于 ADMET 性质预测。 |
 | [ADMET-AI](papers/admet/admet-ai-2024.md) | Bioinformatics | 2024-06-24 | 将图神经网络用于网页和本地预测工具，一次预测多项 ADMET 性质，方便快速筛选大规模化合物库。 |
 | [KPGT](papers/admet/kpgt-2023.md) | Nature Communications | 2023-11-21 | 把分子指纹和理化描述符融入图预训练，让模型学到更适合预测 ADMET 等性质的分子表示。 |
-| [MTGL-ADMET](papers/admet/mtgl-admet-2023.md) | iScience | 2023-11 | 为每个 ADMET 预测任务自动挑选有帮助的辅助任务，减少多任务联合训练时的相互干扰。 |
+| [MTGL-ADMET](papers/admet/mtgl-admet-2023.md) | iScience | 2023-10-24 | 为每个 ADMET 预测任务自动挑选有帮助的辅助任务，减少多任务联合训练时的相互干扰。 |
 
 建议顺序：**真实场景评测 → 单端点与人体 PK → 表示学习与多任务方法 → 平台应用**。专题总表按发表时间倒序排列，并标注研究分类，方便按阅读目的查找。
 
@@ -228,22 +229,6 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 [论文原文](https://link.springer.com/article/10.1186/s13321-025-01066-5) · [详细解读](papers/admet/pksmart-2025.md) · [代码/项目](https://github.com/srijitseal/PKSmart)
 
-#### A multimodal contrastive learning framework for predicting P-glycoprotein substrates and inhibitors
-
-*Journal of Pharmaceutical Analysis · 2025-08* · 已发表 · 核心论文
-
-**内容概述：** 融合 SMILES、指纹和分子图，分别判断分子是否抑制 P-gp、是否会被 P-gp 转运。
-
-| 字段 | 内容 |
-| --- | --- |
-| 发表期刊/会议与时间 | Journal of Pharmaceutical Analysis 15(8), 101313；2025-08 卷期（PubMed article date：2025-04-16） |
-| 主要痛点 | 单一表示难以覆盖 P-gp 相关结构信息；抑制剂与底物需要区分，并检验新来源化合物上的表现。 |
-| 数据集 | 公开数据库/文献汇编：抑制剂数据集共 5,943 个分子（4,558 阳性、1,385 阴性），底物集共 4,018（2,455 阳性、1,563 阴性）；独立外部集分别为 140 和 185 个分子。 |
-| 方法 | 注意力融合 SMILES 序列、分子指纹与分子图表示；图对比学习对齐局部与全局结构，并分析相关官能团。 |
-| 结论 | 抑制剂和底物外部集 AUROC 分别为 0.906±0.015、0.906±0.022；同一实验的 FP-GNN 分别为 0.825±0.015、0.819±0.027，绝对增益为 0.081 和 0.087。 |
-
-[论文原文](https://doi.org/10.1016/j.jpha.2025.101313) · [详细解读](papers/admet/mc-pgp-2025.md)
-
 #### HERGAI: an artificial intelligence tool for structure-based prediction of hERG inhibitors
 
 *Journal of Cheminformatics · 2025-07-24* · 已发表 · 核心论文
@@ -259,6 +244,22 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 | 结论 | 作者报告测试集对 IC50≤20 μM 阻断剂的召回约 86%，对≤1 μM 阻断剂约 94%；筛选富集优于论文比较的通用对接打分方案。 |
 
 [论文原文](https://doi.org/10.1186/s13321-025-01063-8) · [详细解读](papers/admet/hergai-2025.md) · [代码/项目](https://github.com/vktrannguyen/HERGAI)
+
+#### A multimodal contrastive learning framework for predicting P-glycoprotein substrates and inhibitors
+
+*Journal of Pharmaceutical Analysis · 2025-04-16* · 已发表 · 核心论文
+
+**内容概述：** 融合 SMILES、指纹和分子图，分别判断分子是否抑制 P-gp、是否会被 P-gp 转运。
+
+| 字段 | 内容 |
+| --- | --- |
+| 发表期刊/会议与时间 | Journal of Pharmaceutical Analysis 15(8), 101313；2025-04-16 在线发表，2025-08 卷期。 |
+| 主要痛点 | 单一表示难以覆盖 P-gp 相关结构信息；抑制剂与底物需要区分，并检验新来源化合物上的表现。 |
+| 数据集 | 公开数据库/文献汇编：抑制剂数据集共 5,943 个分子（4,558 阳性、1,385 阴性），底物集共 4,018（2,455 阳性、1,563 阴性）；独立外部集分别为 140 和 185 个分子。 |
+| 方法 | 注意力融合 SMILES 序列、分子指纹与分子图表示；图对比学习对齐局部与全局结构，并分析相关官能团。 |
+| 结论 | 抑制剂和底物外部集 AUROC 分别为 0.906±0.015、0.906±0.022；同一实验的 FP-GNN 分别为 0.825±0.015、0.819±0.027，绝对增益为 0.081 和 0.087。 |
+
+[论文原文](https://doi.org/10.1016/j.jpha.2025.101313) · [详细解读](papers/admet/mc-pgp-2025.md)
 
 #### Multi-channel learning for integrating structural hierarchies into context-dependent molecular representation
 
@@ -394,13 +395,13 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 #### ADMET property prediction via multi-task graph learning under adaptive auxiliary task selection
 
-*iScience · 2023-11* · 已发表 · 核心论文
+*iScience · 2023-10-24* · 已发表 · 核心论文
 
 **内容概述：** 为每个 ADMET 预测任务自动挑选有帮助的辅助任务，减少多任务联合训练时的相互干扰。
 
 | 字段 | 内容 |
 | --- | --- |
-| 发表期刊/会议与时间 | iScience 26(11), 108285；2023 年 11 月卷期。另有 RECOMB 2023 会议前序论文。 |
+| 发表期刊/会议与时间 | iScience 26(11), 108285；2023-10-24 在线发表，2023-11 卷期。另有 RECOMB 2023 会议前序论文。 |
 | 主要痛点 | 把所有 ADMET 任务放进同一个多任务模型可能产生负迁移；不同主任务需要不同的辅助任务。 |
 | 数据集 | 从 8 篇文献汇集 24 个端点：18 分类、6 回归，共 43,291 个化合物；含吸收、分布、代谢、排泄、毒性和 2 个理化性质端点。 |
 | 方法 | 以状态理论和最大流选择辅助任务，结合共享原子表示、任务特异注意力和以主任务为中心的门控模块。 |

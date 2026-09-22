@@ -325,10 +325,10 @@
       "publication": {
         "venue": "iScience",
         "year": 2023,
-        "date": "2023-11",
-        "date_basis": "期刊卷期月份；未在此补造具体日",
+        "date": "2023-10-24",
+        "date_basis": "论文在线发表日期；卷期月份另列",
         "status": "journal",
-        "citation": "iScience 26(11), 108285；2023 年 11 月卷期。另有 RECOMB 2023 会议前序论文。"
+        "citation": "iScience 26(11), 108285；2023-10-24 在线发表，2023-11 卷期。另有 RECOMB 2023 会议前序论文。"
       },
       "tags": [
         "多任务",
@@ -992,10 +992,10 @@
       "publication": {
         "venue": "Journal of Pharmaceutical Analysis",
         "year": 2025,
-        "date": "2025-08",
-        "date_basis": "采用期刊卷期月份；另列 PubMed article date，二者不混用",
+        "date": "2025-04-16",
+        "date_basis": "论文在线发表日期；卷期月份另列",
         "status": "journal",
-        "citation": "Journal of Pharmaceutical Analysis 15(8), 101313；2025-08 卷期（PubMed article date：2025-04-16）"
+        "citation": "Journal of Pharmaceutical Analysis 15(8), 101313；2025-04-16 在线发表，2025-08 卷期。"
       },
       "tags": [
         "P-gp",

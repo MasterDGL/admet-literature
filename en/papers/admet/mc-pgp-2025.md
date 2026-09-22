@@ -4,7 +4,7 @@
 
 [ADMET and pharmacokinetics index](../../topics/admet.md) · [Home](../../../README.md)
 
-*Journal of Pharmaceutical Analysis · 2025-08* · Published · Core papers
+*Journal of Pharmaceutical Analysis · 2025-04-16* · Published · Core papers
 
 **Overview:** Fuses SMILES, fingerprints and molecular graphs to separately predict P-gp inhibition and transport-substrate status.
 
@@ -12,8 +12,8 @@ Topics: P-gp, Multimodal learning, External validation.
 
 | Field | Details |
 | --- | --- |
-| Publication and date | Journal of Pharmaceutical Analysis 15(8), 101313; August 2025 issue (PubMed article date: 2025-04-16). |
-| Date basis | Journal issue month; PubMed article date listed separately |
+| Publication and date | Journal of Pharmaceutical Analysis 15(8), 101313; published online 2025-04-16, August 2025 issue. |
+| Date basis | Online publication date; issue month listed separately. |
 | Publication status | Journal article |
 | Research problem | Single representations miss P-gp-related structural information. Inhibitors and substrates require distinct tasks and evaluation on compounds from new sources. |
 | Datasets | Public databases/literature: 5,943 molecules for inhibition (4,558 positives, 1,385 negatives) and 4,018 for substrate prediction (2,455 positives, 1,563 negatives). Independent external sets contain 140 and 185 molecules, respectively. |

@@ -156,6 +156,7 @@ Start with data and molecular representations, then explore property prediction,
 
 ## Navigation
 
+- [Reading by research question](en/docs/reading-routes.md): five routes through absorption/distribution, metabolism/PK, toxicity, representations, and reliability/validation.
 - [ADMET paper index](en/topics/admet.md): papers ordered from newest to oldest, with all five core fields.
 - [Method comparisons](en/docs/comparison.md): endpoint-specific TDC scores and CSV.
 - [Dataset dictionary](en/docs/datasets.md): sizes, endpoints, sources, licenses and loading instructions.

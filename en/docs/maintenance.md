@@ -22,6 +22,10 @@ python -m unittest discover -s scripts -p "test_*.py"
 
 Check data versions, labels, test splits and metrics before adding scores. Other experiments remain in individual paper notes. Publication labels come from paper metadata; update both language entries when a preprint is published.
 
+## Updating thematic reading routes
+
+`data/reading_routes.json` stores paper membership, reading order and bilingual guidance for the five routes. Titles, dates, publication status and overviews come directly from the catalog; the build command updates every route page. Assign each new paper to at least one route, with cross-references where relevant. Validation catches invalid IDs, duplicate entries, missing translations and papers without a route.
+
 ## Code-link checks
 
 Checks run every Monday at 02:23 UTC and can also be started manually through [Check code links](https://github.com/MasterDGL/admet-literature/actions/workflows/links.yml). CSV reports are retained for 30 days and can be downloaded from the run's Artifacts.

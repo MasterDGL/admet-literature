@@ -24,9 +24,17 @@ Benchmarks, error analysis, uncertainty and reproducibility span the entire work
 
 ## Where to start
 
-1. **Build data and method foundations:** MoleculeNet → Chemprop/D-MPNN → AttentiveFP → TDC. Distinguish tasks, labels, features, splits and metrics.
-2. **Choose an ADMET question:** for hERG, read [CardioTox net](../papers/admet/cardiotox-net-2021.md) → [HERGAI](../papers/admet/hergai-2025.md); for transporters, [MC-PGP](../papers/admet/mc-pgp-2025.md); for mutagenicity, [AMES multitask DNN](../papers/admet/ames-multitask-2022.md) → [AmesNet](../papers/admet/amesnet-2026.md). Compare how data, models and experiments evolve within each topic.
-3. **Examine reliability and experimental support:** combine the [ADMET reliability benchmark](../papers/admet/admet-reliability-2026.md), MoleculeACE and the BBB experiments to study failures hidden by averages and generalization to new molecules.
+The five-level map connects areas of research. The [five thematic reading routes](reading-routes.md) start from concrete questions, with a suggested sequence, comparison questions and papers listed from newest to oldest.
+
+| Your question | Reading route | Map levels |
+| --- | --- | --- |
+| Can a molecule be absorbed, enter the brain or interact with transporters? | [Absorption and distribution](../topics/absorption-distribution.md) | Data, prediction, validation |
+| How is a molecule metabolized, and can human exposure-related parameters be predicted? | [Metabolism and pharmacokinetics](../topics/metabolism-pk.md) | Data, prediction |
+| Are there hERG, mutagenicity or other safety risks? | [Toxicity prediction](../topics/toxicity.md) | Data, prediction |
+| What do fingerprints, descriptors, molecular graphs and pretraining contribute? | [Representations and learning](../topics/representations-learning.md) | Representations, prediction |
+| When can predictions be trusted, and how can errors and experiments test them? | [Reliability and validation](../topics/reliability-validation.md) | Across all levels |
+
+For a first pass, read MoleculeNet → [MolMapNet](../papers/foundations/molmapnet-2021.md) → Chemprop/D-MPNN → TDC to connect data, descriptors and graph models, then choose an ADMET endpoint. The reliability route connects [MoleculeACE](../papers/foundations/moleculeace-2022.md), [atom-level uncertainty](../papers/foundations/atom-uncertainty-2023.md) and the BBB experiments to distinguish what average scores, predictive confidence and experimental observations establish.
 
 Topic entry points: use the [AI drug toxicity review](../papers/admet/ai-toxicity-review-2023.md) to explore toxicity tasks, data and tools; read [SSL-GCN](../papers/admet/ssl-gcn-2021.md) for learning from unlabeled molecules, [Domain-aware / pBRICS](../papers/admet/domain-aware-pbrics-2023.md) for chemical fragments and model interpretation, and [Uni-QSAR](../papers/admet/uni-qsar-2023.md) for automatic selection and integration of molecular representations.
 

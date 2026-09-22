@@ -14,6 +14,7 @@ Start with data and molecular representations, then explore property prediction,
 
 ## Navigation
 
+- [Reading by research question](en/docs/reading-routes.md): five routes through absorption/distribution, metabolism/PK, toxicity, representations, and reliability/validation.
 - [ADMET paper index](en/topics/admet.md): papers ordered from newest to oldest, with all five core fields.
 - [Method comparisons](en/docs/comparison.md): endpoint-specific TDC scores and CSV.
 - [Dataset dictionary](en/docs/datasets.md): sizes, endpoints, sources, licenses and loading instructions.
@@ -43,12 +44,12 @@ Start with data and molecular representations, then explore property prediction,
 | [ADMET reliability benchmark](en/papers/admet/admet-reliability-2026.md) | Journal of Cheminformatics | 2026-05-18 | Compares model families under limited data, unfamiliar molecular structures and class imbalance to assess ADMET prediction in practical research settings. |
 | [CaliciBoost](en/papers/admet/caliciboost-2025.md) | Journal of Cheminformatics | 2025-12-22 | Combines molecular fingerprints, physicochemical descriptors and automated machine learning to predict permeability through the Caco-2 intestinal cell model. |
 | [PKSmart](en/papers/admet/pksmart-2025.md) | Journal of Cheminformatics | 2025-09-26 | Predicts animal pharmacokinetic parameters, then combines them with molecular features to estimate human intravenous clearance, distribution volume and half-life. |
-| [MC-PGP](en/papers/admet/mc-pgp-2025.md) | Journal of Pharmaceutical Analysis | 2025-08 | Fuses SMILES, fingerprints and molecular graphs to separately predict P-gp inhibition and transport-substrate status. |
 | [HERGAI](en/papers/admet/hergai-2025.md) | Journal of Cheminformatics | 2025-07-24 | Combines docking and ensemble models to identify compounds likely to block the cardiac hERG ion channel in large candidate collections. |
+| [MC-PGP](en/papers/admet/mc-pgp-2025.md) | Journal of Pharmaceutical Analysis | 2025-04-16 | Fuses SMILES, fingerprints and molecular graphs to separately predict P-gp inhibition and transport-substrate status. |
 | [MolE](en/papers/admet/mole-2024.md) | Nature Communications | 2024-11-12 | Pretrains on a large collection of molecular graphs, adds supervised biological-task training, and fine-tunes for ADMET prediction. |
 | [ADMET-AI](en/papers/admet/admet-ai-2024.md) | Bioinformatics | 2024-06-24 | Packages graph neural networks into web and local tools that predict multiple ADMET properties for large compound libraries. |
 | [KPGT](en/papers/admet/kpgt-2023.md) | Nature Communications | 2023-11-21 | Incorporates fingerprints and physicochemical descriptors into graph pretraining to learn representations for ADMET and other molecular properties. |
-| [MTGL-ADMET](en/papers/admet/mtgl-admet-2023.md) | iScience | 2023-11 | Selects useful auxiliary tasks for each ADMET endpoint to reduce interference during multitask training. |
+| [MTGL-ADMET](en/papers/admet/mtgl-admet-2023.md) | iScience | 2023-10-24 | Selects useful auxiliary tasks for each ADMET endpoint to reduce interference during multitask training. |
 
 Suggested route: **practical evaluation → individual endpoints and human PK → representation learning and multitask methods → platforms**. The index lists all papers from newest to oldest and labels their research categories.
 
@@ -226,22 +227,6 @@ Papers below are ordered by publication date, newest first. Each entry explains 
 
 [Paper](https://link.springer.com/article/10.1186/s13321-025-01066-5) · [Detailed notes](en/papers/admet/pksmart-2025.md) · [Code/project](https://github.com/srijitseal/PKSmart)
 
-#### A multimodal contrastive learning framework for predicting P-glycoprotein substrates and inhibitors
-
-*Journal of Pharmaceutical Analysis · 2025-08* · Published · Core papers
-
-**Overview:** Fuses SMILES, fingerprints and molecular graphs to separately predict P-gp inhibition and transport-substrate status.
-
-| Field | Details |
-| --- | --- |
-| Publication and date | Journal of Pharmaceutical Analysis 15(8), 101313; August 2025 issue (PubMed article date: 2025-04-16). |
-| Research problem | Single representations miss P-gp-related structural information. Inhibitors and substrates require distinct tasks and evaluation on compounds from new sources. |
-| Datasets | Public databases/literature: 5,943 molecules for inhibition (4,558 positives, 1,385 negatives) and 4,018 for substrate prediction (2,455 positives, 1,563 negatives). Independent external sets contain 140 and 185 molecules, respectively. |
-| Method | Attention fuses SMILES sequences, fingerprints and graphs. Graph contrastive learning aligns local and global structure, with analysis of relevant functional groups. |
-| Findings | External AUROC is 0.906±0.015 for inhibitors and 0.906±0.022 for substrates; FP-GNN scores 0.825±0.015 and 0.819±0.027 on the same tests. Absolute gains are 0.081 and 0.087. |
-
-[Paper](https://doi.org/10.1016/j.jpha.2025.101313) · [Detailed notes](en/papers/admet/mc-pgp-2025.md)
-
 #### HERGAI: an artificial intelligence tool for structure-based prediction of hERG inhibitors
 
 *Journal of Cheminformatics · 2025-07-24* · Published · Core papers
@@ -257,6 +242,22 @@ Papers below are ordered by publication date, newest first. Each entry explains 
 | Findings | Reports test recall of approximately 86% for blockers with IC50 ≤ 20 μM and 94% for those with IC50 ≤ 1 μM. Screening enrichment exceeds the generic docking scores compared in the paper. |
 
 [Paper](https://doi.org/10.1186/s13321-025-01063-8) · [Detailed notes](en/papers/admet/hergai-2025.md) · [Code/project](https://github.com/vktrannguyen/HERGAI)
+
+#### A multimodal contrastive learning framework for predicting P-glycoprotein substrates and inhibitors
+
+*Journal of Pharmaceutical Analysis · 2025-04-16* · Published · Core papers
+
+**Overview:** Fuses SMILES, fingerprints and molecular graphs to separately predict P-gp inhibition and transport-substrate status.
+
+| Field | Details |
+| --- | --- |
+| Publication and date | Journal of Pharmaceutical Analysis 15(8), 101313; published online 2025-04-16, August 2025 issue. |
+| Research problem | Single representations miss P-gp-related structural information. Inhibitors and substrates require distinct tasks and evaluation on compounds from new sources. |
+| Datasets | Public databases/literature: 5,943 molecules for inhibition (4,558 positives, 1,385 negatives) and 4,018 for substrate prediction (2,455 positives, 1,563 negatives). Independent external sets contain 140 and 185 molecules, respectively. |
+| Method | Attention fuses SMILES sequences, fingerprints and graphs. Graph contrastive learning aligns local and global structure, with analysis of relevant functional groups. |
+| Findings | External AUROC is 0.906±0.015 for inhibitors and 0.906±0.022 for substrates; FP-GNN scores 0.825±0.015 and 0.819±0.027 on the same tests. Absolute gains are 0.081 and 0.087. |
+
+[Paper](https://doi.org/10.1016/j.jpha.2025.101313) · [Detailed notes](en/papers/admet/mc-pgp-2025.md)
 
 #### Multi-channel learning for integrating structural hierarchies into context-dependent molecular representation
 
@@ -392,13 +393,13 @@ Papers below are ordered by publication date, newest first. Each entry explains 
 
 #### ADMET property prediction via multi-task graph learning under adaptive auxiliary task selection
 
-*iScience · 2023-11* · Published · Core papers
+*iScience · 2023-10-24* · Published · Core papers
 
 **Overview:** Selects useful auxiliary tasks for each ADMET endpoint to reduce interference during multitask training.
 
 | Field | Details |
 | --- | --- |
-| Publication and date | iScience 26(11), 108285; November 2023 issue. Preceded by a RECOMB 2023 conference paper. |
+| Publication and date | iScience 26(11), 108285; published online 2023-10-24, November 2023 issue. A preceding conference version appeared at RECOMB 2023. |
 | Research problem | Training all ADMET tasks together can cause negative transfer; each primary task may need a different auxiliary-task set. |
 | Datasets | 24 endpoints collected from 8 publications: 18 classification and 6 regression tasks, covering 43,291 compounds and including ADMET plus 2 physicochemical endpoints. |
 | Method | Uses state theory and maximum flow for auxiliary-task selection, together with shared atom representations, task-specific attention and a primary-task-centered gating module. |
