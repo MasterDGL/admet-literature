@@ -1,8 +1,8 @@
-# Method comparisons
+# Endpoint comparisons
 
 **English** | [简体中文](../../docs/comparison.md)
 
-[Home](../../README.md) · [Dataset dictionary](datasets.md)
+[Home](../../README.md) · [Methods at a glance](methods.md) · [Dataset dictionary](datasets.md)
 
 22 ADMET tasks, 128 results from selected catalog methods. Sources checked: **2026-09-22**. Each table groups results reported under the TDC scaffold protocol with 20% held out for testing. Each score links to its leaderboard record or original paper table.
 

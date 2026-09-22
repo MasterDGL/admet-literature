@@ -18,7 +18,8 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 - [按研究问题阅读](docs/reading-routes.md)：吸收与分布、代谢与 PK、毒性、分子表示、可靠性与实验验证五条路线。
 - [ADMET 论文总表](topics/admet.md)：按发表时间从新到旧排列，逐篇保留五项核心信息。
-- [方法对比](docs/comparison.md)：按端点查看同一 TDC 基准下的成绩，附 CSV。
+- [按方法汇总](docs/methods.md)：输入表示、训练方式、任务覆盖与共同任务的平均排名。
+- [按端点对比](docs/comparison.md)：按端点查看同一 TDC 基准下的成绩，附 CSV。
 - [数据集字典](docs/datasets.md)：数据规模、端点、来源、许可与加载入口。
 - [基础方法与基准](topics/foundations.md)：分子表示、描述符建模、不确定性与评测基准。
 - [知识地图说明](docs/knowledge-map.md)：从研究问题找到方法、任务和阅读入口。

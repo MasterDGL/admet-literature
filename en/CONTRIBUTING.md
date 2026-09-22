@@ -41,6 +41,12 @@ Maintain guide translations in `docs/` and `en/docs/`, and the two knowledge map
 
 Source-review dates reflect actual reading. Record code accessibility, successful environment setup and experiment reproduction separately. Attach precise sources to numerical results.
 
+## Maintaining the method summary
+
+`data/comparison.json` stores task scores; `data/methods.json` stores bilingual implementation descriptions and the fixed comparison cohort. For each new result, check the dataset, size, split, metric, mean and standard deviation, and original source. Method names identify specific implementations.
+
+Mean ranks use a fixed set of methods and shared tasks, with average ranks for ties and equal task weights. When changing membership, update the cohort ID, task list and exclusion reasons. Missing scores fail the build rather than silently reducing the cohort or filling values. Run the build, consistency check and `python -m unittest discover -s scripts -p 'test_*.py'` after edits. The method pages and two ranking CSV files are generated.
+
 ## Report an error
 
 Provide the entry, field, proposed correction and original source. For numerical changes, identify the data version, split, metric, table location and paper version.

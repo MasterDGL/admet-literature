@@ -1,8 +1,8 @@
-# 方法对比
+# 按端点对比
 
 [English](../en/docs/comparison.md) | **简体中文**
 
-[返回首页](../README.zh-CN.md) · [数据集字典](datasets.md)
+[返回首页](../README.zh-CN.md) · [按方法汇总](methods.md) · [数据集字典](datasets.md)
 
 覆盖 22 个 ADMET 任务、已收录方法的 128 条结果。来源核对日期：**2026-09-22**。按 TDC 骨架划分、20% 留出测试的协议分组，每项成绩链接到榜单记录或原文表格。
 

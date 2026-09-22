@@ -1,0 +1,9 @@
+﻿method,paper_id,collected_tasks,cohort,ranked_tasks,mean_rank,top3_tasks,best_rank,worst_rank
+MolE,mole-2024,22,tdc-collected-six-19-v1,19,3.5,7,1.0,6.0
+KPGT,kpgt-2023,20,tdc-collected-six-19-v1,19,2.263157894736842,15,1.0,5.0
+MapLight,maplight-2023,21,tdc-collected-six-19-v1,19,2.8684210526315788,14,1.0,6.0
+MapLight + GNN,maplight-2023,21,tdc-collected-six-19-v1,19,2.1315789473684212,16,1.0,5.0
+Chemprop-RDKit,chemprop-dmpnn-2019,21,tdc-collected-six-19-v1,19,4.473684210526316,2,2.0,6.0
+AttentiveFP,attentivefp-2019,21,tdc-collected-six-19-v1,19,5.7631578947368425,0,3.5,6.0
+CaliciBoost,caliciboost-2025,1,,0,,,,
+MolMapNet-D,molmapnet-2021,1,,0,,,,

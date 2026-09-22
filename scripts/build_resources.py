@@ -79,13 +79,13 @@ def build(papers, table):
         back = '../../README.md' if en else '../README.zh-CN.md'
         data_prefix = '../../data/' if en else '../data/'
         switch = '**English** | [简体中文](../../docs/{page}.md)' if en else '[English](../en/docs/{page}.md) | **简体中文**'
-        title = 'Method comparisons' if en else '方法对比'
+        title = 'Endpoint comparisons' if en else '按端点对比'
         intro = (f'{endpoint_count} ADMET tasks, {len(records)} results from selected catalog methods. Sources checked: **{snapshot}**. Each table groups results reported under the TDC scaffold protocol with 20% held out for testing. Each score links to its leaderboard record or original paper table.' if en else
                  f'覆盖 {endpoint_count} 个 ADMET 任务、已收录方法的 {len(records)} 条结果。来源核对日期：**{snapshot}**。按 TDC 骨架划分、20% 留出测试的协议分组，每项成绩链接到榜单记录或原文表格。')
         protocol = ('Tables are sorted by mean performance: AUROC, AUPRC and Spearman ↑; MAE ↓. Values are mean ± standard deviation. Method names distinguish implementations such as Chemprop-RDKit and MapLight + GNN. Leaderboard scores describe those benchmark implementations; paper-table scores retain the authors’ experimental settings. Pretraining data and tuning budgets are described in the linked notes. The first row has the best mean among the methods collected here.' if en else
                     '表内按均值排序：AUROC、AUPRC 和 Spearman 越高越好，MAE 越低越好；数值为均值 ± 标准差。方法名区分 Chemprop-RDKit、MapLight + GNN 等实现。榜单成绩对应基准提交实现，论文表格成绩对应作者实验；预训练数据和调参设置见各篇笔记。首行表示本表已收录方法中的最高表现。')
         content = f'# {title}\n\n{switch.format(page="comparison")}\n\n'
-        content += f'[{"Home" if en else "返回首页"}]({back}) · [{"Dataset dictionary" if en else "数据集字典"}](datasets.md)\n\n{intro}\n\n{protocol}\n\n'
+        content += f'[{"Home" if en else "返回首页"}]({back}) · [{"Methods at a glance" if en else "按方法汇总"}](methods.md) · [{"Dataset dictionary" if en else "数据集字典"}](datasets.md)\n\n{intro}\n\n{protocol}\n\n'
         content += ('[TDC protocol](https://tdcommons.ai/benchmark/admet_group/overview/) · ' if en else '[TDC 评测协议](https://tdcommons.ai/benchmark/admet_group/overview/) · ')
         content += f'[CSV]({data_prefix}comparison.csv)\n\n'
         content += ('## Find an endpoint\n\n' if en else '## 按端点查找\n\n')

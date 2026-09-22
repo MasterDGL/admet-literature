@@ -16,7 +16,8 @@ Start with data and molecular representations, then explore property prediction,
 
 - [Reading by research question](en/docs/reading-routes.md): five routes through absorption/distribution, metabolism/PK, toxicity, representations, and reliability/validation.
 - [ADMET paper index](en/topics/admet.md): papers ordered from newest to oldest, with all five core fields.
-- [Method comparisons](en/docs/comparison.md): endpoint-specific TDC scores and CSV.
+- [Methods at a glance](en/docs/methods.md): representations, learning strategies, task coverage and mean ranks on shared tasks.
+- [Endpoint comparisons](en/docs/comparison.md): endpoint-specific TDC scores and CSV.
 - [Dataset dictionary](en/docs/datasets.md): sizes, endpoints, sources, licenses and loading instructions.
 - [Methods and benchmarks](en/topics/foundations.md): molecular representations, descriptor models, uncertainty and evaluation benchmarks.
 - [Knowledge map](en/docs/knowledge-map.md): connect research questions, methods and reading routes.
