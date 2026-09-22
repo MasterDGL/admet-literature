@@ -1,14 +1,14 @@
-# HERGAI
+# HERGAI: an artificial intelligence tool for structure-based prediction of hERG inhibitors
 
 **English** | [简体中文](../../../papers/admet/hergai-2025.md)
 
-**HERGAI: an artificial intelligence tool for structure-based prediction of hERG inhibitors**
-
 [ADMET and pharmacokinetics index](../../topics/admet.md) · [Home](../../../README.md)
+
+*Journal of Cheminformatics · 2025-07-24* · Published · Core papers
 
 **Overview:** Combines docking and ensemble models to identify compounds likely to block the cardiac hERG ion channel in large candidate collections.
 
-Category: Core papers. Topics: hERG, Docking, Class imbalance.
+Topics: hERG, Docking, Class imbalance.
 
 | Field | Details |
 | --- | --- |

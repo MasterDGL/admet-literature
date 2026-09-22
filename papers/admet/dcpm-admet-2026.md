@@ -1,14 +1,14 @@
-# DCPM-ADMET
+# DCPM-ADMET: fusion of dual-component pre-trained model and molecular fingerprints to enhance drug ADMET properties prediction
 
 [English](../../en/papers/admet/dcpm-admet-2026.md) | **简体中文**
 
-**DCPM-ADMET: fusion of dual-component pre-trained model and molecular fingerprints to enhance drug ADMET properties prediction**
-
 [返回ADMET 与药代动力学总表](../../topics/admet.md) · [返回首页](../../README.zh-CN.md)
+
+*Journal of Cheminformatics · 2026-06-20* · 已发表 · 核心论文
 
 **内容概述：** 将两种预训练模型学到的分子表示与化学指纹结合，用于预测 97 项 ADMET 性质。
 
-分类：核心论文。主题：综合ADMET、预训练、融合。
+主题：综合ADMET、预训练、融合。
 
 | 字段 | 内容 |
 | --- | --- |

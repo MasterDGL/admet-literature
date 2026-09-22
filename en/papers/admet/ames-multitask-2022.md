@@ -1,14 +1,14 @@
-# AMES multitask DNN
+# Multitask Deep Neural Networks for Ames Mutagenicity Prediction
 
 **English** | [简体中文](../../../papers/admet/ames-multitask-2022.md)
 
-**Multitask Deep Neural Networks for Ames Mutagenicity Prediction**
-
 [ADMET and pharmacokinetics index](../../topics/admet.md) · [Home](../../../README.md)
+
+*Journal of Chemical Information and Modeling · 2022-09-06* · Published · Further reading
 
 **Overview:** Learns Ames outcomes for five bacterial strains jointly, retaining strain-specific information alongside the overall mutagenicity label.
 
-Category: Further reading. Topics: AMES, Strain-level labels, Multitask learning.
+Topics: AMES, Strain-level labels, Multitask learning.
 
 | Field | Details |
 | --- | --- |

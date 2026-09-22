@@ -1,14 +1,14 @@
-# Trimole-Hybrid
+# A multimodal representation learning platform for accurate molecular ADMET prediction
 
 **English** | [简体中文](../../../papers/admet/trimole-hybrid-2026.md)
 
-**A multimodal representation learning platform for accurate molecular ADMET prediction**
-
 [ADMET and pharmacokinetics index](../../topics/admet.md) · [Home](../../../README.md)
+
+*bioRxiv · 2026-08-25* · 🟠 **Preprint** · Preprints
 
 **Overview:** Fuses sequences, molecular graphs, 3D structures and chemical priors, selecting prediction models or ensembles for each ADMET task.
 
-Category: Preprints. Topics: Multimodal learning, Model ensembles.
+Topics: Multimodal learning, Model ensembles.
 
 | Field | Details |
 | --- | --- |

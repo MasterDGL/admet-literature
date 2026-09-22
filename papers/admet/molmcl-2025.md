@@ -1,14 +1,14 @@
-# MolMCL
+# Multi-channel learning for integrating structural hierarchies into context-dependent molecular representation
 
 [English](../../en/papers/admet/molmcl-2025.md) | **简体中文**
 
-**Multi-channel learning for integrating structural hierarchies into context-dependent molecular representation**
-
 [返回ADMET 与药代动力学总表](../../topics/admet.md) · [返回首页](../../README.zh-CN.md)
+
+*Nature Communications · 2025-01-06* · 已发表 · 专题补读
 
 **内容概述：** 从分子整体、骨架和局部环境等层面学习表示，再按任务组合这些信息，用于性质和生物活性预测。
 
-分类：专题补读。主题：多通道预训练、活性悬崖。
+主题：多通道预训练、活性悬崖。
 
 | 字段 | 内容 |
 | --- | --- |

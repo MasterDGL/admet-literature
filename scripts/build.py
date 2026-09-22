@@ -88,15 +88,15 @@ def card(p):
     code = (f'[代码与项目]({p["code_url"]})\n\n{p["code_status"]}。'
             if p.get('code_url') else p['code_status'] + '。')
     doi = f'\nDOI：`{p["doi"]}`\n' if p.get('doi') else ''
-    return f'''# {p['name']}
-
-**{p['title']}**
+    return f'''# {p['title']}
 
 [返回{TOPICS[p['topic']]}总表](../../topics/{p['topic']}.md) · [返回首页](../../README.md)
 
+*{pub['venue']} · {pub['date']}* · {build_en.publication_label(p, en=False)} · {p['group']}
+
 **内容概述：** {p['one_liner']}
 
-分类：{p['group']}。主题：{'、'.join(p['tags'])}。
+主题：{'、'.join(p['tags'])}。
 
 {table(['字段', '内容'], fields)}
 {doi}
@@ -142,8 +142,8 @@ def build(papers):
         fields = [['发表期刊/会议与时间', p['publication']['citation']],
                   ['主要痛点', p['pain_point']], ['数据集', p['datasets']],
                   ['方法', p['method']], ['结论', p['conclusion']]]
-        overview.append(f'#### {p["name"]}\n\n**{p["title"]}**\n\n'
-                        f'发表时间：**{p["publication"]["date"]}** · {build_en.publication_label(p, en=False)} · 分类：{p["group"]}。\n\n'
+        overview.append(f'#### {p["title"]}\n\n'
+                        f'*{p["publication"]["venue"]} · {p["publication"]["date"]}* · {build_en.publication_label(p, en=False)} · {p["group"]}\n\n'
                         f'**内容概述：** {p["one_liner"]}\n\n'
                         + table(['字段', '内容'], fields) + '\n\n' + links)
     year_nav = ' · '.join(f'[{year}](#{year})' for year in dict.fromkeys(p['publication']['year'] for p in papers))

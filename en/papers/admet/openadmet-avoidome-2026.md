@@ -1,14 +1,14 @@
-# OpenADMET / Avoid-ome
+# Mapping the avoid-ome: a systematic open-science approach to predictive ADMET
 
 **English** | [简体中文](../../../papers/admet/openadmet-avoidome-2026.md)
 
-**Mapping the avoid-ome: a systematic open-science approach to predictive ADMET**
-
 [ADMET and pharmacokinetics index](../../topics/admet.md) · [Home](../../../README.md)
+
+*Nature Communications · 2026-05-25* · Published · Perspectives
 
 **Overview:** Proposes combining open experimental data, protein structures, active learning and blind challenges to improve mechanistic ADMET prediction.
 
-Category: Perspectives. Topics: Mechanisms, Open data, Perspective.
+Topics: Mechanisms, Open data, Perspective.
 
 | Field | Details |
 | --- | --- |

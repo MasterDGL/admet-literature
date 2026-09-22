@@ -1,14 +1,14 @@
-# PKSmart
+# PKSmart: an open-source computational model to predict intravenous pharmacokinetics of small molecules
 
 **English** | [简体中文](../../../papers/admet/pksmart-2025.md)
 
-**PKSmart: an open-source computational model to predict intravenous pharmacokinetics of small molecules**
-
 [ADMET and pharmacokinetics index](../../topics/admet.md) · [Home](../../../README.md)
+
+*Journal of Cheminformatics · 2025-09-26* · Published · Core papers
 
 **Overview:** Predicts animal pharmacokinetic parameters, then combines them with molecular features to estimate human intravenous clearance, distribution volume and half-life.
 
-Category: Core papers. Topics: Human PK, Cross-species prediction, External validation.
+Topics: Human PK, Cross-species prediction, External validation.
 
 | Field | Details |
 | --- | --- |

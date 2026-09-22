@@ -1,14 +1,14 @@
-# MoleculeNet
+# MoleculeNet: a benchmark for molecular machine learning
 
 **English** | [简体中文](../../../papers/foundations/moleculenet-2018.md)
 
-**MoleculeNet: a benchmark for molecular machine learning**
-
 [Methods and benchmarks index](../../topics/foundations.md) · [Home](../../../README.md)
+
+*Chemical Science · 2017-10-31* · Published · Data and benchmarks
 
 **Overview:** Brings molecular datasets, splits, metrics and algorithms into a shared benchmark for property prediction.
 
-Category: Data and benchmarks. Topics: Datasets, Benchmarks, Evaluation.
+Topics: Datasets, Benchmarks, Evaluation.
 
 | Field | Details |
 | --- | --- |

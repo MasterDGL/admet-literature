@@ -1,14 +1,14 @@
-# AI for drug toxicity: review
+# Artificial Intelligence in Drug Toxicity Prediction: Recent Advances, Challenges, and Future Perspectives
 
 **English** | [简体中文](../../../papers/admet/ai-toxicity-review-2023.md)
 
-**Artificial Intelligence in Drug Toxicity Prediction: Recent Advances, Challenges, and Future Perspectives**
-
 [ADMET and pharmacokinetics index](../../topics/admet.md) · [Home](../../../README.md)
+
+*Journal of Chemical Information and Modeling · 2023-04-26* · Published · Reviews
 
 **Overview:** Surveys machine-learning and deep-learning approaches by toxicity task and collects public datasets and prediction tools for model development.
 
-Category: Reviews. Topics: Toxicity, Review, Data and tools.
+Topics: Toxicity, Review, Data and tools.
 
 | Field | Details |
 | --- | --- |

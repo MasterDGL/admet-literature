@@ -91,15 +91,15 @@ def build(papers, table):
         sources = '\n'.join(f'- [{s["label"]}]({s["url"]})' for s in p['sources'])
         code = (f'[Code and project]({p["code_url"]})\n\n' if p.get('code_url') else '') + p['code_status']
         doi = f'\nDOI: `{p["doi"]}`\n' if p.get('doi') else ''
-        artifacts['en/' + note(p)] = f'''# {p['name']}
-
-**{p['title']}**
+        artifacts['en/' + note(p)] = f'''# {p['title']}
 
 [{TOPICS[p['topic']]} index](../../topics/{p['topic']}.md) · [Home](../../../README.md)
 
+*{pub['venue']} · {pub['date']}* · {publication_label(p)} · {GROUPS[p['group']]}
+
 **Overview:** {p['one_liner']}
 
-Category: {GROUPS[p['group']]}. Topics: {', '.join(p['tags'])}.
+Topics: {', '.join(p['tags'])}.
 
 {table(['Field', 'Details'], fields)}
 {doi}
@@ -126,8 +126,8 @@ Sources reviewed: **{p['verified_on']}**. {p['verification_scope']}
         links = f'[Paper]({p["paper_url"]}) · [Detailed notes](en/{note(p)})'
         if p.get('code_url'):
             links += f' · [Code/project]({p["code_url"]})'
-        overview.append(f'#### {p["name"]}\n\n**{p["title"]}**\n\n'
-                        f'Date: **{p["publication"]["date"]}** · {publication_label(p)} · Category: {GROUPS[p["group"]]}.\n\n'
+        overview.append(f'#### {p["title"]}\n\n'
+                        f'*{p["publication"]["venue"]} · {p["publication"]["date"]}* · {publication_label(p)} · {GROUPS[p["group"]]}\n\n'
                         f'**Overview:** {p["one_liner"]}\n\n'
                         + table(['Field', 'Details'], core_fields(p)) + '\n\n' + links)
     core = table(['Paper', 'Journal/conference', 'Date', 'Overview'], [

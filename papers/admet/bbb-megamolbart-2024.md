@@ -1,14 +1,14 @@
-# BBB MegaMolBART
+# Predicting blood–brain barrier permeability of molecules with a large language model and machine learning
 
 [English](../../en/papers/admet/bbb-megamolbart-2024.md) | **简体中文**
 
-**Predicting blood–brain barrier permeability of molecules with a large language model and machine learning**
-
 [返回ADMET 与药代动力学总表](../../topics/admet.md) · [返回首页](../../README.zh-CN.md)
+
+*Scientific Reports · 2024-07-09* · 已发表 · 专题补读
 
 **内容概述：** 用分子语言模型和 XGBoost 预测血脑屏障通透性，并用人源三维 BBB 球体检验部分候选。
 
-分类：专题补读。主题：BBB、分子语言模型、体外验证。
+主题：BBB、分子语言模型、体外验证。
 
 | 字段 | 内容 |
 | --- | --- |

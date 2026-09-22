@@ -1,14 +1,14 @@
-# AMES 多任务 DNN
+# Multitask Deep Neural Networks for Ames Mutagenicity Prediction
 
 [English](../../en/papers/admet/ames-multitask-2022.md) | **简体中文**
 
-**Multitask Deep Neural Networks for Ames Mutagenicity Prediction**
-
 [返回ADMET 与药代动力学总表](../../topics/admet.md) · [返回首页](../../README.zh-CN.md)
+
+*Journal of Chemical Information and Modeling · 2022-09-06* · 已发表 · 专题补读
 
 **内容概述：** 保留五种菌株各自的 Ames 结果进行多任务学习，而非只学习一个总体致突变标签。
 
-分类：专题补读。主题：AMES、菌株级标签、多任务学习。
+主题：AMES、菌株级标签、多任务学习。
 
 | 字段 | 内容 |
 | --- | --- |

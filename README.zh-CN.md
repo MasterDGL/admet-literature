@@ -66,11 +66,9 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 ### 2026
 
-#### ADMET-EvO
+#### ADMET-EvO: a self-evolving scientific agent for sustained research across heterogeneous tasks
 
-**ADMET-EvO: a self-evolving scientific agent for sustained research across heterogeneous tasks**
-
-发表时间：**2026-09-09** · 🟠 **预印本** · 分类：预印本。
+*arXiv · 2026-09-09* · 🟠 **预印本** · 预印本
 
 **内容概述：** 让研究智能体针对不同 ADMET 任务探索特征和模型，并通过固定测试流程评价预测效果与研究效率。
 
@@ -84,11 +82,9 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 [论文原文](https://arxiv.org/abs/2609.10121) · [详细解读](papers/admet/admet-evo-2026.md)
 
-#### Trimole-Hybrid
+#### A multimodal representation learning platform for accurate molecular ADMET prediction
 
-**A multimodal representation learning platform for accurate molecular ADMET prediction**
-
-发表时间：**2026-08-25** · 🟠 **预印本** · 分类：预印本。
+*bioRxiv · 2026-08-25* · 🟠 **预印本** · 预印本
 
 **内容概述：** 融合分子序列、分子图、三维结构和化学先验，并按 ADMET 任务选择预测模型或集成方案。
 
@@ -102,11 +98,9 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 [论文原文](https://www.biorxiv.org/content/10.64898/2026.08.24.746660v1) · [详细解读](papers/admet/trimole-hybrid-2026.md) · [代码/项目](https://github.com/dchen0212/trimole_hybrid)
 
-#### AmesNet
+#### AmesNet: A Task-Conditioned Deep Learning Model with Enhanced Sensitivity and Generalization in Ames Mutagenicity Prediction
 
-**AmesNet: A Task-Conditioned Deep Learning Model with Enhanced Sensitivity and Generalization in Ames Mutagenicity Prediction**
-
-发表时间：**2026-06-29** · 已发表 · 分类：核心论文。
+*Chemical Research in Toxicology · 2026-06-29* · 已发表 · 核心论文
 
 **内容概述：** 将分子结构、菌株与代谢活化条件一起输入模型，提高陌生化学结构的 Ames 致突变性识别能力。
 
@@ -120,11 +114,9 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 [论文原文](https://doi.org/10.1021/acs.chemrestox.6c00082) · [详细解读](papers/admet/amesnet-2026.md) · [代码/项目](https://github.com/Model-Medicines/TCL-Ames)
 
-#### DCPM-ADMET
+#### DCPM-ADMET: fusion of dual-component pre-trained model and molecular fingerprints to enhance drug ADMET properties prediction
 
-**DCPM-ADMET: fusion of dual-component pre-trained model and molecular fingerprints to enhance drug ADMET properties prediction**
-
-发表时间：**2026-06-20** · 已发表 · 分类：核心论文。
+*Journal of Cheminformatics · 2026-06-20* · 已发表 · 核心论文
 
 **内容概述：** 将两种预训练模型学到的分子表示与化学指纹结合，用于预测 97 项 ADMET 性质。
 
@@ -138,11 +130,9 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 [论文原文](https://link.springer.com/article/10.1186/s13321-026-01244-z) · [详细解读](papers/admet/dcpm-admet-2026.md) · [代码/项目](https://github.com/zhangzhangleilei/DCPM-ADMET)
 
-#### OpenADMET / Avoid-ome
+#### Mapping the avoid-ome: a systematic open-science approach to predictive ADMET
 
-**Mapping the avoid-ome: a systematic open-science approach to predictive ADMET**
-
-发表时间：**2026-05-25** · 已发表 · 分类：观点文章。
+*Nature Communications · 2026-05-25* · 已发表 · 观点文章
 
 **内容概述：** 提出结合开放实验数据、蛋白质结构、主动学习和盲测挑战，从机制上改进 ADMET 预测的研究路线。
 
@@ -156,11 +146,9 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 [论文原文](https://www.nature.com/articles/s41467-026-73410-8) · [详细解读](papers/admet/openadmet-avoidome-2026.md) · [代码/项目](https://github.com/OpenADMET)
 
-#### ADMET可靠性评测
+#### Revisiting ADMET prediction reliability under real-world challenges in the foundation model era
 
-**Revisiting ADMET prediction reliability under real-world challenges in the foundation model era**
-
-发表时间：**2026-05-18** · 已发表 · 分类：核心论文。
+*Journal of Cheminformatics · 2026-05-18* · 已发表 · 核心论文
 
 **内容概述：** 在小样本、陌生分子结构和类别不均衡等条件下比较多类模型，检验 ADMET 预测在实际研究中是否可靠。
 
@@ -174,11 +162,9 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 [论文原文](https://link.springer.com/article/10.1186/s13321-026-01217-2) · [详细解读](papers/admet/admet-reliability-2026.md) · [代码/项目](https://github.com/DonghaiZHAO-ZJU/Benchmark-ADMET-2025)
 
-#### TDC模型审计
+#### Critical Assessment of ML models for ADMET Prediction in TDC leaderboards
 
-**Critical Assessment of ML models for ADMET Prediction in TDC leaderboards**
-
-发表时间：**2026-02-28** · 🟠 **预印本** · 分类：预印本。
+*bioRxiv · 2026-02-28* · 🟠 **预印本** · 预印本
 
 **内容概述：** 检查 TDC 榜单领先模型能否运行、有无数据泄漏，以及报告的 ADMET 成绩能否复现。
 
@@ -192,11 +178,9 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 [论文原文](https://www.biorxiv.org/content/10.64898/2026.02.26.708193v1) · [详细解读](papers/admet/tdc-audit-2026.md) · [代码/项目](https://github.com/receptor-ai/tdc-admet-bench)
 
-#### HimNet
+#### A hierarchical interaction message net for accurate molecular property prediction
 
-**A hierarchical interaction message net for accurate molecular property prediction**
-
-发表时间：**2026-02-14** · 已发表 · 分类：专题补读。
+*Communications Chemistry · 2026-02-14* · 已发表 · 专题补读
 
 **内容概述：** 让原子、子结构和整个分子之间交换信息，用层级图神经网络预测分子性质及部分 ADMET 指标。
 
@@ -212,11 +196,9 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 ### 2025
 
-#### CaliciBoost
+#### CaliciBoost: Performance-driven evaluation of molecular representations for caco-2 permeability prediction
 
-**CaliciBoost: Performance-driven evaluation of molecular representations for caco-2 permeability prediction**
-
-发表时间：**2025-12-22** · 已发表 · 分类：核心论文。
+*Journal of Cheminformatics · 2025-12-22* · 已发表 · 核心论文
 
 **内容概述：** 比较分子指纹和理化描述符，结合自动机器学习预测分子通过肠道细胞模型（Caco-2）的能力。
 
@@ -230,11 +212,9 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 [论文原文](https://link.springer.com/article/10.1186/s13321-025-01137-7) · [详细解读](papers/admet/caliciboost-2025.md) · [代码/项目](https://github.com/Calici/CaliciBoost)
 
-#### PKSmart
+#### PKSmart: an open-source computational model to predict intravenous pharmacokinetics of small molecules
 
-**PKSmart: an open-source computational model to predict intravenous pharmacokinetics of small molecules**
-
-发表时间：**2025-09-26** · 已发表 · 分类：核心论文。
+*Journal of Cheminformatics · 2025-09-26* · 已发表 · 核心论文
 
 **内容概述：** 先预测动物体内的药代参数，再结合分子结构预测人体静脉给药后的清除率、分布容积和半衰期等指标。
 
@@ -248,11 +228,9 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 [论文原文](https://link.springer.com/article/10.1186/s13321-025-01066-5) · [详细解读](papers/admet/pksmart-2025.md) · [代码/项目](https://github.com/srijitseal/PKSmart)
 
-#### MC-PGP
+#### A multimodal contrastive learning framework for predicting P-glycoprotein substrates and inhibitors
 
-**A multimodal contrastive learning framework for predicting P-glycoprotein substrates and inhibitors**
-
-发表时间：**2025-08** · 已发表 · 分类：核心论文。
+*Journal of Pharmaceutical Analysis · 2025-08* · 已发表 · 核心论文
 
 **内容概述：** 融合 SMILES、指纹和分子图，分别判断分子是否抑制 P-gp、是否会被 P-gp 转运。
 
@@ -266,11 +244,9 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 [论文原文](https://doi.org/10.1016/j.jpha.2025.101313) · [详细解读](papers/admet/mc-pgp-2025.md)
 
-#### HERGAI
+#### HERGAI: an artificial intelligence tool for structure-based prediction of hERG inhibitors
 
-**HERGAI: an artificial intelligence tool for structure-based prediction of hERG inhibitors**
-
-发表时间：**2025-07-24** · 已发表 · 分类：核心论文。
+*Journal of Cheminformatics · 2025-07-24* · 已发表 · 核心论文
 
 **内容概述：** 结合分子对接与集成模型，从大量候选分子中识别可能阻断 hERG 心脏离子通道的化合物。
 
@@ -284,11 +260,9 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 [论文原文](https://doi.org/10.1186/s13321-025-01063-8) · [详细解读](papers/admet/hergai-2025.md) · [代码/项目](https://github.com/vktrannguyen/HERGAI)
 
-#### MolMCL
+#### Multi-channel learning for integrating structural hierarchies into context-dependent molecular representation
 
-**Multi-channel learning for integrating structural hierarchies into context-dependent molecular representation**
-
-发表时间：**2025-01-06** · 已发表 · 分类：专题补读。
+*Nature Communications · 2025-01-06* · 已发表 · 专题补读
 
 **内容概述：** 从分子整体、骨架和局部环境等层面学习表示，再按任务组合这些信息，用于性质和生物活性预测。
 
@@ -304,11 +278,9 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 ### 2024
 
-#### MolE
+#### MolE: a foundation model for molecular graphs using disentangled attention
 
-**MolE: a foundation model for molecular graphs using disentangled attention**
-
-发表时间：**2024-11-12** · 已发表 · 分类：核心论文。
+*Nature Communications · 2024-11-12* · 已发表 · 核心论文
 
 **内容概述：** 先在海量分子图上预训练，再利用生物学任务数据进一步训练，最后用于 ADMET 性质预测。
 
@@ -322,11 +294,9 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 [论文原文](https://www.nature.com/articles/s41467-024-53751-y) · [详细解读](papers/admet/mole-2024.md) · [代码/项目](https://github.com/recursionpharma/mole_public)
 
-#### PharmaBench
+#### PharmaBench: Enhancing ADMET benchmarks with large language models
 
-**PharmaBench: Enhancing ADMET benchmarks with large language models**
-
-发表时间：**2024-09-10** · 已发表 · 分类：数据与基准。
+*Scientific Data · 2024-09-10* · 已发表 · 数据与基准
 
 **内容概述：** 用大语言模型辅助提取实验条件，再清洗和统一 ADMET 记录，构建条件更明确的评测数据集。
 
@@ -340,11 +310,9 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 [论文原文](https://www.nature.com/articles/s41597-024-03793-0) · [详细解读](papers/admet/pharmabench-2024.md) · [代码/项目](https://github.com/mindrank-ai/PharmaBench)
 
-#### BBB MegaMolBART
+#### Predicting blood–brain barrier permeability of molecules with a large language model and machine learning
 
-**Predicting blood–brain barrier permeability of molecules with a large language model and machine learning**
-
-发表时间：**2024-07-09** · 已发表 · 分类：专题补读。
+*Scientific Reports · 2024-07-09* · 已发表 · 专题补读
 
 **内容概述：** 用分子语言模型和 XGBoost 预测血脑屏障通透性，并用人源三维 BBB 球体检验部分候选。
 
@@ -358,11 +326,9 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 [论文原文](https://doi.org/10.1038/s41598-024-66897-y) · [详细解读](papers/admet/bbb-megamolbart-2024.md)
 
-#### ADMET-AI
+#### ADMET-AI: a machine learning ADMET platform for evaluation of large-scale chemical libraries
 
-**ADMET-AI: a machine learning ADMET platform for evaluation of large-scale chemical libraries**
-
-发表时间：**2024-06-24** · 已发表 · 分类：核心论文。
+*Bioinformatics · 2024-06-24* · 已发表 · 核心论文
 
 **内容概述：** 将图神经网络用于网页和本地预测工具，一次预测多项 ADMET 性质，方便快速筛选大规模化合物库。
 
@@ -376,11 +342,9 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 [论文原文](https://pmc.ncbi.nlm.nih.gov/articles/PMC11226862/) · [详细解读](papers/admet/admet-ai-2024.md) · [代码/项目](https://github.com/swansonk14/admet_ai)
 
-#### admetSAR3.0
+#### admetSAR3.0: a comprehensive platform for exploration, prediction and optimization of chemical ADMET properties
 
-**admetSAR3.0: a comprehensive platform for exploration, prediction and optimization of chemical ADMET properties**
-
-发表时间：**2024-04-22** · 已发表 · 分类：专题补读。
+*Nucleic Acids Research · 2024-04-22* · 已发表 · 专题补读
 
 **内容概述：** 把 ADMET 数据查询、性质预测和结构优化建议整合到一个平台，帮助寻找更合适的候选分子。
 
@@ -394,11 +358,9 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 [论文原文](https://doi.org/10.1093/nar/gkae298) · [详细解读](papers/admet/admetsar-3-2024.md)
 
-#### ADMETlab 3.0
+#### ADMETlab 3.0: an updated comprehensive online ADMET prediction platform enhanced with broader coverage, improved performance, API functionality and decision support
 
-**ADMETlab 3.0: an updated comprehensive online ADMET prediction platform enhanced with broader coverage, improved performance, API functionality and decision support**
-
-发表时间：**2024-04-04** · 已发表 · 分类：专题补读。
+*Nucleic Acids Research · 2024-04-04* · 已发表 · 专题补读
 
 **内容概述：** 提供覆盖多类 ADMET 及理化性质的在线预测平台，并加入不确定性评估、API 和决策支持功能。
 
@@ -414,11 +376,9 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 ### 2023
 
-#### KPGT
+#### A knowledge-guided pre-training framework for improving molecular representation learning
 
-**A knowledge-guided pre-training framework for improving molecular representation learning**
-
-发表时间：**2023-11-21** · 已发表 · 分类：核心论文。
+*Nature Communications · 2023-11-21* · 已发表 · 核心论文
 
 **内容概述：** 把分子指纹和理化描述符融入图预训练，让模型学到更适合预测 ADMET 等性质的分子表示。
 
@@ -432,11 +392,9 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 [论文原文](https://www.nature.com/articles/s41467-023-43214-1) · [详细解读](papers/admet/kpgt-2023.md) · [代码/项目](https://github.com/lihan97/KPGT)
 
-#### MTGL-ADMET
+#### ADMET property prediction via multi-task graph learning under adaptive auxiliary task selection
 
-**ADMET property prediction via multi-task graph learning under adaptive auxiliary task selection**
-
-发表时间：**2023-11** · 已发表 · 分类：核心论文。
+*iScience · 2023-11* · 已发表 · 核心论文
 
 **内容概述：** 为每个 ADMET 预测任务自动挑选有帮助的辅助任务，减少多任务联合训练时的相互干扰。
 
@@ -450,11 +408,9 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 [论文原文](https://pmc.ncbi.nlm.nih.gov/articles/PMC10654589/) · [详细解读](papers/admet/mtgl-admet-2023.md) · [代码/项目](https://github.com/dubingxue/MTGL-ADMET)
 
-#### MapLight
+#### ADMET property prediction through combinations of molecular fingerprints
 
-**ADMET property prediction through combinations of molecular fingerprints**
-
-发表时间：**2023-09-29** · 🟠 **预印本** · 分类：预印本。
+*arXiv · 2023-09-29* · 🟠 **预印本** · 预印本
 
 **内容概述：** 组合多种分子指纹和描述符，用 CatBoost 建立 ADMET 预测模型，检验传统特征方法的竞争力。
 
@@ -468,11 +424,9 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 [论文原文](https://arxiv.org/abs/2310.00174) · [详细解读](papers/admet/maplight-2023.md) · [代码/项目](https://github.com/maplightrx/MapLight-TDC)
 
-#### AI 药物毒性预测综述
+#### Artificial Intelligence in Drug Toxicity Prediction: Recent Advances, Challenges, and Future Perspectives
 
-**Artificial Intelligence in Drug Toxicity Prediction: Recent Advances, Challenges, and Future Perspectives**
-
-发表时间：**2023-04-26** · 已发表 · 分类：综述。
+*Journal of Chemical Information and Modeling · 2023-04-26* · 已发表 · 综述
 
 **内容概述：** 按毒性任务梳理机器学习和深度学习研究，并汇总可用于建模的公开数据与预测工具。
 
@@ -486,11 +440,9 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 [论文原文](https://pubs.acs.org/doi/10.1021/acs.jcim.3c00200) · [详细解读](papers/admet/ai-toxicity-review-2023.md)
 
-#### Uni-QSAR
+#### Uni-QSAR: an Auto-ML Tool for Molecular Property Prediction
 
-**Uni-QSAR: an Auto-ML Tool for Molecular Property Prediction**
-
-发表时间：**2023-04-24** · 🟠 **预印本** · 分类：预印本。
+*arXiv · 2023-04-24* · 🟠 **预印本** · 预印本
 
 **内容概述：** 自动组合分子指纹、描述符和一维至三维预训练表示，通过调参与堆叠集成完成多种 ADMET 性质预测。
 
@@ -504,11 +456,9 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 [论文原文](https://arxiv.org/abs/2304.12239) · [详细解读](papers/admet/uni-qsar-2023.md) · [代码/项目](https://github.com/deepmodeling/unimol_tools)
 
-#### Domain-aware / pBRICS
+#### Domain-aware representation of small molecules for explainable property prediction models
 
-**Domain-aware representation of small molecules for explainable property prediction models**
-
-发表时间：**2023** · Workshop · 分类：专题补读。
+*ICLR 2023 MLDD Workshop · 2023* · Workshop · 专题补读
 
 **内容概述：** 按化学官能团对分子进行片段化，让图模型在预测 ADMET 性质时指出哪些片段影响结果。
 
@@ -524,11 +474,9 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 ### 2022
 
-#### MoleculeACE
+#### Exposing the Limitations of Molecular Machine Learning with Activity Cliffs
 
-**Exposing the Limitations of Molecular Machine Learning with Activity Cliffs**
-
-发表时间：**2022-12-01** · 已发表 · 分类：数据与基准。
+*Journal of Chemical Information and Modeling · 2022-12-01* · 已发表 · 数据与基准
 
 **内容概述：** 专门检查结构很相似、活性却差很多的分子，揭示平均预测误差容易掩盖的模型弱点。
 
@@ -542,11 +490,9 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 [论文原文](https://doi.org/10.1021/acs.jcim.2c01073) · [详细解读](papers/foundations/moleculeace-2022.md) · [代码/项目](https://github.com/molML/MoleculeACE)
 
-#### AMES 多任务 DNN
+#### Multitask Deep Neural Networks for Ames Mutagenicity Prediction
 
-**Multitask Deep Neural Networks for Ames Mutagenicity Prediction**
-
-发表时间：**2022-09-06** · 已发表 · 分类：专题补读。
+*Journal of Chemical Information and Modeling · 2022-09-06* · 已发表 · 专题补读
 
 **内容概述：** 保留五种菌株各自的 Ames 结果进行多任务学习，而非只学习一个总体致突变标签。
 
@@ -562,11 +508,9 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 ### 2021
 
-#### SSL-GCN
+#### Chemical toxicity prediction based on semi-supervised learning and graph convolutional neural network
 
-**Chemical toxicity prediction based on semi-supervised learning and graph convolutional neural network**
-
-发表时间：**2021-11-27** · 已发表 · 分类：专题补读。
+*Journal of Cheminformatics · 2021-11-27* · 已发表 · 专题补读
 
 **内容概述：** 让图神经网络同时学习有毒性标签和无标签的分子，利用半监督学习改善 Tox21 毒性预测。
 
@@ -580,11 +524,9 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 [论文原文](https://link.springer.com/article/10.1186/s13321-021-00570-8) · [详细解读](papers/admet/ssl-gcn-2021.md) · [代码/项目](https://github.com/chen709847237/SSL-GCN)
 
-#### CardioTox net
+#### CardioTox net: a robust predictor for hERG channel blockade based on deep learning meta-feature ensembles
 
-**CardioTox net: a robust predictor for hERG channel blockade based on deep learning meta-feature ensembles**
-
-发表时间：**2021-08-16** · 已发表 · 分类：专题补读。
+*Journal of Cheminformatics · 2021-08-16* · 已发表 · 专题补读
 
 **内容概述：** 融合不同分子表示的神经网络预测，改善 hERG 阻断剂识别，并在三个外部测试集上检验效果。
 
@@ -598,11 +540,9 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 [论文原文](https://doi.org/10.1186/s13321-021-00541-z) · [详细解读](papers/admet/cardiotox-net-2021.md) · [代码/项目](https://github.com/Abdulk084/CardioTox)
 
-#### 毒性深度共形预测
+#### Deep Learning-Based Conformal Prediction of Toxicity
 
-**Deep Learning-Based Conformal Prediction of Toxicity**
-
-发表时间：**2021-05-27** · 已发表 · 分类：专题补读。
+*Journal of Chemical Information and Modeling · 2021-05-27* · 已发表 · 专题补读
 
 **内容概述：** 给毒性模型加入共形预测，让用户按置信水平得到单一类别或多个候选类别，并评估漏检与不确定性。
 
@@ -616,11 +556,9 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 [论文原文](https://doi.org/10.1021/acs.jcim.1c00208) · [详细解读](papers/admet/tox21-conformal-2021.md) · [代码/项目](https://github.com/FredrikSvenssonUK/tox21_conformal)
 
-#### TDC
+#### Therapeutics Data Commons: Machine Learning Datasets and Tasks for Drug Discovery and Development
 
-**Therapeutics Data Commons: Machine Learning Datasets and Tasks for Drug Discovery and Development**
-
-发表时间：**2021** · 已发表 · 分类：数据与基准。
+*NeurIPS Datasets and Benchmarks · 2021* · 已发表 · 数据与基准
 
 **内容概述：** 把药物发现中的多类数据和任务整理成统一接口与基准，让不同预测方法能够按共同规则比较。
 
@@ -636,11 +574,9 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 ### 2020
 
-#### Tox21 10K 化合物库
+#### The Tox21 10K Compound Library: Collaborative Chemistry Advancing Toxicology
 
-**The Tox21 10K Compound Library: Collaborative Chemistry Advancing Toxicology**
-
-发表时间：**2020-11-03** · 已发表 · 分类：数据与基准。
+*Chemical Research in Toxicology · 2020-11-03* · 已发表 · 数据与基准
 
 **内容概述：** 解释 Tox21 化合物库如何整合多机构样品、开展高通量实验并形成可追溯的毒性数据。
 
@@ -656,11 +592,9 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 ### 2019
 
-#### Chemprop / D-MPNN
+#### Analyzing Learned Molecular Representations for Property Prediction
 
-**Analyzing Learned Molecular Representations for Property Prediction**
-
-发表时间：**2019-07-30** · 已发表 · 分类：基础方法。
+*Journal of Chemical Information and Modeling · 2019-07-30* · 已发表 · 基础方法
 
 **内容概述：** 通过沿有向化学键传递信息来学习分子表示，并在公开和工业数据上检验性质预测。
 
@@ -674,11 +608,9 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 [论文原文](https://doi.org/10.1021/acs.jcim.9b00237) · [详细解读](papers/foundations/chemprop-dmpnn-2019.md) · [代码/项目](https://github.com/chemprop/chemprop)
 
-#### AttentiveFP
+#### Pushing the Boundaries of Molecular Representation for Drug Discovery with the Graph Attention Mechanism
 
-**Pushing the Boundaries of Molecular Representation for Drug Discovery with the Graph Attention Mechanism**
-
-发表时间：**2019** · 已发表 · 分类：基础方法。
+*Journal of Medicinal Chemistry · 2019* · 已发表 · 基础方法
 
 **内容概述：** 让图神经网络在汇总分子信息时学习关注哪些原子和邻域，用于性质预测与结构归因。
 
@@ -694,11 +626,9 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 ### 2017
 
-#### MoleculeNet
+#### MoleculeNet: a benchmark for molecular machine learning
 
-**MoleculeNet: a benchmark for molecular machine learning**
-
-发表时间：**2017-10-31** · 已发表 · 分类：数据与基准。
+*Chemical Science · 2017-10-31* · 已发表 · 数据与基准
 
 **内容概述：** 把分散的分子数据集、划分、指标与算法组织成基准，让性质预测方法有共同的比较起点。
 

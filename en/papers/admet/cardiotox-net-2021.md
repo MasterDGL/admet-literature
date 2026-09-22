@@ -1,14 +1,14 @@
-# CardioTox net
+# CardioTox net: a robust predictor for hERG channel blockade based on deep learning meta-feature ensembles
 
 **English** | [简体中文](../../../papers/admet/cardiotox-net-2021.md)
 
-**CardioTox net: a robust predictor for hERG channel blockade based on deep learning meta-feature ensembles**
-
 [ADMET and pharmacokinetics index](../../topics/admet.md) · [Home](../../../README.md)
+
+*Journal of Cheminformatics · 2021-08-16* · Published · Further reading
 
 **Overview:** Combines neural-network predictions from different molecular representations to identify hERG blockers and tests them on three external datasets.
 
-Category: Further reading. Topics: hERG, Ensembles, External validation.
+Topics: hERG, Ensembles, External validation.
 
 | Field | Details |
 | --- | --- |

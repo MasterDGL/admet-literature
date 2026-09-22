@@ -1,14 +1,14 @@
-# PharmaBench
+# PharmaBench: Enhancing ADMET benchmarks with large language models
 
 [English](../../en/papers/admet/pharmabench-2024.md) | **简体中文**
 
-**PharmaBench: Enhancing ADMET benchmarks with large language models**
-
 [返回ADMET 与药代动力学总表](../../topics/admet.md) · [返回首页](../../README.zh-CN.md)
+
+*Scientific Data · 2024-09-10* · 已发表 · 数据与基准
 
 **内容概述：** 用大语言模型辅助提取实验条件，再清洗和统一 ADMET 记录，构建条件更明确的评测数据集。
 
-分类：数据与基准。主题：数据清洗、实验条件。
+主题：数据清洗、实验条件。
 
 | 字段 | 内容 |
 | --- | --- |

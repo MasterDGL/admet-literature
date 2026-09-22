@@ -1,14 +1,14 @@
-# Deep conformal toxicity prediction
+# Deep Learning-Based Conformal Prediction of Toxicity
 
 **English** | [简体中文](../../../papers/admet/tox21-conformal-2021.md)
 
-**Deep Learning-Based Conformal Prediction of Toxicity**
-
 [ADMET and pharmacokinetics index](../../topics/admet.md) · [Home](../../../README.md)
+
+*Journal of Chemical Information and Modeling · 2021-05-27* · Published · Further reading
 
 **Overview:** Adds conformal prediction to toxicity models, returning one or multiple candidate labels at a chosen confidence level and assessing uncertainty and missed toxic compounds.
 
-Category: Further reading. Topics: Toxicity, Uncertainty, Conformal prediction.
+Topics: Toxicity, Uncertainty, Conformal prediction.
 
 | Field | Details |
 | --- | --- |

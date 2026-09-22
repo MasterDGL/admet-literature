@@ -1,14 +1,14 @@
-# Tox21 10K 化合物库
+# The Tox21 10K Compound Library: Collaborative Chemistry Advancing Toxicology
 
 [English](../../en/papers/admet/tox21-library-2020.md) | **简体中文**
 
-**The Tox21 10K Compound Library: Collaborative Chemistry Advancing Toxicology**
-
 [返回ADMET 与药代动力学总表](../../topics/admet.md) · [返回首页](../../README.zh-CN.md)
+
+*Chemical Research in Toxicology · 2020-11-03* · 已发表 · 数据与基准
 
 **内容概述：** 解释 Tox21 化合物库如何整合多机构样品、开展高通量实验并形成可追溯的毒性数据。
 
-分类：数据与基准。主题：毒性、数据资源。
+主题：毒性、数据资源。
 
 | 字段 | 内容 |
 | --- | --- |

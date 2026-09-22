@@ -1,14 +1,14 @@
-# HERGAI
+# HERGAI: an artificial intelligence tool for structure-based prediction of hERG inhibitors
 
 [English](../../en/papers/admet/hergai-2025.md) | **简体中文**
 
-**HERGAI: an artificial intelligence tool for structure-based prediction of hERG inhibitors**
-
 [返回ADMET 与药代动力学总表](../../topics/admet.md) · [返回首页](../../README.zh-CN.md)
+
+*Journal of Cheminformatics · 2025-07-24* · 已发表 · 核心论文
 
 **内容概述：** 结合分子对接与集成模型，从大量候选分子中识别可能阻断 hERG 心脏离子通道的化合物。
 
-分类：核心论文。主题：hERG、对接、类别不均衡。
+主题：hERG、对接、类别不均衡。
 
 | 字段 | 内容 |
 | --- | --- |

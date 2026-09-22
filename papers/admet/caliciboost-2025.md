@@ -1,14 +1,14 @@
-# CaliciBoost
+# CaliciBoost: Performance-driven evaluation of molecular representations for caco-2 permeability prediction
 
 [English](../../en/papers/admet/caliciboost-2025.md) | **简体中文**
 
-**CaliciBoost: Performance-driven evaluation of molecular representations for caco-2 permeability prediction**
-
 [返回ADMET 与药代动力学总表](../../topics/admet.md) · [返回首页](../../README.zh-CN.md)
+
+*Journal of Cheminformatics · 2025-12-22* · 已发表 · 核心论文
 
 **内容概述：** 比较分子指纹和理化描述符，结合自动机器学习预测分子通过肠道细胞模型（Caco-2）的能力。
 
-分类：核心论文。主题：吸收、Caco-2、AutoML。
+主题：吸收、Caco-2、AutoML。
 
 | 字段 | 内容 |
 | --- | --- |

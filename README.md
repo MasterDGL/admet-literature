@@ -64,11 +64,9 @@ Papers below are ordered by publication date, newest first. Each entry explains 
 
 ### 2026
 
-#### ADMET-EvO
+#### ADMET-EvO: a self-evolving scientific agent for sustained research across heterogeneous tasks
 
-**ADMET-EvO: a self-evolving scientific agent for sustained research across heterogeneous tasks**
-
-Date: **2026-09-09** · 🟠 **Preprint** · Category: Preprints.
+*arXiv · 2026-09-09* · 🟠 **Preprint** · Preprints
 
 **Overview:** Uses a research agent to explore features and models for ADMET tasks, evaluating prediction and research efficiency through a fixed testing workflow.
 
@@ -82,11 +80,9 @@ Date: **2026-09-09** · 🟠 **Preprint** · Category: Preprints.
 
 [Paper](https://arxiv.org/abs/2609.10121) · [Detailed notes](en/papers/admet/admet-evo-2026.md)
 
-#### Trimole-Hybrid
+#### A multimodal representation learning platform for accurate molecular ADMET prediction
 
-**A multimodal representation learning platform for accurate molecular ADMET prediction**
-
-Date: **2026-08-25** · 🟠 **Preprint** · Category: Preprints.
+*bioRxiv · 2026-08-25* · 🟠 **Preprint** · Preprints
 
 **Overview:** Fuses sequences, molecular graphs, 3D structures and chemical priors, selecting prediction models or ensembles for each ADMET task.
 
@@ -100,11 +96,9 @@ Date: **2026-08-25** · 🟠 **Preprint** · Category: Preprints.
 
 [Paper](https://www.biorxiv.org/content/10.64898/2026.08.24.746660v1) · [Detailed notes](en/papers/admet/trimole-hybrid-2026.md) · [Code/project](https://github.com/dchen0212/trimole_hybrid)
 
-#### AmesNet
+#### AmesNet: A Task-Conditioned Deep Learning Model with Enhanced Sensitivity and Generalization in Ames Mutagenicity Prediction
 
-**AmesNet: A Task-Conditioned Deep Learning Model with Enhanced Sensitivity and Generalization in Ames Mutagenicity Prediction**
-
-Date: **2026-06-29** · Published · Category: Core papers.
+*Chemical Research in Toxicology · 2026-06-29* · Published · Core papers
 
 **Overview:** Combines molecular structure, bacterial strain and metabolic-activation conditions to improve Ames mutagenicity detection in unfamiliar chemical space.
 
@@ -118,11 +112,9 @@ Date: **2026-06-29** · Published · Category: Core papers.
 
 [Paper](https://doi.org/10.1021/acs.chemrestox.6c00082) · [Detailed notes](en/papers/admet/amesnet-2026.md) · [Code/project](https://github.com/Model-Medicines/TCL-Ames)
 
-#### DCPM-ADMET
+#### DCPM-ADMET: fusion of dual-component pre-trained model and molecular fingerprints to enhance drug ADMET properties prediction
 
-**DCPM-ADMET: fusion of dual-component pre-trained model and molecular fingerprints to enhance drug ADMET properties prediction**
-
-Date: **2026-06-20** · Published · Category: Core papers.
+*Journal of Cheminformatics · 2026-06-20* · Published · Core papers
 
 **Overview:** Combines representations from two pretrained models with chemical fingerprints to predict 97 ADMET properties.
 
@@ -136,11 +128,9 @@ Date: **2026-06-20** · Published · Category: Core papers.
 
 [Paper](https://link.springer.com/article/10.1186/s13321-026-01244-z) · [Detailed notes](en/papers/admet/dcpm-admet-2026.md) · [Code/project](https://github.com/zhangzhangleilei/DCPM-ADMET)
 
-#### OpenADMET / Avoid-ome
+#### Mapping the avoid-ome: a systematic open-science approach to predictive ADMET
 
-**Mapping the avoid-ome: a systematic open-science approach to predictive ADMET**
-
-Date: **2026-05-25** · Published · Category: Perspectives.
+*Nature Communications · 2026-05-25* · Published · Perspectives
 
 **Overview:** Proposes combining open experimental data, protein structures, active learning and blind challenges to improve mechanistic ADMET prediction.
 
@@ -154,11 +144,9 @@ Date: **2026-05-25** · Published · Category: Perspectives.
 
 [Paper](https://www.nature.com/articles/s41467-026-73410-8) · [Detailed notes](en/papers/admet/openadmet-avoidome-2026.md) · [Code/project](https://github.com/OpenADMET)
 
-#### ADMET reliability benchmark
+#### Revisiting ADMET prediction reliability under real-world challenges in the foundation model era
 
-**Revisiting ADMET prediction reliability under real-world challenges in the foundation model era**
-
-Date: **2026-05-18** · Published · Category: Core papers.
+*Journal of Cheminformatics · 2026-05-18* · Published · Core papers
 
 **Overview:** Compares model families under limited data, unfamiliar molecular structures and class imbalance to assess ADMET prediction in practical research settings.
 
@@ -172,11 +160,9 @@ Date: **2026-05-18** · Published · Category: Core papers.
 
 [Paper](https://link.springer.com/article/10.1186/s13321-026-01217-2) · [Detailed notes](en/papers/admet/admet-reliability-2026.md) · [Code/project](https://github.com/DonghaiZHAO-ZJU/Benchmark-ADMET-2025)
 
-#### TDC model audit
+#### Critical Assessment of ML models for ADMET Prediction in TDC leaderboards
 
-**Critical Assessment of ML models for ADMET Prediction in TDC leaderboards**
-
-Date: **2026-02-28** · 🟠 **Preprint** · Category: Preprints.
+*bioRxiv · 2026-02-28* · 🟠 **Preprint** · Preprints
 
 **Overview:** Checks whether leading TDC models run, contain data leakage and reproduce their reported ADMET results.
 
@@ -190,11 +176,9 @@ Date: **2026-02-28** · 🟠 **Preprint** · Category: Preprints.
 
 [Paper](https://www.biorxiv.org/content/10.64898/2026.02.26.708193v1) · [Detailed notes](en/papers/admet/tdc-audit-2026.md) · [Code/project](https://github.com/receptor-ai/tdc-admet-bench)
 
-#### HimNet
+#### A hierarchical interaction message net for accurate molecular property prediction
 
-**A hierarchical interaction message net for accurate molecular property prediction**
-
-Date: **2026-02-14** · Published · Category: Further reading.
+*Communications Chemistry · 2026-02-14* · Published · Further reading
 
 **Overview:** Exchanges information across atoms, substructures and whole molecules in a hierarchical graph network for property and selected ADMET predictions.
 
@@ -210,11 +194,9 @@ Date: **2026-02-14** · Published · Category: Further reading.
 
 ### 2025
 
-#### CaliciBoost
+#### CaliciBoost: Performance-driven evaluation of molecular representations for caco-2 permeability prediction
 
-**CaliciBoost: Performance-driven evaluation of molecular representations for caco-2 permeability prediction**
-
-Date: **2025-12-22** · Published · Category: Core papers.
+*Journal of Cheminformatics · 2025-12-22* · Published · Core papers
 
 **Overview:** Combines molecular fingerprints, physicochemical descriptors and automated machine learning to predict permeability through the Caco-2 intestinal cell model.
 
@@ -228,11 +210,9 @@ Date: **2025-12-22** · Published · Category: Core papers.
 
 [Paper](https://link.springer.com/article/10.1186/s13321-025-01137-7) · [Detailed notes](en/papers/admet/caliciboost-2025.md) · [Code/project](https://github.com/Calici/CaliciBoost)
 
-#### PKSmart
+#### PKSmart: an open-source computational model to predict intravenous pharmacokinetics of small molecules
 
-**PKSmart: an open-source computational model to predict intravenous pharmacokinetics of small molecules**
-
-Date: **2025-09-26** · Published · Category: Core papers.
+*Journal of Cheminformatics · 2025-09-26* · Published · Core papers
 
 **Overview:** Predicts animal pharmacokinetic parameters, then combines them with molecular features to estimate human intravenous clearance, distribution volume and half-life.
 
@@ -246,11 +226,9 @@ Date: **2025-09-26** · Published · Category: Core papers.
 
 [Paper](https://link.springer.com/article/10.1186/s13321-025-01066-5) · [Detailed notes](en/papers/admet/pksmart-2025.md) · [Code/project](https://github.com/srijitseal/PKSmart)
 
-#### MC-PGP
+#### A multimodal contrastive learning framework for predicting P-glycoprotein substrates and inhibitors
 
-**A multimodal contrastive learning framework for predicting P-glycoprotein substrates and inhibitors**
-
-Date: **2025-08** · Published · Category: Core papers.
+*Journal of Pharmaceutical Analysis · 2025-08* · Published · Core papers
 
 **Overview:** Fuses SMILES, fingerprints and molecular graphs to separately predict P-gp inhibition and transport-substrate status.
 
@@ -264,11 +242,9 @@ Date: **2025-08** · Published · Category: Core papers.
 
 [Paper](https://doi.org/10.1016/j.jpha.2025.101313) · [Detailed notes](en/papers/admet/mc-pgp-2025.md)
 
-#### HERGAI
+#### HERGAI: an artificial intelligence tool for structure-based prediction of hERG inhibitors
 
-**HERGAI: an artificial intelligence tool for structure-based prediction of hERG inhibitors**
-
-Date: **2025-07-24** · Published · Category: Core papers.
+*Journal of Cheminformatics · 2025-07-24* · Published · Core papers
 
 **Overview:** Combines docking and ensemble models to identify compounds likely to block the cardiac hERG ion channel in large candidate collections.
 
@@ -282,11 +258,9 @@ Date: **2025-07-24** · Published · Category: Core papers.
 
 [Paper](https://doi.org/10.1186/s13321-025-01063-8) · [Detailed notes](en/papers/admet/hergai-2025.md) · [Code/project](https://github.com/vktrannguyen/HERGAI)
 
-#### MolMCL
+#### Multi-channel learning for integrating structural hierarchies into context-dependent molecular representation
 
-**Multi-channel learning for integrating structural hierarchies into context-dependent molecular representation**
-
-Date: **2025-01-06** · Published · Category: Further reading.
+*Nature Communications · 2025-01-06* · Published · Further reading
 
 **Overview:** Learns molecular, scaffold and local-context representations, then combines them by task for property and bioactivity prediction.
 
@@ -302,11 +276,9 @@ Date: **2025-01-06** · Published · Category: Further reading.
 
 ### 2024
 
-#### MolE
+#### MolE: a foundation model for molecular graphs using disentangled attention
 
-**MolE: a foundation model for molecular graphs using disentangled attention**
-
-Date: **2024-11-12** · Published · Category: Core papers.
+*Nature Communications · 2024-11-12* · Published · Core papers
 
 **Overview:** Pretrains on a large collection of molecular graphs, adds supervised biological-task training, and fine-tunes for ADMET prediction.
 
@@ -320,11 +292,9 @@ Date: **2024-11-12** · Published · Category: Core papers.
 
 [Paper](https://www.nature.com/articles/s41467-024-53751-y) · [Detailed notes](en/papers/admet/mole-2024.md) · [Code/project](https://github.com/recursionpharma/mole_public)
 
-#### PharmaBench
+#### PharmaBench: Enhancing ADMET benchmarks with large language models
 
-**PharmaBench: Enhancing ADMET benchmarks with large language models**
-
-Date: **2024-09-10** · Published · Category: Data and benchmarks.
+*Scientific Data · 2024-09-10* · Published · Data and benchmarks
 
 **Overview:** Uses language models to extract assay conditions, then cleans and harmonizes ADMET records to build better-specified benchmarks.
 
@@ -338,11 +308,9 @@ Date: **2024-09-10** · Published · Category: Data and benchmarks.
 
 [Paper](https://www.nature.com/articles/s41597-024-03793-0) · [Detailed notes](en/papers/admet/pharmabench-2024.md) · [Code/project](https://github.com/mindrank-ai/PharmaBench)
 
-#### BBB MegaMolBART
+#### Predicting blood–brain barrier permeability of molecules with a large language model and machine learning
 
-**Predicting blood–brain barrier permeability of molecules with a large language model and machine learning**
-
-Date: **2024-07-09** · Published · Category: Further reading.
+*Scientific Reports · 2024-07-09* · Published · Further reading
 
 **Overview:** Predicts blood–brain barrier permeability with a molecular language model and XGBoost, then tests selected compounds in human-derived 3D BBB spheroids.
 
@@ -356,11 +324,9 @@ Date: **2024-07-09** · Published · Category: Further reading.
 
 [Paper](https://doi.org/10.1038/s41598-024-66897-y) · [Detailed notes](en/papers/admet/bbb-megamolbart-2024.md)
 
-#### ADMET-AI
+#### ADMET-AI: a machine learning ADMET platform for evaluation of large-scale chemical libraries
 
-**ADMET-AI: a machine learning ADMET platform for evaluation of large-scale chemical libraries**
-
-Date: **2024-06-24** · Published · Category: Core papers.
+*Bioinformatics · 2024-06-24* · Published · Core papers
 
 **Overview:** Packages graph neural networks into web and local tools that predict multiple ADMET properties for large compound libraries.
 
@@ -374,11 +340,9 @@ Date: **2024-06-24** · Published · Category: Core papers.
 
 [Paper](https://pmc.ncbi.nlm.nih.gov/articles/PMC11226862/) · [Detailed notes](en/papers/admet/admet-ai-2024.md) · [Code/project](https://github.com/swansonk14/admet_ai)
 
-#### admetSAR3.0
+#### admetSAR3.0: a comprehensive platform for exploration, prediction and optimization of chemical ADMET properties
 
-**admetSAR3.0: a comprehensive platform for exploration, prediction and optimization of chemical ADMET properties**
-
-Date: **2024-04-22** · Published · Category: Further reading.
+*Nucleic Acids Research · 2024-04-22* · Published · Further reading
 
 **Overview:** Integrates ADMET data search, property prediction and structural optimization suggestions to help identify suitable candidates.
 
@@ -392,11 +356,9 @@ Date: **2024-04-22** · Published · Category: Further reading.
 
 [Paper](https://doi.org/10.1093/nar/gkae298) · [Detailed notes](en/papers/admet/admetsar-3-2024.md)
 
-#### ADMETlab 3.0
+#### ADMETlab 3.0: an updated comprehensive online ADMET prediction platform enhanced with broader coverage, improved performance, API functionality and decision support
 
-**ADMETlab 3.0: an updated comprehensive online ADMET prediction platform enhanced with broader coverage, improved performance, API functionality and decision support**
-
-Date: **2024-04-04** · Published · Category: Further reading.
+*Nucleic Acids Research · 2024-04-04* · Published · Further reading
 
 **Overview:** Provides online ADMET and physicochemical predictions with uncertainty estimates, an API and decision-support tools.
 
@@ -412,11 +374,9 @@ Date: **2024-04-04** · Published · Category: Further reading.
 
 ### 2023
 
-#### KPGT
+#### A knowledge-guided pre-training framework for improving molecular representation learning
 
-**A knowledge-guided pre-training framework for improving molecular representation learning**
-
-Date: **2023-11-21** · Published · Category: Core papers.
+*Nature Communications · 2023-11-21* · Published · Core papers
 
 **Overview:** Incorporates fingerprints and physicochemical descriptors into graph pretraining to learn representations for ADMET and other molecular properties.
 
@@ -430,11 +390,9 @@ Date: **2023-11-21** · Published · Category: Core papers.
 
 [Paper](https://www.nature.com/articles/s41467-023-43214-1) · [Detailed notes](en/papers/admet/kpgt-2023.md) · [Code/project](https://github.com/lihan97/KPGT)
 
-#### MTGL-ADMET
+#### ADMET property prediction via multi-task graph learning under adaptive auxiliary task selection
 
-**ADMET property prediction via multi-task graph learning under adaptive auxiliary task selection**
-
-Date: **2023-11** · Published · Category: Core papers.
+*iScience · 2023-11* · Published · Core papers
 
 **Overview:** Selects useful auxiliary tasks for each ADMET endpoint to reduce interference during multitask training.
 
@@ -448,11 +406,9 @@ Date: **2023-11** · Published · Category: Core papers.
 
 [Paper](https://pmc.ncbi.nlm.nih.gov/articles/PMC10654589/) · [Detailed notes](en/papers/admet/mtgl-admet-2023.md) · [Code/project](https://github.com/dubingxue/MTGL-ADMET)
 
-#### MapLight
+#### ADMET property prediction through combinations of molecular fingerprints
 
-**ADMET property prediction through combinations of molecular fingerprints**
-
-Date: **2023-09-29** · 🟠 **Preprint** · Category: Preprints.
+*arXiv · 2023-09-29* · 🟠 **Preprint** · Preprints
 
 **Overview:** Combines molecular fingerprints and descriptors in CatBoost models to assess the strength of conventional features for ADMET prediction.
 
@@ -466,11 +422,9 @@ Date: **2023-09-29** · 🟠 **Preprint** · Category: Preprints.
 
 [Paper](https://arxiv.org/abs/2310.00174) · [Detailed notes](en/papers/admet/maplight-2023.md) · [Code/project](https://github.com/maplightrx/MapLight-TDC)
 
-#### AI for drug toxicity: review
+#### Artificial Intelligence in Drug Toxicity Prediction: Recent Advances, Challenges, and Future Perspectives
 
-**Artificial Intelligence in Drug Toxicity Prediction: Recent Advances, Challenges, and Future Perspectives**
-
-Date: **2023-04-26** · Published · Category: Reviews.
+*Journal of Chemical Information and Modeling · 2023-04-26* · Published · Reviews
 
 **Overview:** Surveys machine-learning and deep-learning approaches by toxicity task and collects public datasets and prediction tools for model development.
 
@@ -484,11 +438,9 @@ Date: **2023-04-26** · Published · Category: Reviews.
 
 [Paper](https://pubs.acs.org/doi/10.1021/acs.jcim.3c00200) · [Detailed notes](en/papers/admet/ai-toxicity-review-2023.md)
 
-#### Uni-QSAR
+#### Uni-QSAR: an Auto-ML Tool for Molecular Property Prediction
 
-**Uni-QSAR: an Auto-ML Tool for Molecular Property Prediction**
-
-Date: **2023-04-24** · 🟠 **Preprint** · Category: Preprints.
+*arXiv · 2023-04-24* · 🟠 **Preprint** · Preprints
 
 **Overview:** Automatically combines fingerprints, descriptors and pretrained 1D, 2D and 3D molecular representations with tuning and stacked ensembles for ADMET prediction.
 
@@ -502,11 +454,9 @@ Date: **2023-04-24** · 🟠 **Preprint** · Category: Preprints.
 
 [Paper](https://arxiv.org/abs/2304.12239) · [Detailed notes](en/papers/admet/uni-qsar-2023.md) · [Code/project](https://github.com/deepmodeling/unimol_tools)
 
-#### Domain-aware / pBRICS
+#### Domain-aware representation of small molecules for explainable property prediction models
 
-**Domain-aware representation of small molecules for explainable property prediction models**
-
-Date: **2023** · Workshop · Category: Further reading.
+*ICLR 2023 MLDD Workshop · 2023* · Workshop · Further reading
 
 **Overview:** Builds chemically meaningful molecular fragments so graph models can predict ADMET properties and identify fragments contributing to each prediction.
 
@@ -522,11 +472,9 @@ Date: **2023** · Workshop · Category: Further reading.
 
 ### 2022
 
-#### MoleculeACE
+#### Exposing the Limitations of Molecular Machine Learning with Activity Cliffs
 
-**Exposing the Limitations of Molecular Machine Learning with Activity Cliffs**
-
-Date: **2022-12-01** · Published · Category: Data and benchmarks.
+*Journal of Chemical Information and Modeling · 2022-12-01* · Published · Data and benchmarks
 
 **Overview:** Evaluates structurally similar molecules with large activity differences to expose model weaknesses hidden by average prediction errors.
 
@@ -540,11 +488,9 @@ Date: **2022-12-01** · Published · Category: Data and benchmarks.
 
 [Paper](https://doi.org/10.1021/acs.jcim.2c01073) · [Detailed notes](en/papers/foundations/moleculeace-2022.md) · [Code/project](https://github.com/molML/MoleculeACE)
 
-#### AMES multitask DNN
+#### Multitask Deep Neural Networks for Ames Mutagenicity Prediction
 
-**Multitask Deep Neural Networks for Ames Mutagenicity Prediction**
-
-Date: **2022-09-06** · Published · Category: Further reading.
+*Journal of Chemical Information and Modeling · 2022-09-06* · Published · Further reading
 
 **Overview:** Learns Ames outcomes for five bacterial strains jointly, retaining strain-specific information alongside the overall mutagenicity label.
 
@@ -560,11 +506,9 @@ Date: **2022-09-06** · Published · Category: Further reading.
 
 ### 2021
 
-#### SSL-GCN
+#### Chemical toxicity prediction based on semi-supervised learning and graph convolutional neural network
 
-**Chemical toxicity prediction based on semi-supervised learning and graph convolutional neural network**
-
-Date: **2021-11-27** · Published · Category: Further reading.
+*Journal of Cheminformatics · 2021-11-27* · Published · Further reading
 
 **Overview:** Trains a graph neural network on labeled and unlabeled molecules to improve Tox21 toxicity prediction through semi-supervised learning.
 
@@ -578,11 +522,9 @@ Date: **2021-11-27** · Published · Category: Further reading.
 
 [Paper](https://link.springer.com/article/10.1186/s13321-021-00570-8) · [Detailed notes](en/papers/admet/ssl-gcn-2021.md) · [Code/project](https://github.com/chen709847237/SSL-GCN)
 
-#### CardioTox net
+#### CardioTox net: a robust predictor for hERG channel blockade based on deep learning meta-feature ensembles
 
-**CardioTox net: a robust predictor for hERG channel blockade based on deep learning meta-feature ensembles**
-
-Date: **2021-08-16** · Published · Category: Further reading.
+*Journal of Cheminformatics · 2021-08-16* · Published · Further reading
 
 **Overview:** Combines neural-network predictions from different molecular representations to identify hERG blockers and tests them on three external datasets.
 
@@ -596,11 +538,9 @@ Date: **2021-08-16** · Published · Category: Further reading.
 
 [Paper](https://doi.org/10.1186/s13321-021-00541-z) · [Detailed notes](en/papers/admet/cardiotox-net-2021.md) · [Code/project](https://github.com/Abdulk084/CardioTox)
 
-#### Deep conformal toxicity prediction
+#### Deep Learning-Based Conformal Prediction of Toxicity
 
-**Deep Learning-Based Conformal Prediction of Toxicity**
-
-Date: **2021-05-27** · Published · Category: Further reading.
+*Journal of Chemical Information and Modeling · 2021-05-27* · Published · Further reading
 
 **Overview:** Adds conformal prediction to toxicity models, returning one or multiple candidate labels at a chosen confidence level and assessing uncertainty and missed toxic compounds.
 
@@ -614,11 +554,9 @@ Date: **2021-05-27** · Published · Category: Further reading.
 
 [Paper](https://doi.org/10.1021/acs.jcim.1c00208) · [Detailed notes](en/papers/admet/tox21-conformal-2021.md) · [Code/project](https://github.com/FredrikSvenssonUK/tox21_conformal)
 
-#### TDC
+#### Therapeutics Data Commons: Machine Learning Datasets and Tasks for Drug Discovery and Development
 
-**Therapeutics Data Commons: Machine Learning Datasets and Tasks for Drug Discovery and Development**
-
-Date: **2021** · Published · Category: Data and benchmarks.
+*NeurIPS Datasets and Benchmarks · 2021* · Published · Data and benchmarks
 
 **Overview:** Organizes drug-discovery datasets and tasks into shared interfaces and benchmarks for consistent model comparison.
 
@@ -634,11 +572,9 @@ Date: **2021** · Published · Category: Data and benchmarks.
 
 ### 2020
 
-#### Tox21 10K compound library
+#### The Tox21 10K Compound Library: Collaborative Chemistry Advancing Toxicology
 
-**The Tox21 10K Compound Library: Collaborative Chemistry Advancing Toxicology**
-
-Date: **2020-11-03** · Published · Category: Data and benchmarks.
+*Chemical Research in Toxicology · 2020-11-03* · Published · Data and benchmarks
 
 **Overview:** Explains how the Tox21 library combines agency collections, high-throughput experiments and traceable chemical annotations to produce toxicity data.
 
@@ -654,11 +590,9 @@ Date: **2020-11-03** · Published · Category: Data and benchmarks.
 
 ### 2019
 
-#### Chemprop / D-MPNN
+#### Analyzing Learned Molecular Representations for Property Prediction
 
-**Analyzing Learned Molecular Representations for Property Prediction**
-
-Date: **2019-07-30** · Published · Category: Foundational methods.
+*Journal of Chemical Information and Modeling · 2019-07-30* · Published · Foundational methods
 
 **Overview:** Learns molecular representations by passing messages along directed chemical bonds and evaluates property prediction on public and industrial data.
 
@@ -672,11 +606,9 @@ Date: **2019-07-30** · Published · Category: Foundational methods.
 
 [Paper](https://doi.org/10.1021/acs.jcim.9b00237) · [Detailed notes](en/papers/foundations/chemprop-dmpnn-2019.md) · [Code/project](https://github.com/chemprop/chemprop)
 
-#### AttentiveFP
+#### Pushing the Boundaries of Molecular Representation for Drug Discovery with the Graph Attention Mechanism
 
-**Pushing the Boundaries of Molecular Representation for Drug Discovery with the Graph Attention Mechanism**
-
-Date: **2019** · Published · Category: Foundational methods.
+*Journal of Medicinal Chemistry · 2019* · Published · Foundational methods
 
 **Overview:** Learns which atoms and neighborhoods to emphasize when aggregating molecular information for property prediction and structural attribution.
 
@@ -692,11 +624,9 @@ Date: **2019** · Published · Category: Foundational methods.
 
 ### 2017
 
-#### MoleculeNet
+#### MoleculeNet: a benchmark for molecular machine learning
 
-**MoleculeNet: a benchmark for molecular machine learning**
-
-Date: **2017-10-31** · Published · Category: Data and benchmarks.
+*Chemical Science · 2017-10-31* · Published · Data and benchmarks
 
 **Overview:** Brings molecular datasets, splits, metrics and algorithms into a shared benchmark for property prediction.
 

@@ -1,14 +1,14 @@
-# ADMETlab 3.0
+# ADMETlab 3.0: an updated comprehensive online ADMET prediction platform enhanced with broader coverage, improved performance, API functionality and decision support
 
 **English** | [简体中文](../../../papers/admet/admetlab-3-2024.md)
 
-**ADMETlab 3.0: an updated comprehensive online ADMET prediction platform enhanced with broader coverage, improved performance, API functionality and decision support**
-
 [ADMET and pharmacokinetics index](../../topics/admet.md) · [Home](../../../README.md)
+
+*Nucleic Acids Research · 2024-04-04* · Published · Further reading
 
 **Overview:** Provides online ADMET and physicochemical predictions with uncertainty estimates, an API and decision-support tools.
 
-Category: Further reading. Topics: ADMET, Platform, Uncertainty.
+Topics: ADMET, Platform, Uncertainty.
 
 | Field | Details |
 | --- | --- |

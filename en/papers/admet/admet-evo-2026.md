@@ -1,14 +1,14 @@
-# ADMET-EvO
+# ADMET-EvO: a self-evolving scientific agent for sustained research across heterogeneous tasks
 
 **English** | [简体中文](../../../papers/admet/admet-evo-2026.md)
 
-**ADMET-EvO: a self-evolving scientific agent for sustained research across heterogeneous tasks**
-
 [ADMET and pharmacokinetics index](../../topics/admet.md) · [Home](../../../README.md)
+
+*arXiv · 2026-09-09* · 🟠 **Preprint** · Preprints
 
 **Overview:** Uses a research agent to explore features and models for ADMET tasks, evaluating prediction and research efficiency through a fixed testing workflow.
 
-Category: Preprints. Topics: Research agents, Automated modeling.
+Topics: Research agents, Automated modeling.
 
 | Field | Details |
 | --- | --- |

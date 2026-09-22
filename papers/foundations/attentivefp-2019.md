@@ -1,14 +1,14 @@
-# AttentiveFP
+# Pushing the Boundaries of Molecular Representation for Drug Discovery with the Graph Attention Mechanism
 
 [English](../../en/papers/foundations/attentivefp-2019.md) | **简体中文**
 
-**Pushing the Boundaries of Molecular Representation for Drug Discovery with the Graph Attention Mechanism**
-
 [返回基础方法与基准总表](../../topics/foundations.md) · [返回首页](../../README.zh-CN.md)
+
+*Journal of Medicinal Chemistry · 2019* · 已发表 · 基础方法
 
 **内容概述：** 让图神经网络在汇总分子信息时学习关注哪些原子和邻域，用于性质预测与结构归因。
 
-分类：基础方法。主题：分子图、注意力、分子表示。
+主题：分子图、注意力、分子表示。
 
 | 字段 | 内容 |
 | --- | --- |

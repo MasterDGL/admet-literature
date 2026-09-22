@@ -1,14 +1,14 @@
-# admetSAR3.0
+# admetSAR3.0: a comprehensive platform for exploration, prediction and optimization of chemical ADMET properties
 
 [English](../../en/papers/admet/admetsar-3-2024.md) | **简体中文**
 
-**admetSAR3.0: a comprehensive platform for exploration, prediction and optimization of chemical ADMET properties**
-
 [返回ADMET 与药代动力学总表](../../topics/admet.md) · [返回首页](../../README.zh-CN.md)
+
+*Nucleic Acids Research · 2024-04-22* · 已发表 · 专题补读
 
 **内容概述：** 把 ADMET 数据查询、性质预测和结构优化建议整合到一个平台，帮助寻找更合适的候选分子。
 
-分类：专题补读。主题：综合ADMET、平台、结构优化。
+主题：综合ADMET、平台、结构优化。
 
 | 字段 | 内容 |
 | --- | --- |

@@ -1,14 +1,14 @@
-# MapLight
+# ADMET property prediction through combinations of molecular fingerprints
 
 **English** | [简体中文](../../../papers/admet/maplight-2023.md)
 
-**ADMET property prediction through combinations of molecular fingerprints**
-
 [ADMET and pharmacokinetics index](../../topics/admet.md) · [Home](../../../README.md)
+
+*arXiv · 2023-09-29* · 🟠 **Preprint** · Preprints
 
 **Overview:** Combines molecular fingerprints and descriptors in CatBoost models to assess the strength of conventional features for ADMET prediction.
 
-Category: Preprints. Topics: Fingerprints, CatBoost, Baselines.
+Topics: Fingerprints, CatBoost, Baselines.
 
 | Field | Details |
 | --- | --- |

@@ -1,14 +1,14 @@
-# MoleculeACE
+# Exposing the Limitations of Molecular Machine Learning with Activity Cliffs
 
 **English** | [简体中文](../../../papers/foundations/moleculeace-2022.md)
 
-**Exposing the Limitations of Molecular Machine Learning with Activity Cliffs**
-
 [Methods and benchmarks index](../../topics/foundations.md) · [Home](../../../README.md)
+
+*Journal of Chemical Information and Modeling · 2022-12-01* · Published · Data and benchmarks
 
 **Overview:** Evaluates structurally similar molecules with large activity differences to expose model weaknesses hidden by average prediction errors.
 
-Category: Data and benchmarks. Topics: Activity cliffs, Bioactivity, Evaluation.
+Topics: Activity cliffs, Bioactivity, Evaluation.
 
 | Field | Details |
 | --- | --- |

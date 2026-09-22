@@ -1,14 +1,14 @@
-# Uni-QSAR
+# Uni-QSAR: an Auto-ML Tool for Molecular Property Prediction
 
 **English** | [简体中文](../../../papers/admet/uni-qsar-2023.md)
 
-**Uni-QSAR: an Auto-ML Tool for Molecular Property Prediction**
-
 [ADMET and pharmacokinetics index](../../topics/admet.md) · [Home](../../../README.md)
+
+*arXiv · 2023-04-24* · 🟠 **Preprint** · Preprints
 
 **Overview:** Automatically combines fingerprints, descriptors and pretrained 1D, 2D and 3D molecular representations with tuning and stacked ensembles for ADMET prediction.
 
-Category: Preprints. Topics: AutoML, Multimodal representations, Ensembles.
+Topics: AutoML, Multimodal representations, Ensembles.
 
 | Field | Details |
 | --- | --- |

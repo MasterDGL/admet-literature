@@ -1,14 +1,14 @@
-# admetSAR3.0
+# admetSAR3.0: a comprehensive platform for exploration, prediction and optimization of chemical ADMET properties
 
 **English** | [简体中文](../../../papers/admet/admetsar-3-2024.md)
 
-**admetSAR3.0: a comprehensive platform for exploration, prediction and optimization of chemical ADMET properties**
-
 [ADMET and pharmacokinetics index](../../topics/admet.md) · [Home](../../../README.md)
+
+*Nucleic Acids Research · 2024-04-22* · Published · Further reading
 
 **Overview:** Integrates ADMET data search, property prediction and structural optimization suggestions to help identify suitable candidates.
 
-Category: Further reading. Topics: ADMET, Platform, Structural optimization.
+Topics: ADMET, Platform, Structural optimization.
 
 | Field | Details |
 | --- | --- |

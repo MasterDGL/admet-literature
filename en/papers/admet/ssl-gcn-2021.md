@@ -1,14 +1,14 @@
-# SSL-GCN
+# Chemical toxicity prediction based on semi-supervised learning and graph convolutional neural network
 
 **English** | [简体中文](../../../papers/admet/ssl-gcn-2021.md)
 
-**Chemical toxicity prediction based on semi-supervised learning and graph convolutional neural network**
-
 [ADMET and pharmacokinetics index](../../topics/admet.md) · [Home](../../../README.md)
+
+*Journal of Cheminformatics · 2021-11-27* · Published · Further reading
 
 **Overview:** Trains a graph neural network on labeled and unlabeled molecules to improve Tox21 toxicity prediction through semi-supervised learning.
 
-Category: Further reading. Topics: Toxicity, Semi-supervised learning, Tox21.
+Topics: Toxicity, Semi-supervised learning, Tox21.
 
 | Field | Details |
 | --- | --- |

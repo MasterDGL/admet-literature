@@ -1,14 +1,14 @@
-# MTGL-ADMET
+# ADMET property prediction via multi-task graph learning under adaptive auxiliary task selection
 
 **English** | [简体中文](../../../papers/admet/mtgl-admet-2023.md)
 
-**ADMET property prediction via multi-task graph learning under adaptive auxiliary task selection**
-
 [ADMET and pharmacokinetics index](../../topics/admet.md) · [Home](../../../README.md)
+
+*iScience · 2023-11* · Published · Core papers
 
 **Overview:** Selects useful auxiliary tasks for each ADMET endpoint to reduce interference during multitask training.
 
-Category: Core papers. Topics: Multitask learning, Auxiliary tasks, Negative transfer.
+Topics: Multitask learning, Auxiliary tasks, Negative transfer.
 
 | Field | Details |
 | --- | --- |

@@ -1,14 +1,14 @@
-# MC-PGP
+# A multimodal contrastive learning framework for predicting P-glycoprotein substrates and inhibitors
 
 **English** | [简体中文](../../../papers/admet/mc-pgp-2025.md)
 
-**A multimodal contrastive learning framework for predicting P-glycoprotein substrates and inhibitors**
-
 [ADMET and pharmacokinetics index](../../topics/admet.md) · [Home](../../../README.md)
+
+*Journal of Pharmaceutical Analysis · 2025-08* · Published · Core papers
 
 **Overview:** Fuses SMILES, fingerprints and molecular graphs to separately predict P-gp inhibition and transport-substrate status.
 
-Category: Core papers. Topics: P-gp, Multimodal learning, External validation.
+Topics: P-gp, Multimodal learning, External validation.
 
 | Field | Details |
 | --- | --- |

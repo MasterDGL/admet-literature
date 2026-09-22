@@ -1,14 +1,14 @@
-# AmesNet
+# AmesNet: A Task-Conditioned Deep Learning Model with Enhanced Sensitivity and Generalization in Ames Mutagenicity Prediction
 
 [English](../../en/papers/admet/amesnet-2026.md) | **简体中文**
 
-**AmesNet: A Task-Conditioned Deep Learning Model with Enhanced Sensitivity and Generalization in Ames Mutagenicity Prediction**
-
 [返回ADMET 与药代动力学总表](../../topics/admet.md) · [返回首页](../../README.zh-CN.md)
+
+*Chemical Research in Toxicology · 2026-06-29* · 已发表 · 核心论文
 
 **内容概述：** 将分子结构、菌株与代谢活化条件一起输入模型，提高陌生化学结构的 Ames 致突变性识别能力。
 
-分类：核心论文。主题：AMES、实验条件、分布外预测。
+主题：AMES、实验条件、分布外预测。
 
 | 字段 | 内容 |
 | --- | --- |

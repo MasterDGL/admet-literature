@@ -1,14 +1,14 @@
-# AI 药物毒性预测综述
+# Artificial Intelligence in Drug Toxicity Prediction: Recent Advances, Challenges, and Future Perspectives
 
 [English](../../en/papers/admet/ai-toxicity-review-2023.md) | **简体中文**
 
-**Artificial Intelligence in Drug Toxicity Prediction: Recent Advances, Challenges, and Future Perspectives**
-
 [返回ADMET 与药代动力学总表](../../topics/admet.md) · [返回首页](../../README.zh-CN.md)
+
+*Journal of Chemical Information and Modeling · 2023-04-26* · 已发表 · 综述
 
 **内容概述：** 按毒性任务梳理机器学习和深度学习研究，并汇总可用于建模的公开数据与预测工具。
 
-分类：综述。主题：毒性、综述、数据与工具。
+主题：毒性、综述、数据与工具。
 
 | 字段 | 内容 |
 | --- | --- |

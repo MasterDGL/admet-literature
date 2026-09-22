@@ -1,14 +1,14 @@
-# Uni-QSAR
+# Uni-QSAR: an Auto-ML Tool for Molecular Property Prediction
 
 [English](../../en/papers/admet/uni-qsar-2023.md) | **简体中文**
 
-**Uni-QSAR: an Auto-ML Tool for Molecular Property Prediction**
-
 [返回ADMET 与药代动力学总表](../../topics/admet.md) · [返回首页](../../README.zh-CN.md)
+
+*arXiv · 2023-04-24* · 🟠 **预印本** · 预印本
 
 **内容概述：** 自动组合分子指纹、描述符和一维至三维预训练表示，通过调参与堆叠集成完成多种 ADMET 性质预测。
 
-分类：预印本。主题：AutoML、多模态表示、模型集成。
+主题：AutoML、多模态表示、模型集成。
 
 | 字段 | 内容 |
 | --- | --- |

@@ -1,14 +1,14 @@
-# AttentiveFP
+# Pushing the Boundaries of Molecular Representation for Drug Discovery with the Graph Attention Mechanism
 
 **English** | [简体中文](../../../papers/foundations/attentivefp-2019.md)
 
-**Pushing the Boundaries of Molecular Representation for Drug Discovery with the Graph Attention Mechanism**
-
 [Methods and benchmarks index](../../topics/foundations.md) · [Home](../../../README.md)
+
+*Journal of Medicinal Chemistry · 2019* · Published · Foundational methods
 
 **Overview:** Learns which atoms and neighborhoods to emphasize when aggregating molecular information for property prediction and structural attribution.
 
-Category: Foundational methods. Topics: Molecular graphs, Attention, Molecular representations.
+Topics: Molecular graphs, Attention, Molecular representations.
 
 | Field | Details |
 | --- | --- |

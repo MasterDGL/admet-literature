@@ -1,14 +1,14 @@
-# TDC模型审计
+# Critical Assessment of ML models for ADMET Prediction in TDC leaderboards
 
 [English](../../en/papers/admet/tdc-audit-2026.md) | **简体中文**
 
-**Critical Assessment of ML models for ADMET Prediction in TDC leaderboards**
-
 [返回ADMET 与药代动力学总表](../../topics/admet.md) · [返回首页](../../README.zh-CN.md)
+
+*bioRxiv · 2026-02-28* · 🟠 **预印本** · 预印本
 
 **内容概述：** 检查 TDC 榜单领先模型能否运行、有无数据泄漏，以及报告的 ADMET 成绩能否复现。
 
-分类：预印本。主题：可复现性、数据泄漏、审计。
+主题：可复现性、数据泄漏、审计。
 
 | 字段 | 内容 |
 | --- | --- |

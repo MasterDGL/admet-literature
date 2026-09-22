@@ -1,14 +1,14 @@
-# PharmaBench
+# PharmaBench: Enhancing ADMET benchmarks with large language models
 
 **English** | [简体中文](../../../papers/admet/pharmabench-2024.md)
 
-**PharmaBench: Enhancing ADMET benchmarks with large language models**
-
 [ADMET and pharmacokinetics index](../../topics/admet.md) · [Home](../../../README.md)
+
+*Scientific Data · 2024-09-10* · Published · Data and benchmarks
 
 **Overview:** Uses language models to extract assay conditions, then cleans and harmonizes ADMET records to build better-specified benchmarks.
 
-Category: Data and benchmarks. Topics: Data curation, Assay conditions.
+Topics: Data curation, Assay conditions.
 
 | Field | Details |
 | --- | --- |

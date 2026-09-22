@@ -1,14 +1,14 @@
-# ADMET-EvO
+# ADMET-EvO: a self-evolving scientific agent for sustained research across heterogeneous tasks
 
 [English](../../en/papers/admet/admet-evo-2026.md) | **简体中文**
 
-**ADMET-EvO: a self-evolving scientific agent for sustained research across heterogeneous tasks**
-
 [返回ADMET 与药代动力学总表](../../topics/admet.md) · [返回首页](../../README.zh-CN.md)
+
+*arXiv · 2026-09-09* · 🟠 **预印本** · 预印本
 
 **内容概述：** 让研究智能体针对不同 ADMET 任务探索特征和模型，并通过固定测试流程评价预测效果与研究效率。
 
-分类：预印本。主题：研究智能体、自动建模。
+主题：研究智能体、自动建模。
 
 | 字段 | 内容 |
 | --- | --- |

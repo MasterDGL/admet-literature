@@ -1,14 +1,14 @@
-# BBB MegaMolBART
+# Predicting blood–brain barrier permeability of molecules with a large language model and machine learning
 
 **English** | [简体中文](../../../papers/admet/bbb-megamolbart-2024.md)
 
-**Predicting blood–brain barrier permeability of molecules with a large language model and machine learning**
-
 [ADMET and pharmacokinetics index](../../topics/admet.md) · [Home](../../../README.md)
+
+*Scientific Reports · 2024-07-09* · Published · Further reading
 
 **Overview:** Predicts blood–brain barrier permeability with a molecular language model and XGBoost, then tests selected compounds in human-derived 3D BBB spheroids.
 
-Category: Further reading. Topics: BBB, Molecular language models, In vitro validation.
+Topics: BBB, Molecular language models, In vitro validation.
 
 | Field | Details |
 | --- | --- |

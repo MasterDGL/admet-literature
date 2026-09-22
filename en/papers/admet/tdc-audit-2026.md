@@ -1,14 +1,14 @@
-# TDC model audit
+# Critical Assessment of ML models for ADMET Prediction in TDC leaderboards
 
 **English** | [简体中文](../../../papers/admet/tdc-audit-2026.md)
 
-**Critical Assessment of ML models for ADMET Prediction in TDC leaderboards**
-
 [ADMET and pharmacokinetics index](../../topics/admet.md) · [Home](../../../README.md)
+
+*bioRxiv · 2026-02-28* · 🟠 **Preprint** · Preprints
 
 **Overview:** Checks whether leading TDC models run, contain data leakage and reproduce their reported ADMET results.
 
-Category: Preprints. Topics: Reproducibility, Data leakage, Model audit.
+Topics: Reproducibility, Data leakage, Model audit.
 
 | Field | Details |
 | --- | --- |

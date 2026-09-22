@@ -1,14 +1,14 @@
-# MolMCL
+# Multi-channel learning for integrating structural hierarchies into context-dependent molecular representation
 
 **English** | [简体中文](../../../papers/admet/molmcl-2025.md)
 
-**Multi-channel learning for integrating structural hierarchies into context-dependent molecular representation**
-
 [ADMET and pharmacokinetics index](../../topics/admet.md) · [Home](../../../README.md)
+
+*Nature Communications · 2025-01-06* · Published · Further reading
 
 **Overview:** Learns molecular, scaffold and local-context representations, then combines them by task for property and bioactivity prediction.
 
-Category: Further reading. Topics: Multichannel pretraining, Activity cliffs.
+Topics: Multichannel pretraining, Activity cliffs.
 
 | Field | Details |
 | --- | --- |

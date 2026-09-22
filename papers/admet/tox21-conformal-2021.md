@@ -1,14 +1,14 @@
-# 毒性深度共形预测
+# Deep Learning-Based Conformal Prediction of Toxicity
 
 [English](../../en/papers/admet/tox21-conformal-2021.md) | **简体中文**
 
-**Deep Learning-Based Conformal Prediction of Toxicity**
-
 [返回ADMET 与药代动力学总表](../../topics/admet.md) · [返回首页](../../README.zh-CN.md)
+
+*Journal of Chemical Information and Modeling · 2021-05-27* · 已发表 · 专题补读
 
 **内容概述：** 给毒性模型加入共形预测，让用户按置信水平得到单一类别或多个候选类别，并评估漏检与不确定性。
 
-分类：专题补读。主题：毒性、不确定性、共形预测。
+主题：毒性、不确定性、共形预测。
 
 | 字段 | 内容 |
 | --- | --- |

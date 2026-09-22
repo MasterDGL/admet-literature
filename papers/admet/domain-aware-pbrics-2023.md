@@ -1,14 +1,14 @@
-# Domain-aware / pBRICS
+# Domain-aware representation of small molecules for explainable property prediction models
 
 [English](../../en/papers/admet/domain-aware-pbrics-2023.md) | **简体中文**
 
-**Domain-aware representation of small molecules for explainable property prediction models**
-
 [返回ADMET 与药代动力学总表](../../topics/admet.md) · [返回首页](../../README.zh-CN.md)
+
+*ICLR 2023 MLDD Workshop · 2023* · Workshop · 专题补读
 
 **内容概述：** 按化学官能团对分子进行片段化，让图模型在预测 ADMET 性质时指出哪些片段影响结果。
 
-分类：专题补读。主题：片段表示、可解释性、多任务学习。
+主题：片段表示、可解释性、多任务学习。
 
 | 字段 | 内容 |
 | --- | --- |

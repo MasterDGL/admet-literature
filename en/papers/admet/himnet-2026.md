@@ -1,14 +1,14 @@
-# HimNet
+# A hierarchical interaction message net for accurate molecular property prediction
 
 **English** | [简体中文](../../../papers/admet/himnet-2026.md)
 
-**A hierarchical interaction message net for accurate molecular property prediction**
-
 [ADMET and pharmacokinetics index](../../topics/admet.md) · [Home](../../../README.md)
+
+*Communications Chemistry · 2026-02-14* · Published · Further reading
 
 **Overview:** Exchanges information across atoms, substructures and whole molecules in a hierarchical graph network for property and selected ADMET predictions.
 
-Category: Further reading. Topics: Hierarchical GNN, Metabolic stability.
+Topics: Hierarchical GNN, Metabolic stability.
 
 | Field | Details |
 | --- | --- |

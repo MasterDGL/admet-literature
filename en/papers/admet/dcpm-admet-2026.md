@@ -1,14 +1,14 @@
-# DCPM-ADMET
+# DCPM-ADMET: fusion of dual-component pre-trained model and molecular fingerprints to enhance drug ADMET properties prediction
 
 **English** | [简体中文](../../../papers/admet/dcpm-admet-2026.md)
 
-**DCPM-ADMET: fusion of dual-component pre-trained model and molecular fingerprints to enhance drug ADMET properties prediction**
-
 [ADMET and pharmacokinetics index](../../topics/admet.md) · [Home](../../../README.md)
+
+*Journal of Cheminformatics · 2026-06-20* · Published · Core papers
 
 **Overview:** Combines representations from two pretrained models with chemical fingerprints to predict 97 ADMET properties.
 
-Category: Core papers. Topics: ADMET, Pretraining, Representation fusion.
+Topics: ADMET, Pretraining, Representation fusion.
 
 | Field | Details |
 | --- | --- |

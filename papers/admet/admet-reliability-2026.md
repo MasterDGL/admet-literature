@@ -1,14 +1,14 @@
-# ADMET可靠性评测
+# Revisiting ADMET prediction reliability under real-world challenges in the foundation model era
 
 [English](../../en/papers/admet/admet-reliability-2026.md) | **简体中文**
 
-**Revisiting ADMET prediction reliability under real-world challenges in the foundation model era**
-
 [返回ADMET 与药代动力学总表](../../topics/admet.md) · [返回首页](../../README.zh-CN.md)
+
+*Journal of Cheminformatics · 2026-05-18* · 已发表 · 核心论文
 
 **内容概述：** 在小样本、陌生分子结构和类别不均衡等条件下比较多类模型，检验 ADMET 预测在实际研究中是否可靠。
 
-分类：核心论文。主题：泛化、小样本、评测。
+主题：泛化、小样本、评测。
 
 | 字段 | 内容 |
 | --- | --- |

@@ -1,14 +1,14 @@
-# ADMET reliability benchmark
+# Revisiting ADMET prediction reliability under real-world challenges in the foundation model era
 
 **English** | [简体中文](../../../papers/admet/admet-reliability-2026.md)
 
-**Revisiting ADMET prediction reliability under real-world challenges in the foundation model era**
-
 [ADMET and pharmacokinetics index](../../topics/admet.md) · [Home](../../../README.md)
+
+*Journal of Cheminformatics · 2026-05-18* · Published · Core papers
 
 **Overview:** Compares model families under limited data, unfamiliar molecular structures and class imbalance to assess ADMET prediction in practical research settings.
 
-Category: Core papers. Topics: Generalization, Small data, Evaluation.
+Topics: Generalization, Small data, Evaluation.
 
 | Field | Details |
 | --- | --- |

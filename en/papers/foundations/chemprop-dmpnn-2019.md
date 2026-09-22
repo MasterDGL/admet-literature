@@ -1,14 +1,14 @@
-# Chemprop / D-MPNN
+# Analyzing Learned Molecular Representations for Property Prediction
 
 **English** | [简体中文](../../../papers/foundations/chemprop-dmpnn-2019.md)
 
-**Analyzing Learned Molecular Representations for Property Prediction**
-
 [Methods and benchmarks index](../../topics/foundations.md) · [Home](../../../README.md)
+
+*Journal of Chemical Information and Modeling · 2019-07-30* · Published · Foundational methods
 
 **Overview:** Learns molecular representations by passing messages along directed chemical bonds and evaluates property prediction on public and industrial data.
 
-Category: Foundational methods. Topics: Molecular graphs, D-MPNN, Industrial data.
+Topics: Molecular graphs, D-MPNN, Industrial data.
 
 | Field | Details |
 | --- | --- |

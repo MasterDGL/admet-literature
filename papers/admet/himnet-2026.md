@@ -1,14 +1,14 @@
-# HimNet
+# A hierarchical interaction message net for accurate molecular property prediction
 
 [English](../../en/papers/admet/himnet-2026.md) | **简体中文**
 
-**A hierarchical interaction message net for accurate molecular property prediction**
-
 [返回ADMET 与药代动力学总表](../../topics/admet.md) · [返回首页](../../README.zh-CN.md)
+
+*Communications Chemistry · 2026-02-14* · 已发表 · 专题补读
 
 **内容概述：** 让原子、子结构和整个分子之间交换信息，用层级图神经网络预测分子性质及部分 ADMET 指标。
 
-分类：专题补读。主题：层级GNN、代谢稳定性。
+主题：层级GNN、代谢稳定性。
 
 | 字段 | 内容 |
 | --- | --- |

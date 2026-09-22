@@ -1,14 +1,14 @@
-# Domain-aware / pBRICS
+# Domain-aware representation of small molecules for explainable property prediction models
 
 **English** | [简体中文](../../../papers/admet/domain-aware-pbrics-2023.md)
 
-**Domain-aware representation of small molecules for explainable property prediction models**
-
 [ADMET and pharmacokinetics index](../../topics/admet.md) · [Home](../../../README.md)
+
+*ICLR 2023 MLDD Workshop · 2023* · Workshop · Further reading
 
 **Overview:** Builds chemically meaningful molecular fragments so graph models can predict ADMET properties and identify fragments contributing to each prediction.
 
-Category: Further reading. Topics: Fragment representations, Interpretability, Multitask learning.
+Topics: Fragment representations, Interpretability, Multitask learning.
 
 | Field | Details |
 | --- | --- |

@@ -1,14 +1,14 @@
-# Chemprop / D-MPNN
+# Analyzing Learned Molecular Representations for Property Prediction
 
 [English](../../en/papers/foundations/chemprop-dmpnn-2019.md) | **简体中文**
 
-**Analyzing Learned Molecular Representations for Property Prediction**
-
 [返回基础方法与基准总表](../../topics/foundations.md) · [返回首页](../../README.zh-CN.md)
+
+*Journal of Chemical Information and Modeling · 2019-07-30* · 已发表 · 基础方法
 
 **内容概述：** 通过沿有向化学键传递信息来学习分子表示，并在公开和工业数据上检验性质预测。
 
-分类：基础方法。主题：分子图、D-MPNN、工业数据。
+主题：分子图、D-MPNN、工业数据。
 
 | 字段 | 内容 |
 | --- | --- |

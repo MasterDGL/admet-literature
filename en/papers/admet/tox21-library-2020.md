@@ -1,14 +1,14 @@
-# Tox21 10K compound library
+# The Tox21 10K Compound Library: Collaborative Chemistry Advancing Toxicology
 
 **English** | [简体中文](../../../papers/admet/tox21-library-2020.md)
 
-**The Tox21 10K Compound Library: Collaborative Chemistry Advancing Toxicology**
-
 [ADMET and pharmacokinetics index](../../topics/admet.md) · [Home](../../../README.md)
+
+*Chemical Research in Toxicology · 2020-11-03* · Published · Data and benchmarks
 
 **Overview:** Explains how the Tox21 library combines agency collections, high-throughput experiments and traceable chemical annotations to produce toxicity data.
 
-Category: Data and benchmarks. Topics: Toxicity, Data resources.
+Topics: Toxicity, Data resources.
 
 | Field | Details |
 | --- | --- |

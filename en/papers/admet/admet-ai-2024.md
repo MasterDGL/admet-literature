@@ -1,14 +1,14 @@
-# ADMET-AI
+# ADMET-AI: a machine learning ADMET platform for evaluation of large-scale chemical libraries
 
 **English** | [简体中文](../../../papers/admet/admet-ai-2024.md)
 
-**ADMET-AI: a machine learning ADMET platform for evaluation of large-scale chemical libraries**
-
 [ADMET and pharmacokinetics index](../../topics/admet.md) · [Home](../../../README.md)
+
+*Bioinformatics · 2024-06-24* · Published · Core papers
 
 **Overview:** Packages graph neural networks into web and local tools that predict multiple ADMET properties for large compound libraries.
 
-Category: Core papers. Topics: ADMET, Platform, High throughput.
+Topics: ADMET, Platform, High throughput.
 
 | Field | Details |
 | --- | --- |
