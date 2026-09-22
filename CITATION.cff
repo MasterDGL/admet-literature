@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "Cite this repository for the literature notes; cite the original papers for research findings."
+type: dataset
+title: "ADMET Literature: Bilingual Research Notes"
+authors:
+  - family-names: Du
+    given-names: Guangliang
+    alias: MasterDGL
+url: "https://github.com/MasterDGL/admet-literature"
+repository-code: "https://github.com/MasterDGL/admet-literature"
+license: MIT
+keywords:
+  - ADMET
+  - pharmacokinetics
+  - literature

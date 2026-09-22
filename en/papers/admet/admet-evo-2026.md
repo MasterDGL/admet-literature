@@ -14,7 +14,7 @@ Category: Preprints. Topics: Research agents, Automated modeling.
 | --- | --- |
 | Publication and date | arXiv preprint, initially submitted 2026-09-09; updated to v2 on 2026-09-10. |
 | Date basis | Initial arXiv submission date; revisions listed in the citation |
-| Publication status | Preprint |
+| Publication status | 🟠 **Preprint** |
 | Research problem | Different endpoints need different features, models and optimization strategies, making repeated manual exploration costly. Automated research also needs test-independent model selection. |
 | Datasets | 22 TDC ADMET tasks plus 43 toxicity tasks. |
 | Method | An evidence-gated research agent explores hypotheses, features and models. The paper describes freezing the workflow before held-out testing and validation over multiple seeds. |

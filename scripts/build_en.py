@@ -18,6 +18,15 @@ FIELDS = ['name', 'one_liner', 'tags', 'pain_point', 'datasets', 'method',
           'conclusion', 'evaluation', 'limitations', 'code_status', 'verification_scope']
 
 
+def publication_label(paper, en=True):
+    pub = paper['publication']
+    if pub['status'] == 'preprint':
+        return '🟠 **Preprint**' if en else '🟠 **预印本**'
+    if 'Workshop' in pub['venue']:
+        return 'Workshop'
+    return 'Published' if en else '已发表'
+
+
 def recent_first(papers):
     return sorted(papers, key=lambda p: p['publication']['date'], reverse=True)
 
@@ -75,6 +84,8 @@ def build(papers, table):
         status = {'journal': 'Journal article', 'conference': 'Conference paper', 'preprint': 'Preprint'}[pub['status']]
         if pub['status'] == 'conference' and 'Workshop' in pub['venue']:
             status = 'Workshop paper'
+        if pub['status'] == 'preprint':
+            status = '🟠 **Preprint**'
         fields = core_fields(p)
         fields[1:1] = [['Date basis', pub['date_basis']], ['Publication status', status]]
         sources = '\n'.join(f'- [{s["label"]}]({s["url"]})' for s in p['sources'])
@@ -116,7 +127,7 @@ Sources reviewed: **{p['verified_on']}**. {p['verification_scope']}
         if p.get('code_url'):
             links += f' · [Code/project]({p["code_url"]})'
         overview.append(f'#### {p["name"]}\n\n**{p["title"]}**\n\n'
-                        f'Date: **{p["publication"]["date"]}** · Category: {GROUPS[p["group"]]}.\n\n'
+                        f'Date: **{p["publication"]["date"]}** · {publication_label(p)} · Category: {GROUPS[p["group"]]}.\n\n'
                         f'**In one sentence:** {p["one_liner"]}\n\n'
                         + table(['Field', 'Details'], core_fields(p)) + '\n\n' + links)
     core = table(['Paper', 'Journal/conference', 'Date', 'In one sentence'], [
@@ -146,12 +157,16 @@ Start with data and molecular representations, then explore property prediction,
 ## Navigation
 
 - [ADMET paper index](en/topics/admet.md): papers ordered from newest to oldest, with all five core fields.
+- [Method comparisons](en/docs/comparison.md): endpoint-specific TDC scores, an interactive table and CSV.
+- [Dataset dictionary](en/docs/datasets.md): sizes, endpoints, sources, licenses and loading instructions.
 - [Methods and benchmarks](en/topics/foundations.md): Chemprop, AttentiveFP, MoleculeNet and MoleculeACE.
 - [Knowledge map](en/docs/knowledge-map.md): connect research questions, methods and reading routes.
 - [Core reading](#core-reading): a starting point for research questions, data and methods.
 - [Paper notes](#paper-notes): one-sentence summaries and all five fields for every paper, directly on this page.
 - [Selection and curation](en/docs/curation.md): selection criteria, experimental comparisons and sources.
 - [Research scope](en/docs/scope.md): current coverage and planned topics.
+- [Discussions](https://github.com/MasterDGL/admet-literature/discussions): questions and paper recommendations.
+- [Maintenance](en/docs/maintenance.md): automated validation, link checks and data updates.
 - [Contributing](en/CONTRIBUTING.md): recommend papers, correct metadata or add experimental details.
 - [Shared catalog](data/papers.json) · [English translations](data/papers.en.json) · [English CSV](data/papers.en.csv).
 
@@ -190,6 +205,19 @@ python scripts/build.py --check
 
 The build updates both homepages, topic indexes, paper notes and CSV exports. Checks cover required fields, duplicate records, dates, URLs, local links, translation coverage, source synchronization and generated-file consistency. See [Contributing](en/CONTRIBUTING.md) for the translation workflow.
 
+## How to cite
+
+Use [CITATION.cff](CITATION.cff) or GitHub's "Cite this repository" sidebar entry when citing these literature notes. Cite the original papers for methods and experimental findings, and record the commit used when reusing notes.
+
+```bibtex
+@misc{{du_admet_literature,
+  author = {{Du, Guangliang}},
+  title = {{ADMET Literature: Bilingual Research Notes}},
+  year = {{2026}},
+  url = {{https://github.com/MasterDGL/admet-literature}}
+}}
+```
+
 ## References and acknowledgments
 
 The organization draws on topic navigation in [awesome-AIDD](https://github.com/daiyun02211/awesome-AIDD), paper/code indexing in [Awesome-Deepfakes-Detection](https://github.com/Daisy-Zhang/Awesome-Deepfakes-Detection), and the open-data and evaluation work of [OpenADMET](https://github.com/OpenADMET).
@@ -199,7 +227,7 @@ Original notes and maintenance scripts use the [MIT License](LICENSE). Reference
     for topic, title in TOPICS.items():
         entries = [p for p in papers if p['topic'] == topic]
         rows = [[p['publication']['date'],
-                 f'[{p["name"]}](../{note(p)}) · [Paper]({p["paper_url"]})<br>{GROUPS[p["group"]]}',
+                 f'[{p["name"]}](../{note(p)}) · [Paper]({p["paper_url"]})<br>{publication_label(p)} · {GROUPS[p["group"]]}',
                  p['publication']['citation'], p['pain_point'], p['datasets'], p['method'], p['conclusion']]
                 for p in entries]
         listing = table(['Date', 'Paper and category', 'Publication and date', 'Research problem', 'Datasets', 'Method', 'Findings'], rows)

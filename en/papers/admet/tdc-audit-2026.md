@@ -14,7 +14,7 @@ Category: Preprints. Topics: Reproducibility, Data leakage, Model audit.
 | --- | --- |
 | Publication and date | bioRxiv preprint, 2026; Crossref publication date 2026-02-28; the DOI contains 02-26. |
 | Date basis | Crossref preprint publication date; DOI date recorded separately |
-| Publication status | Preprint |
+| Publication status | 🟠 **Preprint** |
 | Research problem | Leaderboard results may depend on pretraining leakage, validation/test overlap or environment problems that affect reproducibility. |
 | Datasets | 10 leading methods selected from the 22-task TDC ADMET benchmark, using the audit's leaderboard snapshot and code versions. |
 | Method | Sequentially checks environment availability, pretraining leakage, validation/test overlap and result reproduction. |

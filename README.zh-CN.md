@@ -6,7 +6,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 梳理 **ADMET 与药代动力学预测** 的研究进展，整理代表论文、数据集与代码资源。每篇用一句话介绍研究内容，再展开 **发表期刊/会议与时间、主要痛点、数据集、方法和结论**。分子表示与基准文献提供相关基础知识。
 
-目前收录 **33 篇**：**29 篇 ADMET 与药代动力学**、**4 篇基础方法与基准**，其中 11 篇列为核心精读。正式研究与数据论文 26 篇、综述 1 篇、观点文章 1 篇、预印本 5 篇。最近一批资料核对日期：**2026-09-22**；各篇记录具体来源和核对日期。
+目前收录 **35 篇**：**31 篇 ADMET 与药代动力学**、**4 篇基础方法与基准**，其中 11 篇列为核心精读。正式研究与数据论文 28 篇、综述 1 篇、观点文章 1 篇、预印本 5 篇。最近一批资料核对日期：**2026-09-22**；各篇记录具体来源和核对日期。
 
 ## AIDD 知识地图
 
@@ -17,18 +17,22 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 ## 导航
 
 - [ADMET 论文总表](topics/admet.md)：按发表时间从新到旧排列，逐篇保留五项核心信息。
+- [方法对比](docs/comparison.md)：按端点查看同一 TDC 基准下的成绩，附交互表与 CSV。
+- [数据集字典](docs/datasets.md)：数据规模、端点、来源、许可与加载入口。
 - [基础方法与基准](topics/foundations.md)：Chemprop、AttentiveFP、MoleculeNet、MoleculeACE。
 - [知识地图说明](docs/knowledge-map.md)：从研究问题找到方法、任务和阅读入口。
 - [优先精读](#优先精读)：先建立研究问题、数据和方法的认识。
-- [论文梳理](#论文梳理)：直接在本页查看全部 33 篇的一句话概括、发表信息、痛点、数据集、方法和结论。
+- [论文梳理](#论文梳理)：直接在本页查看全部 35 篇的一句话概括、发表信息、痛点、数据集、方法和结论。
 - [选文与整理方法](docs/curation.md)：选文标准、实验比较和资料来源。
 - [AIDD 研究范围](docs/scope.md)：当前覆盖与后续专题。
+- [讨论区](https://github.com/MasterDGL/admet-literature/discussions)：提问与推荐论文。
+- [维护说明](docs/maintenance.md)：自动检查、链接巡检和数据更新。
 - [贡献方式](CONTRIBUTING.md)：推荐论文、纠正信息或补充实验依据。
 - [结构化数据](data/papers.json) · [CSV 总表](data/papers.csv)。
 
 | 专题 | 当前内容 | 入口 |
 | --- | --- | --- |
-| ADMET 与药代动力学 | 29 篇 | [论文总表](topics/admet.md) |
+| ADMET 与药代动力学 | 31 篇 | [论文总表](topics/admet.md) |
 | 基础方法与基准 | 4 篇；分子表示、数据与评测 | [基础阅读](topics/foundations.md) |
 | 其他 AIDD 方向 | 扩展计划，尚未纳入独立专题 | [研究范围](docs/scope.md) |
 
@@ -56,7 +60,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 ## 论文梳理
 
-[2026](#2026) · [2025](#2025) · [2024](#2024) · [2023](#2023) · [2022](#2022) · [2021](#2021) · [2019](#2019) · [2017](#2017)
+[2026](#2026) · [2025](#2025) · [2024](#2024) · [2023](#2023) · [2022](#2022) · [2021](#2021) · [2020](#2020) · [2019](#2019) · [2017](#2017)
 
 下列论文按发表时间从新到旧排列，介绍每篇的研究问题、方法与主要发现；实验设置、结果分析和参考资料见详细解读。
 
@@ -66,7 +70,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 **ADMET-EvO: a self-evolving scientific agent for sustained research across heterogeneous tasks**
 
-发表时间：**2026-09-09** · 分类：预印本。
+发表时间：**2026-09-09** · 🟠 **预印本** · 分类：预印本。
 
 **一句话概括：** 让研究智能体针对不同 ADMET 任务探索特征和模型，并通过固定测试流程评价预测效果与研究效率。
 
@@ -84,7 +88,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 **A multimodal representation learning platform for accurate molecular ADMET prediction**
 
-发表时间：**2026-08-25** · 分类：预印本。
+发表时间：**2026-08-25** · 🟠 **预印本** · 分类：预印本。
 
 **一句话概括：** 融合分子序列、分子图、三维结构和化学先验，并按 ADMET 任务选择预测模型或集成方案。
 
@@ -102,7 +106,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 **AmesNet: A Task-Conditioned Deep Learning Model with Enhanced Sensitivity and Generalization in Ames Mutagenicity Prediction**
 
-发表时间：**2026-06-29** · 分类：核心论文。
+发表时间：**2026-06-29** · 已发表 · 分类：核心论文。
 
 **一句话概括：** 将分子结构、菌株与代谢活化条件一起输入模型，提高陌生化学结构的 Ames 致突变性识别能力。
 
@@ -120,7 +124,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 **DCPM-ADMET: fusion of dual-component pre-trained model and molecular fingerprints to enhance drug ADMET properties prediction**
 
-发表时间：**2026-06-20** · 分类：核心论文。
+发表时间：**2026-06-20** · 已发表 · 分类：核心论文。
 
 **一句话概括：** 将两种预训练模型学到的分子表示与化学指纹结合，用于预测 97 项 ADMET 性质。
 
@@ -138,7 +142,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 **Mapping the avoid-ome: a systematic open-science approach to predictive ADMET**
 
-发表时间：**2026-05-25** · 分类：观点文章。
+发表时间：**2026-05-25** · 已发表 · 分类：观点文章。
 
 **一句话概括：** 提出结合开放实验数据、蛋白质结构、主动学习和盲测挑战，从机制上改进 ADMET 预测的研究路线。
 
@@ -156,7 +160,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 **Revisiting ADMET prediction reliability under real-world challenges in the foundation model era**
 
-发表时间：**2026-05-18** · 分类：核心论文。
+发表时间：**2026-05-18** · 已发表 · 分类：核心论文。
 
 **一句话概括：** 在小样本、陌生分子结构和类别不均衡等条件下比较多类模型，检验 ADMET 预测在实际研究中是否可靠。
 
@@ -174,7 +178,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 **Critical Assessment of ML models for ADMET Prediction in TDC leaderboards**
 
-发表时间：**2026-02-28** · 分类：预印本。
+发表时间：**2026-02-28** · 🟠 **预印本** · 分类：预印本。
 
 **一句话概括：** 检查 TDC 榜单领先模型能否运行、有无数据泄漏，以及报告的 ADMET 成绩能否复现。
 
@@ -192,7 +196,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 **A hierarchical interaction message net for accurate molecular property prediction**
 
-发表时间：**2026-02-14** · 分类：专题补读。
+发表时间：**2026-02-14** · 已发表 · 分类：专题补读。
 
 **一句话概括：** 让原子、子结构和整个分子之间交换信息，用层级图神经网络预测分子性质及部分 ADMET 指标。
 
@@ -212,7 +216,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 **CaliciBoost: Performance-driven evaluation of molecular representations for caco-2 permeability prediction**
 
-发表时间：**2025-12-22** · 分类：核心论文。
+发表时间：**2025-12-22** · 已发表 · 分类：核心论文。
 
 **一句话概括：** 比较分子指纹和理化描述符，结合自动机器学习预测分子通过肠道细胞模型（Caco-2）的能力。
 
@@ -230,7 +234,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 **PKSmart: an open-source computational model to predict intravenous pharmacokinetics of small molecules**
 
-发表时间：**2025-09-26** · 分类：核心论文。
+发表时间：**2025-09-26** · 已发表 · 分类：核心论文。
 
 **一句话概括：** 先预测动物体内的药代参数，再结合分子结构预测人体静脉给药后的清除率、分布容积和半衰期等指标。
 
@@ -248,7 +252,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 **A multimodal contrastive learning framework for predicting P-glycoprotein substrates and inhibitors**
 
-发表时间：**2025-08** · 分类：核心论文。
+发表时间：**2025-08** · 已发表 · 分类：核心论文。
 
 **一句话概括：** 融合 SMILES、指纹和分子图，分别判断分子是否抑制 P-gp、是否会被 P-gp 转运。
 
@@ -266,7 +270,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 **HERGAI: an artificial intelligence tool for structure-based prediction of hERG inhibitors**
 
-发表时间：**2025-07-24** · 分类：核心论文。
+发表时间：**2025-07-24** · 已发表 · 分类：核心论文。
 
 **一句话概括：** 结合分子对接与集成模型，从大量候选分子中识别可能阻断 hERG 心脏离子通道的化合物。
 
@@ -284,7 +288,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 **Multi-channel learning for integrating structural hierarchies into context-dependent molecular representation**
 
-发表时间：**2025-01-06** · 分类：专题补读。
+发表时间：**2025-01-06** · 已发表 · 分类：专题补读。
 
 **一句话概括：** 从分子整体、骨架和局部环境等层面学习表示，再按任务组合这些信息，用于性质和生物活性预测。
 
@@ -304,7 +308,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 **MolE: a foundation model for molecular graphs using disentangled attention**
 
-发表时间：**2024-11-12** · 分类：核心论文。
+发表时间：**2024-11-12** · 已发表 · 分类：核心论文。
 
 **一句话概括：** 先在海量分子图上预训练，再利用生物学任务数据进一步训练，最后用于 ADMET 性质预测。
 
@@ -322,7 +326,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 **PharmaBench: Enhancing ADMET benchmarks with large language models**
 
-发表时间：**2024-09-10** · 分类：数据与基准。
+发表时间：**2024-09-10** · 已发表 · 分类：数据与基准。
 
 **一句话概括：** 用大语言模型辅助提取实验条件，再清洗和统一 ADMET 记录，构建条件更明确的评测数据集。
 
@@ -340,7 +344,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 **Predicting blood–brain barrier permeability of molecules with a large language model and machine learning**
 
-发表时间：**2024-07-09** · 分类：专题补读。
+发表时间：**2024-07-09** · 已发表 · 分类：专题补读。
 
 **一句话概括：** 用分子语言模型和 XGBoost 预测血脑屏障通透性，并用人源三维 BBB 球体检验部分候选。
 
@@ -358,7 +362,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 **ADMET-AI: a machine learning ADMET platform for evaluation of large-scale chemical libraries**
 
-发表时间：**2024-06-24** · 分类：核心论文。
+发表时间：**2024-06-24** · 已发表 · 分类：核心论文。
 
 **一句话概括：** 将图神经网络用于网页和本地预测工具，一次预测多项 ADMET 性质，方便快速筛选大规模化合物库。
 
@@ -376,7 +380,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 **admetSAR3.0: a comprehensive platform for exploration, prediction and optimization of chemical ADMET properties**
 
-发表时间：**2024-04-22** · 分类：专题补读。
+发表时间：**2024-04-22** · 已发表 · 分类：专题补读。
 
 **一句话概括：** 把 ADMET 数据查询、性质预测和结构优化建议整合到一个平台，帮助寻找更合适的候选分子。
 
@@ -394,7 +398,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 **ADMETlab 3.0: an updated comprehensive online ADMET prediction platform enhanced with broader coverage, improved performance, API functionality and decision support**
 
-发表时间：**2024-04-04** · 分类：专题补读。
+发表时间：**2024-04-04** · 已发表 · 分类：专题补读。
 
 **一句话概括：** 提供覆盖多类 ADMET 及理化性质的在线预测平台，并加入不确定性评估、API 和决策支持功能。
 
@@ -414,7 +418,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 **A knowledge-guided pre-training framework for improving molecular representation learning**
 
-发表时间：**2023-11-21** · 分类：核心论文。
+发表时间：**2023-11-21** · 已发表 · 分类：核心论文。
 
 **一句话概括：** 把分子指纹和理化描述符融入图预训练，让模型学到更适合预测 ADMET 等性质的分子表示。
 
@@ -432,7 +436,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 **ADMET property prediction via multi-task graph learning under adaptive auxiliary task selection**
 
-发表时间：**2023-11** · 分类：核心论文。
+发表时间：**2023-11** · 已发表 · 分类：核心论文。
 
 **一句话概括：** 为每个 ADMET 预测任务自动挑选有帮助的辅助任务，减少多任务联合训练时的相互干扰。
 
@@ -450,7 +454,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 **ADMET property prediction through combinations of molecular fingerprints**
 
-发表时间：**2023-09-29** · 分类：预印本。
+发表时间：**2023-09-29** · 🟠 **预印本** · 分类：预印本。
 
 **一句话概括：** 组合多种分子指纹和描述符，用 CatBoost 建立 ADMET 预测模型，检验传统特征方法的竞争力。
 
@@ -468,7 +472,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 **Artificial Intelligence in Drug Toxicity Prediction: Recent Advances, Challenges, and Future Perspectives**
 
-发表时间：**2023-04-26** · 分类：综述。
+发表时间：**2023-04-26** · 已发表 · 分类：综述。
 
 **一句话概括：** 按毒性任务梳理机器学习和深度学习研究，并汇总可用于建模的公开数据与预测工具。
 
@@ -486,7 +490,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 **Uni-QSAR: an Auto-ML Tool for Molecular Property Prediction**
 
-发表时间：**2023-04-24** · 分类：预印本。
+发表时间：**2023-04-24** · 🟠 **预印本** · 分类：预印本。
 
 **一句话概括：** 自动组合分子指纹、描述符和一维至三维预训练表示，通过调参与堆叠集成完成多种 ADMET 性质预测。
 
@@ -504,7 +508,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 **Domain-aware representation of small molecules for explainable property prediction models**
 
-发表时间：**2023** · 分类：专题补读。
+发表时间：**2023** · Workshop · 分类：专题补读。
 
 **一句话概括：** 按化学官能团对分子进行片段化，让图模型在预测 ADMET 性质时指出哪些片段影响结果。
 
@@ -524,7 +528,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 **Exposing the Limitations of Molecular Machine Learning with Activity Cliffs**
 
-发表时间：**2022-12-01** · 分类：数据与基准。
+发表时间：**2022-12-01** · 已发表 · 分类：数据与基准。
 
 **一句话概括：** 专门检查结构很相似、活性却差很多的分子，揭示平均预测误差容易掩盖的模型弱点。
 
@@ -542,7 +546,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 **Multitask Deep Neural Networks for Ames Mutagenicity Prediction**
 
-发表时间：**2022-09-06** · 分类：专题补读。
+发表时间：**2022-09-06** · 已发表 · 分类：专题补读。
 
 **一句话概括：** 保留五种菌株各自的 Ames 结果进行多任务学习，而非只学习一个总体致突变标签。
 
@@ -562,7 +566,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 **Chemical toxicity prediction based on semi-supervised learning and graph convolutional neural network**
 
-发表时间：**2021-11-27** · 分类：专题补读。
+发表时间：**2021-11-27** · 已发表 · 分类：专题补读。
 
 **一句话概括：** 让图神经网络同时学习有毒性标签和无标签的分子，利用半监督学习改善 Tox21 毒性预测。
 
@@ -580,7 +584,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 **CardioTox net: a robust predictor for hERG channel blockade based on deep learning meta-feature ensembles**
 
-发表时间：**2021-08-16** · 分类：专题补读。
+发表时间：**2021-08-16** · 已发表 · 分类：专题补读。
 
 **一句话概括：** 融合不同分子表示的神经网络预测，改善 hERG 阻断剂识别，并在三个外部测试集上检验效果。
 
@@ -594,11 +598,29 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 [论文原文](https://doi.org/10.1186/s13321-021-00541-z) · [详细解读](papers/admet/cardiotox-net-2021.md) · [代码/项目](https://github.com/Abdulk084/CardioTox)
 
+#### 毒性深度共形预测
+
+**Deep Learning-Based Conformal Prediction of Toxicity**
+
+发表时间：**2021-05-27** · 已发表 · 分类：专题补读。
+
+**一句话概括：** 给毒性模型加入共形预测，让用户按置信水平得到单一类别或多个候选类别，并评估漏检与不确定性。
+
+| 字段 | 内容 |
+| --- | --- |
+| 发表期刊/会议与时间 | Journal of Chemical Information and Modeling 61(6), 2648–2657；2021-05-27 |
+| 主要痛点 | 单个毒性类别或概率难以直接说明预测可靠性，类别不均衡又容易导致模型漏检少数有毒分子。 |
+| 数据集 | Tox21 挑战数据的 12 个核受体与应激反应端点；每个端点按活性/非活性单独建模，样本数见原文表 1。 |
+| 方法 | 结合 DNN、GCN、GAT、其他图网络、随机森林和 LightGBM，使用独立校准集构建 Mondrian 共形预测器；比较有效性、单标签预测比例、平衡准确率与 MCC。 |
+| 结论 | GCN 共形预测在 90% 置信水平下，对有毒类别的单标签预测比例超过 80%。多种基础模型的有毒分子召回增加，同时假阳性也增加。 |
+
+[论文原文](https://doi.org/10.1021/acs.jcim.1c00208) · [详细解读](papers/admet/tox21-conformal-2021.md) · [代码/项目](https://github.com/FredrikSvenssonUK/tox21_conformal)
+
 #### TDC
 
 **Therapeutics Data Commons: Machine Learning Datasets and Tasks for Drug Discovery and Development**
 
-发表时间：**2021** · 分类：数据与基准。
+发表时间：**2021** · 已发表 · 分类：数据与基准。
 
 **一句话概括：** 把药物发现中的多类数据和任务整理成统一接口与基准，让不同预测方法能够按共同规则比较。
 
@@ -612,13 +634,33 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 [论文原文](https://datasets-benchmarks-proceedings.neurips.cc/paper/2021/hash/3948ead63a9f2944218de038d8930b8f-Abstract-round2.html) · [详细解读](papers/admet/tdc-2021.md)
 
+### 2020
+
+#### Tox21 10K 化合物库
+
+**The Tox21 10K Compound Library: Collaborative Chemistry Advancing Toxicology**
+
+发表时间：**2020-11-03** · 已发表 · 分类：数据与基准。
+
+**一句话概括：** 解释 Tox21 化合物库如何整合多机构样品、开展高通量实验并形成可追溯的毒性数据。
+
+| 字段 | 内容 |
+| --- | --- |
+| 发表期刊/会议与时间 | Chemical Research in Toxicology 34(2), 189–216；2020-11-03 在线发表，2021-02-15 卷期 |
+| 主要痛点 | 来自不同机构的化合物库覆盖范围不同，合并后需要统一结构注释、识别重复样品并评估实验重现性。 |
+| 数据集 | Tox21 10K 库约 10,000 个化学样品；截至论文描述阶段，约 8,500 种化学物质经过 70 多项高通量测定，产生超过一亿个数据点。 |
+| 方法 | 整合合作机构的化合物库，以多浓度定量高通量筛选、重复样品和分析化学质控组织数据；用 ToxPrint 化学类型及富集分析比较化学空间和活性模式。 |
+| 结论 | 不同机构的化学库形成互补覆盖，合并后能发现单独样本库中不易识别的结构–活性模式，为理解和使用 Tox21 提供数据背景。 |
+
+[论文原文](https://doi.org/10.1021/acs.chemrestox.0c00264) · [详细解读](papers/admet/tox21-library-2020.md)
+
 ### 2019
 
 #### Chemprop / D-MPNN
 
 **Analyzing Learned Molecular Representations for Property Prediction**
 
-发表时间：**2019-07-30** · 分类：基础方法。
+发表时间：**2019-07-30** · 已发表 · 分类：基础方法。
 
 **一句话概括：** 通过沿有向化学键传递信息来学习分子表示，并在公开和工业数据上检验性质预测。
 
@@ -636,7 +678,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 **Pushing the Boundaries of Molecular Representation for Drug Discovery with the Graph Attention Mechanism**
 
-发表时间：**2019** · 分类：基础方法。
+发表时间：**2019** · 已发表 · 分类：基础方法。
 
 **一句话概括：** 让图神经网络在汇总分子信息时学习关注哪些原子和邻域，用于性质预测与结构归因。
 
@@ -656,7 +698,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 **MoleculeNet: a benchmark for molecular machine learning**
 
-发表时间：**2017-10-31** · 分类：数据与基准。
+发表时间：**2017-10-31** · 已发表 · 分类：数据与基准。
 
 **一句话概括：** 把分散的分子数据集、划分、指标与算法组织成基准，让性质预测方法有共同的比较起点。
 
@@ -680,6 +722,19 @@ python scripts/build.py --check
 ```
 
 第一条命令更新双语首页、专题总表、单篇解读及 CSV；第二条检查必填字段、重复记录、日期、URL、内部链接、翻译覆盖与同步状态，以及生成文件一致性。翻译维护步骤见[贡献方式](CONTRIBUTING.md)。
+
+## 引用方式
+
+引用文献笔记时使用 [CITATION.cff](CITATION.cff)，或 GitHub 侧栏的 “Cite this repository”。具体方法和实验发现引用对应原论文；复用笔记时记录所用提交版本。
+
+```bibtex
+@misc{du_admet_literature,
+  author = {Du, Guangliang},
+  title = {ADMET Literature: Bilingual Research Notes},
+  year = {2026},
+  url = {https://github.com/MasterDGL/admet-literature}
+}
+```
 
 ## 参考与致谢
 

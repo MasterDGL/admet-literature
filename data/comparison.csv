@@ -1,0 +1,26 @@
+﻿endpoint,dataset,size,method,paper_id,metric,direction,mean,std,split,protocol,source,checked_on
+Caco-2,Caco2_Wang,906,CaliciBoost,caliciboost-2025,MAE,lower,0.256,0.006,TDC scaffold; 20% held-out test,tdc-admet-group,https://tdcommons.ai/benchmark/admet_group/01caco2/,2026-09-22
+Caco-2,Caco2_Wang,906,MapLight,maplight-2023,MAE,lower,0.276,0.005,TDC scaffold; 20% held-out test,tdc-admet-group,https://tdcommons.ai/benchmark/admet_group/01caco2/,2026-09-22
+Caco-2,Caco2_Wang,906,MapLight + GNN,maplight-2023,MAE,lower,0.287,0.005,TDC scaffold; 20% held-out test,tdc-admet-group,https://tdcommons.ai/benchmark/admet_group/01caco2/,2026-09-22
+Caco-2,Caco2_Wang,906,Chemprop-RDKit,chemprop-dmpnn-2019,MAE,lower,0.33,0.024,TDC scaffold; 20% held-out test,tdc-admet-group,https://tdcommons.ai/benchmark/admet_group/01caco2/,2026-09-22
+Caco-2,Caco2_Wang,906,AttentiveFP,attentivefp-2019,MAE,lower,0.401,0.032,TDC scaffold; 20% held-out test,tdc-admet-group,https://tdcommons.ai/benchmark/admet_group/01caco2/,2026-09-22
+P-gp,Pgp_Broccatelli,1212,MapLight + GNN,maplight-2023,AUROC,higher,0.938,0.002,TDC scaffold; 20% held-out test,tdc-admet-group,https://tdcommons.ai/benchmark/admet_group/03pgp/,2026-09-22
+P-gp,Pgp_Broccatelli,1212,MapLight,maplight-2023,AUROC,higher,0.93,0.002,TDC scaffold; 20% held-out test,tdc-admet-group,https://tdcommons.ai/benchmark/admet_group/03pgp/,2026-09-22
+P-gp,Pgp_Broccatelli,1212,AttentiveFP,attentivefp-2019,AUROC,higher,0.892,0.012,TDC scaffold; 20% held-out test,tdc-admet-group,https://tdcommons.ai/benchmark/admet_group/03pgp/,2026-09-22
+P-gp,Pgp_Broccatelli,1212,Chemprop-RDKit,chemprop-dmpnn-2019,AUROC,higher,0.886,0.016,TDC scaffold; 20% held-out test,tdc-admet-group,https://tdcommons.ai/benchmark/admet_group/03pgp/,2026-09-22
+BBB,BBB_Martins,1975,MapLight,maplight-2023,AUROC,higher,0.916,0.001,TDC scaffold; 20% held-out test,tdc-admet-group,https://tdcommons.ai/benchmark/admet_group/07bbb/,2026-09-22
+BBB,BBB_Martins,1975,MapLight + GNN,maplight-2023,AUROC,higher,0.913,0.001,TDC scaffold; 20% held-out test,tdc-admet-group,https://tdcommons.ai/benchmark/admet_group/07bbb/,2026-09-22
+BBB,BBB_Martins,1975,Chemprop-RDKit,chemprop-dmpnn-2019,AUROC,higher,0.869,0.027,TDC scaffold; 20% held-out test,tdc-admet-group,https://tdcommons.ai/benchmark/admet_group/07bbb/,2026-09-22
+BBB,BBB_Martins,1975,AttentiveFP,attentivefp-2019,AUROC,higher,0.855,0.011,TDC scaffold; 20% held-out test,tdc-admet-group,https://tdcommons.ai/benchmark/admet_group/07bbb/,2026-09-22
+CYP2C9,CYP2C9_Veith,12092,MapLight + GNN,maplight-2023,AUPRC,higher,0.859,0.001,TDC scaffold; 20% held-out test,tdc-admet-group,https://tdcommons.ai/benchmark/admet_group/10cyp2c9i/,2026-09-22
+CYP2C9,CYP2C9_Veith,12092,MapLight,maplight-2023,AUPRC,higher,0.783,0.002,TDC scaffold; 20% held-out test,tdc-admet-group,https://tdcommons.ai/benchmark/admet_group/10cyp2c9i/,2026-09-22
+CYP2C9,CYP2C9_Veith,12092,Chemprop-RDKit,chemprop-dmpnn-2019,AUPRC,higher,0.777,0.003,TDC scaffold; 20% held-out test,tdc-admet-group,https://tdcommons.ai/benchmark/admet_group/10cyp2c9i/,2026-09-22
+CYP2C9,CYP2C9_Veith,12092,AttentiveFP,attentivefp-2019,AUPRC,higher,0.749,0.004,TDC scaffold; 20% held-out test,tdc-admet-group,https://tdcommons.ai/benchmark/admet_group/10cyp2c9i/,2026-09-22
+hERG,hERG,648,MapLight + GNN,maplight-2023,AUROC,higher,0.88,0.002,TDC scaffold; 20% held-out test,tdc-admet-group,https://tdcommons.ai/benchmark/admet_group/20herg/,2026-09-22
+hERG,hERG,648,MapLight,maplight-2023,AUROC,higher,0.871,0.004,TDC scaffold; 20% held-out test,tdc-admet-group,https://tdcommons.ai/benchmark/admet_group/20herg/,2026-09-22
+hERG,hERG,648,Chemprop-RDKit,chemprop-dmpnn-2019,AUROC,higher,0.84,0.007,TDC scaffold; 20% held-out test,tdc-admet-group,https://tdcommons.ai/benchmark/admet_group/20herg/,2026-09-22
+hERG,hERG,648,AttentiveFP,attentivefp-2019,AUROC,higher,0.825,0.007,TDC scaffold; 20% held-out test,tdc-admet-group,https://tdcommons.ai/benchmark/admet_group/20herg/,2026-09-22
+AMES,AMES,7255,MapLight + GNN,maplight-2023,AUROC,higher,0.869,0.002,TDC scaffold; 20% held-out test,tdc-admet-group,https://tdcommons.ai/benchmark/admet_group/21ames/,2026-09-22
+AMES,AMES,7255,MapLight,maplight-2023,AUROC,higher,0.868,0.002,TDC scaffold; 20% held-out test,tdc-admet-group,https://tdcommons.ai/benchmark/admet_group/21ames/,2026-09-22
+AMES,AMES,7255,Chemprop-RDKit,chemprop-dmpnn-2019,AUROC,higher,0.85,0.004,TDC scaffold; 20% held-out test,tdc-admet-group,https://tdcommons.ai/benchmark/admet_group/21ames/,2026-09-22
+AMES,AMES,7255,AttentiveFP,attentivefp-2019,AUROC,higher,0.814,0.008,TDC scaffold; 20% held-out test,tdc-admet-group,https://tdcommons.ai/benchmark/admet_group/21ames/,2026-09-22

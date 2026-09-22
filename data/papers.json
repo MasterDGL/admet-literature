@@ -1463,6 +1463,99 @@
       "limitations": "表 S1 的分数对应不同原研究的端点和实验设置，比较模型时需回到相应论文；表 S2–S3 的数据规模、工具版本和访问日期保留为原文历史记录。",
       "code_status": "综述配套资源为公开数据和预测工具清单，见补充表 S2–S3",
       "verification_scope": "已核对出版社书目与摘要，以及作者公开的 17 页补充材料表 S1–S3；正文各毒性小节尚未逐节核对。"
+    },
+    {
+      "id": "tox21-library-2020",
+      "title": "The Tox21 10K Compound Library: Collaborative Chemistry Advancing Toxicology",
+      "name": "Tox21 10K 化合物库",
+      "topic": "admet",
+      "group": "数据与基准",
+      "publication": {
+        "venue": "Chemical Research in Toxicology",
+        "year": 2020,
+        "date": "2020-11-03",
+        "date_basis": "出版社在线发表日期",
+        "status": "journal",
+        "citation": "Chemical Research in Toxicology 34(2), 189–216；2020-11-03 在线发表，2021-02-15 卷期"
+      },
+      "tags": [
+        "毒性",
+        "数据资源"
+      ],
+      "doi": "10.1021/acs.chemrestox.0c00264",
+      "paper_url": "https://doi.org/10.1021/acs.chemrestox.0c00264",
+      "code_url": null,
+      "sources": [
+        {
+          "label": "出版社原文",
+          "url": "https://pubs.acs.org/doi/10.1021/acs.chemrestox.0c00264"
+        },
+        {
+          "label": "公开全文",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7887805/"
+        },
+        {
+          "label": "官方数据下载",
+          "url": "https://tripod.nih.gov/tox/collaboratordownload"
+        }
+      ],
+      "verified_on": "2026-09-22",
+      "one_liner": "解释 Tox21 化合物库如何整合多机构样品、开展高通量实验并形成可追溯的毒性数据。",
+      "pain_point": "来自不同机构的化合物库覆盖范围不同，合并后需要统一结构注释、识别重复样品并评估实验重现性。",
+      "datasets": "Tox21 10K 库约 10,000 个化学样品；截至论文描述阶段，约 8,500 种化学物质经过 70 多项高通量测定，产生超过一亿个数据点。",
+      "method": "整合合作机构的化合物库，以多浓度定量高通量筛选、重复样品和分析化学质控组织数据；用 ToxPrint 化学类型及富集分析比较化学空间和活性模式。",
+      "conclusion": "不同机构的化学库形成互补覆盖，合并后能发现单独样本库中不易识别的结构–活性模式，为理解和使用 Tox21 提供数据背景。",
+      "evaluation": "分析化合物库构成、样品重复、质控流程、理化性质与化学类型富集；研究对象是数据资源及其覆盖范围。",
+      "limitations": "Tox21 10K 原始库、2014 挑战集与 MoleculeNet 的 12 端点子集属于不同数据版本，建模时需记录具体版本与样本筛选。",
+      "code_status": "数据资源论文；样品信息与测定数据由合作机构公开发布",
+      "verification_scope": "已核对出版社摘要与方法介绍、Crossref 在线/卷期日期，以及官方数据下载入口。"
+    },
+    {
+      "id": "tox21-conformal-2021",
+      "title": "Deep Learning-Based Conformal Prediction of Toxicity",
+      "name": "毒性深度共形预测",
+      "topic": "admet",
+      "group": "专题补读",
+      "publication": {
+        "venue": "Journal of Chemical Information and Modeling",
+        "year": 2021,
+        "date": "2021-05-27",
+        "date_basis": "出版社在线发表日期",
+        "status": "journal",
+        "citation": "Journal of Chemical Information and Modeling 61(6), 2648–2657；2021-05-27"
+      },
+      "tags": [
+        "毒性",
+        "不确定性",
+        "共形预测"
+      ],
+      "doi": "10.1021/acs.jcim.1c00208",
+      "paper_url": "https://doi.org/10.1021/acs.jcim.1c00208",
+      "code_url": "https://github.com/FredrikSvenssonUK/tox21_conformal",
+      "sources": [
+        {
+          "label": "出版社论文",
+          "url": "https://pubs.acs.org/doi/10.1021/acs.jcim.1c00208"
+        },
+        {
+          "label": "作者接受稿全文",
+          "url": "https://discovery.ucl.ac.uk/id/eprint/10129421/3/Svensson_Zhang_etal_s2_r1.pdf"
+        },
+        {
+          "label": "作者代码",
+          "url": "https://github.com/FredrikSvenssonUK/tox21_conformal"
+        }
+      ],
+      "verified_on": "2026-09-22",
+      "one_liner": "给毒性模型加入共形预测，让用户按置信水平得到单一类别或多个候选类别，并评估漏检与不确定性。",
+      "pain_point": "单个毒性类别或概率难以直接说明预测可靠性，类别不均衡又容易导致模型漏检少数有毒分子。",
+      "datasets": "Tox21 挑战数据的 12 个核受体与应激反应端点；每个端点按活性/非活性单独建模，样本数见原文表 1。",
+      "method": "结合 DNN、GCN、GAT、其他图网络、随机森林和 LightGBM，使用独立校准集构建 Mondrian 共形预测器；比较有效性、单标签预测比例、平衡准确率与 MCC。",
+      "conclusion": "GCN 共形预测在 90% 置信水平下，对有毒类别的单标签预测比例超过 80%。多种基础模型的有毒分子召回增加，同时假阳性也增加。",
+      "evaluation": "10 折分层交叉验证；每折训练部分先留出 10% 验证集，再从剩余部分划出 20% 校准集。比较不同显著性水平下的有效性和效率，并单独报告阳性与阴性类别。",
+      "limitations": "覆盖保证依赖数据可交换性；单标签预测比例与正确率是不同指标。外推到新化学空间时，应另外检查校准后的实际覆盖率。",
+      "code_status": "作者公开建模 Python 代码，论文给出 Tox21 数据入口",
+      "verification_scope": "已核对作者接受稿的数据、方法、实验与结论，以及出版社和 Crossref 日期；核对作者代码入口。"
     }
   ]
 }

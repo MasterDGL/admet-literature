@@ -12,6 +12,7 @@ from datetime import date
 from pathlib import Path
 from urllib.parse import urlparse
 import build_en
+import build_resources
 
 ROOT = Path(__file__).resolve().parents[1]
 GROUPS = ['核心论文', '专题补读', '基础方法', '数据与基准', '综述', '观点文章', '预印本']
@@ -77,6 +78,8 @@ def card(p):
     status = {'journal': '正式期刊论文', 'conference': '正式会议论文', 'preprint': '预印本'}[pub['status']]
     if pub['status'] == 'conference' and 'Workshop' in pub['venue']:
         status = '会议 Workshop 论文'
+    if pub['status'] == 'preprint':
+        status = '🟠 **预印本**'
     fields = [['发表期刊/会议与时间', pub['citation']],
               ['日期口径', pub['date_basis']], ['发表状态', status],
               ['主要痛点', p['pain_point']], ['数据集', p['datasets']],
@@ -140,7 +143,7 @@ def build(papers):
                   ['主要痛点', p['pain_point']], ['数据集', p['datasets']],
                   ['方法', p['method']], ['结论', p['conclusion']]]
         overview.append(f'#### {p["name"]}\n\n**{p["title"]}**\n\n'
-                        f'发表时间：**{p["publication"]["date"]}** · 分类：{p["group"]}。\n\n'
+                        f'发表时间：**{p["publication"]["date"]}** · {build_en.publication_label(p, en=False)} · 分类：{p["group"]}。\n\n'
                         f'**一句话概括：** {p["one_liner"]}\n\n'
                         + table(['字段', '内容'], fields) + '\n\n' + links)
     year_nav = ' · '.join(f'[{year}](#{year})' for year in dict.fromkeys(p['publication']['year'] for p in papers))
@@ -162,12 +165,16 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 ## 导航
 
 - [ADMET 论文总表](topics/admet.md)：按发表时间从新到旧排列，逐篇保留五项核心信息。
+- [方法对比](docs/comparison.md)：按端点查看同一 TDC 基准下的成绩，附交互表与 CSV。
+- [数据集字典](docs/datasets.md)：数据规模、端点、来源、许可与加载入口。
 - [基础方法与基准](topics/foundations.md)：Chemprop、AttentiveFP、MoleculeNet、MoleculeACE。
 - [知识地图说明](docs/knowledge-map.md)：从研究问题找到方法、任务和阅读入口。
 - [优先精读](#优先精读)：先建立研究问题、数据和方法的认识。
 - [论文梳理](#论文梳理)：直接在本页查看全部 {len(papers)} 篇的一句话概括、发表信息、痛点、数据集、方法和结论。
 - [选文与整理方法](docs/curation.md)：选文标准、实验比较和资料来源。
 - [AIDD 研究范围](docs/scope.md)：当前覆盖与后续专题。
+- [讨论区](https://github.com/MasterDGL/admet-literature/discussions)：提问与推荐论文。
+- [维护说明](docs/maintenance.md)：自动检查、链接巡检和数据更新。
 - [贡献方式](CONTRIBUTING.md)：推荐论文、纠正信息或补充实验依据。
 - [结构化数据](data/papers.json) · [CSV 总表](data/papers.csv)。
 
@@ -202,6 +209,19 @@ python scripts/build.py --check
 
 第一条命令更新双语首页、专题总表、单篇解读及 CSV；第二条检查必填字段、重复记录、日期、URL、内部链接、翻译覆盖与同步状态，以及生成文件一致性。翻译维护步骤见[贡献方式](CONTRIBUTING.md)。
 
+## 引用方式
+
+引用文献笔记时使用 [CITATION.cff](CITATION.cff)，或 GitHub 侧栏的 “Cite this repository”。具体方法和实验发现引用对应原论文；复用笔记时记录所用提交版本。
+
+```bibtex
+@misc{{du_admet_literature,
+  author = {{Du, Guangliang}},
+  title = {{ADMET Literature: Bilingual Research Notes}},
+  year = {{2026}},
+  url = {{https://github.com/MasterDGL/admet-literature}}
+}}
+```
+
 ## 参考与致谢
 
 组织方式参考 [awesome-AIDD](https://github.com/daiyun02211/awesome-AIDD) 的主题导航、[Awesome-Deepfakes-Detection](https://github.com/Daisy-Zhang/Awesome-Deepfakes-Detection) 的论文与代码索引，以及 [OpenADMET](https://github.com/OpenADMET) 的开放数据与评测实践。
@@ -211,7 +231,7 @@ python scripts/build.py --check
     for topic, title in TOPICS.items():
         entries = [p for p in papers if p['topic'] == topic]
         rows = [[p['publication']['date'],
-                 f'[{p["name"]}](../{note_path(p)}) · [原文]({p["paper_url"]})<br>{p["group"]}',
+                 f'[{p["name"]}](../{note_path(p)}) · [原文]({p["paper_url"]})<br>{build_en.publication_label(p, en=False)} · {p["group"]}',
                  p['publication']['citation'], p['pain_point'], p['datasets'], p['method'], p['conclusion']]
                 for p in entries]
         listing = table(['发表时间', '论文与分类', '期刊/会议与时间', '主要痛点', '数据集', '方法', '结论'], rows)
@@ -266,7 +286,7 @@ def bilingual(papers, translations):
             switch = f'**English** | [简体中文]({target})' if lang == 'en' else f'[English]({target}) | **简体中文**'
             heading, body = store[path].split('\n', 1)
             store[path] = heading + '\n\n' + switch + '\n' + body
-    return chinese | english
+    return chinese | english | build_resources.build(papers, table)
 
 
 def main():

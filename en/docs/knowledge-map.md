@@ -30,6 +30,8 @@ Benchmarks, error analysis, uncertainty and reproducibility span the entire work
 
 Topic entry points: use the [AI drug toxicity review](../papers/admet/ai-toxicity-review-2023.md) to explore toxicity tasks, data and tools; read [SSL-GCN](../papers/admet/ssl-gcn-2021.md) for learning from unlabeled molecules, [Domain-aware / pBRICS](../papers/admet/domain-aware-pbrics-2023.md) for chemical fragments and model interpretation, and [Uni-QSAR](../papers/admet/uni-qsar-2023.md) for automatic selection and integration of molecular representations.
 
+For uncertainty estimation, start with [deep conformal toxicity prediction](../papers/admet/tox21-conformal-2021.md) to distinguish confidence, coverage and single-label efficiency. The [Tox21 10K library](../papers/admet/tox21-library-2020.md) explains experimental origins and quality control. See [method comparisons](comparison.md) for benchmark results and the [dataset dictionary](datasets.md) for access.
+
 ## Extending the map
 
 Connect new topics to the relevant level and cross-reference papers across levels. Each entry retains the one-sentence summary, publication information, research problem, datasets, method and findings, followed by experimental analysis and sources.

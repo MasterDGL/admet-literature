@@ -30,6 +30,8 @@ ADMET 位于预测层，为分子设计提供吸收、分布、代谢、排泄�
 
 专题入口：用 [AI 药物毒性预测综述](../papers/admet/ai-toxicity-review-2023.md)了解毒性任务、数据和工具；沿 [SSL-GCN](../papers/admet/ssl-gcn-2021.md)学习如何利用无标签分子，沿 [Domain-aware / pBRICS](../papers/admet/domain-aware-pbrics-2023.md)了解化学片段与模型解释，沿 [Uni-QSAR](../papers/admet/uni-qsar-2023.md)了解多种分子表示的自动选择与集成。
 
+不确定性估计可从[毒性深度共形预测](../papers/admet/tox21-conformal-2021.md)开始，理解置信水平、覆盖率与单标签预测比例；[Tox21 10K 化合物库](../papers/admet/tox21-library-2020.md)介绍毒性数据的实验来源和质量控制。横向比较见[方法对比](comparison.md)，获取数据见[数据集字典](datasets.md)。
+
 ## 后续扩展方式
 
 新专题按研究问题接入对应层，相关论文可以跨层引用。每篇保持“一句话概括、发表信息、痛点、数据集、方法、结论”的结构，并附实验分析与参考资料。

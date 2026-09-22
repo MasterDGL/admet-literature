@@ -14,7 +14,7 @@ Category: Preprints. Topics: Fingerprints, CatBoost, Baselines.
 | --- | --- |
 | Publication and date | arXiv preprint, initially submitted 2023-09-29; these notes cover that version. |
 | Date basis | Initial arXiv submission date; revisions listed in the citation |
-| Publication status | Preprint |
+| Publication status | 🟠 **Preprint** |
 | Research problem | Can simple, computationally inexpensive feature-based models remain competitive with deep learning? |
 | Datasets | 22 TDC ADMET tasks. |
 | Method | Combines ECFP, Avalon, ErG and molecular descriptors in CatBoost, with an additional variant incorporating GNN representations. |

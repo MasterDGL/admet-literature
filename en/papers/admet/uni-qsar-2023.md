@@ -14,7 +14,7 @@ Category: Preprints. Topics: AutoML, Multimodal representations, Ensembles.
 | --- | --- |
 | Publication and date | arXiv:2304.12239, v1; 2023-04-24 |
 | Date basis | arXiv version 1 submission date |
-| Publication status | Preprint |
+| Publication status | 🟠 **Preprint** |
 | Research problem | Different properties favor different molecular features, making manual representation, model and hyperparameter selection costly; skewed regression labels and class imbalance add further modeling challenges. |
 | Datasets | The 22 TDC ADMET Benchmark Group tasks: nine regression and 13 classification tasks. A separate CNS penetration case uses 940 training compounds (315 positive and 625 negative) and 117 external test compounds. |
 | Method | Combines fingerprints and descriptors with 1D representations such as K-BERT, 2D representations including GROVER, MolCLR and KPGT, and Uni-Mol 3D representations. Target transformations, imbalance-aware learning, Bayesian optimization and two-level stacking are orchestrated with dflow. |

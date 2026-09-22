@@ -14,7 +14,7 @@ Category: Preprints. Topics: Multimodal learning, Model ensembles.
 | --- | --- |
 | Publication and date | bioRxiv preprint; Crossref publication date 2026-08-25; the DOI contains 08-24. The author repository labels it under review. |
 | Date basis | Crossref preprint publication date; DOI date recorded separately |
-| Publication status | Preprint |
+| Publication status | 🟠 **Preprint** |
 | Research problem | A single representation may not suit all endpoints; complementary modalities must be combined with a controlled model-selection process. |
 | Datasets | 22 TDC ADMET tasks. |
 | Method | Combines SMILES, molecular graphs, 3D geometry and chemical priors with task-specific prediction heads, model selection and ensembles. |

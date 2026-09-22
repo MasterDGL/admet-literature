@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ADMET method comparisons</title>
+<style>body{font:16px/1.6 system-ui,sans-serif;max-width:1100px;margin:40px auto;padding:0 24px;color:#183044;background:#f7fafc}h1{font-size:32px}a{color:#166a90}label{display:inline-block;margin:12px 24px 12px 0}select,input,button{font:inherit;padding:7px;border:1px solid #aabac4;border-radius:5px;background:white}table{width:100%;border-collapse:collapse;background:white}th,td{text-align:left;padding:14px;border-bottom:1px solid #d8e2e9}th button{border:0;font-weight:bold;padding:0;color:#164662}.scroll{overflow-x:auto}.preprint{color:#875308;font-weight:600}footer{font-size:14px;margin-top:28px}</style>
+<body><nav><a href="https://github.com/MasterDGL/admet-literature">ADMET Literature</a> · <button id="lang">简体中文</button></nav>
+<h1 id="title"></h1><p id="intro"></p>
+<label><span id="datasetLabel"></span> <select id="dataset"></select></label>
+<label><span id="searchLabel"></span> <input id="search" type="search"></label>
+<p id="context"></p><div class="scroll"><table><thead><tr><th><button id="methodSort"></button></th><th id="statusHead"></th><th><button id="scoreSort"></button></th><th id="sourceHead"></th></tr></thead><tbody id="rows"></tbody></table></div>
+<footer id="foot"></footer>
+<script>
+const records=__RECORDS__;
+let en=true, sort='score', ascending=true;
+const el=id=>document.getElementById(id);
+const labels=()=>en?{title:'Compare ADMET methods',intro:'Choose one dataset to compare methods under the same TDC benchmark protocol. Snapshot: 2026-09-22.',dataset:'Dataset',search:'Find a method',method:'Method',status:'Publication',source:'Source',score:'Mean ± SD',published:'Published',preprint:'Preprint',foot:'Scores are reported leaderboard submissions. AUROC/AUPRC: higher is better. MAE: lower is better. This table includes selected methods in the catalog.',empty:'No matching methods.'}:{title:'ADMET 方法对比',intro:'选择一个数据集，在同一 TDC 基准协议下比较方法。快照日期：2026-09-22。',dataset:'数据集',search:'查找方法',method:'方法',status:'发表状态',source:'来源',score:'均值 ± 标准差',published:'已发表',preprint:'预印本',foot:'成绩来自榜单提交记录。AUROC/AUPRC 越高越好，MAE 越低越好。本表收录仓库中部分方法。',empty:'没有匹配的方法。'};
+for(const name of [...new Set(records.map(r=>r.dataset))]){const o=document.createElement('option');o.value=o.textContent=name;el('dataset').append(o)}
+function render(){
+ const t=labels();document.documentElement.lang=en?'en':'zh-CN';el('lang').textContent=en?'简体中文':'English';
+ for(const [id,key] of Object.entries({title:'title',intro:'intro',datasetLabel:'dataset',searchLabel:'search',methodSort:'method',statusHead:'status',sourceHead:'source',scoreSort:'score',foot:'foot'}))el(id).textContent=t[key];
+ el('search').setAttribute('aria-label',t.search);el('dataset').setAttribute('aria-label',t.dataset);
+ const set=records.filter(r=>r.dataset===el('dataset').value), first=set[0];
+ el('context').textContent=`${first.size.toLocaleString()} ${en?'molecules · scaffold split, 20% held-out test':'个分子 · 骨架划分，20% 留出测试集'} · ${first.metric} ${first.direction==='higher'?'↑':'↓'}`;
+ const selected=set.filter(r=>r.method.toLowerCase().includes(el('search').value.toLowerCase()));
+ selected.sort((a,b)=>(ascending?1:-1)*(sort==='score'?a.mean-b.mean:a.method.localeCompare(b.method)));
+ el(sort==='score'?'scoreSort':'methodSort').textContent+=' '+(ascending?'↑':'↓');
+ el('scoreSort').parentElement.setAttribute('aria-sort',sort==='score'?(ascending?'ascending':'descending'):'none');
+ el('methodSort').parentElement.setAttribute('aria-sort',sort==='method'?(ascending?'ascending':'descending'):'none');
+ el('rows').replaceChildren();
+ for(const r of selected){const tr=document.createElement('tr');const values=[r.method,r.publication==='preprint'?t.preprint:t.published,`${r.mean.toFixed(3)} ± ${r.std.toFixed(3)}`,t.source];values.forEach((v,i)=>{const td=document.createElement('td');if(i===0||i===3){const a=document.createElement('a');a.textContent=v;a.href=i===3?r.source:`https://github.com/MasterDGL/admet-literature/blob/main/${en?'en/':''}papers/${r.paper_id==='chemprop-dmpnn-2019'||r.paper_id==='attentivefp-2019'?'foundations':'admet'}/${r.paper_id}.md`;td.append(a)}else td.textContent=v;if(i===1&&r.publication==='preprint')td.className='preprint';tr.append(td)});el('rows').append(tr)}
+ if(!selected.length){const tr=document.createElement('tr'),td=document.createElement('td');td.colSpan=4;td.textContent=t.empty;tr.append(td);el('rows').append(tr)}
+}
+el('dataset').onchange=()=>{sort='score';ascending=records.find(r=>r.dataset===el('dataset').value).direction==='lower';render()};
+el('search').oninput=render;el('lang').onclick=()=>{en=!en;render()};
+el('scoreSort').onclick=()=>{ascending=sort==='score'?!ascending:true;sort='score';render()};
+el('methodSort').onclick=()=>{ascending=sort==='method'?!ascending:true;sort='method';render()};
+render();
+</script></body></html>

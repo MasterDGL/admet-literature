@@ -863,6 +863,59 @@
         "Author supporting information, Tables S1–S3"
       ],
       "source_sha256": "02ef57ac961462ac3f7ebcbfde695bff2a900f43287886add345f594f869f2bc"
+    },
+    "tox21-library-2020": {
+      "name": "Tox21 10K compound library",
+      "tags": [
+        "Toxicity",
+        "Data resources"
+      ],
+      "publication": {
+        "citation": "Chemical Research in Toxicology 34(2), 189–216; online 2020-11-03, issue 2021-02-15",
+        "date_basis": "Publisher online publication date"
+      },
+      "source_labels": [
+        "Publisher article",
+        "Public full text",
+        "Official data downloads"
+      ],
+      "source_sha256": "643fc6a71a95a4df9deef3e6d9b4dd5a46604f97a8569af0273ee67a29af7a25",
+      "one_liner": "Explains how the Tox21 library combines agency collections, high-throughput experiments and traceable chemical annotations to produce toxicity data.",
+      "pain_point": "Agency collections cover different chemical spaces; integration requires consistent annotations, replicate identification and reproducibility assessment.",
+      "datasets": "Approximately 10,000 chemical samples in the Tox21 10K library. At the stage described in the paper, around 8,500 chemicals had been screened in over 70 assays, generating more than 100 million data points.",
+      "method": "Combines partner collections with concentration-response screening, replicates and analytical quality control. ToxPrint chemotypes and enrichment analyses compare chemical coverage and activity patterns.",
+      "conclusion": "Partner collections provide complementary coverage, revealing structure–activity patterns less apparent in individual libraries and clarifying the origins of Tox21 data.",
+      "evaluation": "Examines library composition, replicates, quality control, physicochemical properties and chemotype enrichment as properties of a data resource.",
+      "limitations": "The original 10K library, the 2014 challenge and the 12-endpoint MoleculeNet subset are different releases; modeling records should identify the release and selection steps.",
+      "code_status": "Data-resource paper; partner agencies publish sample annotations and assay data.",
+      "verification_scope": "Checked the publisher abstract and methods overview, Crossref online/issue dates and the official data download portal."
+    },
+    "tox21-conformal-2021": {
+      "name": "Deep conformal toxicity prediction",
+      "tags": [
+        "Toxicity",
+        "Uncertainty",
+        "Conformal prediction"
+      ],
+      "publication": {
+        "citation": "Journal of Chemical Information and Modeling 61(6), 2648–2657; 2021-05-27",
+        "date_basis": "Publisher online publication date"
+      },
+      "source_labels": [
+        "Publisher article",
+        "Author accepted manuscript",
+        "Author code"
+      ],
+      "source_sha256": "eb7ba19ad493df3276bb796e425a2fac4207d5b02055974b69fc0a15fef1f58d",
+      "one_liner": "Adds conformal prediction to toxicity models, returning one or multiple candidate labels at a chosen confidence level and assessing uncertainty and missed toxic compounds.",
+      "pain_point": "A class label or score does not directly quantify prediction reliability, while class imbalance can cause toxic minority compounds to be missed.",
+      "datasets": "Twelve nuclear-receptor and stress-response endpoints from the Tox21 challenge, modeled as separate active/inactive tasks; endpoint sample counts appear in Table 1.",
+      "method": "Combines DNNs, GCN, GAT, other graph models, random forests and LightGBM with Mondrian conformal prediction using a held-out calibration set. Evaluates validity, single-label efficiency, balanced accuracy and MCC.",
+      "conclusion": "GCN-based conformal prediction achieves over 80% single-label efficiency for the toxic class at 90% confidence. Several underlying models retrieve more toxic compounds, with an accompanying increase in false positives.",
+      "evaluation": "Ten-fold stratified cross-validation; each fold reserves 10% of training data for validation and 20% of the remainder for calibration. Validity and efficiency are evaluated across significance levels and separately by class.",
+      "limitations": "Coverage guarantees require exchangeability. Single-label efficiency is distinct from accuracy; application to new chemical spaces requires checking empirical calibrated coverage.",
+      "code_status": "The authors publish Python modeling code and identify the Tox21 data portal.",
+      "verification_scope": "Reviewed the accepted manuscript’s data, methods, results and conclusions; checked publisher/Crossref dates and the author code entry."
     }
   }
 }
