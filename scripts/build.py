@@ -12,7 +12,8 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
-GROUPS = ['核心论文', '专题补读', '数据与基准', '观点文章', '预印本']
+GROUPS = ['核心论文', '专题补读', '基础方法', '数据与基准', '观点文章', '预印本']
+TOPICS = {'admet': 'ADMET 与药代动力学', 'foundations': '基础方法与基准'}
 REQUIRED = ['id', 'name', 'title', 'one_liner', 'topic', 'group', 'publication', 'tags',
             'pain_point', 'datasets', 'method', 'conclusion', 'limitations',
             'evaluation', 'paper_url', 'sources', 'verified_on', 'verification_scope']
@@ -31,7 +32,7 @@ def validate(papers):
         ids.add(p['id']); titles.add(p['title'].casefold())
         if not p['one_liner'].strip():
             raise ValueError(f'{p["id"]}: missing one_liner for README')
-        if p['group'] not in GROUPS or p['topic'] != 'admet':
+        if p['group'] not in GROUPS or p['topic'] not in TOPICS:
             raise ValueError(f'Unsupported group/topic: {p["id"]}')
         pub = p['publication']
         for k in ['venue', 'year', 'date', 'date_basis', 'status', 'citation']:
@@ -66,7 +67,7 @@ def table(headers, rows):
 
 
 def note_path(p):
-    return f'papers/admet/{p["id"]}.md'
+    return f'papers/{p["topic"]}/{p["id"]}.md'
 
 
 def card(p):
@@ -83,7 +84,9 @@ def card(p):
 
 **{p['title']}**
 
-[返回 ADMET 总表](../../topics/admet.md) · [返回首页](../../README.md)
+[返回{TOPICS[p['topic']]}总表](../../topics/{p['topic']}.md) · [返回首页](../../README.md)
+
+**一句话概括：** {p['one_liner']}
 
 分类：{p['group']}。主题：{'、'.join(p['tags'])}。
 
@@ -110,9 +113,12 @@ def card(p):
 def build(papers):
     artifacts = {note_path(p): card(p) for p in papers}
     count = Counter(p['group'] for p in papers)
+    topic_count = Counter(p['topic'] for p in papers)
+    latest = max(p['verified_on'] for p in papers)
     formal_research = sum(p['publication']['status'] != 'preprint' and p['group'] != '观点文章' for p in papers)
     nav = table(['专题', '当前内容', '入口'], [
-        ['ADMET 与药代动力学', f'{len(papers)} 篇；其中 {count["核心论文"]} 篇优先精读', '[论文总表](topics/admet.md)'],
+        ['ADMET 与药代动力学', f'{topic_count["admet"]} 篇', '[论文总表](topics/admet.md)'],
+        ['基础方法与基准', f'{topic_count["foundations"]} 篇；分子表示、数据与评测', '[基础阅读](topics/foundations.md)'],
         ['其他 AIDD 方向', '扩展计划，尚未纳入独立专题', '[研究范围](docs/scope.md)']])
     core = table(['论文', '期刊/会议', '发表时间', '一句话概括'], [
         [f'[{p["name"]}]({note_path(p)})', p['publication']['venue'], p['publication']['date'], p['one_liner']]
@@ -133,17 +139,25 @@ def build(papers):
                             f'**一句话概括：** {p["one_liner"]}\n\n'
                             + table(['字段', '内容'], fields) + '\n\n' + links)
     readme_papers = '\n\n'.join(overview)
-    artifacts['README.md'] = f'''# Awesome AIDD Papers
+    artifacts['README.md'] = f'''# ADMET 文献整理
 
-AI-aided drug discovery papers with structured, source-linked research notes.
+ADMET literature notes, with supporting methods and benchmarks for AI-aided drug discovery.
 
-面向 **AI 辅助药物发现（AIDD）** 的论文整理。每篇记录 **发表期刊/会议与时间、主要痛点、数据集、方法、结论**，并补充评测条件、原文与代码链接。
+围绕 **ADMET 与药代动力学预测** 整理论文，并补充分子表示、数据和评测等 AIDD 基础文献。每篇记录 **一句话概括、发表期刊/会议与时间、主要痛点、数据集、方法、结论**，并提供评测条件、原文与代码链接。
 
-首个专题为 **ADMET 与药代动力学**。目前收录 **{len(papers)} 篇**：{formal_research} 篇正式研究/数据基准论文、{count['观点文章']} 篇正式观点文章、{count['预印本']} 篇预印本。其中 **{count['核心论文']} 篇**建议优先精读。首批内容核验日期为 **2026-09-19**；仓库整理日期为 **2026-09-21**。后续更新以各条目核验日期为准。
+目前收录 **{len(papers)} 篇**：**{topic_count['admet']} 篇 ADMET 与药代动力学**、**{topic_count['foundations']} 篇基础方法与基准**。按发表类型分为 {formal_research} 篇正式研究/数据基准论文、{count['观点文章']} 篇正式观点文章和 {count['预印本']} 篇预印本；其中 {count['核心论文']} 篇列为核心精读。最近一批内容核验日期为 **{latest}**；具体核验范围和日期见各条目，不表示全部旧条目已重新审计。
+
+## AIDD 知识地图
+
+![AIDD 五层知识地图：自下而上为数据与研究问题、分子与蛋白表示、预测任务、设计与优化、实验验证与迭代；ADMET 是当前重点，实验结果反馈到数据。](assets/aidd-knowledge-pyramid.svg)
+
+这是一张用于阅读导航的知识层级图：越往上，越接近设计和实验决策；层级与面积不表示研究价值或论文质量。ADMET 与结合、活性预测同属预测层，并参与多参数优化。实际研究会反复迭代，评测贯穿各层。[查看各层说明与论文入口](docs/knowledge-map.md)。
 
 ## 导航
 
 - [ADMET 论文总表](topics/admet.md)：按研究用途分类，逐篇保留五项核心信息。
+- [基础方法与基准](topics/foundations.md)：Chemprop、AttentiveFP、MoleculeNet、MoleculeACE。
+- [知识地图说明](docs/knowledge-map.md)：从研究问题找到方法、任务和阅读入口。
 - [优先精读](#优先精读)：先建立研究问题、数据和方法的认识。
 - [论文梳理](#论文梳理)：直接在本页查看全部 {len(papers)} 篇的一句话概括、发表信息、痛点、数据集、方法和结论。
 - [筛选与 SOTA 判定](docs/curation.md)：如何判断结论可比、证据充分。
@@ -167,7 +181,7 @@ AI-aided drug discovery papers with structured, source-linked research notes.
 
 ## 论文梳理
 
-[核心论文](#核心论文) · [专题补读](#专题补读) · [数据与基准](#数据与基准) · [观点文章](#观点文章) · [预印本](#预印本)
+[核心论文](#核心论文) · [专题补读](#专题补读) · [基础方法](#基础方法) · [数据与基准](#数据与基准) · [观点文章](#观点文章) · [预印本](#预印本)
 
 下列内容均在本页展开。结论保留原文的比较范围；更完整的评测设置和局限见各条目的解读页。
 
@@ -190,28 +204,35 @@ python scripts/build.py --check
 
 原创整理内容和维护脚本采用 [MIT License](LICENSE)。所引用论文、数据与第三方代码遵循各自的许可；本仓库提供链接与原创摘要，不分发论文全文。
 '''
-    sections = []
-    for group in GROUPS:
-        entries = sorted([p for p in papers if p['group'] == group], key=lambda p: p['publication']['date'], reverse=True)
-        rows = [[f'[{p["name"]}](../{note_path(p)}) · [原文]({p["paper_url"]})',
-                 p['publication']['citation'], p['pain_point'], p['datasets'], p['method'], p['conclusion']]
-                for p in entries]
-        sections.append(f'## {group}\n\n' + table(['论文与解读', '期刊/会议与时间', '主要痛点', '数据集', '方法', '结论'], rows))
-    artifacts['topics/admet.md'] = '''# ADMET 与药代动力学论文
+    for topic, title in TOPICS.items():
+        sections = []
+        for group in GROUPS:
+            entries = sorted([p for p in papers if p['topic'] == topic and p['group'] == group],
+                             key=lambda p: p['publication']['date'], reverse=True)
+            if not entries:
+                continue
+            rows = [[f'[{p["name"]}](../{note_path(p)}) · [原文]({p["paper_url"]})',
+                     p['publication']['citation'], p['pain_point'], p['datasets'], p['method'], p['conclusion']]
+                    for p in entries]
+            sections.append(f'## {group}\n\n' + table(['论文与解读', '期刊/会议与时间', '主要痛点', '数据集', '方法', '结论'], rows))
+        intro = ('ADMET 指吸收、分布、代谢、排泄和毒性；相关理化性质与人体 PK 也在本专题范围内。'
+                 if topic == 'admet' else
+                 '这些文献提供分子表示、数据与评测基础，不作为当前 ADMET SOTA 排名。MoleculeACE 主要研究生物活性悬崖。')
+        artifacts[f'topics/{topic}.md'] = f'''# {title}
 
-[返回首页](../README.md) · [筛选规则](../docs/curation.md) · [下载 CSV](../data/papers.csv)
+[返回首页](../README.md) · [知识地图](../docs/knowledge-map.md) · [筛选规则](../docs/curation.md) · [下载 CSV](../data/papers.csv)
 
-ADMET 指吸收、分布、代谢、排泄和毒性。相关理化性质与人体 PK 也在本专题范围内；通用分子模型仅在具有相关实验证据时纳入。
+{intro}
 
-内容核验截至 **2026-09-19**。以下分组反映研究用途；组内按发表日期倒序。表中的结论均来自条目列出的文献或明确日期的榜单快照，点击论文名查看评测设置与限制。
+本专题共 **{topic_count[topic]} 篇**。组内按记录的发表日期倒序；内容核验日期与范围见各篇。点击论文名查看一句话概括、评测设置和限制。
 
 ''' + '\n\n'.join(sections) + '\n'
     buf = io.StringIO(newline='')
     writer = csv.writer(buf, lineterminator='\n')
-    writer.writerow(['ID','论文简称','完整题名','分类','主题','期刊或会议','发表时间','日期口径','发表状态','主要痛点','数据集','方法','结论','评测设置','限制','原文URL','代码URL','代码状态','核验日期','核对范围'])
+    writer.writerow(['ID','论文简称','完整题名','一句话概括','专题','分类','主题','期刊或会议','发表时间','日期口径','发表状态','主要痛点','数据集','方法','结论','评测设置','限制','原文URL','代码URL','代码状态','核验日期','核对范围'])
     for p in papers:
         pub = p['publication']
-        writer.writerow([p['id'],p['name'],p['title'],p['group'],'; '.join(p['tags']),pub['venue'],pub['date'],pub['date_basis'],pub['status'],p['pain_point'],p['datasets'],p['method'],p['conclusion'],p['evaluation'],p['limitations'],p['paper_url'],p.get('code_url') or '',p['code_status'],p['verified_on'],p['verification_scope']])
+        writer.writerow([p['id'],p['name'],p['title'],p['one_liner'],TOPICS[p['topic']],p['group'],'; '.join(p['tags']),pub['venue'],pub['date'],pub['date_basis'],pub['status'],p['pain_point'],p['datasets'],p['method'],p['conclusion'],p['evaluation'],p['limitations'],p['paper_url'],p.get('code_url') or '',p['code_status'],p['verified_on'],p['verification_scope']])
     artifacts['data/papers.csv'] = '\ufeff' + buf.getvalue()
     return artifacts
 
@@ -250,7 +271,7 @@ def main():
         raise SystemExit('Generated files differ: ' + ', '.join(stale))
     all_markdown = {f.relative_to(ROOT).as_posix(): f.read_text(encoding='utf-8') for f in ROOT.rglob('*.md')}
     check_links(all_markdown)
-    for f in (ROOT / 'papers/admet').glob('*.md'):
+    for f in (ROOT / 'papers').rglob('*.md'):
         if f.relative_to(ROOT).as_posix() not in artifacts:
             raise ValueError(f'Unexpected paper file: {f.name}')
     print(f'{len(papers)} records validated; {len(artifacts)} generated files checked.' if args.check else f'Built {len(papers)} paper cards and catalog.')

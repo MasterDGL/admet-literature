@@ -2,7 +2,9 @@
 
 **ADMET-AI: a machine learning ADMET platform for evaluation of large-scale chemical libraries**
 
-[返回 ADMET 总表](../../topics/admet.md) · [返回首页](../../README.md)
+[返回ADMET 与药代动力学总表](../../topics/admet.md) · [返回首页](../../README.md)
+
+**一句话概括：** 将图神经网络用于网页和本地预测工具，一次预测多项 ADMET 性质，方便快速筛选大规模化合物库。
 
 分类：核心论文。主题：综合ADMET、平台、高通量。
 

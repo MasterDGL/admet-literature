@@ -1,16 +1,24 @@
-# Awesome AIDD Papers
+# ADMET 文献整理
 
-AI-aided drug discovery papers with structured, source-linked research notes.
+ADMET literature notes, with supporting methods and benchmarks for AI-aided drug discovery.
 
-面向 **AI 辅助药物发现（AIDD）** 的论文整理。每篇记录 **发表期刊/会议与时间、主要痛点、数据集、方法、结论**，并补充评测条件、原文与代码链接。
+围绕 **ADMET 与药代动力学预测** 整理论文，并补充分子表示、数据和评测等 AIDD 基础文献。每篇记录 **一句话概括、发表期刊/会议与时间、主要痛点、数据集、方法、结论**，并提供评测条件、原文与代码链接。
 
-首个专题为 **ADMET 与药代动力学**。目前收录 **19 篇**：14 篇正式研究/数据基准论文、1 篇正式观点文章、4 篇预印本。其中 **8 篇**建议优先精读。首批内容核验日期为 **2026-09-19**；仓库整理日期为 **2026-09-21**。后续更新以各条目核验日期为准。
+目前收录 **29 篇**：**25 篇 ADMET 与药代动力学**、**4 篇基础方法与基准**。按发表类型分为 24 篇正式研究/数据基准论文、1 篇正式观点文章和 4 篇预印本；其中 11 篇列为核心精读。最近一批内容核验日期为 **2026-09-22**；具体核验范围和日期见各条目，不表示全部旧条目已重新审计。
+
+## AIDD 知识地图
+
+![AIDD 五层知识地图：自下而上为数据与研究问题、分子与蛋白表示、预测任务、设计与优化、实验验证与迭代；ADMET 是当前重点，实验结果反馈到数据。](assets/aidd-knowledge-pyramid.svg)
+
+这是一张用于阅读导航的知识层级图：越往上，越接近设计和实验决策；层级与面积不表示研究价值或论文质量。ADMET 与结合、活性预测同属预测层，并参与多参数优化。实际研究会反复迭代，评测贯穿各层。[查看各层说明与论文入口](docs/knowledge-map.md)。
 
 ## 导航
 
 - [ADMET 论文总表](topics/admet.md)：按研究用途分类，逐篇保留五项核心信息。
+- [基础方法与基准](topics/foundations.md)：Chemprop、AttentiveFP、MoleculeNet、MoleculeACE。
+- [知识地图说明](docs/knowledge-map.md)：从研究问题找到方法、任务和阅读入口。
 - [优先精读](#优先精读)：先建立研究问题、数据和方法的认识。
-- [论文梳理](#论文梳理)：直接在本页查看全部 19 篇的一句话概括、发表信息、痛点、数据集、方法和结论。
+- [论文梳理](#论文梳理)：直接在本页查看全部 29 篇的一句话概括、发表信息、痛点、数据集、方法和结论。
 - [筛选与 SOTA 判定](docs/curation.md)：如何判断结论可比、证据充分。
 - [AIDD 研究范围](docs/scope.md)：当前覆盖与后续专题。
 - [贡献方式](CONTRIBUTING.md)：推荐论文、纠正信息或补充实验依据。
@@ -18,7 +26,8 @@ AI-aided drug discovery papers with structured, source-linked research notes.
 
 | 专题 | 当前内容 | 入口 |
 | --- | --- | --- |
-| ADMET 与药代动力学 | 19 篇；其中 8 篇优先精读 | [论文总表](topics/admet.md) |
+| ADMET 与药代动力学 | 25 篇 | [论文总表](topics/admet.md) |
+| 基础方法与基准 | 4 篇；分子表示、数据与评测 | [基础阅读](topics/foundations.md) |
 | 其他 AIDD 方向 | 扩展计划，尚未纳入独立专题 | [研究范围](docs/scope.md) |
 
 ## 优先精读
@@ -33,6 +42,9 @@ AI-aided drug discovery papers with structured, source-linked research notes.
 | [MolE](papers/admet/mole-2024.md) | Nature Communications | 2024-11-12 | 先在海量分子图上预训练，再利用生物学任务数据进一步训练，最后用于 ADMET 性质预测。 |
 | [ADMET-AI](papers/admet/admet-ai-2024.md) | Bioinformatics | 2024-06-24 | 将图神经网络用于网页和本地预测工具，一次预测多项 ADMET 性质，方便快速筛选大规模化合物库。 |
 | [MTGL-ADMET](papers/admet/mtgl-admet-2023.md) | iScience | 2023-11 | 为每个 ADMET 预测任务自动挑选有帮助的辅助任务，减少多任务联合训练时的相互干扰。 |
+| [HERGAI](papers/admet/hergai-2025.md) | Journal of Cheminformatics | 2025-07-24 | 结合分子对接与集成模型，从大量候选分子中识别可能阻断 hERG 心脏离子通道的化合物。 |
+| [MC-PGP](papers/admet/mc-pgp-2025.md) | Journal of Pharmaceutical Analysis | 2025-08 | 融合 SMILES、指纹和分子图，分别判断分子是否抑制 P-gp、是否会被 P-gp 转运。 |
+| [AmesNet](papers/admet/amesnet-2026.md) | Chemical Research in Toxicology | 2026-06-29 | 将分子结构、菌株与代谢活化条件一起输入模型，提高陌生化学结构的 Ames 致突变性识别能力。 |
 
 建议顺序：**真实场景评测 → 单端点与人体 PK → 表示学习与多任务方法 → 平台应用**。专题总表另列数据基准、观点文章和预印本，便于区分它们提供的证据。
 
@@ -44,7 +56,7 @@ AI-aided drug discovery papers with structured, source-linked research notes.
 
 ## 论文梳理
 
-[核心论文](#核心论文) · [专题补读](#专题补读) · [数据与基准](#数据与基准) · [观点文章](#观点文章) · [预印本](#预印本)
+[核心论文](#核心论文) · [专题补读](#专题补读) · [基础方法](#基础方法) · [数据与基准](#数据与基准) · [观点文章](#观点文章) · [预印本](#预印本)
 
 下列内容均在本页展开。结论保留原文的比较范围；更完整的评测设置和局限见各条目的解读页。
 
@@ -178,6 +190,54 @@ AI-aided drug discovery papers with structured, source-linked research notes.
 
 [论文原文](https://pmc.ncbi.nlm.nih.gov/articles/PMC10654589/) · [评测细节与局限](papers/admet/mtgl-admet-2023.md) · [代码/项目](https://github.com/dubingxue/MTGL-ADMET)
 
+#### HERGAI
+
+**HERGAI: an artificial intelligence tool for structure-based prediction of hERG inhibitors**
+
+**一句话概括：** 结合分子对接与集成模型，从大量候选分子中识别可能阻断 hERG 心脏离子通道的化合物。
+
+| 字段 | 内容 |
+| --- | --- |
+| 发表期刊/会议与时间 | Journal of Cheminformatics 17, 110；2025-07-24 |
+| 主要痛点 | 小规模或阳性富集的测试集不能充分反映筛选中大量阴性、少量 hERG 阻断剂的场景。 |
+| 数据集 | PubChem/ChEMBL 清洗后 299,927 个分子：1,937 阳性、297,990 阴性；采用 IC50 20 μM 判据，按 Bemis–Murcko 骨架成组分配约 3:1 训练/测试集。 |
+| 方法 | Smina 对接后选择结合姿势，提取蛋白–配体 PLEC 指纹；RF、XGBoost、DNN 作为基模型，DNN 作为堆叠集成元学习器；在训练折内过采样。 |
+| 结论 | 作者报告测试集对 IC50≤20 μM 阻断剂的召回约 86%，对≤1 μM 阻断剂约 94%；筛选富集优于论文比较的通用对接打分方案。 |
+
+[论文原文](https://doi.org/10.1186/s13321-025-01063-8) · [评测细节与局限](papers/admet/hergai-2025.md) · [代码/项目](https://github.com/vktrannguyen/HERGAI)
+
+#### MC-PGP
+
+**A multimodal contrastive learning framework for predicting P-glycoprotein substrates and inhibitors**
+
+**一句话概括：** 融合 SMILES、指纹和分子图，分别判断分子是否抑制 P-gp、是否会被 P-gp 转运。
+
+| 字段 | 内容 |
+| --- | --- |
+| 发表期刊/会议与时间 | Journal of Pharmaceutical Analysis 15(8), 101313；2025-08 卷期（PubMed article date：2025-04-16） |
+| 主要痛点 | 单一表示难以覆盖 P-gp 相关结构信息；抑制剂与底物需要区分，并检验新来源化合物上的表现。 |
+| 数据集 | 公开数据库/文献汇编：抑制剂数据集共 5,943 个分子（4,558 阳性、1,385 阴性），底物集共 4,018（2,455 阳性、1,563 阴性）；独立外部集分别为 140 和 185 个分子。 |
+| 方法 | 注意力融合 SMILES 序列、分子指纹与分子图表示；图对比学习对齐局部与全局结构，并分析相关官能团。 |
+| 结论 | 抑制剂外部集 AUROC 为 0.906±0.015；作者报告抑制剂/底物外部集 AUROC 相对次优方法提高 9.82%/10.62%，仅适用于其数据与比较配置。 |
+
+[论文原文](https://doi.org/10.1016/j.jpha.2025.101313) · [评测细节与局限](papers/admet/mc-pgp-2025.md)
+
+#### AmesNet
+
+**AmesNet: A Task-Conditioned Deep Learning Model with Enhanced Sensitivity and Generalization in Ames Mutagenicity Prediction**
+
+**一句话概括：** 将分子结构、菌株与代谢活化条件一起输入模型，提高陌生化学结构的 Ames 致突变性识别能力。
+
+| 字段 | 内容 |
+| --- | --- |
+| 发表期刊/会议与时间 | Chemical Research in Toxicology；2026-06-29 在线发表 |
+| 主要痛点 | 模型在训练域外容易漏检致突变化合物，单纯提高灵敏度又可能造成大量误报。 |
+| 数据集 | Lui 等汇编的菌株/S9 条件数据，经正式版清洗后训练/验证共 40,129 条记录、测试 4,208 条记录；记录单位是化合物–菌株–S9，不是独立分子数。另评估缺少菌株/S9 信息的 Foil 数据。 |
+| 方法 | 分子编码器与菌株/±S9 条件通道构成双分支；比较单任务、普通/分组多任务，并对 ChemProp/GROVER 等编码器加入条件通道做对照。 |
+| 结论 | 正式版主 OOD 评测报告灵敏度 0.72（95% CI 0.68–0.76）、平衡准确率 0.81（0.78–0.83）；Foil 补充评测平衡准确率 0.72，说明结果依赖测试集。 |
+
+[论文原文](https://doi.org/10.1021/acs.chemrestox.6c00082) · [评测细节与局限](papers/admet/amesnet-2026.md) · [代码/项目](https://github.com/Model-Medicines/TCL-Ames)
+
 ### 专题补读
 
 #### HimNet
@@ -244,6 +304,88 @@ AI-aided drug discovery papers with structured, source-linked research notes.
 
 [论文原文](https://doi.org/10.1093/nar/gkae298) · [评测细节与局限](papers/admet/admetsar-3-2024.md)
 
+#### CardioTox net
+
+**CardioTox net: a robust predictor for hERG channel blockade based on deep learning meta-feature ensembles**
+
+**一句话概括：** 融合不同分子表示的神经网络预测，改善 hERG 阻断剂识别，并在三个外部测试集上检验效果。
+
+| 字段 | 内容 |
+| --- | --- |
+| 发表期刊/会议与时间 | Journal of Cheminformatics 13, 60；2021-08-16 |
+| 主要痛点 | 单一分子表示可能遗漏信息，多模型直接合并又难兼顾灵敏度、特异度和预测精度。 |
+| 数据集 | BindingDB、ChEMBL 和文献数据整理为 12,620 个训练分子（6,643 阻断剂、5,977 非阻断剂）；三个外部集分别为 44、41、839 个分子，采用 IC50 10 μM 分类判据。 |
+| 方法 | 五个基神经网络处理不同化学特征，再用独立神经网络组合其预测；训练数据按 70/10/10/10 分别用于基模型训练/验证和元模型训练/验证。 |
+| 结论 | 三个外部集报告 MCC 0.599/0.452/0.220，准确率 0.810/0.755/0.746；相对所选旧方法改善多项指标，但第三个不平衡外部集 PPV 仅 0.113。 |
+
+[论文原文](https://doi.org/10.1186/s13321-021-00541-z) · [评测细节与局限](papers/admet/cardiotox-net-2021.md) · [代码/项目](https://github.com/Abdulk084/CardioTox)
+
+#### BBB MegaMolBART
+
+**Predicting blood–brain barrier permeability of molecules with a large language model and machine learning**
+
+**一句话概括：** 用分子语言模型和 XGBoost 预测血脑屏障通透性，并用人源三维 BBB 球体检验部分候选。
+
+| 字段 | 内容 |
+| --- | --- |
+| 发表期刊/会议与时间 | Scientific Reports 14, 15844；2024-07-09 |
+| 主要痛点 | BBB 标注数据有限，分子预训练表示能否改善预测并得到体外实验支持仍需检验。 |
+| 数据集 | B3DB 7,807 个分子（4,956 BBB+、2,851 BBB−），CMUH 2,499 个分子（105 BBB+、2,394 BBB−）；B3DB 中 1,058 个有 logBB 数值。另选择 21 个预测可透过和 5 个不可透过候选做球体实验，并设置对照。 |
+| 方法 | MegaMolBART 编码 SMILES，再用 XGBoost 分类/回归；与 Morgan 指纹比较。人脑微血管内皮细胞、周细胞及星形胶质细胞构成 BBB 球体，以 LC–MS/MS 测定通透性。 |
+| 结论 | 作者报告最终留出测试 AUROC 0.88，所选候选的球体实验与预测方向一致，支持该流程用于 BBB 筛选探索。 |
+
+[论文原文](https://doi.org/10.1038/s41598-024-66897-y) · [评测细节与局限](papers/admet/bbb-megamolbart-2024.md)
+
+#### AMES 多任务 DNN
+
+**Multitask Deep Neural Networks for Ames Mutagenicity Prediction**
+
+**一句话概括：** 保留五种菌株各自的 Ames 结果进行多任务学习，而非只学习一个总体致突变标签。
+
+| 字段 | 内容 |
+| --- | --- |
+| 发表期刊/会议与时间 | Journal of Chemical Information and Modeling 62(24), 6342–6351；2022-09-06 在线 |
+| 主要痛点 | 将不同菌株的实验结果压成单一标签，会丢失可用于预测致突变性的菌株差异信息。 |
+| 数据集 | 作者 Mendeley v2 数据：ISSSTY 整理的 5,536 个分子、1,360 个 Mordred 描述符；TA98、TA100、TA102、TA1535、TA1537 五种菌株标签及 Overall 标签，含未确定标签；提供 Train/Internal/External 分区。 |
+| 方法 | 用共享表示的多任务 DNN 学习五种菌株结果，与总体标签单任务模型、各菌株单任务及其集成比较；保留部分标签未确定的化合物信息。 |
+| 结论 | 正式摘要报告多任务策略优于总体标签单任务和菌株单任务集成；其贡献是利用实验标签结构，本条不补写未核实的最优分数。 |
+
+[论文原文](https://doi.org/10.1021/acs.jcim.2c00532) · [评测细节与局限](papers/admet/ames-multitask-2022.md) · [代码/项目](https://github.com/VirSabando/MTL_DNN_Ames)
+
+### 基础方法
+
+#### Chemprop / D-MPNN
+
+**Analyzing Learned Molecular Representations for Property Prediction**
+
+**一句话概括：** 通过沿有向化学键传递信息来学习分子表示，并在公开和工业数据上检验性质预测。
+
+| 字段 | 内容 |
+| --- | --- |
+| 发表期刊/会议与时间 | Journal of Chemical Information and Modeling 59(8), 3370–3388；2019-07-30 |
+| 主要痛点 | 学习得到的分子表示是否优于手工描述符，尤其能否推广到工业数据和新化学空间，缺少充分比较。 |
+| 数据集 | 19 个公开与 16 个工业私有数据集，覆盖多类化学端点；不是 35 个 ADMET 数据集，工业数据也并非全部公开。 |
+| 方法 | 有向键消息传递网络 D-MPNN，结合分子级计算特征及超参数优化；与固定描述符方法及已有图网络比较。 |
+| 结论 | 在论文所测公开/工业任务中达到或超过多种对照，显示学习表示的实际价值；仍未达到实验重复性水平，结果取决于任务与划分。 |
+
+[论文原文](https://doi.org/10.1021/acs.jcim.9b00237) · [评测细节与局限](papers/foundations/chemprop-dmpnn-2019.md) · [代码/项目](https://github.com/chemprop/chemprop)
+
+#### AttentiveFP
+
+**Pushing the Boundaries of Molecular Representation for Drug Discovery with the Graph Attention Mechanism**
+
+**一句话概括：** 让图神经网络在汇总分子信息时学习关注哪些原子和邻域，用于性质预测与结构归因。
+
+| 字段 | 内容 |
+| --- | --- |
+| 发表期刊/会议与时间 | Journal of Medicinal Chemistry 63(16), 8749–8760；2019 年在线，2020-08-27 卷期 |
+| 主要痛点 | 分子表示需要捕捉局部及较远结构联系，同时让模型关注的化学特征更容易检查。 |
+| 数据集 | 论文配套作者库提供 BBBP、HIV、BACE、ClinTox、SIDER、Tox21、ToxCast、ESOL（delaney）、FreeSolv（SAMPL）、Lipophilicity、QM9 等数据文件，以及芳香性解释示例；覆盖分类与回归，并非全部都是 ADMET 任务。 |
+| 方法 | 在分子图消息聚合和图级读出中使用注意力，构建可学习的分子指纹，并通过注意力可视化分析结构信息。 |
+| 结论 | 作者报告在所测任务上取得当时先进表现，并展示学习非局部分子内联系的例子；这里将其收录为图注意力基线。 |
+
+[论文原文](https://doi.org/10.1021/acs.jmedchem.9b00959) · [评测细节与局限](papers/foundations/attentivefp-2019.md) · [代码/项目](https://github.com/OpenDrugAI/AttentiveFP)
+
 ### 数据与基准
 
 #### TDC
@@ -277,6 +419,38 @@ AI-aided drug discovery papers with structured, source-linked research notes.
 | 结论 | 贡献是条件更明确的数据与基准建设；不是证明某个预测模型达到全面 SOTA。 |
 
 [论文原文](https://www.nature.com/articles/s41597-024-03793-0) · [评测细节与局限](papers/admet/pharmabench-2024.md) · [代码/项目](https://github.com/mindrank-ai/PharmaBench)
+
+#### MoleculeNet
+
+**MoleculeNet: a benchmark for molecular machine learning**
+
+**一句话概括：** 把分散的分子数据集、划分、指标与算法组织成基准，让性质预测方法有共同的比较起点。
+
+| 字段 | 内容 |
+| --- | --- |
+| 发表期刊/会议与时间 | Chemical Science 9(2), 513–530（2018 卷期）；2017-10-31 在线 |
+| 主要痛点 | 不同研究自选数据、指标与实现，难以判断算法改进来自模型还是评测设置。 |
+| 数据集 | 整合量子化学、理化、生物物理及生理相关公开数据；包括 ESOL、FreeSolv、Lipophilicity、BBBP、Tox21、ClinTox、SIDER、BACE、HIV、QM 系列等，按任务设置评价指标和划分。 |
+| 方法 | 以 DeepChem 提供数据加载、分子特征化和学习算法实现，系统比较固定描述符与学习表示。 |
+| 结论 | 学习表示在多类任务上有效，但小样本和类别不均衡仍困难；量子/生物物理任务中，符合物理背景的特征可能比算法选择更关键。 |
+
+[论文原文](https://doi.org/10.1039/C7SC02664A) · [评测细节与局限](papers/foundations/moleculenet-2018.md) · [代码/项目](https://github.com/deepchem/deepchem)
+
+#### MoleculeACE
+
+**Exposing the Limitations of Molecular Machine Learning with Activity Cliffs**
+
+**一句话概括：** 专门检查结构很相似、活性却差很多的分子，揭示平均预测误差容易掩盖的模型弱点。
+
+| 字段 | 内容 |
+| --- | --- |
+| 发表期刊/会议与时间 | Journal of Chemical Information and Modeling 62(23), 5938–5951；2022-12-01；附 2023 年勘误 |
+| 主要痛点 | 整体平均误差不能充分反映模型处理活性悬崖的能力，而这些分子对先导优化很重要。 |
+| 数据集 | 30 个大分子靶标的整理后生物活性数据集，比较 24 种机器学习策略；不是 30 个 ADMET 端点，作者库提供数据和评测流程。 |
+| 方法 | 定义相似结构但活性差异大的分子对，同时报告整体 RMSE 与悬崖分子 RMSEcliff，比较描述符模型和图/序列神经网络。 |
+| 结论 | 在所测活性悬崖场景中，多种描述符机器学习方法优于更复杂深度模型；性能随靶标而变，支持单独报告悬崖指标。 |
+
+[论文原文](https://doi.org/10.1021/acs.jcim.2c01073) · [评测细节与局限](papers/foundations/moleculeace-2022.md) · [代码/项目](https://github.com/molML/MoleculeACE)
 
 ### 观点文章
 

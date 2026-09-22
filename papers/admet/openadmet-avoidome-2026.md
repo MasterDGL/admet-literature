@@ -2,7 +2,9 @@
 
 **Mapping the avoid-ome: a systematic open-science approach to predictive ADMET**
 
-[返回 ADMET 总表](../../topics/admet.md) · [返回首页](../../README.md)
+[返回ADMET 与药代动力学总表](../../topics/admet.md) · [返回首页](../../README.md)
+
+**一句话概括：** 提出结合开放实验数据、蛋白质结构、主动学习和盲测挑战，从机制上改进 ADMET 预测的研究路线。
 
 分类：观点文章。主题：机制、开放数据、观点。
 

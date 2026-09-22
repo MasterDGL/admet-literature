@@ -2,7 +2,9 @@
 
 **ADMET property prediction through combinations of molecular fingerprints**
 
-[返回 ADMET 总表](../../topics/admet.md) · [返回首页](../../README.md)
+[返回ADMET 与药代动力学总表](../../topics/admet.md) · [返回首页](../../README.md)
+
+**一句话概括：** 组合多种分子指纹和描述符，用 CatBoost 建立 ADMET 预测模型，检验传统特征方法的竞争力。
 
 分类：预印本。主题：指纹、CatBoost、基线。
 

@@ -2,7 +2,9 @@
 
 **A multimodal representation learning platform for accurate molecular ADMET prediction**
 
-[返回 ADMET 总表](../../topics/admet.md) · [返回首页](../../README.md)
+[返回ADMET 与药代动力学总表](../../topics/admet.md) · [返回首页](../../README.md)
+
+**一句话概括：** 融合分子序列、分子图、三维结构和化学先验，并按 ADMET 任务选择预测模型或集成方案。
 
 分类：预印本。主题：多模态、模型集成。
 

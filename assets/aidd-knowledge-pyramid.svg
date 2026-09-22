@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="950" viewBox="0 0 1500 950" role="img" aria-labelledby="title desc">
+  <title id="title">AIDD 研究方向知识层级</title>
+  <desc id="desc">从基础到应用：数据与研究问题、分子与蛋白表示、预测任务、设计与优化、实验验证与迭代。当前仓库重点是 ADMET 和基础方法与基准；其他方向待扩展。实验结果反馈到数据，评测贯穿各层。层级不代表重要性排名。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#8192aa"/></marker>
+  </defs>
+  <rect width="1500" height="950" rx="24" fill="#f7f9fc"/>
+  <g font-family="Microsoft YaHei, PingFang SC, Noto Sans CJK SC, sans-serif">
+    <text x="58" y="67" font-size="34" font-weight="700" fill="#152b46">AIDD 研究方向知识层级</text>
+    <text x="60" y="105" font-size="19" fill="#52657c">从数据理解到实验决策 · 以 ADMET 为当前阅读主线</text>
+    <text x="1100" y="145" font-size="20" font-weight="700" fill="#152b46">仓库阅读入口</text>
+
+    <path d="M520 140L340 266H700Z" fill="#45566f"/>
+    <text x="520" y="233" text-anchor="middle" font-size="25" font-weight="700" fill="white">实验验证与迭代</text>
+    <path d="M348 283H692L782 391H258Z" fill="#617591"/>
+    <text x="520" y="327" text-anchor="middle" font-size="27" font-weight="700" fill="white">设计与优化</text>
+    <text x="520" y="364" text-anchor="middle" font-size="20" fill="#ffffff">分子生成 · 多参数优化 · 合成规划</text>
+
+    <path d="M266 408H774L864 516H176Z" fill="#087d82"/>
+    <text x="520" y="450" text-anchor="middle" font-size="28" font-weight="700" fill="white">预测任务</text>
+    <text x="520" y="487" text-anchor="middle" font-size="23" fill="white">ADMET / PK · 活性与结合 · 对接与筛选</text>
+
+    <path d="M184 533H856L946 641H94Z" fill="#d7e6f5"/>
+    <text x="520" y="577" text-anchor="middle" font-size="27" font-weight="700" fill="#173d64">分子与蛋白表示</text>
+    <text x="520" y="614" text-anchor="middle" font-size="22" fill="#244c73">指纹 · 分子图 · SMILES · 三维结构 · 蛋白序列</text>
+
+    <path d="M102 658H938L1028 766H12Z" fill="#e4edf6"/>
+    <text x="520" y="702" text-anchor="middle" font-size="27" font-weight="700" fill="#173d64">数据与研究问题</text>
+    <text x="520" y="739" text-anchor="middle" font-size="22" fill="#244c73">端点定义 · 数据清洗 · 标签与实验条件 · 基准与划分</text>
+
+    <g fill="none" stroke="#c0cbda" stroke-width="2">
+      <path d="M720 233H1060"/>
+      <path d="M800 340H1060"/>
+      <path d="M878 465H1060"/>
+      <path d="M960 588H1060"/>
+      <path d="M1040 710H1060"/>
+    </g>
+    <g font-size="21" fill="#243e5c">
+      <text x="1100" y="215" font-weight="700">前瞻性验证 · 实验反馈</text>
+      <text x="1100" y="248" font-size="18" fill="#63758b">已有 BBB 体外验证案例</text>
+      <text x="1100" y="274" font-size="18" fill="#63758b">完整实验闭环：后续扩展</text>
+      <text x="1100" y="327" font-weight="700">生成与优化专题</text>
+      <text x="1100" y="359" font-size="18" fill="#63758b">后续扩展</text>
+      <text x="1100" y="433" font-weight="700" fill="#087d82">当前重点：ADMET 与 PK</text>
+      <text x="1100" y="465" font-size="18">hERG · P-gp · BBB · AMES</text>
+      <text x="1100" y="493" font-size="18">人体 PK · 多端点预测与评测</text>
+      <text x="1100" y="557" font-weight="700">基础表示方法</text>
+      <text x="1100" y="589" font-size="18">Chemprop · AttentiveFP</text>
+      <text x="1100" y="617" font-size="18">蛋白表示专题：后续扩展</text>
+      <text x="1100" y="681" font-weight="700">数据与评测基础</text>
+      <text x="1100" y="713" font-size="18">MoleculeNet · TDC</text>
+      <text x="1100" y="741" font-size="18">MoleculeACE · PharmaBench</text>
+    </g>
+    <path d="M1442 202H1462V800H1030" fill="none" stroke="#8192aa" stroke-width="2" stroke-dasharray="6 6" marker-end="url(#arrow)"/>
+    <text x="1290" y="826" text-anchor="middle" font-size="18" fill="#52657c">实验结果反馈到数据</text>
+
+    <rect x="57" y="816" width="943" height="45" rx="22" fill="#e9f0f7"/>
+    <text x="528" y="845" text-anchor="middle" font-size="20" fill="#334f6d">贯穿各层：数据质量 · 不确定性 · 泛化评测 · 可复现性</text>
+    <text x="60" y="903" font-size="18" fill="#52657c">本图是仓库的阅读导航，不是唯一分类；层级与面积不代表研究价值或论文质量。</text>
+  </g>
+</svg>

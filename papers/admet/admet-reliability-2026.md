@@ -2,7 +2,9 @@
 
 **Revisiting ADMET prediction reliability under real-world challenges in the foundation model era**
 
-[返回 ADMET 总表](../../topics/admet.md) · [返回首页](../../README.md)
+[返回ADMET 与药代动力学总表](../../topics/admet.md) · [返回首页](../../README.md)
+
+**一句话概括：** 在小样本、陌生分子结构和类别不均衡等条件下比较多类模型，检验 ADMET 预测在实际研究中是否可靠。
 
 分类：核心论文。主题：泛化、小样本、评测。
 

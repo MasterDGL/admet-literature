@@ -2,7 +2,9 @@
 
 **Multi-channel learning for integrating structural hierarchies into context-dependent molecular representation**
 
-[返回 ADMET 总表](../../topics/admet.md) · [返回首页](../../README.md)
+[返回ADMET 与药代动力学总表](../../topics/admet.md) · [返回首页](../../README.md)
+
+**一句话概括：** 从分子整体、骨架和局部环境等层面学习表示，再按任务组合这些信息，用于性质和生物活性预测。
 
 分类：专题补读。主题：多通道预训练、活性悬崖。
 

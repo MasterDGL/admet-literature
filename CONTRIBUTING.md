@@ -21,7 +21,7 @@ python scripts/build.py
 python scripts/build.py --check
 ```
 
-单篇笔记、首页、专题索引和 CSV 由脚本生成，不单独手工修改，以免与数据文件不一致。当前生成器支持 ADMET 专题；新增其他专题时，同时扩展专题组织和校验逻辑。
+单篇笔记、首页、专题索引和 CSV 由脚本生成，不单独手工修改，以免与数据文件不一致。当前 `topic` 支持 `admet`（ADMET 与药代动力学）和 `foundations`（基础方法与基准）；新增其他专题时，同时扩展生成器中的 `TOPICS` 与专题说明。知识地图的源文件为 `assets/aidd-knowledge-pyramid.svg`，阅读入口维护在 `docs/knowledge-map.md`。
 
 `publication.date` 允许 `YYYY`、`YYYY-MM`、`YYYY-MM-DD` 三种精度，`date_basis` 说明会议年份、期刊在线日期、卷期月份或预印本日期。缺少代码链接时使用 `null`，并在 `code_status` 中说明，不猜测仓库地址。
 
