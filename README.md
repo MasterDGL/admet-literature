@@ -4,7 +4,7 @@
 
 Research notes on **ADMET and pharmacokinetic prediction**, with representative papers, datasets and code. Each entry starts with a brief overview and covers **publication venue and date, research problem, datasets, method and findings**. Papers on molecular representations and benchmarks provide the foundations.
 
-The collection contains **37 papers**: **31 on ADMET and pharmacokinetics** and **6 on methods and benchmarks**, including 11 core readings. Publication types: 30 published research/data papers, 1 review, 1 perspective and 5 preprints. Most recent batch of source reviews: **2026-09-22**; each entry records its own sources and review date.
+The collection contains **41 papers**: **35 on ADMET and pharmacokinetics** and **6 on methods and benchmarks**, including 11 core readings. Publication types: 34 published research/data papers, 1 review, 1 perspective and 5 preprints. Most recent batch of source reviews: **2026-09-22**; each entry records its own sources and review date.
 
 ## AIDD knowledge map
 
@@ -31,7 +31,7 @@ Start with data and molecular representations, then explore property prediction,
 
 | Topic | Coverage | Entry point |
 | --- | --- | --- |
-| ADMET and pharmacokinetics | 31 papers | [Paper index](en/topics/admet.md) |
+| ADMET and pharmacokinetics | 35 papers | [Paper index](en/topics/admet.md) |
 | Methods and benchmarks | 6 papers on representations, data and evaluation | [Foundational reading](en/topics/foundations.md) |
 | Other AIDD areas | Planned topics | [Research scope](en/docs/scope.md) |
 
@@ -227,6 +227,38 @@ Papers below are ordered by publication date, newest first. Each entry explains 
 
 [Paper](https://link.springer.com/article/10.1186/s13321-025-01066-5) · [Detailed notes](en/papers/admet/pksmart-2025.md) · [Code/project](https://github.com/srijitseal/PKSmart)
 
+#### MetaboGNN: predicting liver metabolic stability with graph neural networks and cross-species data
+
+*Journal of Cheminformatics · 2025-09-03* · Published · Further reading
+
+**Overview:** Combines graph contrastive pretraining with human–mouse metabolic differences to predict the parent fraction remaining after 30 minutes in liver microsomes.
+
+| Field | Details |
+| --- | --- |
+| Publication and date | Journal of Cheminformatics 17, 140; published online 2025-09-03. |
+| Research problem | Limited stability labels require representations that capture both molecular structure and species-dependent metabolism. |
+| Datasets | The 2023 South Korea drug-discovery challenge: 3,981 compounds, with fixed training/test sets of 3,498/483 and paired human/mouse microsomal remaining percentages. Pretraining uses about 2.58 million unlabeled molecules. |
+| Method | Contrastively pretrains molecular graphs with ring information, then predicts mouse stability and the human–mouse difference jointly to derive human stability. |
+| Findings | Adding the species-difference task reduces HLM/MLM RMSE from 30.14/28.72 to 27.91/27.86 percentage points on this dataset. |
+
+[Paper](https://pmc.ncbi.nlm.nih.gov/articles/PMC12409945/) · [Detailed notes](en/papers/admet/metabognn-2025.md) · [Code/project](https://github.com/qwon135/MetaboGNN)
+
+#### MMPK: A Multimodal Deep Learning Framework to Predict Human Oral Pharmacokinetic Parameters
+
+*Journal of Medicinal Chemistry · 2025-07-31* · Published · Further reading
+
+**Overview:** Combines molecular graphs, substructure graphs, SMILES and dose to predict eight human oral pharmacokinetic parameters.
+
+| Field | Details |
+| --- | --- |
+| Publication and date | Journal of Medicinal Chemistry 68(15), 16678–16690; online 2025-07-31, issue 2025-08-14. |
+| Research problem | Oral PK data contain missing labels, dose variation and correlations between endpoints. |
+| Datasets | The official CSV contains 1,283 compounds and 5,058 raw records. After imputation and subject-weighted averaging, Table S3 lists 1,156 modeling compounds and 4,177 compound–dose combinations. External sets cover investigational and 2024 FDA-approved drugs. Targets: AUC, Cmax, Tmax, half-life, CL/F, Vz/F, MRT and F. |
+| Method | Graph encoders, ChemBERTa and substructure cross-attention integrate dose inputs, multitask learning and imputation based on noncompartmental-analysis relationships. |
+| Findings | Mean ten-fold GMFE across eight endpoints is 2.895. MMPK leads the listed baselines on AUC, Cmax, CL/F and Vz/F; XGBoost has lower GMFE on half-life, MRT and F. |
+
+[Paper](https://doi.org/10.1021/acs.jmedchem.5c01522) · [Detailed notes](en/papers/admet/mmpk-2025.md) · [Code/project](https://github.com/xli7654321/MMPK)
+
 #### HERGAI: an artificial intelligence tool for structure-based prediction of hERG inhibitors
 
 *Journal of Cheminformatics · 2025-07-24* · Published · Core papers
@@ -372,6 +404,22 @@ Papers below are ordered by publication date, newest first. Each entry explains 
 | Findings | Under common data and splits, the DMPNN models outperform MGA on 47/59 classification tasks. The platform combines 77 learned endpoints with calculated properties, rules, uncertainty estimates and an API. |
 
 [Paper](https://doi.org/10.1093/nar/gkae236) · [Detailed notes](en/papers/admet/admetlab-3-2024.md)
+
+#### Prediction of Human Clearance Using In Silico Models with Reduced Bias
+
+*Molecular Pharmaceutics · 2024-01-29* · Published · Further reading
+
+**Overview:** Removes structurally similar and same-class training compounds to evaluate human clearance prediction for new chemistry.
+
+| Field | Details |
+| --- | --- |
+| Publication and date | Molecular Pharmaceutics 21(3), 1192–1203; online 2024-01-29, issue 2024-03-04. |
+| Research problem | Structural neighbors and therapeutic-class relationships affect generalization estimates for human clearance models. |
+| Datasets | A collection of 1,340 compounds with human intravenous PK data; Test343 contains 343 compounds for quasi-prospective testing. Clearance is measured in mL/min/kg. |
+| Method | Descriptor-based random forests are compared with ChemProp and PLS. R4 removes same structural–therapeutic-class compounds or neighbors with Tanimoto similarity >0.7 and trains a separate model for each test molecule. Conformal prediction supplies intervals. |
+| Findings | On Test343, RF GMFE changes from 3.11 in R3 to 3.33 after neighbor exclusion in R4; the fraction within two-fold error falls from 44% to 41%. |
+
+[Paper](https://doi.org/10.1021/acs.molpharmaceut.3c00812) · [Detailed notes](en/papers/admet/human-clearance-bias-2024.md) · [Code/project](https://acs.figshare.com/articles/dataset/25104249)
 
 ### 2023
 
@@ -520,6 +568,22 @@ Papers below are ordered by publication date, newest first. Each entry explains 
 | Findings | The published abstract reports improvements over overall-label single-task models and ensembles of strain-specific models, supporting the use of strain-level information. |
 
 [Paper](https://doi.org/10.1021/acs.jcim.2c00532) · [Detailed notes](en/papers/admet/ames-multitask-2022.md) · [Code/project](https://github.com/VirSabando/MTL_DNN_Ames)
+
+#### Machine learning-driven identification of drugs inhibiting cytochrome P450 2C9
+
+*PLOS Computational Biology · 2022-01-26* · Published · Further reading
+
+**Overview:** Combines molecular descriptors and CYP2C9 ensemble docking to screen inhibitors, then tests selected drugs experimentally.
+
+| Field | Details |
+| --- | --- |
+| Publication and date | PLOS Computational Biology 18(1), e1009820; published 2022-01-26. |
+| Research problem | CYP2C9 inhibition depends on ligand properties and protein flexibility; computational hits need experimental testing. |
+| Datasets | Filtered and clustered PubChem/ChEMBL data: 8,141 compounds, comprising 4,840 inhibitors and 3,301 non-inhibitors, with a stratified random 80/20 holdout. Another 4,480 drugs were screened and 18 selected for experiments. |
+| Method | RF/SVM models combine 36 MOE descriptors with docking energies for seven protein conformations. Consensus, energy thresholds and diversity selection prioritize HepG2 and CYP2C9 supersome assays. |
+| Findings | RF balanced accuracy is 84.33% and sensitivity 89.97% in Table 3. Testing 18 candidates identifies four stronger inhibitors, including vatalanib with IC50 0.067 μM. |
+
+[Paper](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1009820) · [Detailed notes](en/papers/admet/cyp2c9-ml-validation-2022.md)
 
 ### 2021
 

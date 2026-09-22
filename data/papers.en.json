@@ -991,6 +991,121 @@
         "Author code"
       ],
       "source_sha256": "489ada8516b52a98ca59a07bf45164713f6d27a656f719f5fe7bf8475fc8619d"
+    },
+    "metabognn-2025": {
+      "name": "MetaboGNN",
+      "tags": [
+        "Metabolic stability",
+        "Cross-species",
+        "Graph contrastive learning"
+      ],
+      "one_liner": "Combines graph contrastive pretraining with human–mouse metabolic differences to predict the parent fraction remaining after 30 minutes in liver microsomes.",
+      "pain_point": "Limited stability labels require representations that capture both molecular structure and species-dependent metabolism.",
+      "datasets": "The 2023 South Korea drug-discovery challenge: 3,981 compounds, with fixed training/test sets of 3,498/483 and paired human/mouse microsomal remaining percentages. Pretraining uses about 2.58 million unlabeled molecules.",
+      "method": "Contrastively pretrains molecular graphs with ring information, then predicts mouse stability and the human–mouse difference jointly to derive human stability.",
+      "conclusion": "Adding the species-difference task reduces HLM/MLM RMSE from 30.14/28.72 to 27.91/27.86 percentage points on this dataset.",
+      "evaluation": "**Design.** The challenge uses structural clustering followed by stratified splitting within clusters. Author code randomly holds out another 20% of training data for validation. The paper reports 30 independent runs; parentheses are 95% confidence intervals.\n\n| Setting | HLM RMSE ↓ | MLM RMSE ↓ |\n| --- | --- | --- |\n| From scratch | 30.94 (30.52–31.35) | 29.48 (29.29–29.67) |\n| Contrastive pretraining | 30.14 (29.89–30.39) | 28.72 (28.55–28.88) |\n| Pretraining + species-difference task | 27.91 (27.76–28.06) | 27.86 (27.69–28.03) |\n\nSource: Tables 1–2. RMSE is in percentage points of parent compound remaining. Inference predicts both species from structure.",
+      "limitations": "Testing uses the same challenge collection with within-cluster splitting. Microsomal remaining-fraction errors do not establish human clearance or clinical half-life accuracy.",
+      "code_status": "Training, inference, pretraining scripts and train/test CSVs are public; the validation split was checked in code.",
+      "verification_scope": "Checked the full text, dataset and species-difference task, Tables 1–3, and training code; models were not retrained.",
+      "publication": {
+        "citation": "Journal of Cheminformatics 17, 140; published online 2025-09-03.",
+        "date_basis": "Publisher online publication date."
+      },
+      "source_labels": [
+        "Full text, methods and Tables 1–3",
+        "Author implementation and data",
+        "Author training and validation split",
+        "Challenge dataset"
+      ],
+      "source_sha256": "80f2e2e3b4efc40a0c17328cdf980e3ebb41fb2ced608c073fc70b89476c14a8"
+    },
+    "mmpk-2025": {
+      "name": "MMPK",
+      "tags": [
+        "Human oral PK",
+        "Multimodal",
+        "Multitask learning",
+        "External validation"
+      ],
+      "one_liner": "Combines molecular graphs, substructure graphs, SMILES and dose to predict eight human oral pharmacokinetic parameters.",
+      "pain_point": "Oral PK data contain missing labels, dose variation and correlations between endpoints.",
+      "datasets": "The official CSV contains 1,283 compounds and 5,058 raw records. After imputation and subject-weighted averaging, Table S3 lists 1,156 modeling compounds and 4,177 compound–dose combinations. External sets cover investigational and 2024 FDA-approved drugs. Targets: AUC, Cmax, Tmax, half-life, CL/F, Vz/F, MRT and F.",
+      "method": "Graph encoders, ChemBERTa and substructure cross-attention integrate dose inputs, multitask learning and imputation based on noncompartmental-analysis relationships.",
+      "conclusion": "Mean ten-fold GMFE across eight endpoints is 2.895. MMPK leads the listed baselines on AUC, Cmax, CL/F and Vz/F; XGBoost has lower GMFE on half-life, MRT and F.",
+      "evaluation": "**Design.** Code splits unique SMILES into ten folds, then reserves 1/9 of the remaining molecules for validation, giving roughly 8:1:1. Dose records for one molecule stay together. Lower GMFE is better.\n\n| Endpoint | MMPK CV mean±SD | XGBoost CV mean±SD | Investigational external | 2024-approved external |\n| --- | --- | --- | --- | --- |\n| AUC | 3.929±0.589 | 4.163±0.535 | 4.140 | 3.215 |\n| Cmax | 3.135±0.358 | 3.165±0.257 | 2.758 | 2.305 |\n| Half-life | 2.468±0.261 | 2.405±0.241 | 2.262 | 2.753 |\n| CL/F | 4.029±0.636 | 4.232±0.578 | 3.861 | 2.236 |\n| Vz/F | 3.476±0.356 | 3.579±0.404 | 3.472 | 2.836 |\n\nSources: Tables S4, S8 and S9; external scores use averaged predictions. The raw external categories contain 118/9 compounds and 602/33 records, respectively; endpoint evaluation counts depend on available labels.",
+      "limitations": "CL/F and Vz/F are apparent oral parameters. Endpoint sizes and errors vary; raw records, compound–dose combinations and unique compounds are separate counts.",
+      "code_status": "Training, prediction, splitting and metric code are public; data and models are provided on Zenodo.",
+      "verification_scope": "Checked the abstract, Tables S3–S9, official CSV counts, and split/loading/metric code; models were not retrained.",
+      "publication": {
+        "citation": "Journal of Medicinal Chemistry 68(15), 16678–16690; online 2025-07-31, issue 2025-08-14.",
+        "date_basis": "Publisher online publication date."
+      },
+      "source_labels": [
+        "Publication metadata and abstract",
+        "Official supplement: Tables S3–S9",
+        "Official CSV data supplement",
+        "Author code",
+        "Author code for molecule-level splitting",
+        "Author data and models v3"
+      ],
+      "source_sha256": "8492ba9853127604c816484a0f2fad291b7932a2537b86efe5a85e16e2030156"
+    },
+    "human-clearance-bias-2024": {
+      "name": "Human clearance with reduced bias",
+      "tags": [
+        "Human clearance",
+        "Generalization",
+        "Conformal prediction",
+        "Random forest"
+      ],
+      "one_liner": "Removes structurally similar and same-class training compounds to evaluate human clearance prediction for new chemistry.",
+      "pain_point": "Structural neighbors and therapeutic-class relationships affect generalization estimates for human clearance models.",
+      "datasets": "A collection of 1,340 compounds with human intravenous PK data; Test343 contains 343 compounds for quasi-prospective testing. Clearance is measured in mL/min/kg.",
+      "method": "Descriptor-based random forests are compared with ChemProp and PLS. R4 removes same structural–therapeutic-class compounds or neighbors with Tanimoto similarity >0.7 and trains a separate model for each test molecule. Conformal prediction supplies intervals.",
+      "conclusion": "On Test343, RF GMFE changes from 3.11 in R3 to 3.33 after neighbor exclusion in R4; the fraction within two-fold error falls from 44% to 41%.",
+      "evaluation": "**Design.** R3 uses one model trained on Lombardo 2014 data. R4 trains 343 models, each after test-molecule-specific exclusions.\n\n| Model | GMFE ↓ | Within two-fold ↑ | Within three-fold ↑ |\n| --- | --- | --- | --- |\n| RF R3 | 3.11 | 44% | 60% |\n| RF R4 | 3.33 | 41% | 57% |\n| ChemProp CP4 | 3.27 | 39% | 57% |\n| PLS4 | 4.80 | 36% | 53% |\n\nSource: Table S9. CP4/PLS4 use corresponding per-molecule exclusions. Table S8 reports R4 GMFE 11.66 for 47 compounds with clearance >20.7 mL/min/kg, exposing a high-error subgroup.",
+      "limitations": "Errors vary by clearance mechanism and range. Per-test-molecule retraining in R4 is a distinct protocol from evaluating one fixed model.",
+      "code_status": "Publisher attachments provide a KNIME workflow ZIP and data XLSX; files were inspected but the workflow was not executed.",
+      "verification_scope": "Checked the official abstract, Tables S3/S8/S9, data XLSX and KNIME archive; models were not reproduced.",
+      "publication": {
+        "citation": "Molecular Pharmaceutics 21(3), 1192–1203; online 2024-01-29, issue 2024-03-04.",
+        "date_basis": "Publisher online publication date."
+      },
+      "source_labels": [
+        "Official abstract and publication dates",
+        "Official supplement: Tables S3, S8 and S9",
+        "Human clearance data XLSX",
+        "Author KNIME workflow"
+      ],
+      "source_sha256": "b1a7906291a34d4feb23f2c07e7d27e34f285de5848935763efd4b7b1e778d60"
+    },
+    "cyp2c9-ml-validation-2022": {
+      "name": "CYP2C9 prediction and validation",
+      "tags": [
+        "CYP2C9",
+        "Structural information",
+        "Ensemble docking",
+        "Experimental validation"
+      ],
+      "one_liner": "Combines molecular descriptors and CYP2C9 ensemble docking to screen inhibitors, then tests selected drugs experimentally.",
+      "pain_point": "CYP2C9 inhibition depends on ligand properties and protein flexibility; computational hits need experimental testing.",
+      "datasets": "Filtered and clustered PubChem/ChEMBL data: 8,141 compounds, comprising 4,840 inhibitors and 3,301 non-inhibitors, with a stratified random 80/20 holdout. Another 4,480 drugs were screened and 18 selected for experiments.",
+      "method": "RF/SVM models combine 36 MOE descriptors with docking energies for seven protein conformations. Consensus, energy thresholds and diversity selection prioritize HepG2 and CYP2C9 supersome assays.",
+      "conclusion": "RF balanced accuracy is 84.33% and sensitivity 89.97% in Table 3. Testing 18 candidates identifies four stronger inhibitors, including vatalanib with IC50 0.067 μM.",
+      "evaluation": "**Design.** The paper’s “external” model test set is a stratified random holdout from the same collection; new-candidate experiments are a separate validation stage.\n\n| Model (Table 3) | Balanced accuracy ↑ | Sensitivity ↑ | Specificity ↑ |\n| --- | --- | --- | --- |\n| RF, 36 MOE + 7 IE | 84.33% | 89.97% | 78.69% |\n| SVM, 36 MOE + 7 IE | 83.35% | 89.87% | 76.83% |\n\nThe text defines Table 3’s Accuracy column as balanced accuracy. Table 5 supersome IC50 values: vatalanib 0.067, piriqualone 10.9, ticagrelor 11.8 and cloperidone 17.7 μM.",
+      "limitations": "Enzyme inhibition and in vivo drug interactions are distinct outcomes. Assays establish inhibition under the tested conditions; modeling requires MOE descriptors and docking.",
+      "code_status": "Data and experimental details are provided in the article and supplements; no standalone code repository is listed.",
+      "verification_scope": "Checked full-text data filtering, 80/20 splitting, features, Tables 3/5, candidate selection and assays.",
+      "publication": {
+        "citation": "PLOS Computational Biology 18(1), e1009820; published 2022-01-26.",
+        "date_basis": "Publisher online publication date."
+      },
+      "source_labels": [
+        "Full text, methods and Tables 3 and 5",
+        "Open full text and supporting information"
+      ],
+      "source_sha256": "1a83625b78e08b959c9c034a96f56bdfc87afc60ad5705e3cf48f82840a8d53d"
     }
   }
 }

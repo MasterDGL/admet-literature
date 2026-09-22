@@ -12,7 +12,7 @@
         "intro": "Explore intestinal permeability, the blood–brain barrier and P-gp transport to understand absorption, tissue access and transporter effects.",
         "questions": ["Does the label measure permeability, barrier penetration, or transporter substrate/inhibitor status?", "How does performance change on new scaffolds or external data?", "Which predictions have in vitro support, and how does the assay relate to the intended application?"]
       },
-      "papers": ["tdc-2021", "caliciboost-2025", "bbb-megamolbart-2024", "mc-pgp-2025", "mtgl-admet-2023", "admet-ai-2024", "admetlab-3-2024", "admetsar-3-2024", "pksmart-2025"],
+      "papers": ["tdc-2021", "caliciboost-2025", "bbb-megamolbart-2024", "mc-pgp-2025", "mtgl-admet-2023", "admet-ai-2024", "admetlab-3-2024", "admetsar-3-2024", "pksmart-2025", "mmpk-2025"],
       "steps": [
         {"paper": "tdc-2021", "zh": "先区分 Caco-2、BBB、P-gp 和血浆蛋白结合等端点及其评价指标。", "en": "Distinguish Caco-2, BBB, P-gp and plasma protein binding endpoints and their metrics."},
         {"paper": "caliciboost-2025", "zh": "看 Caco-2 专门模型如何处理数据整理、特征与模型选择。", "en": "Study data preparation, features and model selection for a dedicated Caco-2 predictor."},
@@ -32,12 +32,14 @@
         "intro": "Connect CYP activity and microsomal stability with human clearance, half-life and volume of distribution to understand how in vitro endpoints inform in vivo PK prediction.",
         "questions": ["Is the target CYP inhibition/substrate status, in vitro stability, or an in vivo PK parameter? Which species and units are used?", "Are cross-species inputs measured or predicted, and will those inputs be available at test time?", "What generalization question does each random, scaffold or external evaluation address?"]
       },
-      "papers": ["tdc-2021", "himnet-2026", "pksmart-2025", "mtgl-admet-2023", "pharmabench-2024", "admet-ai-2024", "admetlab-3-2024", "admetsar-3-2024"],
+      "papers": ["tdc-2021", "himnet-2026", "pksmart-2025", "mtgl-admet-2023", "pharmabench-2024", "admet-ai-2024", "admetlab-3-2024", "admetsar-3-2024", "metabognn-2025", "mmpk-2025", "human-clearance-bias-2024", "cyp2c9-ml-validation-2022"],
       "steps": [
         {"paper": "tdc-2021", "zh": "先认识 CYP、微粒体/肝细胞清除率与半衰期的数据定义。", "en": "Start with definitions of CYP, microsomal/hepatocyte clearance and half-life tasks."},
-        {"paper": "pharmabench-2024", "zh": "理解实验条件和数据清洗为何会影响标签与模型比较。", "en": "Examine how assay conditions and data cleaning affect labels and model comparisons."},
-        {"paper": "himnet-2026", "zh": "阅读代谢稳定性专门模型，检查层级分子表示带来的贡献。", "en": "Study a dedicated stability model and the contribution of hierarchical molecular representations."},
-        {"paper": "pksmart-2025", "zh": "进一步看跨物种建模如何预测人体 PK，并检查外部验证。", "en": "Explore cross-species modeling for human PK and examine external validation."}
+        {"paper": "metabognn-2025", "zh": "从微粒体剩余比例入手，理解人–小鼠差异如何作为辅助任务。", "en": "Start with microsomal remaining fractions and human–mouse differences as an auxiliary task."},
+        {"paper": "cyp2c9-ml-validation-2022", "zh": "看 CYP 抑制预测如何结合蛋白结构信息，并进入新实验验证。", "en": "Follow CYP inhibition prediction from protein structural information to new experiments."},
+        {"paper": "pksmart-2025", "zh": "进一步看跨物种建模如何预测人体 PK，并检查外部验证。", "en": "Explore cross-species modeling for human PK and examine external validation."},
+        {"paper": "mmpk-2025", "zh": "进入口服给药场景，区分剂量组合、表观参数与外部验证结果。", "en": "Move to oral dosing and distinguish dose combinations, apparent parameters and external results."},
+        {"paper": "human-clearance-bias-2024", "zh": "最后检验结构近邻排除后的人体清除率误差，理解更严格的泛化评测。", "en": "Examine clearance errors after removing structural neighbors to understand stricter generalization tests."}
       ]
     },
     {
@@ -73,7 +75,7 @@
         "intro": "Start with fingerprint and descriptor baselines, then compare graph networks, pretraining, multitask learning and ensembles for ADMET prediction.",
         "questions": ["Does the gain come from representation, pretraining data, auxiliary tasks, ensembling or tuning?", "Are splits, search budgets and training data matched when comparing against fingerprint/descriptor baselines?", "How does the pretraining objective relate to downstream endpoints, and which designs are supported by ablations?"]
       },
-      "papers": ["chemprop-dmpnn-2019", "attentivefp-2019", "molmapnet-2021", "maplight-2023", "kpgt-2023", "mole-2024", "molmcl-2025", "mtgl-admet-2023", "dcpm-admet-2026", "trimole-hybrid-2026", "admet-evo-2026", "uni-qsar-2023", "domain-aware-pbrics-2023", "ssl-gcn-2021", "moleculenet-2018"],
+      "papers": ["chemprop-dmpnn-2019", "attentivefp-2019", "molmapnet-2021", "maplight-2023", "kpgt-2023", "mole-2024", "molmcl-2025", "mtgl-admet-2023", "dcpm-admet-2026", "trimole-hybrid-2026", "admet-evo-2026", "uni-qsar-2023", "domain-aware-pbrics-2023", "ssl-gcn-2021", "moleculenet-2018", "metabognn-2025", "mmpk-2025"],
       "steps": [
         {"paper": "molmapnet-2021", "zh": "认识指纹和描述符的另一种组织方式，建立结构化特征基线。", "en": "Study how fingerprints and descriptors can be organized into structured feature maps."},
         {"paper": "chemprop-dmpnn-2019", "zh": "理解有向键消息传递，并关注描述符基线与划分方式。", "en": "Understand directed bond message passing, descriptor baselines and data splits."},
@@ -94,13 +96,14 @@
         "intro": "Use data splits, activity cliffs, uncertainty and experimental validation to assess where predictions work and whether failures can be detected.",
         "questions": ["Does testing isolate new molecules, new scaffolds and new data sources?", "Beyond average scores, are activity cliffs, error distributions and uncertainty calibration examined?", "Which predictions were tested in new experiments, and what conclusions do those experiments support?"]
       },
-      "papers": ["admet-reliability-2026", "tdc-audit-2026", "moleculeace-2022", "atom-uncertainty-2023", "tox21-conformal-2021", "bbb-megamolbart-2024", "pksmart-2025", "molmcl-2025", "pharmabench-2024", "moleculenet-2018", "openadmet-avoidome-2026"],
+      "papers": ["admet-reliability-2026", "tdc-audit-2026", "moleculeace-2022", "atom-uncertainty-2023", "tox21-conformal-2021", "bbb-megamolbart-2024", "pksmart-2025", "molmcl-2025", "pharmabench-2024", "moleculenet-2018", "openadmet-avoidome-2026", "mmpk-2025", "human-clearance-bias-2024", "cyp2c9-ml-validation-2022"],
       "steps": [
         {"paper": "moleculenet-2018", "zh": "先理解基准、任务和数据划分如何决定评价问题。", "en": "Start with how benchmarks, tasks and splits define an evaluation question."},
         {"paper": "moleculeace-2022", "zh": "检查平均成绩是否掩盖相似分子间的大幅活性变化。", "en": "Examine whether average scores hide large activity differences among similar molecules."},
         {"paper": "atom-uncertainty-2023", "zh": "理解原子级不确定性与分子预测误差、结构解释的联系。", "en": "Connect atom-level uncertainty to molecular prediction errors and structural interpretation."},
         {"paper": "admet-reliability-2026", "zh": "对照小样本和泛化评测，检查常用模型在哪些条件下失效。", "en": "Examine model failures under small-data and generalization evaluations."},
-        {"paper": "bbb-megamolbart-2024", "zh": "最后追踪一次体外实验验证，区分模型分数与实验观察。", "en": "Follow an in vitro validation study and distinguish model scores from experimental observations."}
+        {"paper": "bbb-megamolbart-2024", "zh": "最后追踪一次体外实验验证，区分模型分数与实验观察。", "en": "Follow an in vitro validation study and distinguish model scores from experimental observations."},
+        {"paper": "human-clearance-bias-2024", "zh": "用清除率研究比较有无结构近邻排除的误差和高误差子群。", "en": "Compare clearance errors with and without neighbor exclusion, including high-error subgroups."}
       ]
     }
   ]

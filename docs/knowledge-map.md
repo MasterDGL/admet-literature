@@ -16,7 +16,7 @@
 | 分子与蛋白表示 | 如何将结构、序列、构象与背景信息转换成可学习输入？ | [Chemprop/D-MPNN](../papers/foundations/chemprop-dmpnn-2019.md)、[AttentiveFP](../papers/foundations/attentivefp-2019.md)、[KPGT](../papers/admet/kpgt-2023.md)；蛋白表示与结构专题待扩展 |
 | 预测任务 | 分子是否有活性、能否到达目标部位、是否存在安全性风险？ | 当前主线是 [ADMET 与 PK](../topics/admet.md)，含毒性、吸收/分布、代谢与药代预测；结合、对接和虚拟筛选待扩展 |
 | 设计与优化 | 如何提出兼顾活性、ADMET 与可合成性的候选？ | 计划扩展分子生成、多参数优化、反应预测和合成规划；目前没有独立专题 |
-| 实验验证与迭代 | 预测是否经新实验支持？结果如何用于下一轮研究？ | [BBB MegaMolBART](../papers/admet/bbb-megamolbart-2024.md)提供体外验证案例；完整设计–制备–测试–分析闭环待扩展 |
+| 实验验证与迭代 | 预测是否经新实验支持？结果如何用于下一轮研究？ | [BBB MegaMolBART](../papers/admet/bbb-megamolbart-2024.md)与 [CYP2C9 抑制剂研究](../papers/admet/cyp2c9-ml-validation-2022.md)提供体外验证案例；完整设计–制备–测试–分析闭环待扩展 |
 
 ADMET 位于预测层，为分子设计提供吸收、分布、代谢、排泄和毒性方面的约束。设计产生候选，实验检验预测，新增数据再用于改进模型；图中的反馈箭头表示这一研究循环。
 
@@ -29,7 +29,7 @@ ADMET 位于预测层，为分子设计提供吸收、分布、代谢、排泄�
 | 你的问题 | 阅读入口 | 对应层级 |
 | --- | --- | --- |
 | 分子能否被吸收、进入脑部或受到转运体影响？ | [吸收与分布](../topics/absorption-distribution.md) | 数据、预测、实验验证 |
-| 分子如何被代谢，能否预测人体暴露相关参数？ | [代谢与药代动力学](../topics/metabolism-pk.md) | 数据、预测 |
+| 分子如何被代谢，能否预测人体暴露相关参数？ | [代谢与药代动力学](../topics/metabolism-pk.md) | 数据、预测、实验验证 |
 | 是否存在 hERG、致突变性等安全风险？ | [毒性预测](../topics/toxicity.md) | 数据、预测 |
 | 指纹、描述符、分子图与预训练各解决什么问题？ | [分子表示与学习方法](../topics/representations-learning.md) | 表示、预测 |
 | 预测何时可信，如何用误差分析和实验检验？ | [可靠性与实验验证](../topics/reliability-validation.md) | 贯穿各层 |

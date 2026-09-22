@@ -6,7 +6,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 梳理 **ADMET 与药代动力学预测** 的研究进展，整理代表论文、数据集与代码资源。每篇先简要介绍研究内容，再展开 **发表期刊/会议与时间、主要痛点、数据集、方法和结论**。分子表示与基准文献提供相关基础知识。
 
-目前收录 **37 篇**：**31 篇 ADMET 与药代动力学**、**6 篇基础方法与基准**，其中 11 篇列为核心精读。正式研究与数据论文 30 篇、综述 1 篇、观点文章 1 篇、预印本 5 篇。最近一批资料核对日期：**2026-09-22**；各篇记录具体来源和核对日期。
+目前收录 **41 篇**：**35 篇 ADMET 与药代动力学**、**6 篇基础方法与基准**，其中 11 篇列为核心精读。正式研究与数据论文 34 篇、综述 1 篇、观点文章 1 篇、预印本 5 篇。最近一批资料核对日期：**2026-09-22**；各篇记录具体来源和核对日期。
 
 ## AIDD 知识地图
 
@@ -23,7 +23,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 - [基础方法与基准](topics/foundations.md)：分子表示、描述符建模、不确定性与评测基准。
 - [知识地图说明](docs/knowledge-map.md)：从研究问题找到方法、任务和阅读入口。
 - [优先精读](#优先精读)：先建立研究问题、数据和方法的认识。
-- [论文梳理](#论文梳理)：直接在本页查看全部 37 篇的内容概述、发表信息、痛点、数据集、方法和结论。
+- [论文梳理](#论文梳理)：直接在本页查看全部 41 篇的内容概述、发表信息、痛点、数据集、方法和结论。
 - [选文与整理方法](docs/curation.md)：选文标准、实验比较和资料来源。
 - [AIDD 研究范围](docs/scope.md)：当前覆盖与后续专题。
 - [讨论区](https://github.com/MasterDGL/admet-literature/discussions)：提问与推荐论文。
@@ -33,7 +33,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 | 专题 | 当前内容 | 入口 |
 | --- | --- | --- |
-| ADMET 与药代动力学 | 31 篇 | [论文总表](topics/admet.md) |
+| ADMET 与药代动力学 | 35 篇 | [论文总表](topics/admet.md) |
 | 基础方法与基准 | 6 篇；分子表示、数据与评测 | [基础阅读](topics/foundations.md) |
 | 其他 AIDD 方向 | 扩展计划，尚未纳入独立专题 | [研究范围](docs/scope.md) |
 
@@ -229,6 +229,38 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 [论文原文](https://link.springer.com/article/10.1186/s13321-025-01066-5) · [详细解读](papers/admet/pksmart-2025.md) · [代码/项目](https://github.com/srijitseal/PKSmart)
 
+#### MetaboGNN: predicting liver metabolic stability with graph neural networks and cross-species data
+
+*Journal of Cheminformatics · 2025-09-03* · 已发表 · 专题补读
+
+**内容概述：** 结合图对比预训练与人–小鼠代谢差异，预测化合物在肝微粒体中孵育 30 分钟后的剩余比例。
+
+| 字段 | 内容 |
+| --- | --- |
+| 发表期刊/会议与时间 | Journal of Cheminformatics 17, 140；2025-09-03。 |
+| 主要痛点 | 稳定性标签有限，模型需要同时捕捉分子结构与不同物种的代谢差异。 |
+| 数据集 | 韩国 2023 药物发现数据挑战：3,981 个化合物，固定训练/测试集 3,498/483；每个分子具有人和小鼠肝微粒体的母体剩余百分比。图对比预训练使用约 258 万个无标签分子。 |
+| 方法 | 以包含环结构信息的分子图进行对比预训练，再联合预测小鼠稳定性与人–小鼠差值，由两者得到人体微粒体稳定性。 |
+| 结论 | 加入物种差异任务后，HLM/MLM RMSE 从 30.14/28.72 降至 27.91/27.86 个百分点，支持跨物种辅助任务在该数据集上的作用。 |
+
+[论文原文](https://pmc.ncbi.nlm.nih.gov/articles/PMC12409945/) · [详细解读](papers/admet/metabognn-2025.md) · [代码/项目](https://github.com/qwon135/MetaboGNN)
+
+#### MMPK: A Multimodal Deep Learning Framework to Predict Human Oral Pharmacokinetic Parameters
+
+*Journal of Medicinal Chemistry · 2025-07-31* · 已发表 · 专题补读
+
+**内容概述：** 融合分子图、子结构图、SMILES 与剂量信息，预测人体口服给药后的八项药代参数。
+
+| 字段 | 内容 |
+| --- | --- |
+| 发表期刊/会议与时间 | Journal of Medicinal Chemistry 68(15), 16678–16690；2025-07-31 在线发表，2025-08-14 卷期。 |
+| 主要痛点 | 人体口服 PK 数据存在缺失、剂量变化和参数间关联，需要在有限标签下同时学习多项参数。 |
+| 数据集 | 正式 CSV 含 1,283 个化合物、5,058 条原始记录。补充表 S3 的建模数据经填补和受试者加权平均后为 1,156 个分子、4,177 个分子–剂量组合；外部集为在研药物和 2024 年 FDA 批准药物。覆盖 AUC、Cmax、Tmax、半衰期、CL/F、Vz/F、MRT、F。 |
+| 方法 | 分子图与子结构图编码器、ChemBERTa 序列表示和子结构交叉注意力，结合剂量输入、多任务学习及基于非房室分析关系的数据填补。 |
+| 结论 | 十折验证中八项参数平均 GMFE 为 2.895。AUC、Cmax、CL/F、Vz/F 的 GMFE 均值领先所列基线；半衰期、MRT 和 F 的 GMFE 则以 XGBoost 更低。 |
+
+[论文原文](https://doi.org/10.1021/acs.jmedchem.5c01522) · [详细解读](papers/admet/mmpk-2025.md) · [代码/项目](https://github.com/xli7654321/MMPK)
+
 #### HERGAI: an artificial intelligence tool for structure-based prediction of hERG inhibitors
 
 *Journal of Cheminformatics · 2025-07-24* · 已发表 · 核心论文
@@ -374,6 +406,22 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 | 结论 | 在相同数据和划分下，DMPNN 系列在 59 个分类任务中的 47 个优于 MGA；平台将 77 个预测模型与计算属性、规则、预测不确定性和 API 集成。 |
 
 [论文原文](https://doi.org/10.1093/nar/gkae236) · [详细解读](papers/admet/admetlab-3-2024.md)
+
+#### Prediction of Human Clearance Using In Silico Models with Reduced Bias
+
+*Molecular Pharmaceutics · 2024-01-29* · 已发表 · 专题补读
+
+**内容概述：** 排除测试分子的同类和高相似训练化合物，检验人体清除率模型对新化学结构的预测能力。
+
+| 字段 | 内容 |
+| --- | --- |
+| 发表期刊/会议与时间 | Molecular Pharmaceutics 21(3), 1192–1203；2024-01-29 在线发表，2024-03-04 卷期。 |
+| 主要痛点 | 训练集中的结构近邻和治疗类别关联会影响泛化评估，需要衡量远离已有化学系列时的清除率预测误差。 |
+| 数据集 | 汇编 1,340 个具有人体静脉 PK 数据的化合物；Test343 是含 343 个化合物的准前瞻性测试集。预测人体清除率，单位 mL/min/kg。 |
+| 方法 | 分子描述符随机森林，比较 ChemProp 和 PLS；R4 针对每个测试分子，移除同一结构–治疗类别或 Tanimoto 相似度 >0.7 的训练化合物，再单独训练模型。另用共形预测估计区间。 |
+| 结论 | Test343 上 RF 的 GMFE 从 R3 的 3.11 变为严格排除近邻后 R4 的 3.33，两倍误差内比例从 44% 降至 41%；这一对照量化了训练集组成对评估的影响。 |
+
+[论文原文](https://doi.org/10.1021/acs.molpharmaceut.3c00812) · [详细解读](papers/admet/human-clearance-bias-2024.md) · [代码/项目](https://acs.figshare.com/articles/dataset/25104249)
 
 ### 2023
 
@@ -522,6 +570,22 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 | 结论 | 正式摘要报告多任务模型优于总体标签单任务模型和菌株单任务集成，说明保留菌株级信息有助于致突变性预测。 |
 
 [论文原文](https://doi.org/10.1021/acs.jcim.2c00532) · [详细解读](papers/admet/ames-multitask-2022.md) · [代码/项目](https://github.com/VirSabando/MTL_DNN_Ames)
+
+#### Machine learning-driven identification of drugs inhibiting cytochrome P450 2C9
+
+*PLOS Computational Biology · 2022-01-26* · 已发表 · 专题补读
+
+**内容概述：** 结合分子描述符和 CYP2C9 多构象对接筛选抑制剂，并通过新实验检验候选药物。
+
+| 字段 | 内容 |
+| --- | --- |
+| 发表期刊/会议与时间 | PLOS Computational Biology 18(1), e1009820；2022-01-26。 |
+| 主要痛点 | CYP2C9 抑制受到配体性质和蛋白柔性的共同影响，计算筛选需要与抑制实验衔接。 |
+| 数据集 | PubChem/ChEMBL 经清洗、药物样过滤和聚类后保留 8,141 个化合物：4,840 抑制剂、3,301 非抑制剂。按类别随机 80/20 留出；另筛选 4,480 个药物，选择 18 个进行实验。 |
+| 方法 | 36 个 MOE 描述符与 7 个蛋白构象的对接能，训练 RF/SVM；结合模型共识、对接能阈值与多样性筛选，进行 HepG2 和 CYP2C9 supersome 实验。 |
+| 结论 | Table 3 的 RF 平衡准确率为 84.33%、敏感度 89.97%。18 个候选经实验检验，确认四种较强抑制剂；vatalanib 的 IC50 为 0.067 μM。 |
+
+[论文原文](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1009820) · [详细解读](papers/admet/cyp2c9-ml-validation-2022.md)
 
 ### 2021
 

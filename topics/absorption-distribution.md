@@ -25,6 +25,7 @@
 | --- | --- | --- | --- | --- |
 | 2025-12-22 | [CaliciBoost: Performance-driven evaluation of molecular representations for caco-2 permeability prediction](../papers/admet/caliciboost-2025.md) | Journal of Cheminformatics | 已发表 | 比较分子指纹和理化描述符，结合自动机器学习预测分子通过肠道细胞模型（Caco-2）的能力。 |
 | 2025-09-26 | [PKSmart: an open-source computational model to predict intravenous pharmacokinetics of small molecules](../papers/admet/pksmart-2025.md) | Journal of Cheminformatics | 已发表 | 先预测动物体内的药代参数，再结合分子结构预测人体静脉给药后的清除率、分布容积和半衰期等指标。 |
+| 2025-07-31 | [MMPK: A Multimodal Deep Learning Framework to Predict Human Oral Pharmacokinetic Parameters](../papers/admet/mmpk-2025.md) | Journal of Medicinal Chemistry | 已发表 | 融合分子图、子结构图、SMILES 与剂量信息，预测人体口服给药后的八项药代参数。 |
 | 2025-04-16 | [A multimodal contrastive learning framework for predicting P-glycoprotein substrates and inhibitors](../papers/admet/mc-pgp-2025.md) | Journal of Pharmaceutical Analysis | 已发表 | 融合 SMILES、指纹和分子图，分别判断分子是否抑制 P-gp、是否会被 P-gp 转运。 |
 | 2024-07-09 | [Predicting blood–brain barrier permeability of molecules with a large language model and machine learning](../papers/admet/bbb-megamolbart-2024.md) | Scientific Reports | 已发表 | 用分子语言模型和 XGBoost 预测血脑屏障通透性，并用人源三维 BBB 球体检验部分候选。 |
 | 2024-06-24 | [ADMET-AI: a machine learning ADMET platform for evaluation of large-scale chemical libraries](../papers/admet/admet-ai-2024.md) | Bioinformatics | 已发表 | 将图神经网络用于网页和本地预测工具，一次预测多项 ADMET 性质，方便快速筛选大规模化合物库。 |

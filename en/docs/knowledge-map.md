@@ -16,7 +16,7 @@ The map organizes AIDD into five reading levels: understand the data and researc
 | Molecular and protein representations | How do structures, sequences, conformations and context become model inputs? | [Chemprop/D-MPNN](../papers/foundations/chemprop-dmpnn-2019.md), [AttentiveFP](../papers/foundations/attentivefp-2019.md), [KPGT](../papers/admet/kpgt-2023.md); protein representations and structure are planned topics |
 | Prediction tasks | Is a molecule active? Can it reach the intended site? What safety risks does it present? | [ADMET and PK](../topics/admet.md) is the current focus, covering toxicity, absorption/distribution, metabolism and PK; binding, docking and virtual screening are planned |
 | Design and optimization | How can candidates balance activity, ADMET and synthetic accessibility? | Planned topics: molecular generation, multiparameter optimization, reaction prediction and synthesis planning |
-| Experimental validation and iteration | Do new experiments support predictions? How do results guide the next study? | [BBB MegaMolBART](../papers/admet/bbb-megamolbart-2024.md) provides an in vitro example; full design–make–test–analyze cycles are planned |
+| Experimental validation and iteration | Do new experiments support predictions? How do results guide the next study? | [BBB MegaMolBART](../papers/admet/bbb-megamolbart-2024.md) and the [CYP2C9 inhibitor study](../papers/admet/cyp2c9-ml-validation-2022.md) provide in vitro examples; full design–make–test–analyze cycles are planned |
 
 ADMET sits in the prediction layer and supplies absorption, distribution, metabolism, excretion and toxicity constraints for design. Design proposes candidates, experiments test predictions, and new data improve models. The feedback arrow represents this research cycle.
 
@@ -29,7 +29,7 @@ The five-level map connects areas of research. The [five thematic reading routes
 | Your question | Reading route | Map levels |
 | --- | --- | --- |
 | Can a molecule be absorbed, enter the brain or interact with transporters? | [Absorption and distribution](../topics/absorption-distribution.md) | Data, prediction, validation |
-| How is a molecule metabolized, and can human exposure-related parameters be predicted? | [Metabolism and pharmacokinetics](../topics/metabolism-pk.md) | Data, prediction |
+| How is a molecule metabolized, and can human exposure-related parameters be predicted? | [Metabolism and pharmacokinetics](../topics/metabolism-pk.md) | Data, prediction, validation |
 | Are there hERG, mutagenicity or other safety risks? | [Toxicity prediction](../topics/toxicity.md) | Data, prediction |
 | What do fingerprints, descriptors, molecular graphs and pretraining contribute? | [Representations and learning](../topics/representations-learning.md) | Representations, prediction |
 | When can predictions be trusted, and how can errors and experiments test them? | [Reliability and validation](../topics/reliability-validation.md) | Across all levels |

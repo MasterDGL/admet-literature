@@ -59,6 +59,26 @@ pksmart-2025,PKSmart,PKSmart: an open-source computational model to predict intr
 | 血浆游离分数 | 34 | 0.26 | 0.22 | 26.47% |
 
 来源：Table 2。前三项 RMSE 对应 log10 标签，游离分数使用原始比例；两倍误差按原始量纲计算。MRT 没有独立外部测试数据。",外部集各端点样本数差别较大，应逐项判断效果。与 AstraZeneca 的比较主要考察两套模型预测值的相关性；它与针对实验标签计算的外部 R² 是两种不同证据。,https://link.springer.com/article/10.1186/s13321-025-01066-5,https://github.com/srijitseal/PKSmart,作者代码/项目入口已公开,2026-09-22,已核对数据整理、嵌套验证、外部集构成及 Table 2
+metabognn-2025,MetaboGNN,MetaboGNN: predicting liver metabolic stability with graph neural networks and cross-species data,结合图对比预训练与人–小鼠代谢差异，预测化合物在肝微粒体中孵育 30 分钟后的剩余比例。,ADMET 与药代动力学,专题补读,代谢稳定性; 跨物种; 图对比学习,Journal of Cheminformatics,2025-09-03,出版社在线发表日期,journal,稳定性标签有限，模型需要同时捕捉分子结构与不同物种的代谢差异。,"韩国 2023 药物发现数据挑战：3,981 个化合物，固定训练/测试集 3,498/483；每个分子具有人和小鼠肝微粒体的母体剩余百分比。图对比预训练使用约 258 万个无标签分子。",以包含环结构信息的分子图进行对比预训练，再联合预测小鼠稳定性与人–小鼠差值，由两者得到人体微粒体稳定性。,加入物种差异任务后，HLM/MLM RMSE 从 30.14/28.72 降至 27.91/27.86 个百分点，支持跨物种辅助任务在该数据集上的作用。,"**实验设计。** 挑战赛先按结构聚类、再在各簇内分层划分训练与测试；作者代码从训练部分另随机留出 20% 验证。正文报告 30 次独立训练，括号为 95% 置信区间。
+
+| 设置 | HLM RMSE ↓ | MLM RMSE ↓ |
+| --- | --- | --- |
+| 从头训练 | 30.94 (30.52–31.35) | 29.48 (29.29–29.67) |
+| 图对比预训练 | 30.14 (29.89–30.39) | 28.72 (28.55–28.88) |
+| 预训练＋物种差异任务 | 27.91 (27.76–28.06) | 27.86 (27.69–28.03) |
+
+来源：Tables 1–2。单位为母体剩余百分比的百分点；推断时由分子结构预测两个物种的结果。",测试集来自同一挑战赛的簇内分层划分。这里检验的是微粒体剩余比例，不能据此直接判断人体清除率或临床半衰期的误差。,https://pmc.ncbi.nlm.nih.gov/articles/PMC12409945/,https://github.com/qwon135/MetaboGNN,作者公开训练、推断、预训练脚本和训练/测试 CSV；本次核对了训练脚本的验证划分,2026-09-22,已核对正式全文、数据与物种差异任务定义、Tables 1–3，以及作者训练代码；未重新训练模型
+mmpk-2025,MMPK,MMPK: A Multimodal Deep Learning Framework to Predict Human Oral Pharmacokinetic Parameters,融合分子图、子结构图、SMILES 与剂量信息，预测人体口服给药后的八项药代参数。,ADMET 与药代动力学,专题补读,人体口服PK; 多模态; 多任务学习; 外部验证,Journal of Medicinal Chemistry,2025-07-31,出版社在线发表日期,journal,人体口服 PK 数据存在缺失、剂量变化和参数间关联，需要在有限标签下同时学习多项参数。,"正式 CSV 含 1,283 个化合物、5,058 条原始记录。补充表 S3 的建模数据经填补和受试者加权平均后为 1,156 个分子、4,177 个分子–剂量组合；外部集为在研药物和 2024 年 FDA 批准药物。覆盖 AUC、Cmax、Tmax、半衰期、CL/F、Vz/F、MRT、F。",分子图与子结构图编码器、ChemBERTa 序列表示和子结构交叉注意力，结合剂量输入、多任务学习及基于非房室分析关系的数据填补。,十折验证中八项参数平均 GMFE 为 2.895。AUC、Cmax、CL/F、Vz/F 的 GMFE 均值领先所列基线；半衰期、MRT 和 F 的 GMFE 则以 XGBoost 更低。,"**实验设计。** 作者按唯一 SMILES 做十折划分，再从每折其余分子中留出 1/9 验证，约为 8:1:1；同一分子的剂量记录归入同组。以下为 GMFE，越低越好。
+
+| 端点 | MMPK 十折均值±SD | XGBoost 十折均值±SD | 在研药物外部集 | 2024 批准药物外部集 |
+| --- | --- | --- | --- | --- |
+| AUC | 3.929±0.589 | 4.163±0.535 | 4.140 | 3.215 |
+| Cmax | 3.135±0.358 | 3.165±0.257 | 2.758 | 2.305 |
+| 半衰期 | 2.468±0.261 | 2.405±0.241 | 2.262 | 2.753 |
+| CL/F | 4.029±0.636 | 4.232±0.578 | 3.861 | 2.236 |
+| Vz/F | 3.476±0.356 | 3.579±0.404 | 3.472 | 2.836 |
+
+来源：Tables S4、S8、S9；外部成绩基于平均预测值。原始附件中在研/2024 批准药物分别为 118/9 个化合物，含 602/33 条记录；这些是原始数据规模，各端点评价样本数另由标签可用性决定。",CL/F 和 Vz/F 是口服表观参数。八项端点的样本量与误差差异明显；分子–剂量组合数、原始记录数和独立分子数分别记录。,https://doi.org/10.1021/acs.jmedchem.5c01522,https://github.com/xli7654321/MMPK,作者公开训练、预测、划分与指标脚本；另提供 Zenodo 数据和模型,2026-09-22,已核对正式摘要、补充 Tables S3–S9、原始 CSV 的记录与分子数，以及作者划分、数据加载和指标代码；未重新训练模型
 hergai-2025,HERGAI,HERGAI: an artificial intelligence tool for structure-based prediction of hERG inhibitors,结合分子对接与集成模型，从大量候选分子中识别可能阻断 hERG 心脏离子通道的化合物。,ADMET 与药代动力学,核心论文,hERG; 对接; 类别不均衡,Journal of Cheminformatics,2025-07-24,出版社在线发表日期,journal,小规模或阳性富集的测试集不能充分反映筛选中大量阴性、少量 hERG 阻断剂的场景。,"PubChem/ChEMBL 清洗后 299,927 个分子：1,937 阳性、297,990 阴性；采用 IC50 20 μM 判据，按 Bemis–Murcko 骨架成组分配约 3:1 训练/测试集。",Smina 对接后选择结合姿势，提取蛋白–配体 PLEC 指纹；RF、XGBoost、DNN 作为基模型，DNN 作为堆叠集成元学习器；在训练折内过采样。,作者报告测试集对 IC50≤20 μM 阻断剂的召回约 86%，对≤1 μM 阻断剂约 94%；筛选富集优于论文比较的通用对接打分方案。,"**实验设计。** 以 IC50≤20 μM 定义阻断剂，按 Bemis–Murcko 骨架成组分配约 3:1 的训练/测试集。Table 1 给出训练 224,945 个分子（1,453 阳性），测试 74,982 个（484 阳性）。训练集内五折验证同时选择模型超参数和决策阈值；过采样仅用于训练折，随机种子为 42。
 
 **核心结果。** 最终 DNN 堆叠模型 HERGAI 在测试集的阳性召回率为 0.864；对 IC50≤1 μM 阻断剂的召回率为 94.29%。对照包括单个 RF/XGBoost/DNN 模型、对接打分函数，以及在同一测试集运行的 CardioTox net 和 AttenhERG。论文同时报告特异度、平衡准确率、ROC-AUC 和前 0.1%/1% 富集因子（Results and Discussion、Table 2、Conclusions）。",该测试集是同一整理数据源中的留出骨架集合。测试集筛选表现还参与了对接姿势打分方案选择，因此后续复现宜另设独立外部集检验完整流程。高召回应与特异度、富集率一起解读。,https://doi.org/10.1186/s13321-025-01063-8,https://github.com/vktrannguyen/HERGAI,作者代码与数据可访问；仓库于 2026-01-01 归档,2026-09-22,已核对 Table 1 样本数、训练折过采样、阈值选择和测试集结果
@@ -106,6 +126,16 @@ admetlab-3-2024,ADMETlab 3.0,"ADMETlab 3.0: an updated comprehensive online ADME
 **结果与定位。** 正文报告 DMPNN 系列在 47/59 个分类端点上优于 MGA（Fig. 3）；18 个回归端点的表现分别列在 Supplementary Table S5，分类逐项成绩见 S4。原有回归端点中的 LC50FM R² 为 0.68，新加入的半衰期回归 R² 接近 0.7。S6–S7 给出不确定性分组与阈值。
 
 **使用方式。** 提供网页和 API；API 可选择 DMPNN 或 DMPNN-Des，并返回预测值及置信度分组。模型验证采用随机划分，与 TDC 骨架基准分别解读。",119 是平台总输出数，77 是学习得到的预测端点数。平台覆盖与推理速度可以用于工具选型，模型准确率则按具体端点和划分评价。,https://doi.org/10.1093/nar/gkae236,,提供在线平台与 API 文档；论文未提供完整训练代码和模型权重的公开仓库入口,2026-09-22,已核对全文模型构建、Fig. 3、端点计数及 Supplementary Tables S1–S7 的引用位置
+human-clearance-bias-2024,Human clearance with reduced bias,Prediction of Human Clearance Using In Silico Models with Reduced Bias,排除测试分子的同类和高相似训练化合物，检验人体清除率模型对新化学结构的预测能力。,ADMET 与药代动力学,专题补读,人体清除率; 泛化; 共形预测; 随机森林,Molecular Pharmaceutics,2024-01-29,出版社在线发表日期,journal,训练集中的结构近邻和治疗类别关联会影响泛化评估，需要衡量远离已有化学系列时的清除率预测误差。,"汇编 1,340 个具有人体静脉 PK 数据的化合物；Test343 是含 343 个化合物的准前瞻性测试集。预测人体清除率，单位 mL/min/kg。",分子描述符随机森林，比较 ChemProp 和 PLS；R4 针对每个测试分子，移除同一结构–治疗类别或 Tanimoto 相似度 >0.7 的训练化合物，再单独训练模型。另用共形预测估计区间。,Test343 上 RF 的 GMFE 从 R3 的 3.11 变为严格排除近邻后 R4 的 3.33，两倍误差内比例从 44% 降至 41%；这一对照量化了训练集组成对评估的影响。,"**实验设计。** R3 对 Test343 使用一个以 Lombardo 2014 数据训练的模型；R4 为 343 个测试分子分别筛除近邻并训练，共 343 个模型。
+
+| 模型 | GMFE ↓ | 两倍误差内比例 ↑ | 三倍误差内比例 ↑ |
+| --- | --- | --- | --- |
+| RF R3 | 3.11 | 44% | 60% |
+| RF R4 | 3.33 | 41% | 57% |
+| ChemProp CP4 | 3.27 | 39% | 57% |
+| PLS4 | 4.80 | 36% | 53% |
+
+来源：Table S9。CP4/PLS4 采用对应的逐分子排除设置。Table S8 中 R4 对清除率 >20.7 mL/min/kg 的 47 个分子 GMFE 为 11.66，显示整体均值之外的高误差子群。",不同清除机制和清除率区间的误差差别较大。R4 的逐测试分子重训协议与单个固定模型的测试需要分别解释。,https://doi.org/10.1021/acs.molpharmaceut.3c00812,https://acs.figshare.com/articles/dataset/25104249,出版社附件公开 KNIME 工作流 ZIP 和数据 XLSX；已核对文件内容入口，未执行工作流,2026-09-22,已核对正式摘要、补充 Tables S3、S8、S9、数据 XLSX 及 KNIME 工作流压缩包；未复现模型
 kpgt-2023,KPGT,A knowledge-guided pre-training framework for improving molecular representation learning,把分子指纹和理化描述符融入图预训练，让模型学到更适合预测 ADMET 等性质的分子表示。,ADMET 与药代动力学,核心论文,图预训练; 化学知识,Nature Communications,2023-11-21,出版社在线发表日期,journal,图预训练目标可能偏离下游任务需求；如何使表示保留化学知识并提高迁移能力？,约 200 万个 ChEMBL29 分子预训练；下游 63 个数据集，包括 11 个常用性质数据集、22 个 TDC ADMET 任务和 30 个 MoleculeACE 任务。,LiGhT 线图 Transformer，结合分子描述符和指纹进行知识引导预训练，再对下游任务微调。,原文 Fig. 2c 与 Supplementary Table 8 报告，在当时比较的模型中，16/22 个 TDC ADMET 任务取得最佳表现。,"**实验设计。** 11 个常用性质数据集采用骨架 8:1:1 划分，运行 3 次；22 个 TDC 任务采用骨架 7:1:2 划分，运行 5 次。TDC 对照包括榜单中的 28 种方法，覆盖传统机器学习和深度学习。分类按任务使用 AUROC/AUPRC，回归使用 MAE/Spearman r。
 
 | TDC 任务 | 指标 | KPGT | 论文所列最佳基线 |
@@ -147,6 +177,14 @@ ames-multitask-2022,AMES 多任务 DNN,Multitask Deep Neural Networks for Ames M
 **参数与对照。** 正式 Supplementary Table S2 分列普通和加权损失设置：MTL 使用 5 个输出，总体标签单任务模型使用 1 个输出，学习率均为 0.0001；S3 给出各菌株独立模型的配置。S4 明确列出合并到各菌株标签中的 ±S9 及菌株变体。
 
 **结果来源。** 正式摘要报告多任务模型优于总体标签单任务和菌株单任务共识；正式补充材料提供模型配置与预测文件。补充 Table S1 汇总国际 Ames/QSAR 挑战中其他工具的成绩，用于背景比较。",该研究把实验变体汇总为五个菌株标签；这与 AmesNet 显式输入菌株及 S9 条件的设计不同。补充材料还指出三对可能互为盐形式的重复化合物，复现时应检查它们的分区。,https://doi.org/10.1021/acs.jcim.2c00532,https://github.com/VirSabando/MTL_DNN_Ames,作者代码/项目入口已公开,2026-09-22,已核对正式摘要、补充 Tables S1–S4、预测文件结构、作者 data.py 与 compute_metrics.py；正文最终结果表仍缺全文核对
+cyp2c9-ml-validation-2022,CYP2C9 prediction and validation,Machine learning-driven identification of drugs inhibiting cytochrome P450 2C9,结合分子描述符和 CYP2C9 多构象对接筛选抑制剂，并通过新实验检验候选药物。,ADMET 与药代动力学,专题补读,CYP2C9; 结构信息; 集成对接; 实验验证,PLOS Computational Biology,2022-01-26,出版社在线发表日期,journal,CYP2C9 抑制受到配体性质和蛋白柔性的共同影响，计算筛选需要与抑制实验衔接。,"PubChem/ChEMBL 经清洗、药物样过滤和聚类后保留 8,141 个化合物：4,840 抑制剂、3,301 非抑制剂。按类别随机 80/20 留出；另筛选 4,480 个药物，选择 18 个进行实验。",36 个 MOE 描述符与 7 个蛋白构象的对接能，训练 RF/SVM；结合模型共识、对接能阈值与多样性筛选，进行 HepG2 和 CYP2C9 supersome 实验。,Table 3 的 RF 平衡准确率为 84.33%、敏感度 89.97%。18 个候选经实验检验，确认四种较强抑制剂；vatalanib 的 IC50 为 0.067 μM。,"**实验设计。** 论文称为“external”的模型验证集来自同一汇编集的分层随机留出；新候选的实验验证另行开展。
+
+| 模型（Table 3） | 平衡准确率 ↑ | 敏感度 ↑ | 特异度 ↑ |
+| --- | --- | --- | --- |
+| RF，36 MOE＋7 IE | 84.33% | 89.97% | 78.69% |
+| SVM，36 MOE＋7 IE | 83.35% | 89.87% | 76.83% |
+
+Table 3 的 Accuracy 列按正文定义为平衡准确率。Table 5 的 supersome IC50：vatalanib 0.067、piriqualone 10.9、ticagrelor 11.8、cloperidone 17.7 μM。",CYP2C9 酶抑制和体内药物相互作用是不同评价层次；实验结果支持所测条件下的抑制活性。模型依赖 MOE 描述符与对接计算。,https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1009820,,正文与补充材料提供数据和实验细节；论文未列出独立代码仓库,2026-09-22,已核对正式全文、数据过滤与 80/20 划分、模型特征、Tables 3/5 及候选筛选和实验流程
 ssl-gcn-2021,SSL-GCN,Chemical toxicity prediction based on semi-supervised learning and graph convolutional neural network,让图神经网络同时学习有毒性标签和无标签的分子，利用半监督学习改善 Tox21 毒性预测。,ADMET 与药代动力学,专题补读,毒性; 半监督学习; Tox21,Journal of Cheminformatics,2021-11-27,出版社在线发表日期,journal,毒性实验标签有限，大量分子只有结构信息；仅用有标签样本训练图网络，难以充分利用这些分子。,"Tox21：7,831 个分子、12 个毒性端点；另从 ClinTox、SIDER、ToxCast 和 HIV 收集分子，移除标签并去除与 Tox21 重复的结构，得到 50,527 个无标签分子。",以 GCN 编码分子图，采用 Mean Teacher 框架：学生模型学习毒性标签，教师参数由学生参数的指数移动平均更新，并用扰动前后的预测一致性利用无标签数据。,论文报告最佳平均 ROC-AUC 为 0.757，优于所比较传统机器学习模型约 0.71 的水平。无标签数据能够改善预测，但最佳加入比例随毒性端点变化。,Tox21 按分子骨架划分为训练/验证/测试集，比例为 80%/10%/10%，重复运行 5 次。比较监督式 SL-GCN、基于 ECFP4 的 KNN、神经网络、随机森林、SVM、XGBoost，以及 DeepChem 模型；测试无标签/有标签样本比例 0.5、1、2、3、4。,12 个端点的标签完整性和类别比例不同。阅读结果时应同时看各端点 AUROC 与无标签比例实验；增加无标签样本并非在所有端点上都持续提高成绩。,https://link.springer.com/article/10.1186/s13321-021-00570-8,https://github.com/chen709847237/SSL-GCN,作者提供训练与预测脚本，README 链接数据和模型压缩包,2026-09-22,已核对出版社全文中的数据、骨架划分、Mean Teacher 方法和结果，以及作者仓库 README。
 cardiotox-net-2021,CardioTox net,CardioTox net: a robust predictor for hERG channel blockade based on deep learning meta-feature ensembles,融合不同分子表示的神经网络预测，改善 hERG 阻断剂识别，并在三个外部测试集上检验效果。,ADMET 与药代动力学,专题补读,hERG; 集成; 外部验证,Journal of Cheminformatics,2021-08-16,出版社在线发表日期,journal,单一分子表示可能遗漏信息，多模型直接合并又难兼顾灵敏度、特异度和预测精度。,"BindingDB、ChEMBL 和文献数据整理为 12,620 个训练分子（6,643 阻断剂、5,977 非阻断剂）；三个外部集分别为 44、41、839 个分子，采用 IC50 10 μM 分类判据。",五个基神经网络处理不同化学特征，再用独立神经网络组合其预测；训练数据按 70/10/10/10 分别用于基模型训练/验证和元模型训练/验证。,三个外部集报告 MCC 0.599/0.452/0.220，准确率 0.810/0.755/0.746；相对所选旧方法改善多项指标，但第三个不平衡外部集 PPV 仅 0.113。,Data preparation 说明训练与三个外部集的构建，并分析它们的化学相似性。,两个外部集较小，第三个集阳性比例低；其 PPV 0.113 反映了不平衡筛选中的误报问题，可与召回率一起分析。,https://doi.org/10.1186/s13321-021-00541-z,https://github.com/Abdulk084/CardioTox,作者代码/项目入口已公开,2026-09-22,书目、正文相关方法与结果及列出的官方资源
 tox21-conformal-2021,毒性深度共形预测,Deep Learning-Based Conformal Prediction of Toxicity,给毒性模型加入共形预测，让用户按置信水平得到单一类别或多个候选类别，并评估漏检与不确定性。,ADMET 与药代动力学,专题补读,毒性; 不确定性; 共形预测,Journal of Chemical Information and Modeling,2021-05-27,出版社在线发表日期,journal,单个毒性类别或概率难以直接说明预测可靠性，类别不均衡又容易导致模型漏检少数有毒分子。,Tox21 挑战数据的 12 个核受体与应激反应端点；每个端点按活性/非活性单独建模，样本数见原文表 1。,结合 DNN、GCN、GAT、其他图网络、随机森林和 LightGBM，使用独立校准集构建 Mondrian 共形预测器；比较有效性、单标签预测比例、平衡准确率与 MCC。,GCN 共形预测在 90% 置信水平下，对有毒类别的单标签预测比例超过 80%。多种基础模型的有毒分子召回增加，同时假阳性也增加。,10 折分层交叉验证；每折训练部分先留出 10% 验证集，再从剩余部分划出 20% 校准集。比较不同显著性水平下的有效性和效率，并单独报告阳性与阴性类别。,覆盖保证依赖数据可交换性；单标签预测比例与正确率是不同指标。外推到新化学空间时，应另外检查校准后的实际覆盖率。,https://doi.org/10.1021/acs.jcim.1c00208,https://github.com/FredrikSvenssonUK/tox21_conformal,作者公开建模 Python 代码，论文给出 Tox21 数据入口,2026-09-22,已核对作者接受稿的数据、方法、实验与结论，以及出版社和 Crossref 日期；核对作者代码入口。

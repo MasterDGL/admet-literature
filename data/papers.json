@@ -1728,6 +1728,213 @@
       ],
       "verified_on": "2026-09-22",
       "verification_scope": "核对 Crossref、PubMed 36737786、正文方法、表 1–3 与作者代码说明"
+    },
+    {
+      "id": "metabognn-2025",
+      "name": "MetaboGNN",
+      "title": "MetaboGNN: predicting liver metabolic stability with graph neural networks and cross-species data",
+      "topic": "admet",
+      "group": "专题补读",
+      "publication": {
+        "venue": "Journal of Cheminformatics",
+        "year": 2025,
+        "date": "2025-09-03",
+        "date_basis": "出版社在线发表日期",
+        "status": "journal",
+        "citation": "Journal of Cheminformatics 17, 140；2025-09-03。"
+      },
+      "doi": "10.1186/s13321-025-01089-y",
+      "paper_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12409945/",
+      "code_url": "https://github.com/qwon135/MetaboGNN",
+      "sources": [
+        {
+          "label": "正式全文、方法与 Tables 1–3",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12409945/"
+        },
+        {
+          "label": "作者实现与数据",
+          "url": "https://github.com/qwon135/MetaboGNN"
+        },
+        {
+          "label": "作者训练与验证划分",
+          "url": "https://github.com/qwon135/MetaboGNN/blob/main/train.py"
+        },
+        {
+          "label": "挑战赛数据入口",
+          "url": "https://dacon.io/competitions/official/236127/overview/description"
+        }
+      ],
+      "verified_on": "2026-09-22",
+      "tags": [
+        "代谢稳定性",
+        "跨物种",
+        "图对比学习"
+      ],
+      "one_liner": "结合图对比预训练与人–小鼠代谢差异，预测化合物在肝微粒体中孵育 30 分钟后的剩余比例。",
+      "pain_point": "稳定性标签有限，模型需要同时捕捉分子结构与不同物种的代谢差异。",
+      "datasets": "韩国 2023 药物发现数据挑战：3,981 个化合物，固定训练/测试集 3,498/483；每个分子具有人和小鼠肝微粒体的母体剩余百分比。图对比预训练使用约 258 万个无标签分子。",
+      "method": "以包含环结构信息的分子图进行对比预训练，再联合预测小鼠稳定性与人–小鼠差值，由两者得到人体微粒体稳定性。",
+      "conclusion": "加入物种差异任务后，HLM/MLM RMSE 从 30.14/28.72 降至 27.91/27.86 个百分点，支持跨物种辅助任务在该数据集上的作用。",
+      "evaluation": "**实验设计。** 挑战赛先按结构聚类、再在各簇内分层划分训练与测试；作者代码从训练部分另随机留出 20% 验证。正文报告 30 次独立训练，括号为 95% 置信区间。\n\n| 设置 | HLM RMSE ↓ | MLM RMSE ↓ |\n| --- | --- | --- |\n| 从头训练 | 30.94 (30.52–31.35) | 29.48 (29.29–29.67) |\n| 图对比预训练 | 30.14 (29.89–30.39) | 28.72 (28.55–28.88) |\n| 预训练＋物种差异任务 | 27.91 (27.76–28.06) | 27.86 (27.69–28.03) |\n\n来源：Tables 1–2。单位为母体剩余百分比的百分点；推断时由分子结构预测两个物种的结果。",
+      "limitations": "测试集来自同一挑战赛的簇内分层划分。这里检验的是微粒体剩余比例，不能据此直接判断人体清除率或临床半衰期的误差。",
+      "code_status": "作者公开训练、推断、预训练脚本和训练/测试 CSV；本次核对了训练脚本的验证划分",
+      "verification_scope": "已核对正式全文、数据与物种差异任务定义、Tables 1–3，以及作者训练代码；未重新训练模型"
+    },
+    {
+      "id": "mmpk-2025",
+      "name": "MMPK",
+      "title": "MMPK: A Multimodal Deep Learning Framework to Predict Human Oral Pharmacokinetic Parameters",
+      "topic": "admet",
+      "group": "专题补读",
+      "publication": {
+        "venue": "Journal of Medicinal Chemistry",
+        "year": 2025,
+        "date": "2025-07-31",
+        "date_basis": "出版社在线发表日期",
+        "status": "journal",
+        "citation": "Journal of Medicinal Chemistry 68(15), 16678–16690；2025-07-31 在线发表，2025-08-14 卷期。"
+      },
+      "doi": "10.1021/acs.jmedchem.5c01522",
+      "paper_url": "https://doi.org/10.1021/acs.jmedchem.5c01522",
+      "code_url": "https://github.com/xli7654321/MMPK",
+      "sources": [
+        {
+          "label": "正式书目与摘要",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/40741939/"
+        },
+        {
+          "label": "正式补充材料：Tables S3–S9",
+          "url": "https://acs.figshare.com/articles/journal_contribution/29715615"
+        },
+        {
+          "label": "正式数据附件 CSV",
+          "url": "https://acs.figshare.com/articles/dataset/29715618"
+        },
+        {
+          "label": "作者代码",
+          "url": "https://github.com/xli7654321/MMPK"
+        },
+        {
+          "label": "按分子划分的作者代码",
+          "url": "https://github.com/xli7654321/MMPK/blob/main/utils/split.py"
+        },
+        {
+          "label": "作者数据与模型 v3",
+          "url": "https://zenodo.org/records/16561248"
+        }
+      ],
+      "verified_on": "2026-09-22",
+      "tags": [
+        "人体口服PK",
+        "多模态",
+        "多任务学习",
+        "外部验证"
+      ],
+      "one_liner": "融合分子图、子结构图、SMILES 与剂量信息，预测人体口服给药后的八项药代参数。",
+      "pain_point": "人体口服 PK 数据存在缺失、剂量变化和参数间关联，需要在有限标签下同时学习多项参数。",
+      "datasets": "正式 CSV 含 1,283 个化合物、5,058 条原始记录。补充表 S3 的建模数据经填补和受试者加权平均后为 1,156 个分子、4,177 个分子–剂量组合；外部集为在研药物和 2024 年 FDA 批准药物。覆盖 AUC、Cmax、Tmax、半衰期、CL/F、Vz/F、MRT、F。",
+      "method": "分子图与子结构图编码器、ChemBERTa 序列表示和子结构交叉注意力，结合剂量输入、多任务学习及基于非房室分析关系的数据填补。",
+      "conclusion": "十折验证中八项参数平均 GMFE 为 2.895。AUC、Cmax、CL/F、Vz/F 的 GMFE 均值领先所列基线；半衰期、MRT 和 F 的 GMFE 则以 XGBoost 更低。",
+      "evaluation": "**实验设计。** 作者按唯一 SMILES 做十折划分，再从每折其余分子中留出 1/9 验证，约为 8:1:1；同一分子的剂量记录归入同组。以下为 GMFE，越低越好。\n\n| 端点 | MMPK 十折均值±SD | XGBoost 十折均值±SD | 在研药物外部集 | 2024 批准药物外部集 |\n| --- | --- | --- | --- | --- |\n| AUC | 3.929±0.589 | 4.163±0.535 | 4.140 | 3.215 |\n| Cmax | 3.135±0.358 | 3.165±0.257 | 2.758 | 2.305 |\n| 半衰期 | 2.468±0.261 | 2.405±0.241 | 2.262 | 2.753 |\n| CL/F | 4.029±0.636 | 4.232±0.578 | 3.861 | 2.236 |\n| Vz/F | 3.476±0.356 | 3.579±0.404 | 3.472 | 2.836 |\n\n来源：Tables S4、S8、S9；外部成绩基于平均预测值。原始附件中在研/2024 批准药物分别为 118/9 个化合物，含 602/33 条记录；这些是原始数据规模，各端点评价样本数另由标签可用性决定。",
+      "limitations": "CL/F 和 Vz/F 是口服表观参数。八项端点的样本量与误差差异明显；分子–剂量组合数、原始记录数和独立分子数分别记录。",
+      "code_status": "作者公开训练、预测、划分与指标脚本；另提供 Zenodo 数据和模型",
+      "verification_scope": "已核对正式摘要、补充 Tables S3–S9、原始 CSV 的记录与分子数，以及作者划分、数据加载和指标代码；未重新训练模型"
+    },
+    {
+      "id": "human-clearance-bias-2024",
+      "name": "Human clearance with reduced bias",
+      "title": "Prediction of Human Clearance Using In Silico Models with Reduced Bias",
+      "topic": "admet",
+      "group": "专题补读",
+      "publication": {
+        "venue": "Molecular Pharmaceutics",
+        "year": 2024,
+        "date": "2024-01-29",
+        "date_basis": "出版社在线发表日期",
+        "status": "journal",
+        "citation": "Molecular Pharmaceutics 21(3), 1192–1203；2024-01-29 在线发表，2024-03-04 卷期。"
+      },
+      "doi": "10.1021/acs.molpharmaceut.3c00812",
+      "paper_url": "https://doi.org/10.1021/acs.molpharmaceut.3c00812",
+      "code_url": "https://acs.figshare.com/articles/dataset/25104249",
+      "sources": [
+        {
+          "label": "正式摘要与出版日期",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/38285644/"
+        },
+        {
+          "label": "正式补充材料：Tables S3、S8、S9",
+          "url": "https://acs.figshare.com/articles/journal_contribution/25104243"
+        },
+        {
+          "label": "人体清除率数据 XLSX",
+          "url": "https://acs.figshare.com/articles/dataset/25104246"
+        },
+        {
+          "label": "作者 KNIME 工作流",
+          "url": "https://acs.figshare.com/articles/dataset/25104249"
+        }
+      ],
+      "verified_on": "2026-09-22",
+      "tags": [
+        "人体清除率",
+        "泛化",
+        "共形预测",
+        "随机森林"
+      ],
+      "one_liner": "排除测试分子的同类和高相似训练化合物，检验人体清除率模型对新化学结构的预测能力。",
+      "pain_point": "训练集中的结构近邻和治疗类别关联会影响泛化评估，需要衡量远离已有化学系列时的清除率预测误差。",
+      "datasets": "汇编 1,340 个具有人体静脉 PK 数据的化合物；Test343 是含 343 个化合物的准前瞻性测试集。预测人体清除率，单位 mL/min/kg。",
+      "method": "分子描述符随机森林，比较 ChemProp 和 PLS；R4 针对每个测试分子，移除同一结构–治疗类别或 Tanimoto 相似度 >0.7 的训练化合物，再单独训练模型。另用共形预测估计区间。",
+      "conclusion": "Test343 上 RF 的 GMFE 从 R3 的 3.11 变为严格排除近邻后 R4 的 3.33，两倍误差内比例从 44% 降至 41%；这一对照量化了训练集组成对评估的影响。",
+      "evaluation": "**实验设计。** R3 对 Test343 使用一个以 Lombardo 2014 数据训练的模型；R4 为 343 个测试分子分别筛除近邻并训练，共 343 个模型。\n\n| 模型 | GMFE ↓ | 两倍误差内比例 ↑ | 三倍误差内比例 ↑ |\n| --- | --- | --- | --- |\n| RF R3 | 3.11 | 44% | 60% |\n| RF R4 | 3.33 | 41% | 57% |\n| ChemProp CP4 | 3.27 | 39% | 57% |\n| PLS4 | 4.80 | 36% | 53% |\n\n来源：Table S9。CP4/PLS4 采用对应的逐分子排除设置。Table S8 中 R4 对清除率 >20.7 mL/min/kg 的 47 个分子 GMFE 为 11.66，显示整体均值之外的高误差子群。",
+      "limitations": "不同清除机制和清除率区间的误差差别较大。R4 的逐测试分子重训协议与单个固定模型的测试需要分别解释。",
+      "code_status": "出版社附件公开 KNIME 工作流 ZIP 和数据 XLSX；已核对文件内容入口，未执行工作流",
+      "verification_scope": "已核对正式摘要、补充 Tables S3、S8、S9、数据 XLSX 及 KNIME 工作流压缩包；未复现模型"
+    },
+    {
+      "id": "cyp2c9-ml-validation-2022",
+      "name": "CYP2C9 prediction and validation",
+      "title": "Machine learning-driven identification of drugs inhibiting cytochrome P450 2C9",
+      "topic": "admet",
+      "group": "专题补读",
+      "publication": {
+        "venue": "PLOS Computational Biology",
+        "year": 2022,
+        "date": "2022-01-26",
+        "date_basis": "出版社在线发表日期",
+        "status": "journal",
+        "citation": "PLOS Computational Biology 18(1), e1009820；2022-01-26。"
+      },
+      "doi": "10.1371/journal.pcbi.1009820",
+      "paper_url": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1009820",
+      "code_url": null,
+      "sources": [
+        {
+          "label": "正式全文、方法与 Tables 3、5",
+          "url": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1009820"
+        },
+        {
+          "label": "开放全文与补充材料",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8820617/"
+        }
+      ],
+      "verified_on": "2026-09-22",
+      "tags": [
+        "CYP2C9",
+        "结构信息",
+        "集成对接",
+        "实验验证"
+      ],
+      "one_liner": "结合分子描述符和 CYP2C9 多构象对接筛选抑制剂，并通过新实验检验候选药物。",
+      "pain_point": "CYP2C9 抑制受到配体性质和蛋白柔性的共同影响，计算筛选需要与抑制实验衔接。",
+      "datasets": "PubChem/ChEMBL 经清洗、药物样过滤和聚类后保留 8,141 个化合物：4,840 抑制剂、3,301 非抑制剂。按类别随机 80/20 留出；另筛选 4,480 个药物，选择 18 个进行实验。",
+      "method": "36 个 MOE 描述符与 7 个蛋白构象的对接能，训练 RF/SVM；结合模型共识、对接能阈值与多样性筛选，进行 HepG2 和 CYP2C9 supersome 实验。",
+      "conclusion": "Table 3 的 RF 平衡准确率为 84.33%、敏感度 89.97%。18 个候选经实验检验，确认四种较强抑制剂；vatalanib 的 IC50 为 0.067 μM。",
+      "evaluation": "**实验设计。** 论文称为“external”的模型验证集来自同一汇编集的分层随机留出；新候选的实验验证另行开展。\n\n| 模型（Table 3） | 平衡准确率 ↑ | 敏感度 ↑ | 特异度 ↑ |\n| --- | --- | --- | --- |\n| RF，36 MOE＋7 IE | 84.33% | 89.97% | 78.69% |\n| SVM，36 MOE＋7 IE | 83.35% | 89.87% | 76.83% |\n\nTable 3 的 Accuracy 列按正文定义为平衡准确率。Table 5 的 supersome IC50：vatalanib 0.067、piriqualone 10.9、ticagrelor 11.8、cloperidone 17.7 μM。",
+      "limitations": "CYP2C9 酶抑制和体内药物相互作用是不同评价层次；实验结果支持所测条件下的抑制活性。模型依赖 MOE 描述符与对接计算。",
+      "code_status": "正文与补充材料提供数据和实验细节；论文未列出独立代码仓库",
+      "verification_scope": "已核对正式全文、数据过滤与 80/20 划分、模型特征、Tables 3/5 及候选筛选和实验流程"
     }
   ]
 }

@@ -9,9 +9,11 @@ Connect CYP activity and microsomal stability with human clearance, half-life an
 ## Suggested reading order
 
 1. [TDC](../papers/admet/tdc-2021.md): Start with definitions of CYP, microsomal/hepatocyte clearance and half-life tasks.
-2. [PharmaBench](../papers/admet/pharmabench-2024.md): Examine how assay conditions and data cleaning affect labels and model comparisons.
-3. [HimNet](../papers/admet/himnet-2026.md): Study a dedicated stability model and the contribution of hierarchical molecular representations.
+2. [MetaboGNN](../papers/admet/metabognn-2025.md): Start with microsomal remaining fractions and human–mouse differences as an auxiliary task.
+3. [CYP2C9 prediction and validation](../papers/admet/cyp2c9-ml-validation-2022.md): Follow CYP inhibition prediction from protein structural information to new experiments.
 4. [PKSmart](../papers/admet/pksmart-2025.md): Explore cross-species modeling for human PK and examine external validation.
+5. [MMPK](../papers/admet/mmpk-2025.md): Move to oral dosing and distinguish dose combinations, apparent parameters and external results.
+6. [Human clearance with reduced bias](../papers/admet/human-clearance-bias-2024.md): Examine clearance errors after removing structural neighbors to understand stricter generalization tests.
 
 ## Questions to compare
 
@@ -25,9 +27,13 @@ Connect CYP activity and microsomal stability with human clearance, half-life an
 | --- | --- | --- | --- | --- |
 | 2026-02-14 | [A hierarchical interaction message net for accurate molecular property prediction](../papers/admet/himnet-2026.md) | Communications Chemistry | Published | Exchanges information across atoms, substructures and whole molecules in a hierarchical graph network for property and selected ADMET predictions. |
 | 2025-09-26 | [PKSmart: an open-source computational model to predict intravenous pharmacokinetics of small molecules](../papers/admet/pksmart-2025.md) | Journal of Cheminformatics | Published | Predicts animal pharmacokinetic parameters, then combines them with molecular features to estimate human intravenous clearance, distribution volume and half-life. |
+| 2025-09-03 | [MetaboGNN: predicting liver metabolic stability with graph neural networks and cross-species data](../papers/admet/metabognn-2025.md) | Journal of Cheminformatics | Published | Combines graph contrastive pretraining with human–mouse metabolic differences to predict the parent fraction remaining after 30 minutes in liver microsomes. |
+| 2025-07-31 | [MMPK: A Multimodal Deep Learning Framework to Predict Human Oral Pharmacokinetic Parameters](../papers/admet/mmpk-2025.md) | Journal of Medicinal Chemistry | Published | Combines molecular graphs, substructure graphs, SMILES and dose to predict eight human oral pharmacokinetic parameters. |
 | 2024-09-10 | [PharmaBench: Enhancing ADMET benchmarks with large language models](../papers/admet/pharmabench-2024.md) | Scientific Data | Published | Uses language models to extract assay conditions, then cleans and harmonizes ADMET records to build better-specified benchmarks. |
 | 2024-06-24 | [ADMET-AI: a machine learning ADMET platform for evaluation of large-scale chemical libraries](../papers/admet/admet-ai-2024.md) | Bioinformatics | Published | Packages graph neural networks into web and local tools that predict multiple ADMET properties for large compound libraries. |
 | 2024-04-22 | [admetSAR3.0: a comprehensive platform for exploration, prediction and optimization of chemical ADMET properties](../papers/admet/admetsar-3-2024.md) | Nucleic Acids Research | Published | Integrates ADMET data search, property prediction and structural optimization suggestions to help identify suitable candidates. |
 | 2024-04-04 | [ADMETlab 3.0: an updated comprehensive online ADMET prediction platform enhanced with broader coverage, improved performance, API functionality and decision support](../papers/admet/admetlab-3-2024.md) | Nucleic Acids Research | Published | Provides online ADMET and physicochemical predictions with uncertainty estimates, an API and decision-support tools. |
+| 2024-01-29 | [Prediction of Human Clearance Using In Silico Models with Reduced Bias](../papers/admet/human-clearance-bias-2024.md) | Molecular Pharmaceutics | Published | Removes structurally similar and same-class training compounds to evaluate human clearance prediction for new chemistry. |
 | 2023-10-24 | [ADMET property prediction via multi-task graph learning under adaptive auxiliary task selection](../papers/admet/mtgl-admet-2023.md) | iScience | Published | Selects useful auxiliary tasks for each ADMET endpoint to reduce interference during multitask training. |
+| 2022-01-26 | [Machine learning-driven identification of drugs inhibiting cytochrome P450 2C9](../papers/admet/cyp2c9-ml-validation-2022.md) | PLOS Computational Biology | Published | Combines molecular descriptors and CYP2C9 ensemble docking to screen inhibitors, then tests selected drugs experimentally. |
 | 2021 | [Therapeutics Data Commons: Machine Learning Datasets and Tasks for Drug Discovery and Development](../papers/admet/tdc-2021.md) | NeurIPS Datasets and Benchmarks | Published | Organizes drug-discovery datasets and tasks into shared interfaces and benchmarks for consistent model comparison. |

@@ -330,3 +330,5 @@ Liver injury · 475 个分子 · AUROC ↑
 [PKSmart](../papers/admet/pksmart-2025.md) 检验独立来源的人体药代数据；[MC-PGP](../papers/admet/mc-pgp-2025.md) 分别提供抑制剂与底物的外部验证。[HERGAI](../papers/admet/hergai-2025.md) 和 [AmesNet](../papers/admet/amesnet-2026.md) 使用各自的标签定义与测试集。各篇笔记列出样本数、设置和具体结果。
 
 预测可信度可结合[原子级不确定性](../papers/foundations/atom-uncertainty-2023.md)与[毒性共形预测](../papers/admet/tox21-conformal-2021.md)阅读，比较校准误差、预测区间或预测集合覆盖率。
+
+代谢与人体 PK 可沿 [MetaboGNN](../papers/admet/metabognn-2025.md) 比较微粒体稳定性的预训练与物种差异任务，沿 [MMPK](../papers/admet/mmpk-2025.md) 查看口服 PK 的逐端点和外部集结果。[人体清除率研究](../papers/admet/human-clearance-bias-2024.md) 比较训练近邻排除前后的误差，[CYP2C9 研究](../papers/admet/cyp2c9-ml-validation-2022.md) 将模型测试连接到新的抑制实验。各篇结果表保留对应的数据与协议。
