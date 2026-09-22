@@ -126,7 +126,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 | 主要痛点 | 单一分子表示难以同时覆盖语义、结构和理化信息；ADMET 标签稀疏且端点异质。 |
 | 数据集 | 基于约 1.11 亿条 PubChem 数据预训练；ADMET 建模集合包含 97 个端点，43 个回归、54 个分类，共 465,470 条记录；另评估 10 个 MoleculeNet 数据集。数量按端点记录统计。 |
 | 方法 | 融合 XLNet 语义表示、包含 SMILES→InChI 与性质学习的 GRU 组件，以及 ECFP 指纹；结合单任务随机森林、多任务神经网络和参数优化。 |
-| 结论 | 论文报告在 67/97 个端点优于 ECFP 对照；在所比较的 10 个 MoleculeNet 任务中，5 个取得最佳结果。 |
+| 结论 | 相对 ECFP 对照，97 个端点中的 67 个改善（39 个分类、28 个回归）；平均分类 AUC 由 0.812 提高到 0.831，平均回归 Pearson r 由 0.661 提高到 0.701。 |
 
 [论文原文](https://link.springer.com/article/10.1186/s13321-026-01244-z) · [详细解读](papers/admet/dcpm-admet-2026.md) · [代码/项目](https://github.com/zhangzhangleilei/DCPM-ADMET)
 
@@ -156,7 +156,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 | --- | --- |
 | 发表期刊/会议与时间 | Journal of Cheminformatics 18, 95；2026-05-18 |
 | 主要痛点 | 常规平均成绩不足以反映小样本、分布外预测、类别不均衡、超出五规则的分子及活性悬崖中的可靠性。 |
-| 数据集 | 14 个性质/ADMET 相关数据集，涵盖 hERG、BBBP、Caco-2、半衰期、VDss、CYP 及肽性质等；另外使用 MoleculeACE 的 30 个生物活性任务。 |
+| 数据集 | 清洗后的 14 个性质数据集及 MoleculeACE 的 30 个活性任务。代表性规模：BBBP 3,873、hERG 9,673、Caco-2 842、半衰期 1,314、VDss 1,092、CycPept-PAMPA 6,637 个样本（Table 1）。这些是本文整理后的版本。 |
 | 方法 | 在统一实验框架中比较 KPGT、Uni-Mol、TabPFNv2、经典机器学习及 AutoML；采用随机、骨架和 Perimeter 划分，并研究重采样与集成。 |
 | 结论 | 在所测小样本/OOD 场景中，TabPFNv2 常有优势；欠采样集成有助于不均衡问题；数据较充足时 KPGT 在环肽渗透性上表现突出；活性悬崖仍是共同难点。 |
 
@@ -190,9 +190,9 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 | 主要痛点 | 原子、子结构与分子整体信息之间的交互不充分，单一层级的表示可能遗漏性质相关信息。 |
 | 数据集 | 11 个数据集：8 个 MoleculeNet 子集及 Malaria、LMC、MetStab；其中 BBBP、Tox21、SIDER、ClinTox、代谢稳定性等与 ADMET 直接相关，其他任务属于更广泛性质/活性评价。 |
 | 方法 | 层级消息传递与注意力，结合有向消息路径、跨层信息交互及多种指纹的一致性信息。 |
-| 结论 | 原文 Tables 1–2 报告多个任务上的最佳或接近最佳成绩，支持层级融合的价值。 |
+| 结论 | 在本文实验中，BBBP AUROC 为 0.954±0.020，ESOL RMSE 为 0.710±0.016；代谢稳定性 AUROC 为 0.896±0.008。层级消息传递及融合模块的消融表明，各组件对不同任务的贡献不同。 |
 
-[论文原文](https://www.nature.com/articles/s42004-026-01922-x) · [详细解读](papers/admet/himnet-2026.md)
+[论文原文](https://www.nature.com/articles/s42004-026-01922-x) · [详细解读](papers/admet/himnet-2026.md) · [代码/项目](https://github.com/Hugh415/HimNet)
 
 ### 2025
 
@@ -207,8 +207,8 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 | 发表期刊/会议与时间 | Journal of Cheminformatics 17, 184；2025-12-22；此前有 2025 年预印本。 |
 | 主要痛点 | Caco-2 渗透性数据少、实验条件不一致，不清楚哪些分子特征与建模策略最有效。 |
 | 数据集 | TDC Caco2_Wang，906 个分子；另整理 OCHEM 数据，由 9,402 条原始记录经筛选清洗形成 5,481 条建模数据。两套数据分别建模评价。 |
-| 方法 | 系统比较分子指纹、RDKit/PaDEL/Mordred 描述符、CDDD 等表示；结合 AutoGluon、特征筛选、解释分析与超参数优化。 |
-| 结论 | 特征筛选与集成学习改善 Caco-2 渗透性预测。2026-09-19 的 TDC Caco-2 官方榜单记录其 MAE 为 0.256 ± 0.006，排名第一。 |
+| 方法 | 比较 8 类分子表示，用 AutoGluon 筛选模型，再进行特征筛选和超参数优化；最终提交的 CaliciBoost 是使用精选 PaDEL 描述符的 XGBoost 回归器。 |
+| 结论 | TDC 五次运行的 MAE 为 0.2560±0.006。论文单次特征比较中，PaDEL 筛选与优化后的 MAE 为 0.2525，优于全部 PaDEL 特征的 0.3058。 |
 
 [论文原文](https://link.springer.com/article/10.1186/s13321-025-01137-7) · [详细解读](papers/admet/caliciboost-2025.md) · [代码/项目](https://github.com/Calici/CaliciBoost)
 
@@ -222,9 +222,9 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 | --- | --- |
 | 发表期刊/会议与时间 | Journal of Cheminformatics 17, 147；2025-09-26 |
 | 主要痛点 | 人体 PK 数据稀缺，单纯从结构学习困难；如何利用临床前物种信息提高人体参数预测？ |
-| 数据集 | 1,283 个不同化合物的人体静脉 PK 数据，涉及 VDss、清除率、半衰期、游离分数和平均滞留时间；另有 371 个化合物的临床前动物数据，各端点标签数不同。 |
+| 数据集 | 人体静脉 PK：1,283 个化合物，VDss/CL/半衰期/游离分数/MRT 分别有 1,249/1,281/1,265/879/1,243 个标签；动物数据 371 个化合物。独立外部集共 315 个化合物，四个可评估端点分别有 51/302/38/34 个标签。 |
 | 方法 | 两阶段建模：先由分子特征预测大鼠、犬和猴的相关 PK 参数，再将预测出的动物参数与分子特征结合，建立人体随机森林模型；使用重复嵌套交叉验证和外部验证。 |
-| 结论 | 作者报告外部验证中 VDss、清除率的 R² 分别为 0.39、0.46，表明跨物种预测信息可改善部分人体 PK 端点。 |
+| 结论 | 外部集 VDss 和清除率的 R² 分别为 0.39、0.46，预测在两倍误差内的比例为 52.94%、70.20%；半衰期外部 R² 为 0.06，显示各 PK 端点的可预测性有明显差异。 |
 
 [论文原文](https://link.springer.com/article/10.1186/s13321-025-01066-5) · [详细解读](papers/admet/pksmart-2025.md) · [代码/项目](https://github.com/srijitseal/PKSmart)
 
@@ -240,7 +240,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 | 主要痛点 | 单一表示难以覆盖 P-gp 相关结构信息；抑制剂与底物需要区分，并检验新来源化合物上的表现。 |
 | 数据集 | 公开数据库/文献汇编：抑制剂数据集共 5,943 个分子（4,558 阳性、1,385 阴性），底物集共 4,018（2,455 阳性、1,563 阴性）；独立外部集分别为 140 和 185 个分子。 |
 | 方法 | 注意力融合 SMILES 序列、分子指纹与分子图表示；图对比学习对齐局部与全局结构，并分析相关官能团。 |
-| 结论 | 抑制剂外部集 AUROC 为 0.906±0.015；作者报告抑制剂/底物外部集 AUROC 相对次优方法提高 9.82%/10.62%。 |
+| 结论 | 抑制剂和底物外部集 AUROC 分别为 0.906±0.015、0.906±0.022；同一实验的 FP-GNN 分别为 0.825±0.015、0.819±0.027，绝对增益为 0.081 和 0.087。 |
 
 [论文原文](https://doi.org/10.1016/j.jpha.2025.101313) · [详细解读](papers/admet/mc-pgp-2025.md)
 
@@ -288,7 +288,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 | --- | --- |
 | 发表期刊/会议与时间 | Nature Communications 15, 9431；2024-11-12。 |
 | 主要痛点 | 怎样从超大规模无标签分子中学习可迁移表示，并与有标签的生物学任务信息结合？ |
-| 数据集 | 约 8.42 亿个分子图用于自监督阶段，来自 ZINC20、ExCAPE-DB；随后进行监督多任务预训练；ADMET 评价覆盖 TDC 22 任务。 |
+| 数据集 | 约 8.42 亿个 ZINC20/ExCAPE-DB 分子用于自监督预训练；约 45.6 万个分子、1,310 项 ChEMBL 活性读出用于监督预训练。下游评估 TDC 22 任务，并从两阶段预训练数据中移除 TDC 测试分子。 |
 | 方法 | 引入解耦注意力，将原子内容信息与图中相对位置建模结合；先预测原子环境，再进行监督预训练和下游微调。 |
 | 结论 | 作者报告相对于 2023 年 9 月的 TDC 已发表方法快照，在 10/22 个任务超过当时最佳成绩；实验报告多次运行的均值与标准差。 |
 
@@ -338,7 +338,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 | 主要痛点 | 大规模筛选需要兼顾多端点预测效果、吞吐量和本地部署能力。 |
 | 数据集 | TDC 的 41 个预测任务：31 分类、10 回归；性能排名比较使用其中的 22 任务 ADMET Benchmark Group。 |
 | 方法 | 论文版采用 Chemprop D-MPNN 与 200 个 RDKit 描述符；分别训练分类、回归多任务模型，并使用模型集成。 |
-| 结论 | 作者在发表时报告 TDC ADMET 平均排名领先，并显示较高批量处理效率；提供网页与本地工具。 |
+| 结论 | 论文中单任务模型在 20/31 个分类任务达到 AUROC>0.85，在 5/10 个回归任务达到 R²>0.6；多任务模型效果接近且推理更快。32 核 CPU 加 GPU 的百万条输入计时为 3.1 小时。 |
 
 [论文原文](https://pmc.ncbi.nlm.nih.gov/articles/PMC11226862/) · [详细解读](papers/admet/admet-ai-2024.md) · [代码/项目](https://github.com/swansonk14/admet_ai)
 
@@ -353,8 +353,8 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 | 发表期刊/会议与时间 | Nucleic Acids Research 52(W1), W432–W438；2024-04-22 在线发表，2024 年 7 月卷期。 |
 | 主要痛点 | 用户不仅需要性质预测，还需要查询相似化合物及寻找改善 ADMET 的结构修改方向。 |
 | 数据集 | 超过 37 万条实验记录，涉及 104,652 个不同化合物、119 个 ADMET 端点。 |
-| 方法 | 多任务图神经网络，结合数据库检索、相似性搜索及结构变换/骨架跃迁等优化功能。 |
-| 结论 | 将分子探索、性质预测和结构优化建议整合到同一平台，支持多参数筛选与设计。 |
+| 方法 | CLMGraph 先依据 1,000 万个小分子的 QED 构造分子对进行对比预训练，再进行 ADMET 多任务微调；另整合相似性检索、骨架跃迁和匹配分子对变换规则。 |
+| 结论 | 90 个分类端点的平均 AUC 为 0.870，超过 82% 的回归端点 Pearson r>0.70；半衰期和平均滞留时间表现较弱。平台同时提供实验数据查询和结构优化功能。 |
 
 [论文原文](https://doi.org/10.1093/nar/gkae298) · [详细解读](papers/admet/admetsar-3-2024.md)
 
@@ -368,9 +368,9 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 | --- | --- |
 | 发表期刊/会议与时间 | Nucleic Acids Research 52(W1), W422–W431；2024-04-04 在线发表，2024 年 7 月卷期。 |
 | 主要痛点 | 平台覆盖不足、调用不方便，且仅给出点预测难以支持化合物决策。 |
-| 数据集 | 汇集超过 40 万条数据用于相关模型构建；平台共提供 119 项性质/评价输出，涵盖预测端点和计算属性。 |
+| 数据集 | 整理超过 40 万条建模数据，覆盖 77 个预测端点（59 分类、18 回归）；平台的 119 项输出还包含 34 个直接计算端点和 8 项规则。逐端点规模见 Supplementary Table S1。 |
 | 方法 | 多任务有向消息传递模型与描述符建模，结合预测不确定性、API 和决策支持功能。 |
-| 结论 | 扩展了性质预测覆盖，集成批量处理、API 与不确定性估计，方便开展分子的 ADMET 筛选。 |
+| 结论 | 在相同数据和划分下，DMPNN 系列在 59 个分类任务中的 47 个优于 MGA；平台将 77 个预测模型与计算属性、规则、预测不确定性和 API 集成。 |
 
 [论文原文](https://doi.org/10.1093/nar/gkae236) · [详细解读](papers/admet/admetlab-3-2024.md)
 
@@ -404,7 +404,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 | 主要痛点 | 把所有 ADMET 任务放进同一个多任务模型可能产生负迁移；不同主任务需要不同的辅助任务。 |
 | 数据集 | 从 8 篇文献汇集 24 个端点：18 分类、6 回归，共 43,291 个化合物；含吸收、分布、代谢、排泄、毒性和 2 个理化性质端点。 |
 | 方法 | 以状态理论和最大流选择辅助任务，结合共享原子表示、任务特异注意力和以主任务为中心的门控模块。 |
-| 结论 | 在论文所比较的多任务模型及消融实验中，自适应选任务和门控模块改善预测表现，支持“按主任务选择辅助任务”的设计。 |
+| 结论 | 在本文 24 个端点的统一实验中，20 个取得最高均值，其余 4 个排名第二；P-gp 底物 AUROC 0.801±0.031，优于 MGA 的 0.719±0.035，支持按主任务挑选辅助任务。 |
 
 [论文原文](https://pmc.ncbi.nlm.nih.gov/articles/PMC10654589/) · [详细解读](papers/admet/mtgl-admet-2023.md) · [代码/项目](https://github.com/dubingxue/MTGL-ADMET)
 
@@ -501,7 +501,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 | 发表期刊/会议与时间 | Journal of Chemical Information and Modeling 62(24), 6342–6351；2022-09-06 在线 |
 | 主要痛点 | 将不同菌株的实验结果压成单一标签，会丢失可用于预测致突变性的菌株差异信息。 |
 | 数据集 | 作者 Mendeley v2 数据：ISSSTY 整理的 5,536 个分子、1,360 个 Mordred 描述符；TA98、TA100、TA102、TA1535、TA1537 五种菌株标签及 Overall 标签，含未确定标签；提供 Train/Internal/External 分区。 |
-| 方法 | 用共享表示的多任务 DNN 学习五种菌株结果，与总体标签单任务模型、各菌株单任务及其集成比较；保留部分标签未确定的化合物信息。 |
+| 方法 | 共享核心网络联合学习 TA98、TA100、TA102、TA1535、TA1537 五个输出，再通过共识规则形成总体预测；比较总体标签单任务模型和菌株单任务模型的共识结果，并处理缺失标签。 |
 | 结论 | 正式摘要报告多任务模型优于总体标签单任务模型和菌株单任务集成，说明保留菌株级信息有助于致突变性预测。 |
 
 [论文原文](https://doi.org/10.1021/acs.jcim.2c00532) · [详细解读](papers/admet/ames-multitask-2022.md) · [代码/项目](https://github.com/VirSabando/MTL_DNN_Ames)
@@ -618,9 +618,9 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 | --- | --- |
 | 发表期刊/会议与时间 | Journal of Medicinal Chemistry 63(16), 8749–8760；2019 年在线，2020-08-27 卷期 |
 | 主要痛点 | 分子表示需要捕捉局部及较远结构联系，同时让模型关注的化学特征更容易检查。 |
-| 数据集 | 论文配套作者库提供 BBBP、HIV、BACE、ClinTox、SIDER、Tox21、ToxCast、ESOL（delaney）、FreeSolv（SAMPL）、Lipophilicity、QM9 等数据文件，以及芳香性解释示例，覆盖 ADMET、活性、理化与量子化学任务。 |
+| 数据集 | 正式 Supplementary Table 1/6 包括 BBBP 2,053、Tox21 8,014（12 任务）、ToxCast 8,615（617 任务）、SIDER 1,427（27 任务）、ClinTox 1,491（2 任务）、ESOL 1,128、FreeSolv 643、Lipophilicity 4,200 个分子，另有活性及 QM9 任务。 |
 | 方法 | 在分子图消息聚合和图级读出中使用注意力，构建可学习的分子指纹，并通过注意力可视化分析结构信息。 |
-| 结论 | 作者报告在所测任务上取得当时先进表现，并通过可视化展示模型学习非局部分子内联系的例子。 |
+| 结论 | 正式补充表报告 BBBP AUROC 0.920±0.015、Tox21 AUROC 0.858±0.014、ESOL RMSE 0.503±0.076。原子及分子读出注意力提供了可视化的结构归因方式。 |
 
 [论文原文](https://doi.org/10.1021/acs.jmedchem.9b00959) · [详细解读](papers/foundations/attentivefp-2019.md) · [代码/项目](https://github.com/OpenDrugAI/AttentiveFP)
 

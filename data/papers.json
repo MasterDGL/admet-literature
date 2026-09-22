@@ -21,11 +21,11 @@
         "评测"
       ],
       "pain_point": "常规平均成绩不足以反映小样本、分布外预测、类别不均衡、超出五规则的分子及活性悬崖中的可靠性。",
-      "datasets": "14 个性质/ADMET 相关数据集，涵盖 hERG、BBBP、Caco-2、半衰期、VDss、CYP 及肽性质等；另外使用 MoleculeACE 的 30 个生物活性任务。",
+      "datasets": "清洗后的 14 个性质数据集及 MoleculeACE 的 30 个活性任务。代表性规模：BBBP 3,873、hERG 9,673、Caco-2 842、半衰期 1,314、VDss 1,092、CycPept-PAMPA 6,637 个样本（Table 1）。这些是本文整理后的版本。",
       "method": "在统一实验框架中比较 KPGT、Uni-Mol、TabPFNv2、经典机器学习及 AutoML；采用随机、骨架和 Perimeter 划分，并研究重采样与集成。",
       "conclusion": "在所测小样本/OOD 场景中，TabPFNv2 常有优势；欠采样集成有助于不均衡问题；数据较充足时 KPGT 在环肽渗透性上表现突出；活性悬崖仍是共同难点。",
-      "limitations": "Table 1 和各场景结果展示模型优势随数据条件变化；CycPept-PAMPA 环肽渗透性任务中，KPGT 的 R² 为 0.627。",
-      "evaluation": "比较随机、骨架和 Perimeter 划分，按小样本、类别不均衡和分布外预测等场景组织实验。",
+      "limitations": "结果说明模型选择需要结合数据量、分布变化和任务类型。活性悬崖实验来自生物活性数据；其中的结论用于分析表示学习能力，不能直接当作 ADMET 端点成绩。",
+      "evaluation": "**实验设计。** 比较随机、骨架和 Perimeter 划分。每种划分使用 5 个划分种子，每个划分再训练 5 次，共 25 次结果；AutoGluon 每种划分给出 5 次结果。对照涵盖 KPGT、Uni-Mol、GEM、图网络、经典机器学习、TabPFNv2 和 AutoGluon。分类结合 AUROC、召回率、F1 和假阳性率分析；回归使用 R² 等指标。\n\n| 场景 | 具体结果 | 原文位置 |\n| --- | --- | --- |\n| Tox21 NR ER 类别不均衡 | KPGT 加欠采样集成后，召回率由 0.22 提高到 0.60；假阳性率 0.27 | Fig. 4 |\n| 环肽渗透性，6,637 个样本 | KPGT R² 0.627；GNNAK 0.605 | Fig. 5 |\n| 活性悬崖分子 | KPGT R² 0.46；XGBoost + MorganCount 0.51 | Fig. 6b |\n| 活性悬崖对识别 | MOLMCL 召回率 0.130，KPGT 0.128 | Fig. 6c |",
       "doi": "10.1186/s13321-026-01217-2",
       "paper_url": "https://link.springer.com/article/10.1186/s13321-026-01217-2",
       "code_url": "https://github.com/DonghaiZHAO-ZJU/Benchmark-ADMET-2025",
@@ -40,8 +40,8 @@
           "url": "https://github.com/DonghaiZHAO-ZJU/Benchmark-ADMET-2025"
         }
       ],
-      "verified_on": "2026-09-19",
-      "verification_scope": "书目、正文关键部分及相关官方资源",
+      "verified_on": "2026-09-22",
+      "verification_scope": "已核对正文 Methods、Table 1 和 Figs. 4–6 的实验设计与结果",
       "one_liner": "在小样本、陌生分子结构和类别不均衡等条件下比较多类模型，检验 ADMET 预测在实际研究中是否可靠。"
     },
     {
@@ -65,10 +65,10 @@
       ],
       "pain_point": "Caco-2 渗透性数据少、实验条件不一致，不清楚哪些分子特征与建模策略最有效。",
       "datasets": "TDC Caco2_Wang，906 个分子；另整理 OCHEM 数据，由 9,402 条原始记录经筛选清洗形成 5,481 条建模数据。两套数据分别建模评价。",
-      "method": "系统比较分子指纹、RDKit/PaDEL/Mordred 描述符、CDDD 等表示；结合 AutoGluon、特征筛选、解释分析与超参数优化。",
-      "conclusion": "特征筛选与集成学习改善 Caco-2 渗透性预测。2026-09-19 的 TDC Caco-2 官方榜单记录其 MAE 为 0.256 ± 0.006，排名第一。",
-      "limitations": "结果体现特征选择与集成学习在 Caco-2 预测中的作用。OCHEM 部分记录缺少测定方向，标签一致性是进一步改进的数据问题。",
-      "evaluation": "分别评价 TDC Caco2_Wang 和整理后的 OCHEM 数据。2026-09-19 的 TDC 榜单记录为 MAE 0.256±0.006。",
+      "method": "比较 8 类分子表示，用 AutoGluon 筛选模型，再进行特征筛选和超参数优化；最终提交的 CaliciBoost 是使用精选 PaDEL 描述符的 XGBoost 回归器。",
+      "conclusion": "TDC 五次运行的 MAE 为 0.2560±0.006。论文单次特征比较中，PaDEL 筛选与优化后的 MAE 为 0.2525，优于全部 PaDEL 特征的 0.3058。",
+      "limitations": "特征筛选与模型优化共同产生了改进，不能将全部增益归于某一种描述符。OCHEM 部分记录缺少测定方向，实验条件的一致性仍影响标签质量。",
+      "evaluation": "**实验设计。** TDC Caco2_Wang 共 906 个分子，采用官方骨架划分，保留 20% 测试集；最终榜单结果按 5 个种子报告。OCHEM 的 5,481 条数据另按结构聚类和渗透性分箱划分、独立建模。比较 Morgan、Avalon、ErG、MACCS、RDKit、PaDEL、Mordred 和 CDDD；主要指标为 MAE。\n\n| 实验 | MAE ↓ | 说明 |\n| --- | --- | --- |\n| 全部 PaDEL 特征 | 0.3058 | 论文特征比较，Supplementary Table 1 |\n| 筛选 PaDEL 特征并优化模型 | 0.2525 | 单次实验；RMSE 0.3216、R² 0.7805，Fig. 6 |\n| CaliciBoost 官方基准 | 0.2560±0.006 | 5 个种子的均值±标准差，Figs. 10–11 |\n\n**结果解读。** 0.2525 与 0.2560±0.006 对应不同统计口径。TDC 与 OCHEM 分别训练和测试，OCHEM 实验并非将 TDC 训练好的模型直接迁移到外部集。",
       "doi": "10.1186/s13321-025-01137-7",
       "paper_url": "https://link.springer.com/article/10.1186/s13321-025-01137-7",
       "code_url": "https://github.com/Calici/CaliciBoost",
@@ -87,8 +87,8 @@
           "url": "https://tdcommons.ai/benchmark/admet_group/01caco2/"
         }
       ],
-      "verified_on": "2026-09-19",
-      "verification_scope": "书目、正文关键部分及相关官方资源",
+      "verified_on": "2026-09-22",
+      "verification_scope": "已核对数据处理、划分、模型选择及 Figs. 6、10–11 对应结果",
       "one_liner": "比较分子指纹和理化描述符，结合自动机器学习预测分子通过肠道细胞模型（Caco-2）的能力。"
     },
     {
@@ -111,11 +111,11 @@
         "外部验证"
       ],
       "pain_point": "人体 PK 数据稀缺，单纯从结构学习困难；如何利用临床前物种信息提高人体参数预测？",
-      "datasets": "1,283 个不同化合物的人体静脉 PK 数据，涉及 VDss、清除率、半衰期、游离分数和平均滞留时间；另有 371 个化合物的临床前动物数据，各端点标签数不同。",
+      "datasets": "人体静脉 PK：1,283 个化合物，VDss/CL/半衰期/游离分数/MRT 分别有 1,249/1,281/1,265/879/1,243 个标签；动物数据 371 个化合物。独立外部集共 315 个化合物，四个可评估端点分别有 51/302/38/34 个标签。",
       "method": "两阶段建模：先由分子特征预测大鼠、犬和猴的相关 PK 参数，再将预测出的动物参数与分子特征结合，建立人体随机森林模型；使用重复嵌套交叉验证和外部验证。",
-      "conclusion": "作者报告外部验证中 VDss、清除率的 R² 分别为 0.39、0.46，表明跨物种预测信息可改善部分人体 PK 端点。",
-      "limitations": "研究对象是人体静脉给药 PK。两阶段模型的对照实验用于分析动物 PK 信息对人体预测的贡献；外部集 R² 也显示出剩余预测误差。",
-      "evaluation": "采用重复嵌套交叉验证及外部验证；VDss、清除率的外部 R² 分别为 0.39、0.46。",
+      "conclusion": "外部集 VDss 和清除率的 R² 分别为 0.39、0.46，预测在两倍误差内的比例为 52.94%、70.20%；半衰期外部 R² 为 0.06，显示各 PK 端点的可预测性有明显差异。",
+      "limitations": "外部集各端点样本数差别较大，应逐项判断效果。与 AstraZeneca 的比较主要考察两套模型预测值的相关性；它与针对实验标签计算的外部 R² 是两种不同证据。",
+      "evaluation": "**实验设计。** 五折外层验证重复 5 次，共 25 个测试折；内层四折网格搜索调参。外部集经标准化 SMILES 排除与训练集的重合。对照包括仅用分子特征、仅用预测动物 PK，以及二者融合的模型。除游离分数外，PK 标签进行 log10 变换。\n\n| 外部端点 | 样本数 | R² ↑ | RMSE ↓ | 两倍误差内比例 ↑ |\n| --- | --- | --- | --- | --- |\n| VDss | 51 | 0.39 | 0.56 | 52.94% |\n| 清除率 | 302 | 0.46 | 0.44 | 70.20% |\n| 半衰期 | 38 | 0.06 | 0.68 | 31.58% |\n| 血浆游离分数 | 34 | 0.26 | 0.22 | 26.47% |\n\n来源：Table 2。前三项 RMSE 对应 log10 标签，游离分数使用原始比例；两倍误差按原始量纲计算。MRT 没有独立外部测试数据。",
       "doi": "10.1186/s13321-025-01066-5",
       "paper_url": "https://link.springer.com/article/10.1186/s13321-025-01066-5",
       "code_url": "https://github.com/srijitseal/PKSmart",
@@ -128,10 +128,14 @@
         {
           "label": "作者代码",
           "url": "https://github.com/srijitseal/PKSmart"
+        },
+        {
+          "label": "外部验证 Table 2",
+          "url": "https://link.springer.com/article/10.1186/s13321-025-01066-5/tables/2"
         }
       ],
-      "verified_on": "2026-09-19",
-      "verification_scope": "书目、正文关键部分及相关官方资源",
+      "verified_on": "2026-09-22",
+      "verification_scope": "已核对数据整理、嵌套验证、外部集构成及 Table 2",
       "one_liner": "先预测动物体内的药代参数，再结合分子结构预测人体静脉给药后的清除率、分布容积和半衰期等指标。"
     },
     {
@@ -156,9 +160,9 @@
       "pain_point": "单一分子表示难以同时覆盖语义、结构和理化信息；ADMET 标签稀疏且端点异质。",
       "datasets": "基于约 1.11 亿条 PubChem 数据预训练；ADMET 建模集合包含 97 个端点，43 个回归、54 个分类，共 465,470 条记录；另评估 10 个 MoleculeNet 数据集。数量按端点记录统计。",
       "method": "融合 XLNet 语义表示、包含 SMILES→InChI 与性质学习的 GRU 组件，以及 ECFP 指纹；结合单任务随机森林、多任务神经网络和参数优化。",
-      "conclusion": "论文报告在 67/97 个端点优于 ECFP 对照；在所比较的 10 个 MoleculeNet 任务中，5 个取得最佳结果。",
-      "limitations": "融合消融用于分析不同表示的贡献。平台提供 133 项输出，其中 97 项来自预测模型、36 项为计算属性。",
-      "evaluation": "采用骨架划分及模型/特征对照；97 个端点中有 67 个优于论文的 ECFP 对照。",
+      "conclusion": "相对 ECFP 对照，97 个端点中的 67 个改善（39 个分类、28 个回归）；平均分类 AUC 由 0.812 提高到 0.831，平均回归 Pearson r 由 0.661 提高到 0.701。",
+      "limitations": "上述增益衡量融合表示相对本文 ECFP 基线的效果。平台 133 项输出由 97 个预测模型和 36 个计算属性组成；端点记录数不等于去重化合物数。",
+      "evaluation": "**实验设计。** Bemis–Murcko 骨架划分，训练/验证/测试为 8:1:1，独立运行 5 次。冻结预训练编码器，将 XLNet 的 512 维表示、RNN 的 512 维表示和 512 位 ECFP 拼接；单任务采用随机森林，多任务采用 DNN。TPE 执行 50 次超参数搜索，并比较冻结与全参数微调。\n\n| 97 端点集合上的比较 | ECFP 对照 | DCPM-ADMET |\n| --- | --- | --- |\n| 54 个分类任务平均 AUC ↑ | 0.812 | 0.831 |\n| 43 个回归任务平均 Pearson r ↑ | 0.661 | 0.701 |\n| 优于 ECFP 的任务数 | — | 39/54 分类；28/43 回归 |\n\n原文位置：Fine-tuning、ADMET prediction models；逐端点结果索引为 Supplementary Tables S6–S7。另有 10 个 MoleculeNet 数据集上的比较，不能与 97 端点汇总混为一组。",
       "doi": "10.1186/s13321-026-01244-z",
       "paper_url": "https://link.springer.com/article/10.1186/s13321-026-01244-z",
       "code_url": "https://github.com/zhangzhangleilei/DCPM-ADMET",
@@ -173,8 +177,8 @@
           "url": "https://github.com/zhangzhangleilei/DCPM-ADMET"
         }
       ],
-      "verified_on": "2026-09-19",
-      "verification_scope": "书目、正文关键部分及相关官方资源",
+      "verified_on": "2026-09-22",
+      "verification_scope": "已核对正文训练协议、97 端点汇总结果及补充表索引",
       "one_liner": "将两种预训练模型学到的分子表示与化学指纹结合，用于预测 97 项 ADMET 性质。"
     },
     {
@@ -199,8 +203,8 @@
       "datasets": "约 200 万个 ChEMBL29 分子预训练；下游 63 个数据集，包括 11 个常用性质数据集、22 个 TDC ADMET 任务和 30 个 MoleculeACE 任务。",
       "method": "LiGhT 线图 Transformer，结合分子描述符和指纹进行知识引导预训练，再对下游任务微调。",
       "conclusion": "原文 Fig. 2c 与 Supplementary Table 8 报告，在当时比较的模型中，16/22 个 TDC ADMET 任务取得最佳表现。",
-      "limitations": "预训练使用约 200 万个 ChEMBL29 分子；MoleculeACE 实验进一步考察生物活性悬崖。阅读时可结合知识引导预训练与下游迁移的消融结果。",
-      "evaluation": "分别评价 TDC、MoleculeNet 和 MoleculeACE 任务。Fig. 2c 与 Supplementary Table 8 显示其在论文比较的 22 个 TDC 任务中有 16 个取得最佳表现。",
+      "limitations": "最优均值与基线十分接近的任务，例如 Caco-2，需结合运行波动判断改进幅度。MoleculeACE 活性悬崖以及 HPK1/FGFR1 实验是额外的迁移检验，与 TDC ADMET 结果分别记录。",
+      "evaluation": "**实验设计。** 11 个常用性质数据集采用骨架 8:1:1 划分，运行 3 次；22 个 TDC 任务采用骨架 7:1:2 划分，运行 5 次。TDC 对照包括榜单中的 28 种方法，覆盖传统机器学习和深度学习。分类按任务使用 AUROC/AUPRC，回归使用 MAE/Spearman r。\n\n| TDC 任务 | 指标 | KPGT | 论文所列最佳基线 |\n| --- | --- | --- | --- |\n| Caco-2，906 分子 | MAE ↓ | 0.284±0.009 | BaseBoosting 0.285±0.005 |\n| P-gp 抑制剂，1,212 分子 | AUROC ↑ | 0.938±0.004 | ZairaChem 0.935±0.006 |\n| CYP2C9 抑制剂，12,092 分子 | AUPRC ↑ | 0.797±0.006 | ZairaChem 0.786±0.004 |\n| hERG，648 分子 | AUROC ↑ | 0.847±0.024 | SimGCN 0.874±0.014 |\n| AMES，7,255 分子 | AUROC ↑ | 0.868±0.003 | ZairaChem 0.871±0.002 |\n\n来源：Supplementary Table 8，均值±标准差。16/22 的领先任务数来自论文当时的比较；hERG、AMES 等任务也展示了其未领先的情形。",
       "doi": "10.1038/s41467-023-43214-1",
       "paper_url": "https://www.nature.com/articles/s41467-023-43214-1",
       "code_url": "https://github.com/lihan97/KPGT",
@@ -213,10 +217,14 @@
         {
           "label": "作者代码",
           "url": "https://github.com/lihan97/KPGT"
+        },
+        {
+          "label": "正式补充材料：Table 8",
+          "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41467-023-43214-1/MediaObjects/41467_2023_43214_MOESM1_ESM.pdf"
         }
       ],
-      "verified_on": "2026-09-19",
-      "verification_scope": "书目、正文关键部分及相关官方资源",
+      "verified_on": "2026-09-22",
+      "verification_scope": "已核对正文评测协议、Fig. 2 与正式 Supplementary Table 8",
       "one_liner": "把分子指纹和理化描述符融入图预训练，让模型学到更适合预测 ADMET 等性质的分子表示。"
     },
     {
@@ -238,15 +246,15 @@
         "大规模预训练"
       ],
       "pain_point": "怎样从超大规模无标签分子中学习可迁移表示，并与有标签的生物学任务信息结合？",
-      "datasets": "约 8.42 亿个分子图用于自监督阶段，来自 ZINC20、ExCAPE-DB；随后进行监督多任务预训练；ADMET 评价覆盖 TDC 22 任务。",
+      "datasets": "约 8.42 亿个 ZINC20/ExCAPE-DB 分子用于自监督预训练；约 45.6 万个分子、1,310 项 ChEMBL 活性读出用于监督预训练。下游评估 TDC 22 任务，并从两阶段预训练数据中移除 TDC 测试分子。",
       "method": "引入解耦注意力，将原子内容信息与图中相对位置建模结合；先预测原子环境，再进行监督预训练和下游微调。",
       "conclusion": "作者报告相对于 2023 年 9 月的 TDC 已发表方法快照，在 10/22 个任务超过当时最佳成绩；实验报告多次运行的均值与标准差。",
-      "limitations": "论文说明了预训练数据中测试分子的排除方法。复现实验还涉及大规模预训练资源；核对时官方仓库的预训练检查点下载说明仍含 TODO。",
-      "evaluation": "评价 TDC 22 任务，报告多次运行均值与标准差；比较对象来自 2023 年 9 月的 TDC 已发表方法快照。",
+      "limitations": "预训练规模、任务监督和注意力模块共同影响成绩。消融使用较小预训练集，其结果与完整 8.42 亿分子模型分别解读。",
+      "evaluation": "**实验设计。** TDC 骨架划分保留 20% 测试集，报告 5 次独立运行的均值±标准差。Table 1 同时列出 2023 年 9 月和 2024 年 6 月的榜单比较；正文“10/22 领先”使用前一个快照。\n\n| 任务 | MolE | 2023 年 9 月最佳基线 | 指标 |\n| --- | --- | --- | --- |\n| Lipophilicity，4,200 分子 | 0.406±0.009 | Chemprop-RDKit 0.467±0.006 | MAE ↓ |\n| PPBR，1,797 分子 | 7.229±0.168 | Chemprop 7.811±0.163 | MAE ↓ |\n| 半衰期，667 分子 | 0.578±0.032 | Euclia ML 0.547±0.032 | Spearman r ↑ |\n| Caco-2，906 分子 | 0.329±0.008 | BaseBoosting 0.285±0.005 | MAE ↓ |\n| AMES，7,255 分子 | 0.834±0.015 | ZairaChem 0.871±0.002 | AUROC ↑ |\n\n**消融。** 使用约 120 万个 GuacaMol 分子的较小预训练设置进行模块比较；移除解耦注意力后，22 个任务中有 19 个变差（Supplementary Table S1）。",
       "doi": "10.1038/s41467-024-53751-y",
       "paper_url": "https://www.nature.com/articles/s41467-024-53751-y",
       "code_url": "https://github.com/recursionpharma/mole_public",
-      "code_status": "实现公开；核验时预训练检查点下载说明含 TODO，未确认全部权重可用",
+      "code_status": "模型实现公开；截至 2026-09-22，README 的预训练模型下载章节仍为 TODO",
       "sources": [
         {
           "label": "出版社全文",
@@ -255,10 +263,14 @@
         {
           "label": "作者代码",
           "url": "https://github.com/recursionpharma/mole_public"
+        },
+        {
+          "label": "逐端点结果 Table 1",
+          "url": "https://www.nature.com/articles/s41467-024-53751-y/tables/1"
         }
       ],
-      "verified_on": "2026-09-19",
-      "verification_scope": "书目、正文关键部分及相关官方资源",
+      "verified_on": "2026-09-22",
+      "verification_scope": "已核对预训练数据、测试分子排除策略、Table 1、消融说明及官方 README",
       "one_liner": "先在海量分子图上预训练，再利用生物学任务数据进一步训练，最后用于 ADMET 性质预测。"
     },
     {
@@ -283,9 +295,9 @@
       "pain_point": "大规模筛选需要兼顾多端点预测效果、吞吐量和本地部署能力。",
       "datasets": "TDC 的 41 个预测任务：31 分类、10 回归；性能排名比较使用其中的 22 任务 ADMET Benchmark Group。",
       "method": "论文版采用 Chemprop D-MPNN 与 200 个 RDKit 描述符；分别训练分类、回归多任务模型，并使用模型集成。",
-      "conclusion": "作者在发表时报告 TDC ADMET 平均排名领先，并显示较高批量处理效率；提供网页与本地工具。",
-      "limitations": "推理效率取决于硬件和处理批量。当前 v2 已调整 Chemprop 版本及特征配置，复现论文应使用对应版本。",
-      "evaluation": "模型训练覆盖 41 个任务，性能排名使用其中 22 个 ADMET 基准任务；Fig. 1B–C 给出性能与运行效率比较。",
+      "conclusion": "论文中单任务模型在 20/31 个分类任务达到 AUROC>0.85，在 5/10 个回归任务达到 R²>0.6；多任务模型效果接近且推理更快。32 核 CPU 加 GPU 的百万条输入计时为 3.1 小时。",
+      "limitations": "论文评测、网页部署的多任务集成和当前软件版本分别记录。v2 调整了 Chemprop 与特征配置，复现论文应使用对应版本。",
+      "evaluation": "**实验设计。** 使用 TDC v0.4.1 的 41 个任务，其中 22 个属于 ADMET Benchmark Group。每个任务按 5 组训练/验证/测试划分训练并汇总测试成绩；部署时集成 5 个模型。比较单任务训练和按分类/回归分组的多任务训练。\n\n| 实验 | 结果 | 原文位置 |\n| --- | --- | --- |\n| 单任务分类，31 个任务 | 20 个任务 AUROC>0.85 | Supplementary Fig. S2 |\n| 单任务回归，10 个任务 | 5 个任务 R²>0.6 | Supplementary Fig. S2 |\n| 本地 32 核 CPU + GPU | 百万条输入 3.1 小时 | Fig. 1C |\n| 本地 8 核 CPU、无 GPU | 百万条输入约 5 小时 | Fig. 1C |\n\n**计时数据。** 百万条输入由 1,000 个 DrugBank 分子重复 1,000 次组成，记录 3 次计时的中位数；这是吞吐量测试，不是百万个不同分子的预测准确率验证。全部逐任务成绩见 Supplementary Table S1。",
       "doi": "10.1093/bioinformatics/btae416",
       "paper_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11226862/",
       "code_url": "https://github.com/swansonk14/admet_ai",
@@ -300,8 +312,8 @@
           "url": "https://github.com/swansonk14/admet_ai"
         }
       ],
-      "verified_on": "2026-09-19",
-      "verification_scope": "书目、正文关键部分及相关官方资源",
+      "verified_on": "2026-09-22",
+      "verification_scope": "已核对正文训练/部署区别、Fig. 1 计时设计与补充结果索引",
       "one_liner": "将图神经网络用于网页和本地预测工具，一次预测多项 ADMET 性质，方便快速筛选大规模化合物库。"
     },
     {
@@ -326,9 +338,9 @@
       "pain_point": "把所有 ADMET 任务放进同一个多任务模型可能产生负迁移；不同主任务需要不同的辅助任务。",
       "datasets": "从 8 篇文献汇集 24 个端点：18 分类、6 回归，共 43,291 个化合物；含吸收、分布、代谢、排泄、毒性和 2 个理化性质端点。",
       "method": "以状态理论和最大流选择辅助任务，结合共享原子表示、任务特异注意力和以主任务为中心的门控模块。",
-      "conclusion": "在论文所比较的多任务模型及消融实验中，自适应选任务和门控模块改善预测表现，支持“按主任务选择辅助任务”的设计。",
-      "limitations": "对照与消融围绕辅助任务选择和门控模块展开。论文的 24 端点数据与 TDC 22 任务在数据构成和划分上有所不同。",
-      "evaluation": "Table 1 使用随机 8:1:1 划分、10 个随机种子；分类指标为 AUROC，回归指标为 R²。",
+      "conclusion": "在本文 24 个端点的统一实验中，20 个取得最高均值，其余 4 个排名第二；P-gp 底物 AUROC 0.801±0.031，优于 MGA 的 0.719±0.035，支持按主任务挑选辅助任务。",
+      "limitations": "该论文的半衰期和清除率是分类任务，Caco-2 使用 R²。任务定义和随机划分与 TDC 对应基准不同，比较时需保留这些设置。",
+      "evaluation": "**实验设计。** 汇集 43,291 个化合物、24 个端点（18 分类、6 回归），随机 8:1:1 划分，10 个随机种子；验证集用于辅助任务选择。对照为 ST-GCN、ST-MGA、MT-GCN、MT-GCNAtt 和 MGA。\n\n| 端点 | 指标 | MTGL-ADMET | MGA |\n| --- | --- | --- | --- |\n| P-gp 底物 | AUROC ↑ | 0.801±0.031 | 0.719±0.035 |\n| BBB | AUROC ↑ | 0.973±0.005 | 0.956±0.010 |\n| Caco-2 | R² ↑ | 0.523±0.025 | 0.385±0.031 |\n| ESOL | R² ↑ | 0.931±0.038 | 0.866±0.020 |\n\n来源：Table 1，均值±标准差。CYP2C9、CYP2D6 抑制剂和肝毒性任务上，MGA 的均值更高；呼吸毒性任务上 ST-MGA 更高。",
       "doi": "10.1016/j.isci.2023.108285",
       "paper_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10654589/",
       "code_url": "https://github.com/dubingxue/MTGL-ADMET",
@@ -347,8 +359,8 @@
           "url": "https://github.com/dubingxue/MTGL-ADMET"
         }
       ],
-      "verified_on": "2026-09-19",
-      "verification_scope": "书目、正文关键部分及相关官方资源",
+      "verified_on": "2026-09-22",
+      "verification_scope": "已核对 STAR Methods、24 端点数据说明及 Table 1",
       "one_liner": "为每个 ADMET 预测任务自动挑选有帮助的辅助任务，减少多任务联合训练时的相互干扰。"
     },
     {
@@ -372,21 +384,33 @@
       "pain_point": "原子、子结构与分子整体信息之间的交互不充分，单一层级的表示可能遗漏性质相关信息。",
       "datasets": "11 个数据集：8 个 MoleculeNet 子集及 Malaria、LMC、MetStab；其中 BBBP、Tox21、SIDER、ClinTox、代谢稳定性等与 ADMET 直接相关，其他任务属于更广泛性质/活性评价。",
       "method": "层级消息传递与注意力，结合有向消息路径、跨层信息交互及多种指纹的一致性信息。",
-      "conclusion": "原文 Tables 1–2 报告多个任务上的最佳或接近最佳成绩，支持层级融合的价值。",
-      "limitations": "适合结合层级特征融合与代谢稳定性任务阅读，重点分析不同层级表示带来的性能变化。",
-      "evaluation": "Tables 1–2 汇总 11 个性质/活性数据集的结果；当前笔记记录主要比较，逐任务划分及超参数仍待补齐。",
+      "conclusion": "在本文实验中，BBBP AUROC 为 0.954±0.020，ESOL RMSE 为 0.710±0.016；代谢稳定性 AUROC 为 0.896±0.008。层级消息传递及融合模块的消融表明，各组件对不同任务的贡献不同。",
+      "limitations": "论文不同段落对重复实验的汇总写法不同，复现时需对照具体表和发布代码。LMC 为人、大鼠、小鼠的多任务清除率数据，其 RMSE 使用该数据集的量纲。",
+      "evaluation": "**实验设计。** 11 个数据集采用骨架 8:1:1 划分。正文说明生成 3 个独立划分，每个划分进行 10 次不同初始化训练；消融表另说明跨 3 次运行汇总。Adam 训练 100 个 epoch，batch size 64，学习率 0.0001，隐藏维度 512（Table 5）。分类用 AUROC，回归用 RMSE。\n\n| 任务 | HimNet | 对照 | 原文位置 |\n| --- | --- | --- | --- |\n| BBBP，AUROC ↑ | 0.954±0.020 | FH-GNN 0.949±0.016 | Table 1 |\n| ESOL，RMSE ↓ | 0.710±0.016 | FH-GNN 0.904±0.070 | Table 1 |\n| MetStab，AUROC ↑ | 0.896±0.008 | FH-GNN 0.876±0.014 | Table 2 |\n| LMC 多物种清除率，平均 RMSE ↓ | 111.0±9.8 | HiMol 117.085±10.1 | Table 2 |\n\nTable 1 的 FH-GNN 由作者重新运行，其他基线取自原论文。表中的高低分同时受原始基线实验设置影响。",
       "doi": "10.1038/s42004-026-01922-x",
       "paper_url": "https://www.nature.com/articles/s42004-026-01922-x",
-      "code_url": null,
-      "code_status": "代码链接待补充",
+      "code_url": "https://github.com/Hugh415/HimNet",
+      "code_status": "作者代码及数据公开；MIT 许可，另提供 Zenodo 归档",
       "sources": [
         {
           "label": "出版社全文",
           "url": "https://www.nature.com/articles/s42004-026-01922-x"
+        },
+        {
+          "label": "作者代码与数据",
+          "url": "https://github.com/Hugh415/HimNet"
+        },
+        {
+          "label": "代码归档",
+          "url": "https://doi.org/10.5281/zenodo.18030100"
+        },
+        {
+          "label": "模型比较 Table 1",
+          "url": "https://www.nature.com/articles/s42004-026-01922-x/tables/1"
         }
       ],
-      "verified_on": "2026-09-19",
-      "verification_scope": "书目、正文关键部分及相关官方资源",
+      "verified_on": "2026-09-22",
+      "verification_scope": "已核对正文实验设计、Tables 1–2、5–6 和代码/数据可用性声明",
       "one_liner": "让原子、子结构和整个分子之间交换信息，用层级图神经网络预测分子性质及部分 ADMET 指标。"
     },
     {
@@ -451,23 +475,31 @@
         "不确定性"
       ],
       "pain_point": "平台覆盖不足、调用不方便，且仅给出点预测难以支持化合物决策。",
-      "datasets": "汇集超过 40 万条数据用于相关模型构建；平台共提供 119 项性质/评价输出，涵盖预测端点和计算属性。",
+      "datasets": "整理超过 40 万条建模数据，覆盖 77 个预测端点（59 分类、18 回归）；平台的 119 项输出还包含 34 个直接计算端点和 8 项规则。逐端点规模见 Supplementary Table S1。",
       "method": "多任务有向消息传递模型与描述符建模，结合预测不确定性、API 和决策支持功能。",
-      "conclusion": "扩展了性质预测覆盖，集成批量处理、API 与不确定性估计，方便开展分子的 ADMET 筛选。",
-      "limitations": "平台比较可从端点覆盖、批量推理、不确定性输出和使用方式展开。训练流程及权重的开放情况见资料核对记录。",
-      "evaluation": "当前笔记覆盖平台功能、数据规模与模型方法；逐端点实验设置仍待补齐。",
+      "conclusion": "在相同数据和划分下，DMPNN 系列在 59 个分类任务中的 47 个优于 MGA；平台将 77 个预测模型与计算属性、规则、预测不确定性和 API 集成。",
+      "limitations": "119 是平台总输出数，77 是学习得到的预测端点数。平台覆盖与推理速度可以用于工具选型，模型准确率则按具体端点和划分评价。",
+      "evaluation": "**实验设计。** 各端点随机 8:1:1 划分，重复 5 次；Adam 训练、贝叶斯搜索调参。比较 DMPNN、加入描述符的 DMPNN-Des，以及在相同数据和划分上训练的 MGA。分类指标为 AUC、ACC、MCC，回归为 R²、RMSE、MAE。\n\n**结果与定位。** 正文报告 DMPNN 系列在 47/59 个分类端点上优于 MGA（Fig. 3）；18 个回归端点的表现分别列在 Supplementary Table S5，分类逐项成绩见 S4。原有回归端点中的 LC50FM R² 为 0.68，新加入的半衰期回归 R² 接近 0.7。S6–S7 给出不确定性分组与阈值。\n\n**使用方式。** 提供网页和 API；API 可选择 DMPNN 或 DMPNN-Des，并返回预测值及置信度分组。模型验证采用随机划分，与 TDC 骨架基准分别解读。",
       "doi": "10.1093/nar/gkae236",
       "paper_url": "https://doi.org/10.1093/nar/gkae236",
       "code_url": null,
-      "code_status": "代码链接待补充",
+      "code_status": "提供在线平台与 API 文档；论文未提供完整训练代码和模型权重的公开仓库入口",
       "sources": [
         {
           "label": "出版社论文",
           "url": "https://doi.org/10.1093/nar/gkae236"
+        },
+        {
+          "label": "开放全文",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11223840/"
+        },
+        {
+          "label": "在线平台与 API",
+          "url": "https://admetlab3.scbdd.com/"
         }
       ],
-      "verified_on": "2026-09-19",
-      "verification_scope": "书目、摘要及可访问项目说明",
+      "verified_on": "2026-09-22",
+      "verification_scope": "已核对全文模型构建、Fig. 3、端点计数及 Supplementary Tables S1–S7 的引用位置",
       "one_liner": "提供覆盖多类 ADMET 及理化性质的在线预测平台，并加入不确定性评估、API 和决策支持功能。"
     },
     {
@@ -491,14 +523,14 @@
       ],
       "pain_point": "用户不仅需要性质预测，还需要查询相似化合物及寻找改善 ADMET 的结构修改方向。",
       "datasets": "超过 37 万条实验记录，涉及 104,652 个不同化合物、119 个 ADMET 端点。",
-      "method": "多任务图神经网络，结合数据库检索、相似性搜索及结构变换/骨架跃迁等优化功能。",
-      "conclusion": "将分子探索、性质预测和结构优化建议整合到同一平台，支持多参数筛选与设计。",
-      "limitations": "平台将结构探索、性质预测与优化建议连接起来，适合研究多参数优化工具的组织方式。建议分子的实验表现仍需通过测定评价。",
-      "evaluation": "当前笔记覆盖数据规模、预测与优化功能；逐端点实验设置仍待补齐。",
+      "method": "CLMGraph 先依据 1,000 万个小分子的 QED 构造分子对进行对比预训练，再进行 ADMET 多任务微调；另整合相似性检索、骨架跃迁和匹配分子对变换规则。",
+      "conclusion": "90 个分类端点的平均 AUC 为 0.870，超过 82% 的回归端点 Pearson r>0.70；半衰期和平均滞留时间表现较弱。平台同时提供实验数据查询和结构优化功能。",
+      "limitations": "五折验证和外部验证的逐端点信息需与各模型报告对应。结构优化案例属于已有化合物的回顾性案例，不能代表全部生成建议已经过实验验证。",
+      "evaluation": "**实验设计。** 使用五折交叉验证和外部验证；CLMGraph 分类采用 BCE 损失，回归采用 MSE 损失。监督微调前，使用 1,000 万个分子的 QED 信息构造对比学习任务。\n\n**结果。** 正文 Results presentation 报告 90 个分类端点平均 AUC 0.870；超过 82% 的回归端点 Pearson r>0.70。肾清除率分类、半衰期和平均滞留时间回归表现较弱。正文没有逐端点给出外部集规模及分数，因此这些平均值仅按文中总体结果记录，不标成外部验证均值。\n\n**优化案例。** ADMETopt2 从匹配分子对提取 21 个 ADMET 端点的变换规则；案例将建议与既有文献的结构修改和实验结果对应（Supplementary Text S1、Table S1）。Table 1 的平台比较主要比较覆盖、功能和速度。",
       "doi": "10.1093/nar/gkae298",
       "paper_url": "https://doi.org/10.1093/nar/gkae298",
       "code_url": null,
-      "code_status": "代码链接待补充",
+      "code_status": "在线平台免费开放，ADMETopt2 变换规则在 figshare 提供下载；正文未链接完整预测模型的训练代码及权重仓库",
       "sources": [
         {
           "label": "出版社论文",
@@ -507,10 +539,18 @@
         {
           "label": "平台",
           "url": "http://lmmd.ecust.edu.cn/admetsar3/"
+        },
+        {
+          "label": "开放全文",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11223829/"
+        },
+        {
+          "label": "ADMETopt2 变换规则",
+          "url": "https://figshare.com/articles/dataset/ADMETopt2Transformation_Rules/25472317"
         }
       ],
-      "verified_on": "2026-09-19",
-      "verification_scope": "书目、摘要及可访问项目说明",
+      "verified_on": "2026-09-22",
+      "verification_scope": "已核对全文 Model building、Results presentation、优化案例及数据可用性声明",
       "one_liner": "把 ADMET 数据查询、性质预测和结构优化建议整合到一个平台，帮助寻找更合适的候选分子。"
     },
     {
@@ -838,8 +878,8 @@
       "datasets": "PubChem/ChEMBL 清洗后 299,927 个分子：1,937 阳性、297,990 阴性；采用 IC50 20 μM 判据，按 Bemis–Murcko 骨架成组分配约 3:1 训练/测试集。",
       "method": "Smina 对接后选择结合姿势，提取蛋白–配体 PLEC 指纹；RF、XGBoost、DNN 作为基模型，DNN 作为堆叠集成元学习器；在训练折内过采样。",
       "conclusion": "作者报告测试集对 IC50≤20 μM 阻断剂的召回约 86%，对≤1 μM 阻断剂约 94%；筛选富集优于论文比较的通用对接打分方案。",
-      "evaluation": "训练集五折交叉验证调参，报告召回、特异度、平衡准确率和筛选富集；86%/94% 对应两档活性阈值下的阳性召回。",
-      "limitations": "测试集筛选表现参与了对接姿势打分方案的选择。高召回伴随误报，实际筛选需结合特异度和富集率；预测流程包含对接与结构指纹计算。",
+      "evaluation": "**实验设计。** 以 IC50≤20 μM 定义阻断剂，按 Bemis–Murcko 骨架成组分配约 3:1 的训练/测试集。Table 1 给出训练 224,945 个分子（1,453 阳性），测试 74,982 个（484 阳性）。训练集内五折验证同时选择模型超参数和决策阈值；过采样仅用于训练折，随机种子为 42。\n\n**核心结果。** 最终 DNN 堆叠模型 HERGAI 在测试集的阳性召回率为 0.864；对 IC50≤1 μM 阻断剂的召回率为 94.29%。对照包括单个 RF/XGBoost/DNN 模型、对接打分函数，以及在同一测试集运行的 CardioTox net 和 AttenhERG。论文同时报告特异度、平衡准确率、ROC-AUC 和前 0.1%/1% 富集因子（Results and Discussion、Table 2、Conclusions）。",
+      "limitations": "该测试集是同一整理数据源中的留出骨架集合。测试集筛选表现还参与了对接姿势打分方案选择，因此后续复现宜另设独立外部集检验完整流程。高召回应与特异度、富集率一起解读。",
       "doi": "10.1186/s13321-025-01063-8",
       "paper_url": "https://doi.org/10.1186/s13321-025-01063-8",
       "code_url": "https://github.com/vktrannguyen/HERGAI",
@@ -855,7 +895,7 @@
         }
       ],
       "verified_on": "2026-09-22",
-      "verification_scope": "书目、正文相关方法与结果及列出的官方资源"
+      "verification_scope": "已核对 Table 1 样本数、训练折过采样、阈值选择和测试集结果"
     },
     {
       "id": "cardiotox-net-2021",
@@ -966,9 +1006,9 @@
       "pain_point": "单一表示难以覆盖 P-gp 相关结构信息；抑制剂与底物需要区分，并检验新来源化合物上的表现。",
       "datasets": "公开数据库/文献汇编：抑制剂数据集共 5,943 个分子（4,558 阳性、1,385 阴性），底物集共 4,018（2,455 阳性、1,563 阴性）；独立外部集分别为 140 和 185 个分子。",
       "method": "注意力融合 SMILES 序列、分子指纹与分子图表示；图对比学习对齐局部与全局结构，并分析相关官能团。",
-      "conclusion": "抑制剂外部集 AUROC 为 0.906±0.015；作者报告抑制剂/底物外部集 AUROC 相对次优方法提高 9.82%/10.62%。",
-      "evaluation": "内部比较含随机与骨架划分；Tables 4–5 给出外部集成绩。9.82%/10.62% 为 AUROC 相对次优方法的提升比例。",
-      "limitations": "两个任务分别评价抑制作用与转运底物属性，且各含阳性、阴性样本。与 TDC 对照时，对应的 Pgp_Broccatelli 任务是抑制剂分类。",
+      "conclusion": "抑制剂和底物外部集 AUROC 分别为 0.906±0.015、0.906±0.022；同一实验的 FP-GNN 分别为 0.825±0.015、0.819±0.027，绝对增益为 0.081 和 0.087。",
+      "evaluation": "**实验设计。** 抑制剂集 5,943 个分子，底物集 4,018 个；分别采用随机和骨架 8:1:1 划分。验证集上做 30 次贝叶斯搜索，10 个随机种子报告均值±标准差。外部集分别为 140 和 185 个分子，使用随机划分实验训练的模型评价。\n\n| 评价集 | MC-PGP AUROC ↑ | 对照 AUROC ↑ | 原文位置 |\n| --- | --- | --- | --- |\n| 抑制剂，随机划分 | 0.939±0.006 | CMMS-GCL 0.928±0.010 | Table 2 |\n| 抑制剂，骨架划分 | 0.857±0.009 | FP-GNN 0.832±0.010 | Table 3 |\n| 抑制剂，外部集 | 0.906±0.015 | FP-GNN 0.825±0.015 | Table 4 |\n| 底物，外部集 | 0.906±0.022 | FP-GNN 0.819±0.027 | Table 5 |\n\n外部集 9.82%/10.62% 是相对提升比例；绝对 AUROC 增益为 0.081/0.087。",
+      "limitations": "抑制剂与转运底物是分别建模的两项任务。抑制剂任务从随机划分换为骨架划分后 AUROC 明显下降，说明对新骨架的泛化仍是关键问题。",
       "doi": "10.1016/j.jpha.2025.101313",
       "paper_url": "https://doi.org/10.1016/j.jpha.2025.101313",
       "code_url": null,
@@ -988,7 +1028,7 @@
         }
       ],
       "verified_on": "2026-09-22",
-      "verification_scope": "书目、正文相关方法与结果及列出的官方资源"
+      "verification_scope": "已核对训练协议、外部集说明和 Tables 2–5"
     },
     {
       "id": "ames-multitask-2022",
@@ -1012,10 +1052,10 @@
       "one_liner": "保留五种菌株各自的 Ames 结果进行多任务学习，而非只学习一个总体致突变标签。",
       "pain_point": "将不同菌株的实验结果压成单一标签，会丢失可用于预测致突变性的菌株差异信息。",
       "datasets": "作者 Mendeley v2 数据：ISSSTY 整理的 5,536 个分子、1,360 个 Mordred 描述符；TA98、TA100、TA102、TA1535、TA1537 五种菌株标签及 Overall 标签，含未确定标签；提供 Train/Internal/External 分区。",
-      "method": "用共享表示的多任务 DNN 学习五种菌株结果，与总体标签单任务模型、各菌株单任务及其集成比较；保留部分标签未确定的化合物信息。",
+      "method": "共享核心网络联合学习 TA98、TA100、TA102、TA1535、TA1537 五个输出，再通过共识规则形成总体预测；比较总体标签单任务模型和菌株单任务模型的共识结果，并处理缺失标签。",
       "conclusion": "正式摘要报告多任务模型优于总体标签单任务模型和菌株单任务集成，说明保留菌株级信息有助于致突变性预测。",
-      "evaluation": "作者 data.py 提供 Train/Internal/External 分区和五折交叉验证；多任务模型按 Overall 标签分层。逐项结果分数仍待核对正式版表格。",
-      "limitations": "五种菌株标签为模型提供不同突变敏感性的信息。代码 README 保留了投稿阶段说明；文献引用使用正式 JCIM 版本。",
+      "evaluation": "**实验设计。** 作者数据包含 Train/Internal/External 分区，训练代码采用五折验证。正式补充文件提供 MTL、Overall 和各菌株模型的交叉验证预测，以及三类模型的外部预测工作簿；例如 external-validation-MTL.xls 包含 5 个 Fold 工作表，每表 1,114 行化合物记录。\n\n**参数与对照。** 正式 Supplementary Table S2 分列普通和加权损失设置：MTL 使用 5 个输出，总体标签单任务模型使用 1 个输出，学习率均为 0.0001；S3 给出各菌株独立模型的配置。S4 明确列出合并到各菌株标签中的 ±S9 及菌株变体。\n\n**结果来源。** 正式摘要报告多任务模型优于总体标签单任务和菌株单任务共识；正式补充材料提供模型配置与预测文件。补充 Table S1 汇总国际 Ames/QSAR 挑战中其他工具的成绩，用于背景比较。",
+      "limitations": "该研究把实验变体汇总为五个菌株标签；这与 AmesNet 显式输入菌株及 S9 条件的设计不同。补充材料还指出三对可能互为盐形式的重复化合物，复现时应检查它们的分区。",
       "doi": "10.1021/acs.jcim.2c00532",
       "paper_url": "https://doi.org/10.1021/acs.jcim.2c00532",
       "code_url": "https://github.com/VirSabando/MTL_DNN_Ames",
@@ -1032,10 +1072,18 @@
         {
           "label": "作者代码",
           "url": "https://github.com/VirSabando/MTL_DNN_Ames"
+        },
+        {
+          "label": "正式补充材料 Tables S1–S4",
+          "url": "https://acs.figshare.com/articles/journal_contribution/20976947"
+        },
+        {
+          "label": "正式补充预测数据",
+          "url": "https://acs.figshare.com/articles/journal_contribution/20976950"
         }
       ],
       "verified_on": "2026-09-22",
-      "verification_scope": "正式版书目/摘要、作者 Mendeley v2 数据说明、代码 README 与 data.py；未完成正式版全部结果表核对"
+      "verification_scope": "已核对正式摘要、补充 Tables S1–S4、预测文件结构、作者 data.py 与 compute_metrics.py；正文最终结果表仍缺全文核对"
     },
     {
       "id": "amesnet-2026",
@@ -1061,12 +1109,12 @@
       "datasets": "Lui 等汇编的菌株/S9 条件数据，经正式版清洗后训练/验证共 40,129 条记录、测试 4,208 条记录；每条记录对应一个化合物–菌株–S9 组合。另评估缺少菌株/S9 信息的 Foil 数据。",
       "method": "分子编码器与菌株/±S9 条件通道构成双分支；比较单任务、普通/分组多任务，并对 ChemProp/GROVER 等编码器加入条件通道做对照。",
       "conclusion": "正式版主 OOD 评测报告灵敏度 0.72（95% CI 0.68–0.76）、平衡准确率 0.81（0.78–0.83）；Foil 补充评测平衡准确率 0.72。",
-      "evaluation": "沿用来源研究的 OOD 分区，去除跨分区相同非立体 SMILES；主任务与 Foil 测试分别报告指标。国际 Ames/QSAR 挑战成绩用于研究背景比较。",
-      "limitations": "正式版测试集为 4,208 条记录、灵敏度 0.72；预印本 v2 对应 4,528 条和 0.73。版本更新涉及数据清洗，本文采用正式版结果。",
+      "evaluation": "**实验设计。** 正式版 Lui 数据经去重后有 40,129 条训练/验证记录和 4,208 条测试记录；记录单位为化合物–菌株–S9 组合。沿用来源研究的 OOD 分区并移除跨分区相同非立体 SMILES。对照包含 STL、普通/分组多任务模型及为 ChemProp、GROVER、RF 添加条件通道的版本。\n\n| 测试 | AmesNet | 对照 | 来源 |\n| --- | --- | --- | --- |\n| Lui OOD 灵敏度 | 0.72（95% CI 0.68–0.76） | DeepAmes 重实现 0.69（0.64–0.73） | 正式版主结果 |\n| Lui OOD 平衡准确率 | 0.81（0.78–0.83） | DeepAmes 重实现 0.76（0.73–0.78） | 正式版主结果 |\n| Foil 平衡准确率 | 0.72（0.71–0.73） | STL-GROVER 0.70（0.69–0.71） | 补充 Fig. S1 |\n| Foil 灵敏度 | 0.64（0.62–0.66） | STL-DeepAmes 0.97（0.96–0.98） | 补充 Fig. S1 |\n\nFoil 实验使用 1,000 次分层 bootstrap 计算区间。STL-DeepAmes 在该集灵敏度高，但平衡准确率为 0.51，表明只看灵敏度会遗漏误报问题。",
+      "limitations": "正式版主测试集为 4,208 条记录；预印本 v2 为 4,528 条。两版数据清洗和成绩有所变化，本文采用正式版。Foil 数据缺少菌株/S9 信息，作为独立场景单列。",
       "doi": "10.1021/acs.chemrestox.6c00082",
       "paper_url": "https://doi.org/10.1021/acs.chemrestox.6c00082",
       "code_url": "https://github.com/Model-Medicines/TCL-Ames",
-      "code_status": "TCL 比较模型、预测数据与统计代码已公开；部分大文件另存 Hugging Face，未确认完整 AmesNet 实现与权重",
+      "code_status": "作者库公开比较模型的训练代码、部分检查点、AmesNet 预测值及 bootstrap 分析；仓库未列出 AmesNet 主模型训练代码和权重入口",
       "sources": [
         {
           "label": "正式版",
@@ -1083,10 +1131,14 @@
         {
           "label": "作者代码与预测数据",
           "url": "https://github.com/Model-Medicines/TCL-Ames"
+        },
+        {
+          "label": "正式补充材料 Fig. S1",
+          "url": "https://acs.figshare.com/articles/journal_contribution/32825956"
         }
       ],
       "verified_on": "2026-09-22",
-      "verification_scope": "正式版书目/摘要、出版社可检索的方法段、补充材料、预印本 v2 方法与作者仓库；ACS 连续全文访问受限"
+      "verification_scope": "已核对正式摘要、可检索主结果段、正式补充 Fig. S1 及作者代码树；正文训练细节结合已有版本记录"
     },
     {
       "id": "chemprop-dmpnn-2019",
@@ -1160,11 +1212,11 @@
       ],
       "one_liner": "让图神经网络在汇总分子信息时学习关注哪些原子和邻域，用于性质预测与结构归因。",
       "pain_point": "分子表示需要捕捉局部及较远结构联系，同时让模型关注的化学特征更容易检查。",
-      "datasets": "论文配套作者库提供 BBBP、HIV、BACE、ClinTox、SIDER、Tox21、ToxCast、ESOL（delaney）、FreeSolv（SAMPL）、Lipophilicity、QM9 等数据文件，以及芳香性解释示例，覆盖 ADMET、活性、理化与量子化学任务。",
+      "datasets": "正式 Supplementary Table 1/6 包括 BBBP 2,053、Tox21 8,014（12 任务）、ToxCast 8,615（617 任务）、SIDER 1,427（27 任务）、ClinTox 1,491（2 任务）、ESOL 1,128、FreeSolv 643、Lipophilicity 4,200 个分子，另有活性及 QM9 任务。",
       "method": "在分子图消息聚合和图级读出中使用注意力，构建可学习的分子指纹，并通过注意力可视化分析结构信息。",
-      "conclusion": "作者报告在所测任务上取得当时先进表现，并通过可视化展示模型学习非局部分子内联系的例子。",
-      "evaluation": "作者数据目录提供分类、回归及芳香性解释示例；任务间比较需要对齐数据划分与训练配置。",
-      "limitations": "注意力可视化展示模型关注的结构。在线日期的来源字段有差异：Crossref/ACS 页首为 2019-08-13，ACS history 为 2019-08-27，本条记到年份。",
+      "conclusion": "正式补充表报告 BBBP AUROC 0.920±0.015、Tox21 AUROC 0.858±0.014、ESOL RMSE 0.503±0.076。原子及分子读出注意力提供了可视化的结构归因方式。",
+      "evaluation": "**实验设置。** 作者 BBBP、Tox21 和 ESOL 示例 notebook 先随机抽取 10% 测试数据，再从剩余数据抽取 1/9 作为验证集，形成约 8:1:1 的随机划分。正式 Supplementary Table 6 分别列训练、验证和测试成绩；以下摘录 Test 列。\n\n| 数据集 | 分子数 | 指标 | Test |\n| --- | --- | --- | --- |\n| BBBP | 2,053 | AUROC ↑ | 0.920±0.015 |\n| Tox21 | 8,014 | AUROC ↑ | 0.858±0.014 |\n| SIDER | 1,427 | AUROC ↑ | 0.637±0.017 |\n| ClinTox | 1,491 | AUROC ↑ | 0.940±0.018 |\n| ESOL | 1,128 | RMSE ↓ | 0.503±0.076 |\n| FreeSolv | 643 | RMSE ↓ | 0.736±0.037 |\n\n这些是作者原始实验数据版本上的成绩。TDC 后续重新整理的数据和骨架划分实验另见方法对比页；两者不合并排名。",
+      "limitations": "注意力可视化描述模型关注的结构，并不直接证明化学因果机制。ACS 页首/Crossref 和出版历史的在线日字段分别为 2019-08-13 与 2019-08-27，因此索引保留已确认的在线年份。",
       "doi": "10.1021/acs.jmedchem.9b00959",
       "paper_url": "https://doi.org/10.1021/acs.jmedchem.9b00959",
       "code_url": "https://github.com/OpenDrugAI/AttentiveFP",
@@ -1185,10 +1237,18 @@
         {
           "label": "作者配套数据目录",
           "url": "https://github.com/OpenDrugAI/AttentiveFP/tree/master/data"
+        },
+        {
+          "label": "正式补充材料 Tables 1、6",
+          "url": "https://acs.figshare.com/articles/journal_contribution/9733613"
+        },
+        {
+          "label": "作者 BBBP 实验代码",
+          "url": "https://github.com/OpenDrugAI/AttentiveFP/blob/master/code/2_Physiology_or_Toxicity_BBBP.ipynb"
         }
       ],
       "verified_on": "2026-09-22",
-      "verification_scope": "书目与日期冲突、原始摘要、作者实现和数据目录、REPRODUCING.md；未完整复核逐数据集结果表"
+      "verification_scope": "已核对正式补充 Tables 1、6、作者 BBBP/Tox21/ESOL 划分代码及日期字段差异"
     },
     {
       "id": "moleculenet-2018",

@@ -18,15 +18,24 @@ Topics: ADMET, Platform, High throughput.
 | Research problem | Large-scale screening requires accurate multi-endpoint predictions, high throughput and local deployment. |
 | Datasets | 41 TDC prediction tasks: 31 classification and 10 regression tasks. Performance rankings use the 22-task ADMET Benchmark Group subset. |
 | Method | The paper uses Chemprop D-MPNN with 200 RDKit descriptors, separate multitask classification and regression models, and model ensembles. |
-| Findings | At publication, the authors reported a leading average TDC ADMET rank and high batch-processing efficiency, with both web and local tools available. |
+| Findings | Single-task models exceed AUROC 0.85 on 20/31 classification tasks and R² 0.6 on 5/10 regression tasks. Multi-task models perform similarly with faster inference. The 32-core CPU plus GPU timing is 3.1 hours for one million input records. |
 
 DOI: `10.1093/bioinformatics/btae416`
 
 ## Experimental setup and analysis
 
-Training covers 41 tasks; performance rankings use 22 ADMET benchmark tasks. Figure 1B–C compares predictive performance and runtime.
+**Design.** Uses 41 tasks from TDC v0.4.1, including the 22-task ADMET Benchmark Group. Models are trained across five train/validation/test splits; deployment averages five models. Single-task training is compared with separate classification and regression multi-task models.
 
-Inference speed depends on hardware and batch size. Version 2 changes the Chemprop version and feature configuration, so paper reproduction requires the corresponding software version.
+| Experiment | Result | Location |
+| --- | --- | --- |
+| Single-task classification, 31 tasks | 20 tasks exceed AUROC 0.85 | Supplementary Fig. S2 |
+| Single-task regression, 10 tasks | 5 tasks exceed R² 0.6 | Supplementary Fig. S2 |
+| Local 32-core CPU + GPU | 3.1 hours for one million records | Fig. 1C |
+| Local 8-core CPU, no GPU | About 5 hours for one million records | Fig. 1C |
+
+**Timing data.** The million-record input repeats 1,000 DrugBank molecules 1,000 times; times are medians of three trials. This measures throughput, not predictive accuracy on one million distinct molecules. Endpoint scores are in Supplementary Table S1.
+
+Paper evaluations, deployed multi-task ensembles and current software releases are distinguished. Version 2 changes Chemprop and feature configuration; use the matching release for paper reproduction.
 
 ## Code and references
 
@@ -34,7 +43,7 @@ Inference speed depends on hardware and batch size. Version 2 changes the Chempr
 
 The authors provide a public code/project page.
 
-Sources reviewed: **2026-09-19**. Bibliographic metadata, key sections of the paper and related official resources.
+Sources reviewed: **2026-09-22**. Checked training versus deployment, Fig. 1 timing design and supplementary result references
 
 - [Full text](https://pmc.ncbi.nlm.nih.gov/articles/PMC11226862/)
 - [Author code and version notes](https://github.com/swansonk14/admet_ai)

@@ -24,19 +24,29 @@ DOI：`10.1021/acs.chemrestox.6c00082`
 
 ## 实验设置与结果分析
 
-沿用来源研究的 OOD 分区，去除跨分区相同非立体 SMILES；主任务与 Foil 测试分别报告指标。国际 Ames/QSAR 挑战成绩用于研究背景比较。
+**实验设计。** 正式版 Lui 数据经去重后有 40,129 条训练/验证记录和 4,208 条测试记录；记录单位为化合物–菌株–S9 组合。沿用来源研究的 OOD 分区并移除跨分区相同非立体 SMILES。对照包含 STL、普通/分组多任务模型及为 ChemProp、GROVER、RF 添加条件通道的版本。
 
-正式版测试集为 4,208 条记录、灵敏度 0.72；预印本 v2 对应 4,528 条和 0.73。版本更新涉及数据清洗，本文采用正式版结果。
+| 测试 | AmesNet | 对照 | 来源 |
+| --- | --- | --- | --- |
+| Lui OOD 灵敏度 | 0.72（95% CI 0.68–0.76） | DeepAmes 重实现 0.69（0.64–0.73） | 正式版主结果 |
+| Lui OOD 平衡准确率 | 0.81（0.78–0.83） | DeepAmes 重实现 0.76（0.73–0.78） | 正式版主结果 |
+| Foil 平衡准确率 | 0.72（0.71–0.73） | STL-GROVER 0.70（0.69–0.71） | 补充 Fig. S1 |
+| Foil 灵敏度 | 0.64（0.62–0.66） | STL-DeepAmes 0.97（0.96–0.98） | 补充 Fig. S1 |
+
+Foil 实验使用 1,000 次分层 bootstrap 计算区间。STL-DeepAmes 在该集灵敏度高，但平衡准确率为 0.51，表明只看灵敏度会遗漏误报问题。
+
+正式版主测试集为 4,208 条记录；预印本 v2 为 4,528 条。两版数据清洗和成绩有所变化，本文采用正式版。Foil 数据缺少菌株/S9 信息，作为独立场景单列。
 
 ## 代码与参考资料
 
 [代码与项目](https://github.com/Model-Medicines/TCL-Ames)
 
-TCL 比较模型、预测数据与统计代码已公开；部分大文件另存 Hugging Face，未确认完整 AmesNet 实现与权重。
+作者库公开比较模型的训练代码、部分检查点、AmesNet 预测值及 bootstrap 分析；仓库未列出 AmesNet 主模型训练代码和权重入口。
 
-资料核对：**2026-09-22**。正式版书目/摘要、出版社可检索的方法段、补充材料、预印本 v2 方法与作者仓库；ACS 连续全文访问受限。
+资料核对：**2026-09-22**。已核对正式摘要、可检索主结果段、正式补充 Fig. S1 及作者代码树；正文训练细节结合已有版本记录。
 
 - [正式版](https://pubs.acs.org/crtoec/article/doi/10.1021/acs.chemrestox.6c00082/5170705/AmesNet-A-Task-Conditioned-Deep-Learning-Model)
 - [正式摘要](https://pubmed.ncbi.nlm.nih.gov/42371678/)
 - [正式补充材料](https://doi.org/10.1021/acs.chemrestox.6c00082.s001)
 - [作者代码与预测数据](https://github.com/Model-Medicines/TCL-Ames)
+- [正式补充材料 Fig. S1](https://acs.figshare.com/articles/journal_contribution/32825956)

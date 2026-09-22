@@ -24,9 +24,11 @@ DOI: `10.1186/s13321-025-01063-8`
 
 ## Experimental setup and analysis
 
-Five-fold training-set cross-validation for tuning; reports recall, specificity, balanced accuracy and enrichment. The 86%/94% values are positive recall at two activity thresholds.
+**Design.** Blockers are defined by IC50≤20 μM. Bemis–Murcko scaffolds are allocated approximately 3:1 to training and testing. Table 1 lists 224,945 training molecules (1,453 positives) and 74,982 test molecules (484 positives). Fivefold training-set validation selects hyperparameters and thresholds; oversampling is confined to training folds, with seed 42.
 
-Test-set screening performance informed the choice of pose-scoring scheme. High recall comes with false positives, so specificity and enrichment matter; the workflow also requires docking and structural fingerprint calculation.
+**Results.** The final stacked DNN, HERGAI, achieves test recall 0.864 and recalls 94.29% of blockers with IC50≤1 μM. Comparisons include individual RF/XGBoost/DNN models, docking scores, and CardioTox net and AttenhERG evaluated on the same test set. Specificity, balanced accuracy, ROC-AUC and top-0.1%/1% enrichment are also reported (Results and Discussion, Table 2, Conclusions).
+
+The test set is a scaffold holdout from the same curated sources. Test screening performance also informed docking-pose scoring selection, motivating a separate external evaluation of the complete pipeline. Recall should be read alongside specificity and enrichment.
 
 ## Code and references
 
@@ -34,7 +36,7 @@ Test-set screening performance informed the choice of pose-scoring scheme. High 
 
 Author code and data are accessible; the repository was archived on 2026-01-01.
 
-Sources reviewed: **2026-09-22**. Bibliographic metadata, relevant methods and results, and the listed official resources.
+Sources reviewed: **2026-09-22**. Checked Table 1 sample counts, training-fold oversampling, threshold selection and test results
 
 - [Publisher full text](https://link.springer.com/article/10.1186/s13321-025-01063-8)
 - [Author code](https://github.com/vktrannguyen/HERGAI)

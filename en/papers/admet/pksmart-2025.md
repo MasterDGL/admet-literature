@@ -16,17 +16,26 @@ Topics: Human PK, Cross-species prediction, External validation.
 | Date basis | Publisher online publication date |
 | Publication status | Journal article |
 | Research problem | Human PK data are scarce, limiting structure-only models. The study examines how preclinical species information can improve human parameter prediction. |
-| Datasets | Human intravenous PK data for 1,283 distinct compounds, covering VDss, clearance, half-life, unbound fraction and mean residence time; preclinical animal data for another collection of 371 compounds. Label availability varies by endpoint. |
+| Datasets | Human IV PK: 1,283 compounds, with 1,249/1,281/1,265/879/1,243 labels for VDss/CL/half-life/fraction unbound/MRT. Animal data cover 371 compounds. A separate external set has 315 compounds, with 51/302/38/34 labels for the four evaluable endpoints. |
 | Method | First predicts rat, dog and monkey PK parameters from molecular features, then combines these predictions with molecular features in human random-forest models. Uses repeated nested cross-validation and external validation. |
-| Findings | Reported external R² values are 0.39 for VDss and 0.46 for clearance, indicating that cross-species predictions can improve selected human PK endpoints. |
+| Findings | External R² is 0.39 for VDss and 0.46 for clearance, with 52.94% and 70.20% of predictions within twofold error. Half-life external R² is 0.06, demonstrating substantial endpoint differences. |
 
 DOI: `10.1186/s13321-025-01066-5`
 
 ## Experimental setup and analysis
 
-Repeated nested cross-validation and external validation; external R² is 0.39 for VDss and 0.46 for clearance.
+**Design.** Five outer folds repeated five times yield 25 test folds; fourfold inner grid search tunes hyperparameters. Standardized SMILES exclude training overlap from the external set. Ablations compare molecular features, predicted animal PK, and their combination. All PK labels except fraction unbound are log10-transformed.
 
-The study concerns human intravenous PK. Two-stage model comparisons assess the contribution of animal PK information, while external R² values also show the remaining prediction error.
+| External endpoint | N | R² ↑ | RMSE ↓ | Within twofold error ↑ |
+| --- | --- | --- | --- | --- |
+| VDss | 51 | 0.39 | 0.56 | 52.94% |
+| Clearance | 302 | 0.46 | 0.44 | 70.20% |
+| Half-life | 38 | 0.06 | 0.68 | 31.58% |
+| Fraction unbound | 34 | 0.26 | 0.22 | 26.47% |
+
+Source: Table 2. RMSE uses log10 labels for the first three endpoints and the untransformed fraction for the fourth. Fold error uses the original scale. MRT has no external test set.
+
+External sample sizes differ substantially across endpoints. Comparison with AstraZeneca mainly measures agreement between model predictions, a different question from prediction accuracy against measured external labels.
 
 ## Code and references
 
@@ -34,7 +43,8 @@ The study concerns human intravenous PK. Two-stage model comparisons assess the 
 
 The authors provide a public code/project page.
 
-Sources reviewed: **2026-09-19**. Bibliographic metadata, key sections of the paper and related official resources.
+Sources reviewed: **2026-09-22**. Checked curation, nested validation, external sample counts and Table 2
 
 - [Publisher full text](https://link.springer.com/article/10.1186/s13321-025-01066-5)
 - [Author code](https://github.com/srijitseal/PKSmart)
+- [External validation, Table 2](https://link.springer.com/article/10.1186/s13321-025-01066-5/tables/2)

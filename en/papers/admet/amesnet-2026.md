@@ -24,19 +24,29 @@ DOI: `10.1021/acs.chemrestox.6c00082`
 
 ## Experimental setup and analysis
 
-Uses the source study's OOD partitions and removes identical non-stereochemical SMILES across partitions. Main-task and Foil metrics are separate; international Ames/QSAR challenge results provide background comparisons.
+**Design.** The published Lui dataset has 40,129 training/validation and 4,208 test records after curation; a record is a compound–strain–S9 combination. Source OOD partitions are retained, removing identical non-stereochemical SMILES across partitions. Comparators include STL, ungrouped/grouped multi-task models and conditioned ChemProp, GROVER and RF variants.
 
-The published test set contains 4,208 records with sensitivity 0.72; preprint v2 uses 4,528 and reports 0.73. The revision changes data cleaning; these notes use the published results.
+| Test | AmesNet | Comparator | Source |
+| --- | --- | --- | --- |
+| Lui OOD sensitivity | 0.72 (95% CI 0.68–0.76) | Reimplemented DeepAmes 0.69 (0.64–0.73) | Published main results |
+| Lui OOD balanced accuracy | 0.81 (0.78–0.83) | Reimplemented DeepAmes 0.76 (0.73–0.78) | Published main results |
+| Foil balanced accuracy | 0.72 (0.71–0.73) | STL-GROVER 0.70 (0.69–0.71) | Supplementary Fig. S1 |
+| Foil sensitivity | 0.64 (0.62–0.66) | STL-DeepAmes 0.97 (0.96–0.98) | Supplementary Fig. S1 |
+
+Foil intervals use 1,000 stratified bootstrap samples. STL-DeepAmes has high sensitivity but balanced accuracy 0.51 on that set, illustrating the need to also evaluate false positives.
+
+The published main test set has 4,208 records versus 4,528 in preprint v2. Results here use the published version. Foil lacks strain/S9 metadata and is treated as a separate setting.
 
 ## Code and references
 
 [Code and project](https://github.com/Model-Medicines/TCL-Ames)
 
-TCL comparison models, predictions and statistical code are public, with some large files on Hugging Face. Availability of the complete AmesNet implementation and weights is unconfirmed.
+The author repository provides comparator training code, some checkpoints, AmesNet predictions and bootstrap analysis; it does not list a training-code or weights entry for the main AmesNet model
 
-Sources reviewed: **2026-09-22**. Published metadata/abstract, searchable publisher methods, supplementary material, preprint v2 methods and author repository; continuous access to the ACS full text was restricted.
+Sources reviewed: **2026-09-22**. Checked the published abstract, searchable main-result passages, published Supplementary Fig. S1 and the author repository tree; training details also draw on earlier version records
 
 - [Published version](https://pubs.acs.org/crtoec/article/doi/10.1021/acs.chemrestox.6c00082/5170705/AmesNet-A-Task-Conditioned-Deep-Learning-Model)
 - [Published abstract](https://pubmed.ncbi.nlm.nih.gov/42371678/)
 - [Published supplement](https://doi.org/10.1021/acs.chemrestox.6c00082.s001)
 - [Author code and predictions](https://github.com/Model-Medicines/TCL-Ames)
+- [Published supplement, Fig. S1](https://acs.figshare.com/articles/journal_contribution/32825956)

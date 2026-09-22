@@ -124,7 +124,7 @@ Papers below are ordered by publication date, newest first. Each entry explains 
 | Research problem | A single representation struggles to capture semantic, structural and physicochemical information together, while ADMET labels are sparse and endpoints heterogeneous. |
 | Datasets | Pretraining uses approximately 111 million PubChem records. The ADMET collection contains 97 endpoints: 43 regression and 54 classification tasks, with 465,470 endpoint records. Also evaluates 10 MoleculeNet datasets. |
 | Method | Fuses XLNet semantic representations, a GRU component incorporating SMILES-to-InChI and property learning, and ECFP fingerprints; combines single-task random forests, multitask neural networks and parameter optimization. |
-| Findings | Reports improvements over the ECFP baseline on 67/97 endpoints and the best results among compared methods on 5 of 10 MoleculeNet tasks. |
+| Findings | Improves over ECFP on 67/97 endpoints (39 classification, 28 regression). Mean classification AUC increases from 0.812 to 0.831; mean regression Pearson r increases from 0.661 to 0.701. |
 
 [Paper](https://link.springer.com/article/10.1186/s13321-026-01244-z) · [Detailed notes](en/papers/admet/dcpm-admet-2026.md) · [Code/project](https://github.com/zhangzhangleilei/DCPM-ADMET)
 
@@ -154,7 +154,7 @@ Papers below are ordered by publication date, newest first. Each entry explains 
 | --- | --- |
 | Publication and date | Journal of Cheminformatics 18, 95; 2026-05-18 |
 | Research problem | Average benchmark scores miss reliability issues involving small datasets, out-of-distribution prediction, class imbalance, beyond-rule-of-five molecules and activity cliffs. |
-| Datasets | 14 property/ADMET datasets covering hERG, BBBP, Caco-2, half-life, VDss, CYP and peptide properties, plus 30 bioactivity tasks from MoleculeACE. |
+| Datasets | Fourteen curated property datasets plus 30 MoleculeACE bioactivity tasks. Examples after curation: BBBP 3,873; hERG 9,673; Caco-2 842; half-life 1,314; VDss 1,092; CycPept-PAMPA 6,637 samples (Table 1). Counts refer to this study’s processed versions. |
 | Method | Compares KPGT, Uni-Mol, TabPFNv2, classical machine learning and AutoML in a common framework, using random, scaffold and Perimeter splits, resampling and ensembles. |
 | Findings | TabPFNv2 often performs well in the evaluated small-data/OOD settings. Undersampling ensembles help with imbalance, while KPGT performs strongly on cyclic-peptide permeability with more training data. Activity cliffs remain difficult across models. |
 
@@ -188,9 +188,9 @@ Papers below are ordered by publication date, newest first. Each entry explains 
 | Research problem | Limited interaction across atom, substructure and molecular levels can leave property-relevant information out of single-level representations. |
 | Datasets | 11 datasets: 8 MoleculeNet subsets plus Malaria, LMC and MetStab. BBBP, Tox21, SIDER, ClinTox and metabolic-stability tasks directly concern ADMET; others assess broader properties or bioactivity. |
 | Method | Hierarchical message passing and attention combine directed message paths, cross-level interactions and consistency information from multiple fingerprints. |
-| Findings | Tables 1–2 report best or near-best results on several tasks among the compared methods, supporting hierarchical feature fusion. |
+| Findings | Reported BBBP AUROC is 0.954±0.020, ESOL RMSE 0.710±0.016, and metabolic-stability AUROC 0.896±0.008. Ablations probe the task-dependent contributions of hierarchical message passing and fusion modules. |
 
-[Paper](https://www.nature.com/articles/s42004-026-01922-x) · [Detailed notes](en/papers/admet/himnet-2026.md)
+[Paper](https://www.nature.com/articles/s42004-026-01922-x) · [Detailed notes](en/papers/admet/himnet-2026.md) · [Code/project](https://github.com/Hugh415/HimNet)
 
 ### 2025
 
@@ -205,8 +205,8 @@ Papers below are ordered by publication date, newest first. Each entry explains 
 | Publication and date | Journal of Cheminformatics 17, 184; 2025-12-22; preceded by a 2025 preprint. |
 | Research problem | Caco-2 permeability data are limited and assay conditions vary, making it difficult to identify effective molecular features and modeling strategies. |
 | Datasets | TDC Caco2_Wang contains 906 molecules. A separate OCHEM collection was reduced from 9,402 raw records to 5,481 modeling records through filtering and cleaning. The two datasets are modeled and evaluated separately. |
-| Method | Compares fingerprints, RDKit/PaDEL/Mordred descriptors and CDDD representations, combining AutoGluon with feature selection, interpretation and hyperparameter optimization. |
-| Findings | Feature selection and ensemble learning improve Caco-2 prediction. The official TDC Caco-2 leaderboard snapshot dated 2026-09-19 lists MAE = 0.256 ± 0.006 and ranks CaliciBoost first. |
+| Method | Compares eight molecular representations through AutoGluon, feature selection and hyperparameter optimization. The submitted CaliciBoost predictor is an XGBoost regressor using selected PaDEL descriptors. |
+| Findings | Five-seed TDC MAE is 0.2560±0.006. In the paper’s individual feature comparison, selected PaDEL features plus optimization achieve MAE 0.2525 versus 0.3058 with all PaDEL features. |
 
 [Paper](https://link.springer.com/article/10.1186/s13321-025-01137-7) · [Detailed notes](en/papers/admet/caliciboost-2025.md) · [Code/project](https://github.com/Calici/CaliciBoost)
 
@@ -220,9 +220,9 @@ Papers below are ordered by publication date, newest first. Each entry explains 
 | --- | --- |
 | Publication and date | Journal of Cheminformatics 17, 147; 2025-09-26 |
 | Research problem | Human PK data are scarce, limiting structure-only models. The study examines how preclinical species information can improve human parameter prediction. |
-| Datasets | Human intravenous PK data for 1,283 distinct compounds, covering VDss, clearance, half-life, unbound fraction and mean residence time; preclinical animal data for another collection of 371 compounds. Label availability varies by endpoint. |
+| Datasets | Human IV PK: 1,283 compounds, with 1,249/1,281/1,265/879/1,243 labels for VDss/CL/half-life/fraction unbound/MRT. Animal data cover 371 compounds. A separate external set has 315 compounds, with 51/302/38/34 labels for the four evaluable endpoints. |
 | Method | First predicts rat, dog and monkey PK parameters from molecular features, then combines these predictions with molecular features in human random-forest models. Uses repeated nested cross-validation and external validation. |
-| Findings | Reported external R² values are 0.39 for VDss and 0.46 for clearance, indicating that cross-species predictions can improve selected human PK endpoints. |
+| Findings | External R² is 0.39 for VDss and 0.46 for clearance, with 52.94% and 70.20% of predictions within twofold error. Half-life external R² is 0.06, demonstrating substantial endpoint differences. |
 
 [Paper](https://link.springer.com/article/10.1186/s13321-025-01066-5) · [Detailed notes](en/papers/admet/pksmart-2025.md) · [Code/project](https://github.com/srijitseal/PKSmart)
 
@@ -238,7 +238,7 @@ Papers below are ordered by publication date, newest first. Each entry explains 
 | Research problem | Single representations miss P-gp-related structural information. Inhibitors and substrates require distinct tasks and evaluation on compounds from new sources. |
 | Datasets | Public databases/literature: 5,943 molecules for inhibition (4,558 positives, 1,385 negatives) and 4,018 for substrate prediction (2,455 positives, 1,563 negatives). Independent external sets contain 140 and 185 molecules, respectively. |
 | Method | Attention fuses SMILES sequences, fingerprints and graphs. Graph contrastive learning aligns local and global structure, with analysis of relevant functional groups. |
-| Findings | External inhibitor AUROC is 0.906 ± 0.015. The authors report relative AUROC improvements of 9.82%/10.62% over the next-best method on the inhibitor/substrate external sets. |
+| Findings | External AUROC is 0.906±0.015 for inhibitors and 0.906±0.022 for substrates; FP-GNN scores 0.825±0.015 and 0.819±0.027 on the same tests. Absolute gains are 0.081 and 0.087. |
 
 [Paper](https://doi.org/10.1016/j.jpha.2025.101313) · [Detailed notes](en/papers/admet/mc-pgp-2025.md)
 
@@ -286,7 +286,7 @@ Papers below are ordered by publication date, newest first. Each entry explains 
 | --- | --- |
 | Publication and date | Nature Communications 15, 9431; 2024-11-12. |
 | Research problem | The study addresses how to learn transferable representations from very large unlabeled molecular collections and combine them with labeled biological information. |
-| Datasets | Approximately 842 million molecular graphs from ZINC20 and ExCAPE-DB for self-supervised learning, followed by supervised multitask pretraining; ADMET evaluation covers 22 TDC tasks. |
+| Datasets | Self-supervised pretraining uses approximately 842 million ZINC20/ExCAPE-DB molecules; supervised pretraining uses about 456,000 molecules with 1,310 ChEMBL readouts. Evaluation covers 22 TDC tasks, whose test molecules are removed from both pretraining stages. |
 | Method | Decoupled attention models atom content and relative graph position. Training proceeds from atom-environment prediction to supervised pretraining and downstream fine-tuning. |
 | Findings | Reports results exceeding the best published methods in a September 2023 TDC snapshot on 10/22 tasks, with means and standard deviations across multiple runs. |
 
@@ -336,7 +336,7 @@ Papers below are ordered by publication date, newest first. Each entry explains 
 | Research problem | Large-scale screening requires accurate multi-endpoint predictions, high throughput and local deployment. |
 | Datasets | 41 TDC prediction tasks: 31 classification and 10 regression tasks. Performance rankings use the 22-task ADMET Benchmark Group subset. |
 | Method | The paper uses Chemprop D-MPNN with 200 RDKit descriptors, separate multitask classification and regression models, and model ensembles. |
-| Findings | At publication, the authors reported a leading average TDC ADMET rank and high batch-processing efficiency, with both web and local tools available. |
+| Findings | Single-task models exceed AUROC 0.85 on 20/31 classification tasks and R² 0.6 on 5/10 regression tasks. Multi-task models perform similarly with faster inference. The 32-core CPU plus GPU timing is 3.1 hours for one million input records. |
 
 [Paper](https://pmc.ncbi.nlm.nih.gov/articles/PMC11226862/) · [Detailed notes](en/papers/admet/admet-ai-2024.md) · [Code/project](https://github.com/swansonk14/admet_ai)
 
@@ -351,8 +351,8 @@ Papers below are ordered by publication date, newest first. Each entry explains 
 | Publication and date | Nucleic Acids Research 52(W1), W432–W438; online 2024-04-22; July 2024 issue. |
 | Research problem | Users need both property predictions and ways to find similar compounds and structural modifications that improve ADMET. |
 | Datasets | More than 370,000 experimental records covering 104,652 distinct compounds and 119 ADMET endpoints. |
-| Method | Multitask graph neural networks with database retrieval, similarity search, structural transformations and scaffold-hopping tools. |
-| Findings | Combines molecular exploration, property prediction and optimization suggestions in one platform for multiparameter screening and design. |
+| Method | CLMGraph first uses QED-based molecular pairs from ten million small molecules for contrastive pretraining, followed by multi-task ADMET fine-tuning. The platform also integrates similarity search, scaffold hopping and matched-pair transformation rules. |
+| Findings | Mean AUC across 90 classification endpoints is 0.870; over 82% of regression endpoints have Pearson r>0.70. Half-life and mean residence time perform less well. Experimental-data search and structure optimization complement prediction. |
 
 [Paper](https://doi.org/10.1093/nar/gkae298) · [Detailed notes](en/papers/admet/admetsar-3-2024.md)
 
@@ -366,9 +366,9 @@ Papers below are ordered by publication date, newest first. Each entry explains 
 | --- | --- |
 | Publication and date | Nucleic Acids Research 52(W1), W422–W431; online 2024-04-04; July 2024 issue. |
 | Research problem | Limited property coverage, inconvenient access and point predictions alone constrain platform support for compound selection. |
-| Datasets | More than 400,000 records support model development; the platform provides 119 property/assessment outputs, including predicted endpoints and calculated properties. |
+| Datasets | Over 400,000 modeling records covering 77 learned endpoints (59 classification, 18 regression). The 119 platform outputs also include 34 directly computed endpoints and eight rules. Endpoint counts are detailed in Supplementary Table S1. |
 | Method | Multitask directed message passing and descriptor-based modeling, combined with predictive uncertainty, API access and decision support. |
-| Findings | Expands property coverage and integrates batch processing, API access and uncertainty estimation for ADMET screening. |
+| Findings | Under common data and splits, the DMPNN models outperform MGA on 47/59 classification tasks. The platform combines 77 learned endpoints with calculated properties, rules, uncertainty estimates and an API. |
 
 [Paper](https://doi.org/10.1093/nar/gkae236) · [Detailed notes](en/papers/admet/admetlab-3-2024.md)
 
@@ -402,7 +402,7 @@ Papers below are ordered by publication date, newest first. Each entry explains 
 | Research problem | Training all ADMET tasks together can cause negative transfer; each primary task may need a different auxiliary-task set. |
 | Datasets | 24 endpoints collected from 8 publications: 18 classification and 6 regression tasks, covering 43,291 compounds and including ADMET plus 2 physicochemical endpoints. |
 | Method | Uses state theory and maximum flow for auxiliary-task selection, together with shared atom representations, task-specific attention and a primary-task-centered gating module. |
-| Findings | Comparisons and ablations show that adaptive task selection and gating improve prediction, supporting auxiliary-task selection tailored to the primary task. |
+| Findings | Under the paper’s common evaluation, MTGL-ADMET has the highest mean on 20/24 endpoints and ranks second on four. P-gp substrate AUROC is 0.801±0.031 versus MGA’s 0.719±0.035, supporting task-specific auxiliary selection. |
 
 [Paper](https://pmc.ncbi.nlm.nih.gov/articles/PMC10654589/) · [Detailed notes](en/papers/admet/mtgl-admet-2023.md) · [Code/project](https://github.com/dubingxue/MTGL-ADMET)
 
@@ -499,7 +499,7 @@ Papers below are ordered by publication date, newest first. Each entry explains 
 | Publication and date | Journal of Chemical Information and Modeling 62(24), 6342–6351; online 2022-09-06. |
 | Research problem | Collapsing results across strains into one label discards strain-level information useful for mutagenicity prediction. |
 | Datasets | Authors' Mendeley v2 data: 5,536 ISSSTY-curated molecules with 1,360 Mordred descriptors, labels for TA98, TA100, TA102, TA1535 and TA1537 plus Overall, including undetermined labels. Train/Internal/External partitions are provided. |
-| Method | A shared-representation multitask DNN learns five strain outcomes and is compared with overall-label single-task models, strain-specific models and their ensembles. Compounds with partially undetermined labels are retained. |
+| Method | A shared network jointly predicts TA98, TA100, TA102, TA1535 and TA1537, then combines outputs by a consensus rule. Comparators predict the overall label directly or combine separately trained strain models; missing labels are handled explicitly. |
 | Findings | The published abstract reports improvements over overall-label single-task models and ensembles of strain-specific models, supporting the use of strain-level information. |
 
 [Paper](https://doi.org/10.1021/acs.jcim.2c00532) · [Detailed notes](en/papers/admet/ames-multitask-2022.md) · [Code/project](https://github.com/VirSabando/MTL_DNN_Ames)
@@ -616,9 +616,9 @@ Papers below are ordered by publication date, newest first. Each entry explains 
 | --- | --- |
 | Publication and date | Journal of Medicinal Chemistry 63(16), 8749–8760; online in 2019; issue date 2020-08-27. |
 | Research problem | Representations must capture local and longer-range structural relationships while making model-selected chemical features easier to inspect. |
-| Datasets | The authors' repository provides BBBP, HIV, BACE, ClinTox, SIDER, Tox21, ToxCast, ESOL (delaney), FreeSolv (SAMPL), Lipophilicity, QM9 and aromaticity examples, covering ADMET, activity, physicochemical and quantum-chemical tasks. |
+| Datasets | Published Supplementary Tables 1/6 include BBBP 2,053; Tox21 8,014 (12 tasks); ToxCast 8,615 (617 tasks); SIDER 1,427 (27 tasks); ClinTox 1,491 (two tasks); ESOL 1,128; FreeSolv 643; and Lipophilicity 4,200 molecules, plus bioactivity and QM9 tasks. |
 | Method | Attention in molecular-graph message aggregation and graph-level readout produces learned fingerprints; attention visualization explores structural information. |
-| Findings | Reports advanced performance at publication on the tested tasks and visual examples of learned nonlocal intramolecular relationships. |
+| Findings | The published supplement reports BBBP AUROC 0.920±0.015, Tox21 AUROC 0.858±0.014 and ESOL RMSE 0.503±0.076. Atom-level and molecular-readout attention support structural visualization. |
 
 [Paper](https://doi.org/10.1021/acs.jmedchem.9b00959) · [Detailed notes](en/papers/foundations/attentivefp-2019.md) · [Code/project](https://github.com/OpenDrugAI/AttentiveFP)
 
