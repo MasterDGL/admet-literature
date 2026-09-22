@@ -204,7 +204,7 @@
       "method": "LiGhT 线图 Transformer，结合分子描述符和指纹进行知识引导预训练，再对下游任务微调。",
       "conclusion": "原文 Fig. 2c 与 Supplementary Table 8 报告，在当时比较的模型中，16/22 个 TDC ADMET 任务取得最佳表现。",
       "limitations": "最优均值与基线十分接近的任务，例如 Caco-2，需结合运行波动判断改进幅度。MoleculeACE 活性悬崖以及 HPK1/FGFR1 实验是额外的迁移检验，与 TDC ADMET 结果分别记录。",
-      "evaluation": "**实验设计。** 11 个常用性质数据集采用骨架 8:1:1 划分，运行 3 次；22 个 TDC 任务采用骨架 7:1:2 划分，运行 5 次。TDC 对照包括榜单中的 28 种方法，覆盖传统机器学习和深度学习。分类按任务使用 AUROC/AUPRC，回归使用 MAE/Spearman r。\n\n| TDC 任务 | 指标 | KPGT | 论文所列最佳基线 |\n| --- | --- | --- | --- |\n| Caco-2，906 分子 | MAE ↓ | 0.284±0.009 | BaseBoosting 0.285±0.005 |\n| P-gp 抑制剂，1,212 分子 | AUROC ↑ | 0.938±0.004 | ZairaChem 0.935±0.006 |\n| CYP2C9 抑制剂，12,092 分子 | AUPRC ↑ | 0.797±0.006 | ZairaChem 0.786±0.004 |\n| hERG，648 分子 | AUROC ↑ | 0.847±0.024 | SimGCN 0.874±0.014 |\n| AMES，7,255 分子 | AUROC ↑ | 0.868±0.003 | ZairaChem 0.871±0.002 |\n\n来源：Supplementary Table 8，均值±标准差。16/22 的领先任务数来自论文当时的比较；hERG、AMES 等任务也展示了其未领先的情形。",
+      "evaluation": "**实验设计。** 11 个常用性质数据集采用骨架 8:1:1 划分，运行 3 次；22 个 TDC 任务采用骨架 7:1:2 划分，运行 5 次。TDC 对照包括榜单中的 28 种方法，覆盖传统机器学习和深度学习。分类按任务使用 AUROC/AUPRC，回归使用 MAE/Spearman r。\n\n| TDC 任务 | 指标 | KPGT | 论文所列最佳基线 |\n| --- | --- | --- | --- |\n| Caco-2，906 分子 | MAE ↓ | 0.284±0.009 | BaseBoosting 0.285±0.005 |\n| P-gp 抑制剂，1,212 分子 | AUROC ↑ | 0.938±0.004 | ZairaChem 0.935±0.006 |\n| CYP2C9 抑制剂，12,092 分子 | AUPRC ↑ | 0.797±0.006 | ZairaChem 0.786±0.004 |\n| hERG，648 分子 | AUROC ↑ | 0.847±0.024 | SimGCN 0.874±0.014 |\n| AMES，7,255 分子 | AUROC ↑ | 0.868±0.003 | ZairaChem 0.871±0.002 |\n\n来源：Supplementary Table 8，均值±标准差。16/22 的领先任务数来自论文当时的比较；hERG、AMES 等任务也展示了其未领先的情形。\n\n**对比表口径。** 补充材料将 PPBR 规模写为 1,614，当前 TDC 字典为 1,797；补充表 8 将 CYP3A4 底物指标写为 AUPRC，TDC 协议为 AUROC。这两项待统一口径后再进入跨方法对比，其余 20 项按原文记录。",
       "doi": "10.1038/s41467-023-43214-1",
       "paper_url": "https://www.nature.com/articles/s41467-023-43214-1",
       "code_url": "https://github.com/lihan97/KPGT",
@@ -1616,6 +1616,118 @@
       "limitations": "覆盖保证依赖数据可交换性；单标签预测比例与正确率是不同指标。外推到新化学空间时，应另外检查校准后的实际覆盖率。",
       "code_status": "作者公开建模 Python 代码，论文给出 Tox21 数据入口",
       "verification_scope": "已核对作者接受稿的数据、方法、实验与结论，以及出版社和 Crossref 日期；核对作者代码入口。"
+    },
+    {
+      "id": "molmapnet-2021",
+      "name": "MolMapNet",
+      "title": "Out-of-the-box deep learning prediction of pharmaceutical properties by broadly learned knowledge-based molecular representations",
+      "topic": "foundations",
+      "group": "基础方法",
+      "publication": {
+        "venue": "Nature Machine Intelligence",
+        "year": 2021,
+        "date": "2021-03-01",
+        "date_basis": "出版社在线发表日期",
+        "status": "journal",
+        "citation": "Nature Machine Intelligence 3, 334–343；2021-03-01"
+      },
+      "tags": [
+        "描述符",
+        "分子指纹",
+        "卷积网络",
+        "基线"
+      ],
+      "one_liner": "把分子描述符和指纹排成二维特征图，再用卷积网络预测理化、药代和毒性相关性质。",
+      "pain_point": "人工积累的描述符与指纹包含丰富化学信息，但普通向量输入难以利用特征间关系；逐任务调参也增加建模成本。",
+      "datasets": "26 个药物研究相关基准及一个新测试集。特征关系来自 8,506,205 个分子；ADMET 相关数据包括 CYP450（16,896 个化合物，5 种酶）、人/鼠/大鼠肝微粒体清除率（共 8,755 个化合物）、BBBP、ESOL、Tox21、SIDER 和 ClinTox。规模见补充表 S9。",
+      "method": "MolMap 将 1,456 个描述符和 16,204 个指纹特征按相似关系嵌入二维网格。MolMapNet 用 CNN 学习特征图，提供描述符单路 D、指纹单路 F 和双路 B 模型，并比较默认参数与调参版本。",
+      "conclusion": "描述符与指纹的特征图能形成有效的性质预测模型。补充表 S5 中，双路模型在一组 ESOL 划分上的 RMSE 由默认 0.575 降至调参后 0.544；另一组划分上为 0.543→0.512，而 AttentiveFP 为 0.486。模型优劣与实验设置有关。",
+      "evaluation": "**划分。** 补充表 S9 分别记录：CYP450 按 assay ID 划分，LMC 随机划分，BBBP 骨架划分，ESOL/Tox21/SIDER/ClinTox 随机划分。\n\n| ESOL 实验组（补充表 S5） | MolMapNet-B 默认 | 调参后 | 对照 RMSE |\n| --- | --- | --- | --- |\n| MoleculeNet/Chemprop 设置 | 0.575 | 0.544 | Chemprop 0.555 |\n| AttentiveFP 设置 | 0.543 | 0.512 | AttentiveFP 0.486 |\n\n**后续 TDC 提交。** MolMapNet-D 在 Caco2_Wang 上的 MAE 为 0.287 ± 0.005，来自 TDC 榜单；对应描述符单路实现，与上表双路模型分开记录。",
+      "limitations": "本仓库将其作为知识描述符与深度学习结合的基础方法。预先学习特征布局的数据规模与下游监督数据规模分别记录，避免把它们当作同一训练集。",
+      "doi": "10.1038/s42256-021-00301-6",
+      "paper_url": "https://www.nature.com/articles/s42256-021-00301-6",
+      "code_url": "https://github.com/shenwanxiang/bidd-molmap",
+      "code_status": "作者公开 MolMap/MolMapNet 代码、训练示例；ChemBench v0 提供数据与划分索引",
+      "sources": [
+        {
+          "label": "出版社摘要与发表信息",
+          "url": "https://www.nature.com/articles/s42256-021-00301-6"
+        },
+        {
+          "label": "正式补充材料：表 S5、S9",
+          "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs42256-021-00301-6/MediaObjects/42256_2021_301_MOESM1_ESM.pdf"
+        },
+        {
+          "label": "作者代码与示例",
+          "url": "https://github.com/shenwanxiang/bidd-molmap"
+        },
+        {
+          "label": "原文数据与划分版本",
+          "url": "https://github.com/shenwanxiang/ChemBench/tree/v0"
+        },
+        {
+          "label": "TDC Caco-2 提交成绩",
+          "url": "https://tdcommons.ai/benchmark/admet_group/01caco2/"
+        }
+      ],
+      "verified_on": "2026-09-22",
+      "verification_scope": "核对 Crossref、出版社摘要、正式补充表 S5/S9、作者代码和 TDC 提交记录；表 S5 已查看 PDF 原页"
+    },
+    {
+      "id": "atom-uncertainty-2023",
+      "name": "原子级不确定性",
+      "title": "Explainable uncertainty quantifications for deep learning-based molecular property prediction",
+      "topic": "foundations",
+      "group": "基础方法",
+      "publication": {
+        "venue": "Journal of Cheminformatics",
+        "year": 2023,
+        "date": "2023-02-03",
+        "date_basis": "出版社在线发表日期",
+        "status": "journal",
+        "citation": "Journal of Cheminformatics 15, 13；2023-02-03"
+      },
+      "tags": [
+        "不确定性",
+        "校准",
+        "可解释性",
+        "D-MPNN"
+      ],
+      "one_liner": "把预测不确定性分解到分子中的原子，帮助定位陌生化学结构和潜在噪声，并校准集成模型的置信估计。",
+      "pain_point": "分子级误差估计难以指出哪部分结构导致预测不可靠；直接平均多个网络的方差还会使集成模型的不确定性偏大。",
+      "datasets": "QM9 焓（133,885）、Zinc15 计算 logP（250,000）、Lipophilicity 实验 logD7.4（4,187）、Delaney/ESOL 水溶解度（1,128）。按本文清洗版本计数，见表 1。",
+      "method": "在 D-MPNN 上预测原子级性质贡献与方差，通过原子间协方差汇总分子分布；深度集成区分数据噪声与模型知识不足，训练后仅更新方差层进行校准。",
+      "conclusion": "原子不确定性可以提示模型陌生的结构。校准降低多个任务的误差，例如 ESOL 的偶然不确定性 ECE 从 0.2118 降到 0.0622；改善程度随数据集而变。",
+      "evaluation": "**实验设计。** 四个数据集采用随机 8:1:1 划分；比较原子级 AtomUnc 与分子级 MolUnc。性质误差用 MAE/RMSE，校准质量用 ECE/ENCE，均越低越好。\n\n| AtomUnc 任务 | 校准前 → 校准后 ECE | 校准前 → 校准后 ENCE |\n| --- | --- | --- |\n| ESOL | 0.2118 → 0.0622 | 0.6414 → 0.5578 |\n| Lipophilicity | 0.0413 → 0.0396 | 0.3683 → 0.3704 |\n\n数值为表 2 的偶然不确定性结果。表 3 中，Lipophilicity 的 RMSE：AtomUnc 0.5952，MolUnc 0.8418；ESOL：0.6715 与 0.7520。校准仅更新方差层，均值预测保持不变。",
+      "limitations": "该工作补充性质回归的可信度分析。Zinc15 的 logP 标签由计算产生；随机划分结果用于本实验比较。Lipophilicity 的 ENCE 校准后略有上升，校准收益需逐端点评估。",
+      "doi": "10.1186/s13321-023-00682-3",
+      "paper_url": "https://link.springer.com/article/10.1186/s13321-023-00682-3",
+      "code_url": "https://github.com/chuiyang/atom-based_uncertainty_model",
+      "code_status": "作者公开训练、预测、原子可视化和校准脚本；当前实现支持回归任务",
+      "sources": [
+        {
+          "label": "出版社全文",
+          "url": "https://link.springer.com/article/10.1186/s13321-023-00682-3"
+        },
+        {
+          "label": "表 1：数据集",
+          "url": "https://link.springer.com/article/10.1186/s13321-023-00682-3/tables/1"
+        },
+        {
+          "label": "表 2：校准实验",
+          "url": "https://link.springer.com/article/10.1186/s13321-023-00682-3/tables/2"
+        },
+        {
+          "label": "表 3：预测误差",
+          "url": "https://link.springer.com/article/10.1186/s13321-023-00682-3/tables/3"
+        },
+        {
+          "label": "作者代码",
+          "url": "https://github.com/chuiyang/atom-based_uncertainty_model"
+        }
+      ],
+      "verified_on": "2026-09-22",
+      "verification_scope": "核对 Crossref、PubMed 36737786、正文方法、表 1–3 与作者代码说明"
     }
   ]
 }

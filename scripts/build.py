@@ -167,7 +167,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 - [ADMET 论文总表](topics/admet.md)：按发表时间从新到旧排列，逐篇保留五项核心信息。
 - [方法对比](docs/comparison.md)：按端点查看同一 TDC 基准下的成绩，附 CSV。
 - [数据集字典](docs/datasets.md)：数据规模、端点、来源、许可与加载入口。
-- [基础方法与基准](topics/foundations.md)：Chemprop、AttentiveFP、MoleculeNet、MoleculeACE。
+- [基础方法与基准](topics/foundations.md)：分子表示、描述符建模、不确定性与评测基准。
 - [知识地图说明](docs/knowledge-map.md)：从研究问题找到方法、任务和阅读入口。
 - [优先精读](#优先精读)：先建立研究问题、数据和方法的认识。
 - [论文梳理](#论文梳理)：直接在本页查看全部 {len(papers)} 篇的内容概述、发表信息、痛点、数据集、方法和结论。

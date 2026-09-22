@@ -31,6 +31,36 @@ class ResourceTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'outside'):
             build_resources.validate(self.datasets, changed, self.papers)
 
+    def test_dataset_version_size_mismatch_is_rejected(self):
+        changed = copy.deepcopy(self.records)
+        for r in changed:
+            if r['dataset'] == 'PPBR_AZ':
+                r['size'] = 1614
+        with self.assertRaisesRegex(ValueError, 'dataset size or metric'):
+            build_resources.validate(self.datasets, changed, self.papers)
+
+    def test_auprc_cannot_replace_auroc_for_same_endpoint(self):
+        changed = copy.deepcopy(self.records)
+        for r in changed:
+            if r['dataset'] == 'CYP3A4_Substrate_CarbonMangels':
+                r['metric'] = 'AUPRC'
+        with self.assertRaisesRegex(ValueError, 'dataset size or metric'):
+            build_resources.validate(self.datasets, changed, self.papers)
+
+    def test_mae_cannot_rank_higher_scores_first(self):
+        changed = copy.deepcopy(self.records)
+        for r in changed:
+            if r['metric'] == 'MAE':
+                r['direction'] = 'higher'
+        with self.assertRaisesRegex(ValueError, 'ranking direction'):
+            build_resources.validate(self.datasets, changed, self.papers)
+
+    def test_invalid_spearman_score_is_rejected(self):
+        changed = copy.deepcopy(self.records)
+        next(r for r in changed if r['metric'] == 'Spearman')['mean'] = 1.5
+        with self.assertRaisesRegex(ValueError, 'Spearman score outside'):
+            build_resources.validate(self.datasets, changed, self.papers)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -6,7 +6,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 梳理 **ADMET 与药代动力学预测** 的研究进展，整理代表论文、数据集与代码资源。每篇先简要介绍研究内容，再展开 **发表期刊/会议与时间、主要痛点、数据集、方法和结论**。分子表示与基准文献提供相关基础知识。
 
-目前收录 **35 篇**：**31 篇 ADMET 与药代动力学**、**4 篇基础方法与基准**，其中 11 篇列为核心精读。正式研究与数据论文 28 篇、综述 1 篇、观点文章 1 篇、预印本 5 篇。最近一批资料核对日期：**2026-09-22**；各篇记录具体来源和核对日期。
+目前收录 **37 篇**：**31 篇 ADMET 与药代动力学**、**6 篇基础方法与基准**，其中 11 篇列为核心精读。正式研究与数据论文 30 篇、综述 1 篇、观点文章 1 篇、预印本 5 篇。最近一批资料核对日期：**2026-09-22**；各篇记录具体来源和核对日期。
 
 ## AIDD 知识地图
 
@@ -19,10 +19,10 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 - [ADMET 论文总表](topics/admet.md)：按发表时间从新到旧排列，逐篇保留五项核心信息。
 - [方法对比](docs/comparison.md)：按端点查看同一 TDC 基准下的成绩，附 CSV。
 - [数据集字典](docs/datasets.md)：数据规模、端点、来源、许可与加载入口。
-- [基础方法与基准](topics/foundations.md)：Chemprop、AttentiveFP、MoleculeNet、MoleculeACE。
+- [基础方法与基准](topics/foundations.md)：分子表示、描述符建模、不确定性与评测基准。
 - [知识地图说明](docs/knowledge-map.md)：从研究问题找到方法、任务和阅读入口。
 - [优先精读](#优先精读)：先建立研究问题、数据和方法的认识。
-- [论文梳理](#论文梳理)：直接在本页查看全部 35 篇的内容概述、发表信息、痛点、数据集、方法和结论。
+- [论文梳理](#论文梳理)：直接在本页查看全部 37 篇的内容概述、发表信息、痛点、数据集、方法和结论。
 - [选文与整理方法](docs/curation.md)：选文标准、实验比较和资料来源。
 - [AIDD 研究范围](docs/scope.md)：当前覆盖与后续专题。
 - [讨论区](https://github.com/MasterDGL/admet-literature/discussions)：提问与推荐论文。
@@ -33,7 +33,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 | 专题 | 当前内容 | 入口 |
 | --- | --- | --- |
 | ADMET 与药代动力学 | 31 篇 | [论文总表](topics/admet.md) |
-| 基础方法与基准 | 4 篇；分子表示、数据与评测 | [基础阅读](topics/foundations.md) |
+| 基础方法与基准 | 6 篇；分子表示、数据与评测 | [基础阅读](topics/foundations.md) |
 | 其他 AIDD 方向 | 扩展计划，尚未纳入独立专题 | [研究范围](docs/scope.md) |
 
 ## 优先精读
@@ -456,6 +456,22 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 [论文原文](https://arxiv.org/abs/2304.12239) · [详细解读](papers/admet/uni-qsar-2023.md) · [代码/项目](https://github.com/deepmodeling/unimol_tools)
 
+#### Explainable uncertainty quantifications for deep learning-based molecular property prediction
+
+*Journal of Cheminformatics · 2023-02-03* · 已发表 · 基础方法
+
+**内容概述：** 把预测不确定性分解到分子中的原子，帮助定位陌生化学结构和潜在噪声，并校准集成模型的置信估计。
+
+| 字段 | 内容 |
+| --- | --- |
+| 发表期刊/会议与时间 | Journal of Cheminformatics 15, 13；2023-02-03 |
+| 主要痛点 | 分子级误差估计难以指出哪部分结构导致预测不可靠；直接平均多个网络的方差还会使集成模型的不确定性偏大。 |
+| 数据集 | QM9 焓（133,885）、Zinc15 计算 logP（250,000）、Lipophilicity 实验 logD7.4（4,187）、Delaney/ESOL 水溶解度（1,128）。按本文清洗版本计数，见表 1。 |
+| 方法 | 在 D-MPNN 上预测原子级性质贡献与方差，通过原子间协方差汇总分子分布；深度集成区分数据噪声与模型知识不足，训练后仅更新方差层进行校准。 |
+| 结论 | 原子不确定性可以提示模型陌生的结构。校准降低多个任务的误差，例如 ESOL 的偶然不确定性 ECE 从 0.2118 降到 0.0622；改善程度随数据集而变。 |
+
+[论文原文](https://link.springer.com/article/10.1186/s13321-023-00682-3) · [详细解读](papers/foundations/atom-uncertainty-2023.md) · [代码/项目](https://github.com/chuiyang/atom-based_uncertainty_model)
+
 #### Domain-aware representation of small molecules for explainable property prediction models
 
 *ICLR 2023 MLDD Workshop · 2023* · Workshop · 专题补读
@@ -555,6 +571,22 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 | 结论 | GCN 共形预测在 90% 置信水平下，对有毒类别的单标签预测比例超过 80%。多种基础模型的有毒分子召回增加，同时假阳性也增加。 |
 
 [论文原文](https://doi.org/10.1021/acs.jcim.1c00208) · [详细解读](papers/admet/tox21-conformal-2021.md) · [代码/项目](https://github.com/FredrikSvenssonUK/tox21_conformal)
+
+#### Out-of-the-box deep learning prediction of pharmaceutical properties by broadly learned knowledge-based molecular representations
+
+*Nature Machine Intelligence · 2021-03-01* · 已发表 · 基础方法
+
+**内容概述：** 把分子描述符和指纹排成二维特征图，再用卷积网络预测理化、药代和毒性相关性质。
+
+| 字段 | 内容 |
+| --- | --- |
+| 发表期刊/会议与时间 | Nature Machine Intelligence 3, 334–343；2021-03-01 |
+| 主要痛点 | 人工积累的描述符与指纹包含丰富化学信息，但普通向量输入难以利用特征间关系；逐任务调参也增加建模成本。 |
+| 数据集 | 26 个药物研究相关基准及一个新测试集。特征关系来自 8,506,205 个分子；ADMET 相关数据包括 CYP450（16,896 个化合物，5 种酶）、人/鼠/大鼠肝微粒体清除率（共 8,755 个化合物）、BBBP、ESOL、Tox21、SIDER 和 ClinTox。规模见补充表 S9。 |
+| 方法 | MolMap 将 1,456 个描述符和 16,204 个指纹特征按相似关系嵌入二维网格。MolMapNet 用 CNN 学习特征图，提供描述符单路 D、指纹单路 F 和双路 B 模型，并比较默认参数与调参版本。 |
+| 结论 | 描述符与指纹的特征图能形成有效的性质预测模型。补充表 S5 中，双路模型在一组 ESOL 划分上的 RMSE 由默认 0.575 降至调参后 0.544；另一组划分上为 0.543→0.512，而 AttentiveFP 为 0.486。模型优劣与实验设置有关。 |
+
+[论文原文](https://www.nature.com/articles/s42256-021-00301-6) · [详细解读](papers/foundations/molmapnet-2021.md) · [代码/项目](https://github.com/shenwanxiang/bidd-molmap)
 
 #### Therapeutics Data Commons: Machine Learning Datasets and Tasks for Drug Discovery and Development
 

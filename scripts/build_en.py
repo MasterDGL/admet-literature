@@ -159,7 +159,7 @@ Start with data and molecular representations, then explore property prediction,
 - [ADMET paper index](en/topics/admet.md): papers ordered from newest to oldest, with all five core fields.
 - [Method comparisons](en/docs/comparison.md): endpoint-specific TDC scores and CSV.
 - [Dataset dictionary](en/docs/datasets.md): sizes, endpoints, sources, licenses and loading instructions.
-- [Methods and benchmarks](en/topics/foundations.md): Chemprop, AttentiveFP, MoleculeNet and MoleculeACE.
+- [Methods and benchmarks](en/topics/foundations.md): molecular representations, descriptor models, uncertainty and evaluation benchmarks.
 - [Knowledge map](en/docs/knowledge-map.md): connect research questions, methods and reading routes.
 - [Core reading](#core-reading): a starting point for research questions, data and methods.
 - [Paper notes](#paper-notes): brief overviews and all five fields for every paper, directly on this page.

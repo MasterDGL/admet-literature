@@ -8,10 +8,12 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
+METRIC_DIRECTIONS = {'MAE': 'lower', 'AUROC': 'higher', 'AUPRC': 'higher', 'Spearman': 'higher'}
 
 
 def validate(datasets, records, papers):
     ids = {p['id'] for p in papers}
+    dataset_by_id = {d['id']: d for d in datasets}
     if len({d['id'] for d in datasets}) != len(datasets):
         raise ValueError('Duplicate dataset IDs')
     seen = set()
@@ -28,6 +30,13 @@ def validate(datasets, records, papers):
     for r in records:
         if r['paper_id'] not in ids or r['dataset'] not in {d['id'] for d in datasets}:
             raise ValueError('Comparison references unknown paper or dataset')
+        dataset = dataset_by_id[r['dataset']]
+        if r['size'] != dataset['size'] or r['metric'] != dataset['metric']:
+            raise ValueError('Comparison does not match dataset size or metric')
+        if METRIC_DIRECTIONS.get(r['metric']) != r['direction']:
+            raise ValueError('Wrong ranking direction for metric')
+        if r.get('source_kind') not in ['leaderboard', 'paper'] or not r.get('source_location'):
+            raise ValueError('Comparison needs result provenance')
         key = (r['dataset'], r['method'])
         if key in seen:
             raise ValueError('Duplicate comparison row')
@@ -40,6 +49,10 @@ def validate(datasets, records, papers):
             raise ValueError('Invalid comparison metric')
         if r['metric'] in ['AUROC', 'AUPRC'] and not 0 <= r['mean'] <= 1:
             raise ValueError('Classification score outside [0,1]')
+        if r['metric'] == 'Spearman' and not -1 <= r['mean'] <= 1:
+            raise ValueError('Spearman score outside [-1,1]')
+        if r['metric'] == 'MAE' and r['mean'] < 0:
+            raise ValueError('MAE must be nonnegative')
         date.fromisoformat(r['checked_on'])
         if urlparse(r['source']).scheme != 'https':
             raise ValueError('Comparison source must use HTTPS')
@@ -67,28 +80,43 @@ def build(papers, table):
         data_prefix = '../../data/' if en else '../data/'
         switch = '**English** | [简体中文](../../docs/{page}.md)' if en else '[English](../en/docs/{page}.md) | **简体中文**'
         title = 'Method comparisons' if en else '方法对比'
-        intro = (f'{endpoint_count} endpoint families, {len(records)} results from selected catalog methods. Latest snapshot: **{snapshot}**. Each table uses one TDC dataset, metric and scaffold-test protocol. Scores and standard deviations are reported leaderboard submissions, not independent reruns.' if en else
-                 f'覆盖 {endpoint_count} 类端点、已收录方法的 {len(records)} 条结果，最近快照日期：**{snapshot}**。每张表对应一个 TDC 数据集、指标和骨架测试协议；均值和标准差取自榜单提交记录。')
-        protocol = ('TDC holds out 20% for testing and uses scaffold splits. The method names identify specific implementations, including Chemprop-RDKit and MapLight + GNN. This selection compares catalog methods rather than reproducing the complete leaderboard. AUROC and AUPRC increase with performance; MAE decreases.' if en else
-                    'TDC 使用骨架划分并保留 20% 作为测试集。方法名区分 Chemprop-RDKit、MapLight + GNN 等具体实现。表中选取仓库已收录的方法；AUROC/AUPRC 越高越好，MAE 越低越好。')
+        intro = (f'{endpoint_count} ADMET tasks, {len(records)} results from selected catalog methods. Sources checked: **{snapshot}**. Each table groups results reported under the TDC scaffold protocol with 20% held out for testing. Each score links to its leaderboard record or original paper table.' if en else
+                 f'覆盖 {endpoint_count} 个 ADMET 任务、已收录方法的 {len(records)} 条结果。来源核对日期：**{snapshot}**。按 TDC 骨架划分、20% 留出测试的协议分组，每项成绩链接到榜单记录或原文表格。')
+        protocol = ('Tables are sorted by mean performance: AUROC, AUPRC and Spearman ↑; MAE ↓. Values are mean ± standard deviation. Method names distinguish implementations such as Chemprop-RDKit and MapLight + GNN. Leaderboard scores describe those benchmark implementations; paper-table scores retain the authors’ experimental settings. Pretraining data and tuning budgets are described in the linked notes. The first row has the best mean among the methods collected here.' if en else
+                    '表内按均值排序：AUROC、AUPRC 和 Spearman 越高越好，MAE 越低越好；数值为均值 ± 标准差。方法名区分 Chemprop-RDKit、MapLight + GNN 等实现。榜单成绩对应基准提交实现，论文表格成绩对应作者实验；预训练数据和调参设置见各篇笔记。首行表示本表已收录方法中的最高表现。')
         content = f'# {title}\n\n{switch.format(page="comparison")}\n\n'
         content += f'[{"Home" if en else "返回首页"}]({back}) · [{"Dataset dictionary" if en else "数据集字典"}](datasets.md)\n\n{intro}\n\n{protocol}\n\n'
         content += ('[TDC protocol](https://tdcommons.ai/benchmark/admet_group/overview/) · ' if en else '[TDC 评测协议](https://tdcommons.ai/benchmark/admet_group/overview/) · ')
         content += f'[CSV]({data_prefix}comparison.csv)\n\n'
+        content += ('## Find an endpoint\n\n' if en else '## 按端点查找\n\n')
+        navigation = []
+        for dataset in dict.fromkeys(r['dataset'] for r in records):
+            entries = [r for r in records if r['dataset'] == dataset]
+            first = entries[0]
+            direction = '↑' if first['direction'] == 'higher' else '↓'
+            navigation.append([f'[{first["endpoint"]}](#{dataset.lower()})', dataset, f'{first["metric"]} {direction}', len(entries)])
+        content += table(['Endpoint' if en else '端点', 'Dataset' if en else '数据集', 'Metric' if en else '指标', 'Methods' if en else '方法数'], navigation) + '\n\n'
         for dataset in dict.fromkeys(r['dataset'] for r in records):
             entries = [r for r in records if r['dataset'] == dataset]
             first = entries[0]
             entries.sort(key=lambda r: r['mean'], reverse=first['direction'] == 'higher')
             direction = '↑' if first['direction'] == 'higher' else '↓'
-            content += f'## {first["endpoint"]} — {dataset}\n\n{first["size"]:,} {"molecules" if en else "个分子"} · {first["metric"]} {direction} · {first["checked_on"]} · [{"Scores" if en else "成绩来源"}]({first["source"]})\n\n'
+            content += f'## {dataset}\n\n{first["endpoint"]} · {first["size"]:,} {"molecules" if en else "个分子"} · {first["metric"]} {direction}\n\n'
+            if dataset == 'Bioavailability_Ma':
+                content += ('This table uses KPGT Supplementary Table 8 and MolE Table 1. The TDC Bioavailability page repeats multiple P-gp entries with identical means and standard deviations; those leaderboard rows are excluded here.\n\n' if en else
+                            '本表采用 KPGT 补充表 8 和 MolE 表 1。TDC 的 Bioavailability 页面有多项均值与标准差和 P-gp 页面完全相同，这些榜单记录未纳入本表。\n\n')
+            if dataset in ['PPBR_AZ', 'CYP3A4_Substrate_CarbonMangels']:
+                content += ('KPGT’s reported dataset size or metric differs for this task; see the [experimental details](../papers/admet/kpgt-2023.md).\n\n' if en else
+                            'KPGT 在此任务的原文规模或指标名称与本表不同，具体见[实验说明](../papers/admet/kpgt-2023.md)。\n\n')
             rows = []
             for r in entries:
                 p = by_id[r['paper_id']]
                 status = ('🟠 **Preprint**' if en else '🟠 **预印本**') if p['publication']['status'] == 'preprint' else ('Published' if en else '已发表')
-                rows.append([f'[{r["method"]}](../papers/{p["topic"]}/{p["id"]}.md)', status, f'{r["mean"]:.3f} ± {r["std"]:.3f}'])
-            content += table(['Method' if en else '方法', 'Publication' if en else '发表状态', 'Mean ± SD' if en else '均值 ± 标准差'], rows) + '\n\n'
-        content += ('## Reading other experiments\n\nHERGAI uses its own curated hERG data; MC-PGP uses separate inhibitor and substrate sets; BBB MegaMolBART uses B3DB/CMUH; AmesNet models strain/S9 conditions. Their results remain in the individual notes because the test sets and labels differ from these TDC benchmarks. Uni-QSAR table values are retained in its paper notes, with the paper’s own evaluation context.\n' if en else
-                    '## 其他实验怎么比较\n\nHERGAI 使用自行整理的 hERG 数据，MC-PGP 区分抑制剂和底物集，BBB MegaMolBART 使用 B3DB/CMUH，AmesNet 保留菌株/S9 条件。这些实验的测试集与标签不同，结果见各篇解读。Uni-QSAR 的表格成绩也保留在单篇笔记中，按其原文实验设置解读。\n')
+                label = ('TDC leaderboard' if en else 'TDC 榜单') if r['source_kind'] == 'leaderboard' else r['source_location']
+                rows.append([f'[{r["method"]}](../papers/{p["topic"]}/{p["id"]}.md)', status, f'{r["mean"]:.3f} ± {r["std"]:.3f}', f'[{label}]({r["source"]})'])
+            content += table(['Method' if en else '方法', 'Publication' if en else '发表状态', 'Mean ± SD' if en else '均值 ± 标准差', 'Result source' if en else '成绩来源'], rows) + '\n\n'
+        content += ('## External validation and uncertainty\n\n[PKSmart](../papers/admet/pksmart-2025.md) reports human PK on independent sources; [MC-PGP](../papers/admet/mc-pgp-2025.md) reports separate external inhibitor and substrate sets. [HERGAI](../papers/admet/hergai-2025.md) and [AmesNet](../papers/admet/amesnet-2026.md) define task-specific labels and test sets. Their notes include sample sizes, settings and results.\n\nFor confidence estimates, read [atom-based uncertainty](../papers/foundations/atom-uncertainty-2023.md) alongside [toxicity conformal prediction](../papers/admet/tox21-conformal-2021.md): calibration and interval/set coverage answer a different question from prediction accuracy.\n' if en else
+                    '## 外部验证与不确定性\n\n[PKSmart](../papers/admet/pksmart-2025.md) 检验独立来源的人体药代数据；[MC-PGP](../papers/admet/mc-pgp-2025.md) 分别提供抑制剂与底物的外部验证。[HERGAI](../papers/admet/hergai-2025.md) 和 [AmesNet](../papers/admet/amesnet-2026.md) 使用各自的标签定义与测试集。各篇笔记列出样本数、设置和具体结果。\n\n预测可信度可结合[原子级不确定性](../papers/foundations/atom-uncertainty-2023.md)与[毒性共形预测](../papers/admet/tox21-conformal-2021.md)阅读，比较校准误差、预测区间或预测集合覆盖率。\n')
         artifacts[prefix + 'docs/comparison.md'] = content
         title = 'Dataset dictionary' if en else '数据集字典'
         content = f'# {title}\n\n{switch.format(page="datasets")}\n\n[{"Home" if en else "返回首页"}]({back}) · [{"Comparisons" if en else "方法对比"}](comparison.md) · [CSV]({data_prefix}datasets.csv)\n\n'

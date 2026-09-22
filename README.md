@@ -4,7 +4,7 @@
 
 Research notes on **ADMET and pharmacokinetic prediction**, with representative papers, datasets and code. Each entry starts with a brief overview and covers **publication venue and date, research problem, datasets, method and findings**. Papers on molecular representations and benchmarks provide the foundations.
 
-The collection contains **35 papers**: **31 on ADMET and pharmacokinetics** and **4 on methods and benchmarks**, including 11 core readings. Publication types: 28 published research/data papers, 1 review, 1 perspective and 5 preprints. Most recent batch of source reviews: **2026-09-22**; each entry records its own sources and review date.
+The collection contains **37 papers**: **31 on ADMET and pharmacokinetics** and **6 on methods and benchmarks**, including 11 core readings. Publication types: 30 published research/data papers, 1 review, 1 perspective and 5 preprints. Most recent batch of source reviews: **2026-09-22**; each entry records its own sources and review date.
 
 ## AIDD knowledge map
 
@@ -17,7 +17,7 @@ Start with data and molecular representations, then explore property prediction,
 - [ADMET paper index](en/topics/admet.md): papers ordered from newest to oldest, with all five core fields.
 - [Method comparisons](en/docs/comparison.md): endpoint-specific TDC scores and CSV.
 - [Dataset dictionary](en/docs/datasets.md): sizes, endpoints, sources, licenses and loading instructions.
-- [Methods and benchmarks](en/topics/foundations.md): Chemprop, AttentiveFP, MoleculeNet and MoleculeACE.
+- [Methods and benchmarks](en/topics/foundations.md): molecular representations, descriptor models, uncertainty and evaluation benchmarks.
 - [Knowledge map](en/docs/knowledge-map.md): connect research questions, methods and reading routes.
 - [Core reading](#core-reading): a starting point for research questions, data and methods.
 - [Paper notes](#paper-notes): brief overviews and all five fields for every paper, directly on this page.
@@ -31,7 +31,7 @@ Start with data and molecular representations, then explore property prediction,
 | Topic | Coverage | Entry point |
 | --- | --- | --- |
 | ADMET and pharmacokinetics | 31 papers | [Paper index](en/topics/admet.md) |
-| Methods and benchmarks | 4 papers on representations, data and evaluation | [Foundational reading](en/topics/foundations.md) |
+| Methods and benchmarks | 6 papers on representations, data and evaluation | [Foundational reading](en/topics/foundations.md) |
 | Other AIDD areas | Planned topics | [Research scope](en/docs/scope.md) |
 
 ## Core reading
@@ -454,6 +454,22 @@ Papers below are ordered by publication date, newest first. Each entry explains 
 
 [Paper](https://arxiv.org/abs/2304.12239) · [Detailed notes](en/papers/admet/uni-qsar-2023.md) · [Code/project](https://github.com/deepmodeling/unimol_tools)
 
+#### Explainable uncertainty quantifications for deep learning-based molecular property prediction
+
+*Journal of Cheminformatics · 2023-02-03* · Published · Foundational methods
+
+**Overview:** Attributes uncertainty to atoms to locate unfamiliar structures and potential noise, then calibrates ensemble confidence estimates.
+
+| Field | Details |
+| --- | --- |
+| Publication and date | Journal of Cheminformatics 15, 13; 2023-02-03 |
+| Research problem | Molecular uncertainty does not locate problematic structures; averaging network variances can overestimate ensemble uncertainty. |
+| Datasets | QM9 enthalpy (133,885), Zinc15 calculated logP (250,000), Lipophilicity experimental logD7.4 (4,187), and Delaney/ESOL solubility (1,128), using the processed versions in Table 1. |
+| Method | A D-MPNN predicts atomic contributions and variances, aggregates them with covariance terms, and separates aleatoric and epistemic uncertainty through ensembles. Post-hoc calibration updates only variance layers. |
+| Findings | Atomic uncertainty highlights unfamiliar structures. Calibration improves several tasks: ESOL aleatoric ECE falls from 0.2118 to 0.0622. Gains vary across datasets. |
+
+[Paper](https://link.springer.com/article/10.1186/s13321-023-00682-3) · [Detailed notes](en/papers/foundations/atom-uncertainty-2023.md) · [Code/project](https://github.com/chuiyang/atom-based_uncertainty_model)
+
 #### Domain-aware representation of small molecules for explainable property prediction models
 
 *ICLR 2023 MLDD Workshop · 2023* · Workshop · Further reading
@@ -553,6 +569,22 @@ Papers below are ordered by publication date, newest first. Each entry explains 
 | Findings | GCN-based conformal prediction achieves over 80% single-label efficiency for the toxic class at 90% confidence. Several underlying models retrieve more toxic compounds, with an accompanying increase in false positives. |
 
 [Paper](https://doi.org/10.1021/acs.jcim.1c00208) · [Detailed notes](en/papers/admet/tox21-conformal-2021.md) · [Code/project](https://github.com/FredrikSvenssonUK/tox21_conformal)
+
+#### Out-of-the-box deep learning prediction of pharmaceutical properties by broadly learned knowledge-based molecular representations
+
+*Nature Machine Intelligence · 2021-03-01* · Published · Foundational methods
+
+**Overview:** Arranges descriptors and fingerprints into 2D feature maps and trains CNNs to predict physicochemical, pharmacokinetic and toxicity-related properties.
+
+| Field | Details |
+| --- | --- |
+| Publication and date | Nature Machine Intelligence 3, 334–343; 2021-03-01 |
+| Research problem | Descriptor vectors leave feature relationships underused, while task-specific tuning adds modeling cost. |
+| Datasets | Twenty-six pharmaceutical benchmarks and a new test set. Feature relationships are learned from 8,506,205 molecules. ADMET-related sets include CYP450 (16,896 compounds, five enzymes), liver microsomal clearance across human, mouse and rat (8,755 compounds), BBBP, ESOL, Tox21, SIDER and ClinTox (Supplementary Table S9). |
+| Method | MolMap embeds 1,456 descriptors and 16,204 fingerprint features into 2D grids. CNN variants use descriptors (D), fingerprints (F), or both (B), with default and optimized settings. |
+| Findings | Feature maps provide useful property predictors. In Supplementary Table S5, tuning improves MolMapNet-B ESOL RMSE from 0.575 to 0.544 in one setting and from 0.543 to 0.512 in another; AttentiveFP scores 0.486 in the latter setting. |
+
+[Paper](https://www.nature.com/articles/s42256-021-00301-6) · [Detailed notes](en/papers/foundations/molmapnet-2021.md) · [Code/project](https://github.com/shenwanxiang/bidd-molmap)
 
 #### Therapeutics Data Commons: Machine Learning Datasets and Tasks for Drug Discovery and Development
 

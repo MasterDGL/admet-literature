@@ -117,7 +117,7 @@
       "datasets": "Approximately 2 million ChEMBL29 molecules for pretraining; 63 downstream datasets comprising 11 common property datasets, 22 TDC ADMET tasks and 30 MoleculeACE tasks.",
       "method": "Uses the LiGhT line-graph Transformer with descriptor- and fingerprint-guided pretraining, followed by downstream fine-tuning.",
       "conclusion": "Figure 2c and Supplementary Table 8 report the best performance among the models compared at publication on 16/22 TDC ADMET tasks.",
-      "evaluation": "**Design.** Eleven standard property datasets use 8:1:1 scaffold splits and three runs; 22 TDC tasks use 7:1:2 scaffold splits and five runs. TDC comparisons include 28 classical and deep-learning baselines. Metrics are task-specific: AUROC/AUPRC for classification and MAE/Spearman r for regression.\n\n| TDC task | Metric | KPGT | Best baseline listed in the paper |\n| --- | --- | --- | --- |\n| Caco-2, 906 molecules | MAE ↓ | 0.284±0.009 | BaseBoosting 0.285±0.005 |\n| P-gp inhibition, 1,212 molecules | AUROC ↑ | 0.938±0.004 | ZairaChem 0.935±0.006 |\n| CYP2C9 inhibition, 12,092 molecules | AUPRC ↑ | 0.797±0.006 | ZairaChem 0.786±0.004 |\n| hERG, 648 molecules | AUROC ↑ | 0.847±0.024 | SimGCN 0.874±0.014 |\n| AMES, 7,255 molecules | AUROC ↑ | 0.868±0.003 | ZairaChem 0.871±0.002 |\n\nSource: Supplementary Table 8, mean±SD. The 16/22 count describes the paper’s historical comparison; hERG and AMES illustrate tasks where KPGT did not lead.",
+      "evaluation": "**Design.** Eleven standard property datasets use 8:1:1 scaffold splits and three runs; 22 TDC tasks use 7:1:2 scaffold splits and five runs. TDC comparisons include 28 classical and deep-learning baselines. Metrics are task-specific: AUROC/AUPRC for classification and MAE/Spearman r for regression.\n\n| TDC task | Metric | KPGT | Best baseline listed in the paper |\n| --- | --- | --- | --- |\n| Caco-2, 906 molecules | MAE ↓ | 0.284±0.009 | BaseBoosting 0.285±0.005 |\n| P-gp inhibition, 1,212 molecules | AUROC ↑ | 0.938±0.004 | ZairaChem 0.935±0.006 |\n| CYP2C9 inhibition, 12,092 molecules | AUPRC ↑ | 0.797±0.006 | ZairaChem 0.786±0.004 |\n| hERG, 648 molecules | AUROC ↑ | 0.847±0.024 | SimGCN 0.874±0.014 |\n| AMES, 7,255 molecules | AUROC ↑ | 0.868±0.003 | ZairaChem 0.871±0.002 |\n\nSource: Supplementary Table 8, mean±SD. The 16/22 count describes the paper’s historical comparison; hERG and AMES illustrate tasks where KPGT did not lead.\n\n**Comparison scope.** The supplement lists PPBR size as 1,614 versus 1,797 in the TDC dictionary, and labels CYP3A4 substrate as AUPRC versus AUROC in the TDC protocol. These two entries await reconciliation before cross-method comparison; the other 20 retain their reported values.",
       "limitations": "Small differences in mean scores, such as Caco-2, should be interpreted alongside run variability. MoleculeACE and HPK1/FGFR1 experiments provide separate transfer evaluations.",
       "name": "KPGT",
       "code_status": "The authors provide a public code/project page.",
@@ -131,7 +131,7 @@
         "Author code",
         "Published supplement: Table 8"
       ],
-      "source_sha256": "181a9482ce8756795a84582aeffaaea6c0f757a665f29c28405d91492026432d"
+      "source_sha256": "a22a8c1a7d58e8f41a8ba4f46dd05d91000709f992ef09704fce193988de6262"
     },
     "mole-2024": {
       "tags": [
@@ -931,6 +931,66 @@
       "limitations": "Coverage guarantees require exchangeability. Single-label efficiency is distinct from accuracy; application to new chemical spaces requires checking empirical calibrated coverage.",
       "code_status": "The authors publish Python modeling code and identify the Tox21 data portal.",
       "verification_scope": "Reviewed the accepted manuscript’s data, methods, results and conclusions; checked publisher/Crossref dates and the author code entry."
+    },
+    "molmapnet-2021": {
+      "name": "MolMapNet",
+      "tags": [
+        "Descriptors",
+        "Fingerprints",
+        "CNN",
+        "Baselines"
+      ],
+      "one_liner": "Arranges descriptors and fingerprints into 2D feature maps and trains CNNs to predict physicochemical, pharmacokinetic and toxicity-related properties.",
+      "pain_point": "Descriptor vectors leave feature relationships underused, while task-specific tuning adds modeling cost.",
+      "datasets": "Twenty-six pharmaceutical benchmarks and a new test set. Feature relationships are learned from 8,506,205 molecules. ADMET-related sets include CYP450 (16,896 compounds, five enzymes), liver microsomal clearance across human, mouse and rat (8,755 compounds), BBBP, ESOL, Tox21, SIDER and ClinTox (Supplementary Table S9).",
+      "method": "MolMap embeds 1,456 descriptors and 16,204 fingerprint features into 2D grids. CNN variants use descriptors (D), fingerprints (F), or both (B), with default and optimized settings.",
+      "conclusion": "Feature maps provide useful property predictors. In Supplementary Table S5, tuning improves MolMapNet-B ESOL RMSE from 0.575 to 0.544 in one setting and from 0.543 to 0.512 in another; AttentiveFP scores 0.486 in the latter setting.",
+      "evaluation": "**Splits (Supplementary Table S9).** CYP450: assay IDs; LMC: random; BBBP: scaffold; ESOL/Tox21/SIDER/ClinTox: random.\n\n| ESOL setting (Supplementary Table S5) | MolMapNet-B default | Optimized | Comparator RMSE |\n| --- | --- | --- | --- |\n| MoleculeNet/Chemprop setting | 0.575 | 0.544 | Chemprop 0.555 |\n| AttentiveFP setting | 0.543 | 0.512 | AttentiveFP 0.486 |\n\n**Later TDC submission.** MolMapNet-D achieves Caco2_Wang MAE 0.287 ± 0.005 on the leaderboard. This descriptor-only implementation is recorded separately from the dual-input models above.",
+      "limitations": "Included as a foundation for combining chemical descriptors with deep learning. The feature-layout corpus and downstream supervised datasets serve different training roles.",
+      "code_status": "Author code and training examples are public; ChemBench v0 provides data and split indices.",
+      "verification_scope": "Checked Crossref, publisher abstract, official Supplementary Tables S5/S9, author code and the TDC submission; visually inspected the S5 PDF page",
+      "publication": {
+        "citation": "Nature Machine Intelligence 3, 334–343; 2021-03-01",
+        "date_basis": "Publisher online publication date"
+      },
+      "source_labels": [
+        "Publisher abstract and publication metadata",
+        "Official supplement: Tables S5 and S9",
+        "Author code and examples",
+        "Paper data and split version",
+        "TDC Caco-2 submission"
+      ],
+      "source_sha256": "f654d9e370b8fd74d9831ad5ce3f7881fd1855a023c4d6227d1a1104265055e6"
+    },
+    "atom-uncertainty-2023": {
+      "name": "Atom-based uncertainty",
+      "tags": [
+        "Uncertainty",
+        "Calibration",
+        "Explainability",
+        "D-MPNN"
+      ],
+      "one_liner": "Attributes uncertainty to atoms to locate unfamiliar structures and potential noise, then calibrates ensemble confidence estimates.",
+      "pain_point": "Molecular uncertainty does not locate problematic structures; averaging network variances can overestimate ensemble uncertainty.",
+      "datasets": "QM9 enthalpy (133,885), Zinc15 calculated logP (250,000), Lipophilicity experimental logD7.4 (4,187), and Delaney/ESOL solubility (1,128), using the processed versions in Table 1.",
+      "method": "A D-MPNN predicts atomic contributions and variances, aggregates them with covariance terms, and separates aleatoric and epistemic uncertainty through ensembles. Post-hoc calibration updates only variance layers.",
+      "conclusion": "Atomic uncertainty highlights unfamiliar structures. Calibration improves several tasks: ESOL aleatoric ECE falls from 0.2118 to 0.0622. Gains vary across datasets.",
+      "evaluation": "**Design.** Random 8:1:1 splits compare AtomUnc with molecule-based MolUnc. MAE/RMSE measure prediction error; ECE/ENCE measure calibration error. All decrease with improvement.\n\n| AtomUnc task | ECE before → after calibration | ENCE before → after calibration |\n| --- | --- | --- |\n| ESOL | 0.2118 → 0.0622 | 0.6414 → 0.5578 |\n| Lipophilicity | 0.0413 → 0.0396 | 0.3683 → 0.3704 |\n\nTable 2 reports these aleatoric uncertainties. Table 3 RMSE: AtomUnc/MolUnc = 0.5952/0.8418 for Lipophilicity and 0.6715/0.7520 for ESOL. Variance-only calibration leaves mean predictions unchanged.",
+      "limitations": "This study supports confidence analysis for property regression. Zinc15 logP labels are calculated. Results use random splits; Lipophilicity ENCE increases slightly after calibration, showing endpoint-dependent gains.",
+      "code_status": "Author scripts cover training, prediction, atomic visualization and calibration; the implementation supports regression.",
+      "verification_scope": "Checked Crossref, PubMed 36737786, Methods, Tables 1–3 and the author repository",
+      "publication": {
+        "citation": "Journal of Cheminformatics 15, 13; 2023-02-03",
+        "date_basis": "Publisher online publication date"
+      },
+      "source_labels": [
+        "Publisher full text",
+        "Table 1: datasets",
+        "Table 2: calibration",
+        "Table 3: prediction errors",
+        "Author code"
+      ],
+      "source_sha256": "489ada8516b52a98ca59a07bf45164713f6d27a656f719f5fe7bf8475fc8619d"
     }
   }
 }
