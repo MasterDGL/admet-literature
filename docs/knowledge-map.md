@@ -28,6 +28,8 @@ ADMET 位于预测层，为分子设计提供吸收、分布、代谢、排泄�
 2. **进入具体 ADMET 问题**：hERG 可读 [CardioTox net](../papers/admet/cardiotox-net-2021.md) → [HERGAI](../papers/admet/hergai-2025.md)；转运体读 [MC-PGP](../papers/admet/mc-pgp-2025.md)；致突变性读 [AMES 多任务 DNN](../papers/admet/ames-multitask-2022.md) → [AmesNet](../papers/admet/amesnet-2026.md)。沿同一主题比较数据、模型和实验设计的变化。
 3. **检查可靠性和实验支持**：结合 [ADMET 可靠性评测](../papers/admet/admet-reliability-2026.md)、MoleculeACE 与 BBB 实验案例，分析平均指标是否掩盖失败情形、结论是否适用于新分子。
 
+专题入口：用 [AI 药物毒性预测综述](../papers/admet/ai-toxicity-review-2023.md)了解毒性任务、数据和工具；沿 [SSL-GCN](../papers/admet/ssl-gcn-2021.md)学习如何利用无标签分子，沿 [Domain-aware / pBRICS](../papers/admet/domain-aware-pbrics-2023.md)了解化学片段与模型解释，沿 [Uni-QSAR](../papers/admet/uni-qsar-2023.md)了解多种分子表示的自动选择与集成。
+
 ## 后续扩展方式
 
 新专题按研究问题接入对应层，相关论文可以跨层引用。每篇保持“一句话概括、发表信息、痛点、数据集、方法、结论”的结构，并附实验分析与参考资料。

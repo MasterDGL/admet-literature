@@ -10,7 +10,7 @@ Recommend papers, correct publication details, add experimental settings or upda
 
 Use the [paper template](templates/paper.md). Include the original paper and DOI/arXiv identifier, venue and date, research problem, datasets, method and findings. Explain its connection to AIDD and identify the original tables or sections supporting the findings.
 
-Identify the publication status and distinguish methods, perspectives and benchmarks. Support performance claims with original tables, supplementary material or official leaderboards.
+Identify the publication status and distinguish methods, reviews, perspectives and benchmarks. Support performance claims with original tables, supplementary material or official leaderboards.
 
 ## Update the bilingual catalog
 

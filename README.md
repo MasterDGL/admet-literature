@@ -4,7 +4,7 @@
 
 Research notes on **ADMET and pharmacokinetic prediction**, with representative papers, datasets and code. Each entry starts with a one-sentence summary and covers **publication venue and date, research problem, datasets, method and findings**. Papers on molecular representations and benchmarks provide the foundations.
 
-The collection contains **29 papers**: **25 on ADMET and pharmacokinetics** and **4 on methods and benchmarks**, including 11 core readings. Publication types: 24 published research/data papers, 1 perspective and 4 preprints. Most recent batch of source reviews: **2026-09-22**; each entry records its own sources and review date.
+The collection contains **33 papers**: **29 on ADMET and pharmacokinetics** and **4 on methods and benchmarks**, including 11 core readings. Publication types: 26 published research/data papers, 1 review, 1 perspective and 5 preprints. Most recent batch of source reviews: **2026-09-22**; each entry records its own sources and review date.
 
 ## AIDD knowledge map
 
@@ -26,7 +26,7 @@ Start with data and molecular representations, then explore property prediction,
 
 | Topic | Coverage | Entry point |
 | --- | --- | --- |
-| ADMET and pharmacokinetics | 25 papers | [Paper index](en/topics/admet.md) |
+| ADMET and pharmacokinetics | 29 papers | [Paper index](en/topics/admet.md) |
 | Methods and benchmarks | 4 papers on representations, data and evaluation | [Foundational reading](en/topics/foundations.md) |
 | Other AIDD areas | Planned topics | [Research scope](en/docs/scope.md) |
 
@@ -46,7 +46,7 @@ Start with data and molecular representations, then explore property prediction,
 | [MC-PGP](en/papers/admet/mc-pgp-2025.md) | Journal of Pharmaceutical Analysis | 2025-08 | Fuses SMILES, fingerprints and molecular graphs to separately predict P-gp inhibition and transport-substrate status. |
 | [AmesNet](en/papers/admet/amesnet-2026.md) | Chemical Research in Toxicology | 2026-06-29 | Combines molecular structure, bacterial strain and metabolic-activation conditions to improve Ames mutagenicity detection in unfamiliar chemical space. |
 
-Suggested route: **practical evaluation → individual endpoints and human PK → representation learning and multitask methods → platforms**. Data benchmarks, perspectives and preprints have separate categories in the index.
+Suggested route: **practical evaluation → individual endpoints and human PK → representation learning and multitask methods → platforms**. Data benchmarks, reviews, perspectives and preprints have separate categories in the index.
 
 ## Reading and comparison
 
@@ -54,7 +54,7 @@ Compare **prediction tasks, data sources, train/test splits, metrics and baselin
 
 ## Paper notes
 
-[Core papers](#core-papers) · [Further reading](#further-reading) · [Foundational methods](#foundational-methods) · [Data and benchmarks](#data-and-benchmarks) · [Perspectives](#perspectives) · [Preprints](#preprints)
+[Core papers](#core-papers) · [Further reading](#further-reading) · [Foundational methods](#foundational-methods) · [Data and benchmarks](#data-and-benchmarks) · [Reviews](#reviews) · [Perspectives](#perspectives) · [Preprints](#preprints)
 
 Each entry below explains the research problem, method and main findings. Follow the detailed notes for experimental settings, analysis and references.
 
@@ -350,6 +350,38 @@ Each entry below explains the research problem, method and main findings. Follow
 
 [Paper](https://doi.org/10.1021/acs.jcim.2c00532) · [Detailed notes](en/papers/admet/ames-multitask-2022.md) · [Code/project](https://github.com/VirSabando/MTL_DNN_Ames)
 
+#### SSL-GCN
+
+**Chemical toxicity prediction based on semi-supervised learning and graph convolutional neural network**
+
+**In one sentence:** Trains a graph neural network on labeled and unlabeled molecules to improve Tox21 toxicity prediction through semi-supervised learning.
+
+| Field | Details |
+| --- | --- |
+| Publication and date | Journal of Cheminformatics 13, 93; 2021-11-27 |
+| Research problem | Toxicity labels are limited, while many compounds have only structural information; supervised graph models cannot fully use these unlabeled molecules. |
+| Datasets | Tox21: 7,831 molecules and 12 toxicity endpoints. Removing labels from ClinTox, SIDER, ToxCast and HIV and excluding structures overlapping with Tox21 yields 50,527 unlabeled molecules. |
+| Method | A GCN encodes molecular graphs within a Mean Teacher framework. The student learns toxicity labels, teacher parameters follow an exponential moving average of student parameters, and prediction consistency under perturbations incorporates unlabeled data. |
+| Findings | The paper reports a best mean ROC-AUC of 0.757, compared with about 0.71 for the conventional machine-learning models evaluated. Unlabeled data improve prediction, with the best mixing ratio varying by endpoint. |
+
+[Paper](https://link.springer.com/article/10.1186/s13321-021-00570-8) · [Detailed notes](en/papers/admet/ssl-gcn-2021.md) · [Code/project](https://github.com/chen709847237/SSL-GCN)
+
+#### Domain-aware / pBRICS
+
+**Domain-aware representation of small molecules for explainable property prediction models**
+
+**In one sentence:** Builds chemically meaningful molecular fragments so graph models can predict ADMET properties and identify fragments contributing to each prediction.
+
+| Field | Details |
+| --- | --- |
+| Publication and date | ICLR 2023 Machine Learning for Drug Discovery (MLDD) Workshop; 2023 |
+| Research problem | Atom-level importance is difficult to translate into functional groups and medicinal-chemistry changes, while generic fragmentation can break chemically meaningful substructures. |
+| Datasets | 23 classification endpoints curated from ADMETlab 2.0 data, covering Ames mutagenicity, carcinogenicity, CYPs, eye and respiratory toxicity, BBBP and Tox21. ChEMBL molecules support fragmentation analysis; interpretation cases include 102 BBBP matched molecular pairs comprising 110 unique molecules. |
+| Method | pBRICS post-processes BRICS fragments using functional-group rules to organize scaffolds and substituents. MACCS and ECFP2 fragment fingerprints feed single-task and multitask GCN/RGCN models; Grad-CAM and matched molecular pairs examine fragment contributions. |
+| Findings | In Table 2, multitask fragment RGCN achieves mean AUROC of 84.47% across 23 endpoints, versus 83.35% for the comparator trained with ADMETlab 2.0 code, a gain of 1.12 percentage points. Fragment analyses connect functional-group changes with BBBP and Ames predictions. |
+
+[Paper](https://openreview.net/forum?id=C9WW17wQF7p) · [Detailed notes](en/papers/admet/domain-aware-pbrics-2023.md)
+
 ### Foundational methods
 
 #### Chemprop / D-MPNN
@@ -450,6 +482,24 @@ Each entry below explains the research problem, method and main findings. Follow
 
 [Paper](https://doi.org/10.1021/acs.jcim.2c01073) · [Detailed notes](en/papers/foundations/moleculeace-2022.md) · [Code/project](https://github.com/molML/MoleculeACE)
 
+### Reviews
+
+#### AI for drug toxicity: review
+
+**Artificial Intelligence in Drug Toxicity Prediction: Recent Advances, Challenges, and Future Perspectives**
+
+**In one sentence:** Surveys machine-learning and deep-learning approaches by toxicity task and collects public datasets and prediction tools for model development.
+
+| Field | Details |
+| --- | --- |
+| Publication and date | Journal of Chemical Information and Modeling 63(9), 2628–2643; online 2023-04-26 |
+| Research problem | Toxicity research spans heterogeneous endpoints, data resources and models, creating a need for task-oriented routes to usable datasets, representative methods and tools. |
+| Datasets | Covers six major toxicity properties and Tox21 endpoints. Supplementary Table S2 lists resources including Tox21, TOXRIC, ToxRefDB 2.0, DILIrank, ToxCast, CTD, PubChem, ChEMBL, OCHEM and TDC; database sizes are recorded as accessed on 2022-05-10. |
+| Method | Reviews machine-learning algorithms and deep-learning architectures for toxicity prediction. Supplementary Table S1 compares Tox21 methods, input features and performance; S2 lists data sources; S3 catalogs tools, their model counts and algorithms. |
+| Findings | Provides a task-oriented route to models, data and tools, covering fingerprint and descriptor models as well as graph networks, multitask and knowledge-guided methods. It offers a reading framework for a toxicity-prediction topic. |
+
+[Paper](https://pubs.acs.org/doi/10.1021/acs.jcim.3c00200) · [Detailed notes](en/papers/admet/ai-toxicity-review-2023.md)
+
 ### Perspectives
 
 #### OpenADMET / Avoid-ome
@@ -533,6 +583,22 @@ Each entry below explains the research problem, method and main findings. Follow
 | Findings | Reports a task-normalized aggregate score of 96.77 and reduced cumulative model-fitting time under the stated comparisons and resource constraints. |
 
 [Paper](https://arxiv.org/abs/2609.10121) · [Detailed notes](en/papers/admet/admet-evo-2026.md)
+
+#### Uni-QSAR
+
+**Uni-QSAR: an Auto-ML Tool for Molecular Property Prediction**
+
+**In one sentence:** Automatically combines fingerprints, descriptors and pretrained 1D, 2D and 3D molecular representations with tuning and stacked ensembles for ADMET prediction.
+
+| Field | Details |
+| --- | --- |
+| Publication and date | arXiv:2304.12239, v1; 2023-04-24 |
+| Research problem | Different properties favor different molecular features, making manual representation, model and hyperparameter selection costly; skewed regression labels and class imbalance add further modeling challenges. |
+| Datasets | The 22 TDC ADMET Benchmark Group tasks: nine regression and 13 classification tasks. A separate CNS penetration case uses 940 training compounds (315 positive and 625 negative) and 117 external test compounds. |
+| Method | Combines fingerprints and descriptors with 1D representations such as K-BERT, 2D representations including GROVER, MolCLR and KPGT, and Uni-Mol 3D representations. Target transformations, imbalance-aware learning, Bayesian optimization and two-level stacking are orchestrated with dflow. |
+| Findings | Tables 1–2 report Caco-2 MAE of 0.273 and BBBP AUROC of 0.925. Counting the printed TDC ranking rows gives 17 first-place results across 22 tasks. The CNS case reports AUROC of 0.980; ablations support the contributions of 3D representations, stacking and target transformations. |
+
+[Paper](https://arxiv.org/abs/2304.12239) · [Detailed notes](en/papers/admet/uni-qsar-2023.md) · [Code/project](https://github.com/deepmodeling/unimol_tools)
 
 ## Data and maintenance
 

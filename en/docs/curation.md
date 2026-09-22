@@ -15,7 +15,7 @@ Each entry includes a one-sentence summary, publication information, research pr
 - Record journal online-publication dates and, where useful, issue dates.
 - Record conference names and years at the precision provided by the source.
 - Record preprint versions and update dates, linking later journal or conference versions.
-- Classify algorithms, benchmarks, platforms and perspectives by their research role.
+- Classify algorithms, benchmarks, platforms, reviews and perspectives by their research role. Identify workshop papers by the specific workshop name.
 
 ## Experimental comparisons
 

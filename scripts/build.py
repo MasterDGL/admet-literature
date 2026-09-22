@@ -14,7 +14,7 @@ from urllib.parse import urlparse
 import build_en
 
 ROOT = Path(__file__).resolve().parents[1]
-GROUPS = ['核心论文', '专题补读', '基础方法', '数据与基准', '观点文章', '预印本']
+GROUPS = ['核心论文', '专题补读', '基础方法', '数据与基准', '综述', '观点文章', '预印本']
 TOPICS = {'admet': 'ADMET 与药代动力学', 'foundations': '基础方法与基准'}
 REQUIRED = ['id', 'name', 'title', 'one_liner', 'topic', 'group', 'publication', 'tags',
             'pain_point', 'datasets', 'method', 'conclusion', 'limitations',
@@ -75,6 +75,8 @@ def note_path(p):
 def card(p):
     pub = p['publication']
     status = {'journal': '正式期刊论文', 'conference': '正式会议论文', 'preprint': '预印本'}[pub['status']]
+    if pub['status'] == 'conference' and 'Workshop' in pub['venue']:
+        status = '会议 Workshop 论文'
     fields = [['发表期刊/会议与时间', pub['citation']],
               ['日期口径', pub['date_basis']], ['发表状态', status],
               ['主要痛点', p['pain_point']], ['数据集', p['datasets']],
@@ -116,7 +118,7 @@ def build(papers):
     count = Counter(p['group'] for p in papers)
     topic_count = Counter(p['topic'] for p in papers)
     latest = max(p['verified_on'] for p in papers)
-    formal_research = sum(p['publication']['status'] != 'preprint' and p['group'] != '观点文章' for p in papers)
+    formal_research = sum(p['publication']['status'] != 'preprint' and p['group'] not in ['观点文章', '综述'] for p in papers)
     nav = table(['专题', '当前内容', '入口'], [
         ['ADMET 与药代动力学', f'{topic_count["admet"]} 篇', '[论文总表](topics/admet.md)'],
         ['基础方法与基准', f'{topic_count["foundations"]} 篇；分子表示、数据与评测', '[基础阅读](topics/foundations.md)'],
@@ -146,7 +148,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 梳理 **ADMET 与药代动力学预测** 的研究进展，整理代表论文、数据集与代码资源。每篇用一句话介绍研究内容，再展开 **发表期刊/会议与时间、主要痛点、数据集、方法和结论**。分子表示与基准文献提供相关基础知识。
 
-目前收录 **{len(papers)} 篇**：**{topic_count['admet']} 篇 ADMET 与药代动力学**、**{topic_count['foundations']} 篇基础方法与基准**，其中 {count['核心论文']} 篇列为核心精读。正式研究与数据论文 {formal_research} 篇、观点文章 {count['观点文章']} 篇、预印本 {count['预印本']} 篇。最近一批资料核对日期：**{latest}**；各篇记录具体来源和核对日期。
+目前收录 **{len(papers)} 篇**：**{topic_count['admet']} 篇 ADMET 与药代动力学**、**{topic_count['foundations']} 篇基础方法与基准**，其中 {count['核心论文']} 篇列为核心精读。正式研究与数据论文 {formal_research} 篇、综述 {count['综述']} 篇、观点文章 {count['观点文章']} 篇、预印本 {count['预印本']} 篇。最近一批资料核对日期：**{latest}**；各篇记录具体来源和核对日期。
 
 ## AIDD 知识地图
 
@@ -172,7 +174,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 {core}
 
-建议顺序：**真实场景评测 → 单端点与人体 PK → 表示学习与多任务方法 → 平台应用**。专题总表另列数据基准、观点文章和预印本，便于区分它们提供的证据。
+建议顺序：**真实场景评测 → 单端点与人体 PK → 表示学习与多任务方法 → 平台应用**。专题总表另列数据基准、综述、观点文章和预印本，方便按阅读目的查找。
 
 ## 阅读与比较
 
@@ -180,7 +182,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 ## 论文梳理
 
-[核心论文](#核心论文) · [专题补读](#专题补读) · [基础方法](#基础方法) · [数据与基准](#数据与基准) · [观点文章](#观点文章) · [预印本](#预印本)
+[核心论文](#核心论文) · [专题补读](#专题补读) · [基础方法](#基础方法) · [数据与基准](#数据与基准) · [综述](#综述) · [观点文章](#观点文章) · [预印本](#预印本)
 
 下列条目介绍每篇论文的研究问题、方法与主要发现；实验设置、结果分析和参考资料见详细解读。
 

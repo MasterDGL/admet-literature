@@ -1279,6 +1279,190 @@
       ],
       "verified_on": "2026-09-22",
       "verification_scope": "书目、正文相关方法与结果及列出的官方资源"
+    },
+    {
+      "id": "ssl-gcn-2021",
+      "title": "Chemical toxicity prediction based on semi-supervised learning and graph convolutional neural network",
+      "topic": "admet",
+      "group": "专题补读",
+      "publication": {
+        "venue": "Journal of Cheminformatics",
+        "year": 2021,
+        "date": "2021-11-27",
+        "date_basis": "出版社在线发表日期",
+        "status": "journal",
+        "citation": "Journal of Cheminformatics 13, 93；2021-11-27"
+      },
+      "doi": "10.1186/s13321-021-00570-8",
+      "paper_url": "https://link.springer.com/article/10.1186/s13321-021-00570-8",
+      "code_url": "https://github.com/chen709847237/SSL-GCN",
+      "sources": [
+        {
+          "label": "出版社全文",
+          "url": "https://link.springer.com/article/10.1186/s13321-021-00570-8"
+        },
+        {
+          "label": "作者代码",
+          "url": "https://github.com/chen709847237/SSL-GCN"
+        }
+      ],
+      "verified_on": "2026-09-22",
+      "name": "SSL-GCN",
+      "tags": [
+        "毒性",
+        "半监督学习",
+        "Tox21"
+      ],
+      "one_liner": "让图神经网络同时学习有毒性标签和无标签的分子，利用半监督学习改善 Tox21 毒性预测。",
+      "pain_point": "毒性实验标签有限，大量分子只有结构信息；仅用有标签样本训练图网络，难以充分利用这些分子。",
+      "datasets": "Tox21：7,831 个分子、12 个毒性端点；另从 ClinTox、SIDER、ToxCast 和 HIV 收集分子，移除标签并去除与 Tox21 重复的结构，得到 50,527 个无标签分子。",
+      "method": "以 GCN 编码分子图，采用 Mean Teacher 框架：学生模型学习毒性标签，教师参数由学生参数的指数移动平均更新，并用扰动前后的预测一致性利用无标签数据。",
+      "conclusion": "论文报告最佳平均 ROC-AUC 为 0.757，优于所比较传统机器学习模型约 0.71 的水平。无标签数据能够改善预测，但最佳加入比例随毒性端点变化。",
+      "evaluation": "Tox21 按分子骨架划分为训练/验证/测试集，比例为 80%/10%/10%，重复运行 5 次。比较监督式 SL-GCN、基于 ECFP4 的 KNN、神经网络、随机森林、SVM、XGBoost，以及 DeepChem 模型；测试无标签/有标签样本比例 0.5、1、2、3、4。",
+      "limitations": "12 个端点的标签完整性和类别比例不同。阅读结果时应同时看各端点 AUROC 与无标签比例实验；增加无标签样本并非在所有端点上都持续提高成绩。",
+      "code_status": "作者提供训练与预测脚本，README 链接数据和模型压缩包",
+      "verification_scope": "已核对出版社全文中的数据、骨架划分、Mean Teacher 方法和结果，以及作者仓库 README。"
+    },
+    {
+      "id": "uni-qsar-2023",
+      "title": "Uni-QSAR: an Auto-ML Tool for Molecular Property Prediction",
+      "topic": "admet",
+      "group": "预印本",
+      "publication": {
+        "venue": "arXiv",
+        "year": 2023,
+        "date": "2023-04-24",
+        "date_basis": "arXiv v1 提交日期",
+        "status": "preprint",
+        "citation": "arXiv:2304.12239，v1；2023-04-24"
+      },
+      "doi": null,
+      "paper_url": "https://arxiv.org/abs/2304.12239",
+      "code_url": "https://github.com/deepmodeling/unimol_tools",
+      "sources": [
+        {
+          "label": "arXiv 版本记录",
+          "url": "https://arxiv.org/abs/2304.12239"
+        },
+        {
+          "label": "v1 全文与结果表",
+          "url": "https://arxiv.org/html/2304.12239v1"
+        },
+        {
+          "label": "相关组件 Uni-Mol Tools",
+          "url": "https://github.com/deepmodeling/unimol_tools"
+        }
+      ],
+      "verified_on": "2026-09-22",
+      "name": "Uni-QSAR",
+      "tags": [
+        "AutoML",
+        "多模态表示",
+        "模型集成"
+      ],
+      "one_liner": "自动组合分子指纹、描述符和一维至三维预训练表示，通过调参与堆叠集成完成多种 ADMET 性质预测。",
+      "pain_point": "不同性质依赖不同分子特征，手动选择表示、模型和超参数成本高；偏态回归标签和分类不均衡进一步增加建模难度。",
+      "datasets": "TDC ADMET Benchmark Group 的 22 个任务：9 个回归、13 个分类；另做 CNS 穿透性案例，训练集 940 个化合物（315 个阳性、625 个阴性），外部测试集 117 个化合物。",
+      "method": "融合指纹、描述符、K-BERT 等一维表示、GROVER/MolCLR/KPGT 等二维表示与 Uni-Mol 三维表示；结合目标值变换、不均衡学习、贝叶斯超参数优化和两层堆叠集成，并用 dflow 并行执行。",
+      "conclusion": "表 1–2 报告 Caco-2 MAE 0.273、BBBP AUROC 0.925；按表内 TDC 排名行统计，22 项中 17 项排名第一。CNS 案例 AUROC 为 0.980，消融实验支持三维表示、堆叠和目标值变换的贡献。",
+      "evaluation": "TDC 实验沿用文中所引基准报告的设置，与 Chemprop、DeepAutoQSAR 和 DeepPurpose 比较；部分基线成绩引用既有报告或榜单。正文没有逐任务列出划分和随机种子。表 1 回归任务有 8/9 项排名第一，表 2 分类任务有 9/13 项排名第一；这是论文发表时的表格记录。",
+      "limitations": "摘要写“21/22 项达到 SOTA”，而表 1–2 的 TDC 排名行合计为 17/22 项第一。笔记采用结果表中的任务指标和排名计数；摘要与表格的统计口径未在文中解释。",
+      "code_status": "公开的相关组件为 Uni-Mol Tools，提供 Uni-Mol 表示与性质预测功能；该入口不是论文完整的多表示堆叠流程",
+      "verification_scope": "已核对 arXiv v1 全文、表 1–2、CNS 案例和消融实验，并检查 Uni-Mol Tools README 的论文引用与功能说明。"
+    },
+    {
+      "id": "domain-aware-pbrics-2023",
+      "title": "Domain-aware representation of small molecules for explainable property prediction models",
+      "topic": "admet",
+      "group": "专题补读",
+      "publication": {
+        "venue": "ICLR 2023 MLDD Workshop",
+        "year": 2023,
+        "date": "2023",
+        "date_basis": "会议官方录用目录所列年份",
+        "status": "conference",
+        "citation": "ICLR 2023 Machine Learning for Drug Discovery (MLDD) Workshop；2023"
+      },
+      "doi": null,
+      "paper_url": "https://openreview.net/forum?id=C9WW17wQF7p",
+      "code_url": null,
+      "sources": [
+        {
+          "label": "会议官方录用目录",
+          "url": "https://sites.google.com/view/mldd-2023/accepted-papers_1"
+        },
+        {
+          "label": "会议目录链接的论文全文",
+          "url": "https://drive.google.com/file/d/102YpAC8_5EapFnaoJE1CCwjFgOP_I45U/view"
+        },
+        {
+          "label": "OpenReview 论文入口",
+          "url": "https://openreview.net/forum?id=C9WW17wQF7p"
+        },
+        {
+          "label": "相关 pBRICS 期刊研究",
+          "url": "https://pubs.acs.org/doi/abs/10.1021/acs.jcim.3c00689"
+        }
+      ],
+      "verified_on": "2026-09-22",
+      "name": "Domain-aware / pBRICS",
+      "tags": [
+        "片段表示",
+        "可解释性",
+        "多任务学习"
+      ],
+      "one_liner": "按化学官能团对分子进行片段化，让图模型在预测 ADMET 性质时指出哪些片段影响结果。",
+      "pain_point": "原子级重要性难以直接对应药物化学中的官能团和结构改造；通用分子切分又可能破坏有解释意义的化学片段。",
+      "datasets": "从 ADMETlab 2.0 数据整理的 23 个分类端点，覆盖 Ames、致癌性、CYP、眼部与呼吸毒性、BBBP 和 Tox21；另用 ChEMBL 分子分析片段化效果，以 BBBP 的 102 对匹配分子对（110 个独立分子）等案例检查解释。",
+      "method": "pBRICS 在 BRICS 切分后结合官能团规则整理骨架和取代基，使用 MACCS 与 ECFP2 片段指纹构建片段图；比较单任务和多任务 GCN/RGCN，通过 Grad-CAM 给片段赋予重要性，并分析匹配分子对。",
+      "conclusion": "表 2 中，多任务片段 RGCN 在 23 个端点上的平均 AUROC 为 84.47%，高于用 ADMETlab 2.0 源码训练的对照模型 83.35%，提升 1.12 个百分点；片段解释展示了官能团变化与 BBBP、Ames 预测的联系。",
+      "evaluation": "训练/验证/测试比例为 80%/10%/10%，正文未指明随机或骨架划分。表 2 比较 MT-FraGCN、MT-FraRGCN、ST-FraGCN 和 ADMETlab 2.0 对照；第 3.3–3.4 节分析 BBBP 与 Ames 匹配分子对。",
+      "limitations": "匹配分子对分析发现，骨架相关性有时会主导预测，局部片段解释合理的分子仍可能分类错误。同团队相关期刊研究 pBRICS（10.1021/acs.jcim.3c00689）扩展到 40 个性质；本条的 23 任务与 84.47% 结果对应 Workshop 版本。",
+      "code_status": "论文及会议目录未提供配套代码链接",
+      "verification_scope": "已核对会议官方录用记录及其链接的 13 页 PDF，包括片段表示、数据划分、表 2 和匹配分子对分析；另核对相关期刊研究的书目信息与任务数。"
+    },
+    {
+      "id": "ai-toxicity-review-2023",
+      "title": "Artificial Intelligence in Drug Toxicity Prediction: Recent Advances, Challenges, and Future Perspectives",
+      "topic": "admet",
+      "group": "综述",
+      "publication": {
+        "venue": "Journal of Chemical Information and Modeling",
+        "year": 2023,
+        "date": "2023-04-26",
+        "date_basis": "出版社在线发表日期；卷期日期为 2023-05-08",
+        "status": "journal",
+        "citation": "Journal of Chemical Information and Modeling 63(9), 2628–2643；在线发表于 2023-04-26"
+      },
+      "doi": "10.1021/acs.jcim.3c00200",
+      "paper_url": "https://pubs.acs.org/doi/10.1021/acs.jcim.3c00200",
+      "code_url": null,
+      "sources": [
+        {
+          "label": "出版社摘要与发表信息",
+          "url": "https://pubs.acs.org/doi/10.1021/acs.jcim.3c00200"
+        },
+        {
+          "label": "作者补充材料，表 S1–S3",
+          "url": "https://acs.figshare.com/articles/journal_contribution/Artificial_Intelligence_in_Drug_Toxicity_Prediction_Recent_Advances_Challenges_and_Future_Perspectives/22699750"
+        }
+      ],
+      "verified_on": "2026-09-22",
+      "name": "AI 药物毒性预测综述",
+      "tags": [
+        "毒性",
+        "综述",
+        "数据与工具"
+      ],
+      "one_liner": "按毒性任务梳理机器学习和深度学习研究，并汇总可用于建模的公开数据与预测工具。",
+      "pain_point": "毒性预测研究分散在不同端点、数据资源和模型中，研究者需要按任务找到可用数据、代表方法与工具。",
+      "datasets": "覆盖六类主要毒性性质及 Tox21 端点；补充表 S2 汇总 Tox21、TOXRIC、ToxRefDB 2.0、DILIrank、ToxCast、CTD、PubChem、ChEMBL、OCHEM、TDC 等公开资源，数据规模注明为 2022-05-10 的查询记录。",
+      "method": "综述机器学习算法与深度学习架构在毒性预测中的应用；补充表 S1 对照 Tox21 方法、输入特征与性能，S2 汇总数据来源，S3 整理预测工具及其模型数量和算法。",
+      "conclusion": "形成从毒性任务查找模型、数据和工具的文献入口：既覆盖指纹与描述符模型，也包含图神经网络、多任务及知识引导方法，适合建立毒性预测专题的阅读框架。",
+      "evaluation": "该文属于综述，性能信息来自所引原研究。表 S1 按方法记录输入特征和 AUC/ACC；表 S3 列出 ProTox-II、FP-ADMET、HelixADMET、ADMETlab 2.0 等工具，网站访问日期为 2022-06-15。",
+      "limitations": "表 S1 的分数对应不同原研究的端点和实验设置，比较模型时需回到相应论文；表 S2–S3 的数据规模、工具版本和访问日期保留为原文历史记录。",
+      "code_status": "综述配套资源为公开数据和预测工具清单，见补充表 S2–S3",
+      "verification_scope": "已核对出版社书目与摘要，以及作者公开的 17 页补充材料表 S1–S3；正文各毒性小节尚未逐节核对。"
     }
   ]
 }

@@ -28,6 +28,8 @@ Benchmarks, error analysis, uncertainty and reproducibility span the entire work
 2. **Choose an ADMET question:** for hERG, read [CardioTox net](../papers/admet/cardiotox-net-2021.md) → [HERGAI](../papers/admet/hergai-2025.md); for transporters, [MC-PGP](../papers/admet/mc-pgp-2025.md); for mutagenicity, [AMES multitask DNN](../papers/admet/ames-multitask-2022.md) → [AmesNet](../papers/admet/amesnet-2026.md). Compare how data, models and experiments evolve within each topic.
 3. **Examine reliability and experimental support:** combine the [ADMET reliability benchmark](../papers/admet/admet-reliability-2026.md), MoleculeACE and the BBB experiments to study failures hidden by averages and generalization to new molecules.
 
+Topic entry points: use the [AI drug toxicity review](../papers/admet/ai-toxicity-review-2023.md) to explore toxicity tasks, data and tools; read [SSL-GCN](../papers/admet/ssl-gcn-2021.md) for learning from unlabeled molecules, [Domain-aware / pBRICS](../papers/admet/domain-aware-pbrics-2023.md) for chemical fragments and model interpretation, and [Uni-QSAR](../papers/admet/uni-qsar-2023.md) for automatic selection and integration of molecular representations.
+
 ## Extending the map
 
 Connect new topics to the relevant level and cross-reference papers across levels. Each entry retains the one-sentence summary, publication information, research problem, datasets, method and findings, followed by experimental analysis and sources.

@@ -6,7 +6,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 梳理 **ADMET 与药代动力学预测** 的研究进展，整理代表论文、数据集与代码资源。每篇用一句话介绍研究内容，再展开 **发表期刊/会议与时间、主要痛点、数据集、方法和结论**。分子表示与基准文献提供相关基础知识。
 
-目前收录 **29 篇**：**25 篇 ADMET 与药代动力学**、**4 篇基础方法与基准**，其中 11 篇列为核心精读。正式研究与数据论文 24 篇、观点文章 1 篇、预印本 4 篇。最近一批资料核对日期：**2026-09-22**；各篇记录具体来源和核对日期。
+目前收录 **33 篇**：**29 篇 ADMET 与药代动力学**、**4 篇基础方法与基准**，其中 11 篇列为核心精读。正式研究与数据论文 26 篇、综述 1 篇、观点文章 1 篇、预印本 5 篇。最近一批资料核对日期：**2026-09-22**；各篇记录具体来源和核对日期。
 
 ## AIDD 知识地图
 
@@ -20,7 +20,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 - [基础方法与基准](topics/foundations.md)：Chemprop、AttentiveFP、MoleculeNet、MoleculeACE。
 - [知识地图说明](docs/knowledge-map.md)：从研究问题找到方法、任务和阅读入口。
 - [优先精读](#优先精读)：先建立研究问题、数据和方法的认识。
-- [论文梳理](#论文梳理)：直接在本页查看全部 29 篇的一句话概括、发表信息、痛点、数据集、方法和结论。
+- [论文梳理](#论文梳理)：直接在本页查看全部 33 篇的一句话概括、发表信息、痛点、数据集、方法和结论。
 - [选文与整理方法](docs/curation.md)：选文标准、实验比较和资料来源。
 - [AIDD 研究范围](docs/scope.md)：当前覆盖与后续专题。
 - [贡献方式](CONTRIBUTING.md)：推荐论文、纠正信息或补充实验依据。
@@ -28,7 +28,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 | 专题 | 当前内容 | 入口 |
 | --- | --- | --- |
-| ADMET 与药代动力学 | 25 篇 | [论文总表](topics/admet.md) |
+| ADMET 与药代动力学 | 29 篇 | [论文总表](topics/admet.md) |
 | 基础方法与基准 | 4 篇；分子表示、数据与评测 | [基础阅读](topics/foundations.md) |
 | 其他 AIDD 方向 | 扩展计划，尚未纳入独立专题 | [研究范围](docs/scope.md) |
 
@@ -48,7 +48,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 | [MC-PGP](papers/admet/mc-pgp-2025.md) | Journal of Pharmaceutical Analysis | 2025-08 | 融合 SMILES、指纹和分子图，分别判断分子是否抑制 P-gp、是否会被 P-gp 转运。 |
 | [AmesNet](papers/admet/amesnet-2026.md) | Chemical Research in Toxicology | 2026-06-29 | 将分子结构、菌株与代谢活化条件一起输入模型，提高陌生化学结构的 Ames 致突变性识别能力。 |
 
-建议顺序：**真实场景评测 → 单端点与人体 PK → 表示学习与多任务方法 → 平台应用**。专题总表另列数据基准、观点文章和预印本，便于区分它们提供的证据。
+建议顺序：**真实场景评测 → 单端点与人体 PK → 表示学习与多任务方法 → 平台应用**。专题总表另列数据基准、综述、观点文章和预印本，方便按阅读目的查找。
 
 ## 阅读与比较
 
@@ -56,7 +56,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 ## 论文梳理
 
-[核心论文](#核心论文) · [专题补读](#专题补读) · [基础方法](#基础方法) · [数据与基准](#数据与基准) · [观点文章](#观点文章) · [预印本](#预印本)
+[核心论文](#核心论文) · [专题补读](#专题补读) · [基础方法](#基础方法) · [数据与基准](#数据与基准) · [综述](#综述) · [观点文章](#观点文章) · [预印本](#预印本)
 
 下列条目介绍每篇论文的研究问题、方法与主要发现；实验设置、结果分析和参考资料见详细解读。
 
@@ -352,6 +352,38 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 [论文原文](https://doi.org/10.1021/acs.jcim.2c00532) · [详细解读](papers/admet/ames-multitask-2022.md) · [代码/项目](https://github.com/VirSabando/MTL_DNN_Ames)
 
+#### SSL-GCN
+
+**Chemical toxicity prediction based on semi-supervised learning and graph convolutional neural network**
+
+**一句话概括：** 让图神经网络同时学习有毒性标签和无标签的分子，利用半监督学习改善 Tox21 毒性预测。
+
+| 字段 | 内容 |
+| --- | --- |
+| 发表期刊/会议与时间 | Journal of Cheminformatics 13, 93；2021-11-27 |
+| 主要痛点 | 毒性实验标签有限，大量分子只有结构信息；仅用有标签样本训练图网络，难以充分利用这些分子。 |
+| 数据集 | Tox21：7,831 个分子、12 个毒性端点；另从 ClinTox、SIDER、ToxCast 和 HIV 收集分子，移除标签并去除与 Tox21 重复的结构，得到 50,527 个无标签分子。 |
+| 方法 | 以 GCN 编码分子图，采用 Mean Teacher 框架：学生模型学习毒性标签，教师参数由学生参数的指数移动平均更新，并用扰动前后的预测一致性利用无标签数据。 |
+| 结论 | 论文报告最佳平均 ROC-AUC 为 0.757，优于所比较传统机器学习模型约 0.71 的水平。无标签数据能够改善预测，但最佳加入比例随毒性端点变化。 |
+
+[论文原文](https://link.springer.com/article/10.1186/s13321-021-00570-8) · [详细解读](papers/admet/ssl-gcn-2021.md) · [代码/项目](https://github.com/chen709847237/SSL-GCN)
+
+#### Domain-aware / pBRICS
+
+**Domain-aware representation of small molecules for explainable property prediction models**
+
+**一句话概括：** 按化学官能团对分子进行片段化，让图模型在预测 ADMET 性质时指出哪些片段影响结果。
+
+| 字段 | 内容 |
+| --- | --- |
+| 发表期刊/会议与时间 | ICLR 2023 Machine Learning for Drug Discovery (MLDD) Workshop；2023 |
+| 主要痛点 | 原子级重要性难以直接对应药物化学中的官能团和结构改造；通用分子切分又可能破坏有解释意义的化学片段。 |
+| 数据集 | 从 ADMETlab 2.0 数据整理的 23 个分类端点，覆盖 Ames、致癌性、CYP、眼部与呼吸毒性、BBBP 和 Tox21；另用 ChEMBL 分子分析片段化效果，以 BBBP 的 102 对匹配分子对（110 个独立分子）等案例检查解释。 |
+| 方法 | pBRICS 在 BRICS 切分后结合官能团规则整理骨架和取代基，使用 MACCS 与 ECFP2 片段指纹构建片段图；比较单任务和多任务 GCN/RGCN，通过 Grad-CAM 给片段赋予重要性，并分析匹配分子对。 |
+| 结论 | 表 2 中，多任务片段 RGCN 在 23 个端点上的平均 AUROC 为 84.47%，高于用 ADMETlab 2.0 源码训练的对照模型 83.35%，提升 1.12 个百分点；片段解释展示了官能团变化与 BBBP、Ames 预测的联系。 |
+
+[论文原文](https://openreview.net/forum?id=C9WW17wQF7p) · [详细解读](papers/admet/domain-aware-pbrics-2023.md)
+
 ### 基础方法
 
 #### Chemprop / D-MPNN
@@ -452,6 +484,24 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 [论文原文](https://doi.org/10.1021/acs.jcim.2c01073) · [详细解读](papers/foundations/moleculeace-2022.md) · [代码/项目](https://github.com/molML/MoleculeACE)
 
+### 综述
+
+#### AI 药物毒性预测综述
+
+**Artificial Intelligence in Drug Toxicity Prediction: Recent Advances, Challenges, and Future Perspectives**
+
+**一句话概括：** 按毒性任务梳理机器学习和深度学习研究，并汇总可用于建模的公开数据与预测工具。
+
+| 字段 | 内容 |
+| --- | --- |
+| 发表期刊/会议与时间 | Journal of Chemical Information and Modeling 63(9), 2628–2643；在线发表于 2023-04-26 |
+| 主要痛点 | 毒性预测研究分散在不同端点、数据资源和模型中，研究者需要按任务找到可用数据、代表方法与工具。 |
+| 数据集 | 覆盖六类主要毒性性质及 Tox21 端点；补充表 S2 汇总 Tox21、TOXRIC、ToxRefDB 2.0、DILIrank、ToxCast、CTD、PubChem、ChEMBL、OCHEM、TDC 等公开资源，数据规模注明为 2022-05-10 的查询记录。 |
+| 方法 | 综述机器学习算法与深度学习架构在毒性预测中的应用；补充表 S1 对照 Tox21 方法、输入特征与性能，S2 汇总数据来源，S3 整理预测工具及其模型数量和算法。 |
+| 结论 | 形成从毒性任务查找模型、数据和工具的文献入口：既覆盖指纹与描述符模型，也包含图神经网络、多任务及知识引导方法，适合建立毒性预测专题的阅读框架。 |
+
+[论文原文](https://pubs.acs.org/doi/10.1021/acs.jcim.3c00200) · [详细解读](papers/admet/ai-toxicity-review-2023.md)
+
 ### 观点文章
 
 #### OpenADMET / Avoid-ome
@@ -535,6 +585,22 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 | 结论 | 作者报告任务归一化综合得分 96.77，并在其指定比较和约束下减少累计模型拟合时间。 |
 
 [论文原文](https://arxiv.org/abs/2609.10121) · [详细解读](papers/admet/admet-evo-2026.md)
+
+#### Uni-QSAR
+
+**Uni-QSAR: an Auto-ML Tool for Molecular Property Prediction**
+
+**一句话概括：** 自动组合分子指纹、描述符和一维至三维预训练表示，通过调参与堆叠集成完成多种 ADMET 性质预测。
+
+| 字段 | 内容 |
+| --- | --- |
+| 发表期刊/会议与时间 | arXiv:2304.12239，v1；2023-04-24 |
+| 主要痛点 | 不同性质依赖不同分子特征，手动选择表示、模型和超参数成本高；偏态回归标签和分类不均衡进一步增加建模难度。 |
+| 数据集 | TDC ADMET Benchmark Group 的 22 个任务：9 个回归、13 个分类；另做 CNS 穿透性案例，训练集 940 个化合物（315 个阳性、625 个阴性），外部测试集 117 个化合物。 |
+| 方法 | 融合指纹、描述符、K-BERT 等一维表示、GROVER/MolCLR/KPGT 等二维表示与 Uni-Mol 三维表示；结合目标值变换、不均衡学习、贝叶斯超参数优化和两层堆叠集成，并用 dflow 并行执行。 |
+| 结论 | 表 1–2 报告 Caco-2 MAE 0.273、BBBP AUROC 0.925；按表内 TDC 排名行统计，22 项中 17 项排名第一。CNS 案例 AUROC 为 0.980，消融实验支持三维表示、堆叠和目标值变换的贡献。 |
+
+[论文原文](https://arxiv.org/abs/2304.12239) · [详细解读](papers/admet/uni-qsar-2023.md) · [代码/项目](https://github.com/deepmodeling/unimol_tools)
 
 ## 数据与维护
 

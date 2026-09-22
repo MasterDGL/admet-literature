@@ -756,6 +756,113 @@
         "Author benchmark"
       ],
       "source_sha256": "0cff82f33face532b1d206f03ceb0032cb299a52990b0849e513ac59ef557d54"
+    },
+    "ssl-gcn-2021": {
+      "name": "SSL-GCN",
+      "tags": [
+        "Toxicity",
+        "Semi-supervised learning",
+        "Tox21"
+      ],
+      "one_liner": "Trains a graph neural network on labeled and unlabeled molecules to improve Tox21 toxicity prediction through semi-supervised learning.",
+      "pain_point": "Toxicity labels are limited, while many compounds have only structural information; supervised graph models cannot fully use these unlabeled molecules.",
+      "datasets": "Tox21: 7,831 molecules and 12 toxicity endpoints. Removing labels from ClinTox, SIDER, ToxCast and HIV and excluding structures overlapping with Tox21 yields 50,527 unlabeled molecules.",
+      "method": "A GCN encodes molecular graphs within a Mean Teacher framework. The student learns toxicity labels, teacher parameters follow an exponential moving average of student parameters, and prediction consistency under perturbations incorporates unlabeled data.",
+      "conclusion": "The paper reports a best mean ROC-AUC of 0.757, compared with about 0.71 for the conventional machine-learning models evaluated. Unlabeled data improve prediction, with the best mixing ratio varying by endpoint.",
+      "evaluation": "Tox21 uses an 80%/10%/10% scaffold split and five repeated runs. Comparisons include supervised SL-GCN, ECFP4-based KNN, neural networks, random forests, SVM and XGBoost, and DeepChem models. Tested unlabeled-to-labeled ratios are 0.5, 1, 2, 3 and 4.",
+      "limitations": "Label completeness and class balance vary across the 12 endpoints. Endpoint AUROC and mixing-ratio experiments show that adding more unlabeled molecules does not consistently improve every task.",
+      "code_status": "The author repository provides training and prediction scripts, with README links to data and model archives.",
+      "verification_scope": "Reviewed the publisher full text for data, scaffold splitting, Mean Teacher and results, and checked the author repository README.",
+      "publication": {
+        "citation": "Journal of Cheminformatics 13, 93; 2021-11-27",
+        "date_basis": "Publisher online publication date"
+      },
+      "source_labels": [
+        "Publisher full text",
+        "Author code"
+      ],
+      "source_sha256": "789feed37d131aa7528a69c38977f3319c3be7f0baacfd0452ddd3b43e3ff4f2"
+    },
+    "uni-qsar-2023": {
+      "name": "Uni-QSAR",
+      "tags": [
+        "AutoML",
+        "Multimodal representations",
+        "Ensembles"
+      ],
+      "one_liner": "Automatically combines fingerprints, descriptors and pretrained 1D, 2D and 3D molecular representations with tuning and stacked ensembles for ADMET prediction.",
+      "pain_point": "Different properties favor different molecular features, making manual representation, model and hyperparameter selection costly; skewed regression labels and class imbalance add further modeling challenges.",
+      "datasets": "The 22 TDC ADMET Benchmark Group tasks: nine regression and 13 classification tasks. A separate CNS penetration case uses 940 training compounds (315 positive and 625 negative) and 117 external test compounds.",
+      "method": "Combines fingerprints and descriptors with 1D representations such as K-BERT, 2D representations including GROVER, MolCLR and KPGT, and Uni-Mol 3D representations. Target transformations, imbalance-aware learning, Bayesian optimization and two-level stacking are orchestrated with dflow.",
+      "conclusion": "Tables 1–2 report Caco-2 MAE of 0.273 and BBBP AUROC of 0.925. Counting the printed TDC ranking rows gives 17 first-place results across 22 tasks. The CNS case reports AUROC of 0.980; ablations support the contributions of 3D representations, stacking and target transformations.",
+      "evaluation": "TDC experiments follow the benchmark report cited in the paper and compare with Chemprop, DeepAutoQSAR and DeepPurpose; some baseline scores come from prior reports or leaderboards. Per-task splits and seeds are not detailed. Table 1 shows first place for 8/9 regression tasks and Table 2 for 9/13 classification tasks, as recorded in the paper.",
+      "limitations": "The abstract claims SOTA on 21/22 tasks, whereas the TDC ranking rows in Tables 1–2 contain 17/22 first-place entries. These notes use the task metrics and rank counts in the tables; the paper does not reconcile the two counts.",
+      "code_status": "The related public component, Uni-Mol Tools, provides Uni-Mol representations and property prediction, rather than the complete multi-representation stacking pipeline described in the paper.",
+      "verification_scope": "Reviewed arXiv v1, Tables 1–2, the CNS case and ablations, and checked the Uni-Mol Tools README for its paper citation and documented features.",
+      "publication": {
+        "citation": "arXiv:2304.12239, v1; 2023-04-24",
+        "date_basis": "arXiv version 1 submission date"
+      },
+      "source_labels": [
+        "arXiv version record",
+        "Version 1 full text and result tables",
+        "Related component: Uni-Mol Tools"
+      ],
+      "source_sha256": "1188ff114037701e884b2ff1b1d124938fc16b5fafc58448edc9be31ab01b3af"
+    },
+    "domain-aware-pbrics-2023": {
+      "name": "Domain-aware / pBRICS",
+      "tags": [
+        "Fragment representations",
+        "Interpretability",
+        "Multitask learning"
+      ],
+      "one_liner": "Builds chemically meaningful molecular fragments so graph models can predict ADMET properties and identify fragments contributing to each prediction.",
+      "pain_point": "Atom-level importance is difficult to translate into functional groups and medicinal-chemistry changes, while generic fragmentation can break chemically meaningful substructures.",
+      "datasets": "23 classification endpoints curated from ADMETlab 2.0 data, covering Ames mutagenicity, carcinogenicity, CYPs, eye and respiratory toxicity, BBBP and Tox21. ChEMBL molecules support fragmentation analysis; interpretation cases include 102 BBBP matched molecular pairs comprising 110 unique molecules.",
+      "method": "pBRICS post-processes BRICS fragments using functional-group rules to organize scaffolds and substituents. MACCS and ECFP2 fragment fingerprints feed single-task and multitask GCN/RGCN models; Grad-CAM and matched molecular pairs examine fragment contributions.",
+      "conclusion": "In Table 2, multitask fragment RGCN achieves mean AUROC of 84.47% across 23 endpoints, versus 83.35% for the comparator trained with ADMETlab 2.0 code, a gain of 1.12 percentage points. Fragment analyses connect functional-group changes with BBBP and Ames predictions.",
+      "evaluation": "The train/validation/test ratio is 80%/10%/10%; the text does not specify random versus scaffold splitting. Table 2 compares MT-FraGCN, MT-FraRGCN, ST-FraGCN and the ADMETlab 2.0 comparator. Sections 3.3–3.4 examine BBBP and Ames matched molecular pairs.",
+      "limitations": "Matched-pair analysis shows that scaffold correlations can dominate predictions: plausible local fragment attribution can coexist with an incorrect class prediction. The same team’s related pBRICS journal study (10.1021/acs.jcim.3c00689) covers 40 properties; the 23-task, 84.47% result here belongs to the workshop paper.",
+      "code_status": "The paper and workshop listing do not provide an accompanying code link.",
+      "verification_scope": "Reviewed the official acceptance listing and its linked 13-page PDF, including fragment representations, splitting, Table 2 and matched-pair analyses; also checked the related journal study’s metadata and task count.",
+      "publication": {
+        "citation": "ICLR 2023 Machine Learning for Drug Discovery (MLDD) Workshop; 2023",
+        "date_basis": "Year stated in the official workshop acceptance listing"
+      },
+      "source_labels": [
+        "Official workshop accepted papers",
+        "Full text linked by the workshop",
+        "OpenReview paper page",
+        "Related pBRICS journal study"
+      ],
+      "source_sha256": "5080aabc522002a1859403c8fec8eedf5d6d117325b40bec6a54eade63edc7ef"
+    },
+    "ai-toxicity-review-2023": {
+      "name": "AI for drug toxicity: review",
+      "tags": [
+        "Toxicity",
+        "Review",
+        "Data and tools"
+      ],
+      "one_liner": "Surveys machine-learning and deep-learning approaches by toxicity task and collects public datasets and prediction tools for model development.",
+      "pain_point": "Toxicity research spans heterogeneous endpoints, data resources and models, creating a need for task-oriented routes to usable datasets, representative methods and tools.",
+      "datasets": "Covers six major toxicity properties and Tox21 endpoints. Supplementary Table S2 lists resources including Tox21, TOXRIC, ToxRefDB 2.0, DILIrank, ToxCast, CTD, PubChem, ChEMBL, OCHEM and TDC; database sizes are recorded as accessed on 2022-05-10.",
+      "method": "Reviews machine-learning algorithms and deep-learning architectures for toxicity prediction. Supplementary Table S1 compares Tox21 methods, input features and performance; S2 lists data sources; S3 catalogs tools, their model counts and algorithms.",
+      "conclusion": "Provides a task-oriented route to models, data and tools, covering fingerprint and descriptor models as well as graph networks, multitask and knowledge-guided methods. It offers a reading framework for a toxicity-prediction topic.",
+      "evaluation": "This is a review, with performance drawn from cited studies. Table S1 records features and AUC/ACC by method. Table S3 includes ProTox-II, FP-ADMET, HelixADMET and ADMETlab 2.0, with website access dated 2022-06-15.",
+      "limitations": "Table S1 scores reflect the endpoints and experimental settings of different original studies; model comparisons require those source papers. Database sizes, tool versions and access dates in Tables S2–S3 are retained as historical records.",
+      "code_status": "Associated resources are the public-data and prediction-tool lists in Supplementary Tables S2–S3.",
+      "verification_scope": "Reviewed publisher metadata and abstract and Tables S1–S3 in the authors’ public 17-page supporting information; the individual toxicity sections in the main text have not been checked in full.",
+      "publication": {
+        "citation": "Journal of Chemical Information and Modeling 63(9), 2628–2643; online 2023-04-26",
+        "date_basis": "Publisher online publication date; issue date 2023-05-08"
+      },
+      "source_labels": [
+        "Publisher abstract and publication record",
+        "Author supporting information, Tables S1–S3"
+      ],
+      "source_sha256": "02ef57ac961462ac3f7ebcbfde695bff2a900f43287886add345f594f869f2bc"
     }
   }
 }

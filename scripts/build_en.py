@@ -11,7 +11,7 @@ import re
 GROUPS = {
     '核心论文': 'Core papers', '专题补读': 'Further reading',
     '基础方法': 'Foundational methods', '数据与基准': 'Data and benchmarks',
-    '观点文章': 'Perspectives', '预印本': 'Preprints',
+    '综述': 'Reviews', '观点文章': 'Perspectives', '预印本': 'Preprints',
 }
 TOPICS = {'admet': 'ADMET and pharmacokinetics', 'foundations': 'Methods and benchmarks'}
 FIELDS = ['name', 'one_liner', 'tags', 'pain_point', 'datasets', 'method',
@@ -68,6 +68,8 @@ def build(papers, table):
     for p in papers:
         pub = p['publication']
         status = {'journal': 'Journal article', 'conference': 'Conference paper', 'preprint': 'Preprint'}[pub['status']]
+        if pub['status'] == 'conference' and 'Workshop' in pub['venue']:
+            status = 'Workshop paper'
         fields = core_fields(p)
         fields[1:1] = [['Date basis', pub['date_basis']], ['Publication status', status]]
         sources = '\n'.join(f'- [{s["label"]}]({s["url"]})' for s in p['sources'])
@@ -115,7 +117,8 @@ Sources reviewed: **{p['verified_on']}**. {p['verification_scope']}
         [f'[{p["name"]}](en/{note(p)})', p['publication']['venue'], p['publication']['date'], p['one_liner']]
         for p in papers if p['group'] == '核心论文'])
     counts = {t: sum(p['topic'] == t for p in papers) for t in TOPICS}
-    formal = sum(p['publication']['status'] != 'preprint' and p['group'] != '观点文章' for p in papers)
+    formal = sum(p['publication']['status'] != 'preprint' and p['group'] not in ['观点文章', '综述'] for p in papers)
+    reviews = sum(p['group'] == '综述' for p in papers)
     perspectives = sum(p['group'] == '观点文章' for p in papers)
     preprints = sum(p['group'] == '预印本' for p in papers)
     core_count = sum(p['group'] == '核心论文' for p in papers)
@@ -126,7 +129,7 @@ Sources reviewed: **{p['verified_on']}**. {p['verification_scope']}
 
 Research notes on **ADMET and pharmacokinetic prediction**, with representative papers, datasets and code. Each entry starts with a one-sentence summary and covers **publication venue and date, research problem, datasets, method and findings**. Papers on molecular representations and benchmarks provide the foundations.
 
-The collection contains **{len(papers)} papers**: **{counts['admet']} on ADMET and pharmacokinetics** and **{counts['foundations']} on methods and benchmarks**, including {core_count} core readings. Publication types: {formal} published research/data papers, {perspectives} perspective and {preprints} preprints. Most recent batch of source reviews: **{latest}**; each entry records its own sources and review date.
+The collection contains **{len(papers)} papers**: **{counts['admet']} on ADMET and pharmacokinetics** and **{counts['foundations']} on methods and benchmarks**, including {core_count} core readings. Publication types: {formal} published research/data papers, {reviews} review, {perspectives} perspective and {preprints} preprints. Most recent batch of source reviews: **{latest}**; each entry records its own sources and review date.
 
 ## AIDD knowledge map
 
@@ -156,7 +159,7 @@ Start with data and molecular representations, then explore property prediction,
 
 {core}
 
-Suggested route: **practical evaluation → individual endpoints and human PK → representation learning and multitask methods → platforms**. Data benchmarks, perspectives and preprints have separate categories in the index.
+Suggested route: **practical evaluation → individual endpoints and human PK → representation learning and multitask methods → platforms**. Data benchmarks, reviews, perspectives and preprints have separate categories in the index.
 
 ## Reading and comparison
 
