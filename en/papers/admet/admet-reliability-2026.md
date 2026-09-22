@@ -6,7 +6,7 @@
 
 [ADMET and pharmacokinetics index](../../topics/admet.md) · [Home](../../../README.md)
 
-**In one sentence:** Compares model families under limited data, unfamiliar molecular structures and class imbalance to assess ADMET prediction in practical research settings.
+**Overview:** Compares model families under limited data, unfamiliar molecular structures and class imbalance to assess ADMET prediction in practical research settings.
 
 Category: Core papers. Topics: Generalization, Small data, Evaluation.
 

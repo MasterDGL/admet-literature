@@ -6,7 +6,7 @@
 
 [ADMET and pharmacokinetics index](../../topics/admet.md) · [Home](../../../README.md)
 
-**In one sentence:** Packages graph neural networks into web and local tools that predict multiple ADMET properties for large compound libraries.
+**Overview:** Packages graph neural networks into web and local tools that predict multiple ADMET properties for large compound libraries.
 
 Category: Core papers. Topics: ADMET, Platform, High throughput.
 

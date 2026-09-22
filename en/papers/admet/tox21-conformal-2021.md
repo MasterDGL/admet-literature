@@ -6,7 +6,7 @@
 
 [ADMET and pharmacokinetics index](../../topics/admet.md) · [Home](../../../README.md)
 
-**In one sentence:** Adds conformal prediction to toxicity models, returning one or multiple candidate labels at a chosen confidence level and assessing uncertainty and missed toxic compounds.
+**Overview:** Adds conformal prediction to toxicity models, returning one or multiple candidate labels at a chosen confidence level and assessing uncertainty and missed toxic compounds.
 
 Category: Further reading. Topics: Toxicity, Uncertainty, Conformal prediction.
 

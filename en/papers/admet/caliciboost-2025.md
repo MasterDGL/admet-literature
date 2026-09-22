@@ -6,7 +6,7 @@
 
 [ADMET and pharmacokinetics index](../../topics/admet.md) · [Home](../../../README.md)
 
-**In one sentence:** Combines molecular fingerprints, physicochemical descriptors and automated machine learning to predict permeability through the Caco-2 intestinal cell model.
+**Overview:** Combines molecular fingerprints, physicochemical descriptors and automated machine learning to predict permeability through the Caco-2 intestinal cell model.
 
 Category: Core papers. Topics: Absorption, Caco-2, AutoML.
 

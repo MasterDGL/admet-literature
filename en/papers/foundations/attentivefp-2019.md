@@ -6,7 +6,7 @@
 
 [Methods and benchmarks index](../../topics/foundations.md) · [Home](../../../README.md)
 
-**In one sentence:** Learns which atoms and neighborhoods to emphasize when aggregating molecular information for property prediction and structural attribution.
+**Overview:** Learns which atoms and neighborhoods to emphasize when aggregating molecular information for property prediction and structural attribution.
 
 Category: Foundational methods. Topics: Molecular graphs, Attention, Molecular representations.
 

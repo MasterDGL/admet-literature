@@ -6,7 +6,7 @@
 
 [ADMET and pharmacokinetics index](../../topics/admet.md) · [Home](../../../README.md)
 
-**In one sentence:** Selects useful auxiliary tasks for each ADMET endpoint to reduce interference during multitask training.
+**Overview:** Selects useful auxiliary tasks for each ADMET endpoint to reduce interference during multitask training.
 
 Category: Core papers. Topics: Multitask learning, Auxiliary tasks, Negative transfer.
 

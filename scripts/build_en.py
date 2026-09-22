@@ -97,7 +97,7 @@ def build(papers, table):
 
 [{TOPICS[p['topic']]} index](../../topics/{p['topic']}.md) · [Home](../../../README.md)
 
-**In one sentence:** {p['one_liner']}
+**Overview:** {p['one_liner']}
 
 Category: {GROUPS[p['group']]}. Topics: {', '.join(p['tags'])}.
 
@@ -128,9 +128,9 @@ Sources reviewed: **{p['verified_on']}**. {p['verification_scope']}
             links += f' · [Code/project]({p["code_url"]})'
         overview.append(f'#### {p["name"]}\n\n**{p["title"]}**\n\n'
                         f'Date: **{p["publication"]["date"]}** · {publication_label(p)} · Category: {GROUPS[p["group"]]}.\n\n'
-                        f'**In one sentence:** {p["one_liner"]}\n\n'
+                        f'**Overview:** {p["one_liner"]}\n\n'
                         + table(['Field', 'Details'], core_fields(p)) + '\n\n' + links)
-    core = table(['Paper', 'Journal/conference', 'Date', 'In one sentence'], [
+    core = table(['Paper', 'Journal/conference', 'Date', 'Overview'], [
         [f'[{p["name"]}](en/{note(p)})', p['publication']['venue'], p['publication']['date'], p['one_liner']]
         for p in papers if p['group'] == '核心论文'])
     counts = {t: sum(p['topic'] == t for p in papers) for t in TOPICS}
@@ -144,7 +144,7 @@ Sources reviewed: **{p['verified_on']}**. {p['verification_scope']}
     year_nav = ' · '.join(f'[{year}](#{year})' for year in dict.fromkeys(p['publication']['year'] for p in papers))
     artifacts['README.md'] = f'''# ADMET Literature
 
-Research notes on **ADMET and pharmacokinetic prediction**, with representative papers, datasets and code. Each entry starts with a one-sentence summary and covers **publication venue and date, research problem, datasets, method and findings**. Papers on molecular representations and benchmarks provide the foundations.
+Research notes on **ADMET and pharmacokinetic prediction**, with representative papers, datasets and code. Each entry starts with a brief overview and covers **publication venue and date, research problem, datasets, method and findings**. Papers on molecular representations and benchmarks provide the foundations.
 
 The collection contains **{len(papers)} papers**: **{counts['admet']} on ADMET and pharmacokinetics** and **{counts['foundations']} on methods and benchmarks**, including {core_count} core readings. Publication types: {formal} published research/data papers, {reviews} review, {perspectives} perspective and {preprints} preprints. Most recent batch of source reviews: **{latest}**; each entry records its own sources and review date.
 
@@ -162,7 +162,7 @@ Start with data and molecular representations, then explore property prediction,
 - [Methods and benchmarks](en/topics/foundations.md): Chemprop, AttentiveFP, MoleculeNet and MoleculeACE.
 - [Knowledge map](en/docs/knowledge-map.md): connect research questions, methods and reading routes.
 - [Core reading](#core-reading): a starting point for research questions, data and methods.
-- [Paper notes](#paper-notes): one-sentence summaries and all five fields for every paper, directly on this page.
+- [Paper notes](#paper-notes): brief overviews and all five fields for every paper, directly on this page.
 - [Selection and curation](en/docs/curation.md): selection criteria, experimental comparisons and sources.
 - [Research scope](en/docs/scope.md): current coverage and planned topics.
 - [Discussions](https://github.com/MasterDGL/admet-literature/discussions): questions and paper recommendations.
@@ -245,7 +245,7 @@ Original notes and maintenance scripts use the [MIT License](LICENSE). Reference
 ''' + listing + '\n'
     buf = io.StringIO(newline='')
     writer = csv.writer(buf, lineterminator='\n')
-    writer.writerow(['ID', 'Short name', 'Full title', 'One-sentence summary', 'Topic', 'Category', 'Tags', 'Journal/conference', 'Publication date', 'Date basis', 'Publication status', 'Research problem', 'Datasets', 'Method', 'Findings', 'Experimental setup', 'Analysis', 'Paper URL', 'Code URL', 'Code status', 'Review date', 'Review scope'])
+    writer.writerow(['ID', 'Short name', 'Full title', 'Overview', 'Topic', 'Category', 'Tags', 'Journal/conference', 'Publication date', 'Date basis', 'Publication status', 'Research problem', 'Datasets', 'Method', 'Findings', 'Experimental setup', 'Analysis', 'Paper URL', 'Code URL', 'Code status', 'Review date', 'Review scope'])
     for p in papers:
         pub = p['publication']
         writer.writerow([p['id'], p['name'], p['title'], p['one_liner'], TOPICS[p['topic']], GROUPS[p['group']], '; '.join(p['tags']), pub['venue'], pub['date'], pub['date_basis'], pub['status'], p['pain_point'], p['datasets'], p['method'], p['conclusion'], p['evaluation'], p['limitations'], p['paper_url'], p.get('code_url') or '', p['code_status'], p['verified_on'], p['verification_scope']])

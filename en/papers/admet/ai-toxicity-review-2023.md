@@ -6,7 +6,7 @@
 
 [ADMET and pharmacokinetics index](../../topics/admet.md) · [Home](../../../README.md)
 
-**In one sentence:** Surveys machine-learning and deep-learning approaches by toxicity task and collects public datasets and prediction tools for model development.
+**Overview:** Surveys machine-learning and deep-learning approaches by toxicity task and collects public datasets and prediction tools for model development.
 
 Category: Reviews. Topics: Toxicity, Review, Data and tools.
 

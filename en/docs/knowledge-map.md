@@ -34,6 +34,6 @@ For uncertainty estimation, start with [deep conformal toxicity prediction](../p
 
 ## Extending the map
 
-Connect new topics to the relevant level and cross-reference papers across levels. Each entry retains the one-sentence summary, publication information, research problem, datasets, method and findings, followed by experimental analysis and sources.
+Connect new topics to the relevant level and cross-reference papers across levels. Each entry retains the overview, publication information, research problem, datasets, method and findings, followed by experimental analysis and sources.
 
 The editable [English SVG](../../assets/aidd-knowledge-pyramid.en.svg) is stored in the repository. Open the README image for a larger view.

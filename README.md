@@ -2,7 +2,7 @@
 
 **English** | [简体中文](README.zh-CN.md)
 
-Research notes on **ADMET and pharmacokinetic prediction**, with representative papers, datasets and code. Each entry starts with a one-sentence summary and covers **publication venue and date, research problem, datasets, method and findings**. Papers on molecular representations and benchmarks provide the foundations.
+Research notes on **ADMET and pharmacokinetic prediction**, with representative papers, datasets and code. Each entry starts with a brief overview and covers **publication venue and date, research problem, datasets, method and findings**. Papers on molecular representations and benchmarks provide the foundations.
 
 The collection contains **35 papers**: **31 on ADMET and pharmacokinetics** and **4 on methods and benchmarks**, including 11 core readings. Publication types: 28 published research/data papers, 1 review, 1 perspective and 5 preprints. Most recent batch of source reviews: **2026-09-22**; each entry records its own sources and review date.
 
@@ -20,7 +20,7 @@ Start with data and molecular representations, then explore property prediction,
 - [Methods and benchmarks](en/topics/foundations.md): Chemprop, AttentiveFP, MoleculeNet and MoleculeACE.
 - [Knowledge map](en/docs/knowledge-map.md): connect research questions, methods and reading routes.
 - [Core reading](#core-reading): a starting point for research questions, data and methods.
-- [Paper notes](#paper-notes): one-sentence summaries and all five fields for every paper, directly on this page.
+- [Paper notes](#paper-notes): brief overviews and all five fields for every paper, directly on this page.
 - [Selection and curation](en/docs/curation.md): selection criteria, experimental comparisons and sources.
 - [Research scope](en/docs/scope.md): current coverage and planned topics.
 - [Discussions](https://github.com/MasterDGL/admet-literature/discussions): questions and paper recommendations.
@@ -36,7 +36,7 @@ Start with data and molecular representations, then explore property prediction,
 
 ## Core reading
 
-| Paper | Journal/conference | Date | In one sentence |
+| Paper | Journal/conference | Date | Overview |
 | --- | --- | --- | --- |
 | [AmesNet](en/papers/admet/amesnet-2026.md) | Chemical Research in Toxicology | 2026-06-29 | Combines molecular structure, bacterial strain and metabolic-activation conditions to improve Ames mutagenicity detection in unfamiliar chemical space. |
 | [DCPM-ADMET](en/papers/admet/dcpm-admet-2026.md) | Journal of Cheminformatics | 2026-06-20 | Combines representations from two pretrained models with chemical fingerprints to predict 97 ADMET properties. |
@@ -70,7 +70,7 @@ Papers below are ordered by publication date, newest first. Each entry explains 
 
 Date: **2026-09-09** · 🟠 **Preprint** · Category: Preprints.
 
-**In one sentence:** Uses a research agent to explore features and models for ADMET tasks, evaluating prediction and research efficiency through a fixed testing workflow.
+**Overview:** Uses a research agent to explore features and models for ADMET tasks, evaluating prediction and research efficiency through a fixed testing workflow.
 
 | Field | Details |
 | --- | --- |
@@ -88,7 +88,7 @@ Date: **2026-09-09** · 🟠 **Preprint** · Category: Preprints.
 
 Date: **2026-08-25** · 🟠 **Preprint** · Category: Preprints.
 
-**In one sentence:** Fuses sequences, molecular graphs, 3D structures and chemical priors, selecting prediction models or ensembles for each ADMET task.
+**Overview:** Fuses sequences, molecular graphs, 3D structures and chemical priors, selecting prediction models or ensembles for each ADMET task.
 
 | Field | Details |
 | --- | --- |
@@ -106,7 +106,7 @@ Date: **2026-08-25** · 🟠 **Preprint** · Category: Preprints.
 
 Date: **2026-06-29** · Published · Category: Core papers.
 
-**In one sentence:** Combines molecular structure, bacterial strain and metabolic-activation conditions to improve Ames mutagenicity detection in unfamiliar chemical space.
+**Overview:** Combines molecular structure, bacterial strain and metabolic-activation conditions to improve Ames mutagenicity detection in unfamiliar chemical space.
 
 | Field | Details |
 | --- | --- |
@@ -124,7 +124,7 @@ Date: **2026-06-29** · Published · Category: Core papers.
 
 Date: **2026-06-20** · Published · Category: Core papers.
 
-**In one sentence:** Combines representations from two pretrained models with chemical fingerprints to predict 97 ADMET properties.
+**Overview:** Combines representations from two pretrained models with chemical fingerprints to predict 97 ADMET properties.
 
 | Field | Details |
 | --- | --- |
@@ -142,7 +142,7 @@ Date: **2026-06-20** · Published · Category: Core papers.
 
 Date: **2026-05-25** · Published · Category: Perspectives.
 
-**In one sentence:** Proposes combining open experimental data, protein structures, active learning and blind challenges to improve mechanistic ADMET prediction.
+**Overview:** Proposes combining open experimental data, protein structures, active learning and blind challenges to improve mechanistic ADMET prediction.
 
 | Field | Details |
 | --- | --- |
@@ -160,7 +160,7 @@ Date: **2026-05-25** · Published · Category: Perspectives.
 
 Date: **2026-05-18** · Published · Category: Core papers.
 
-**In one sentence:** Compares model families under limited data, unfamiliar molecular structures and class imbalance to assess ADMET prediction in practical research settings.
+**Overview:** Compares model families under limited data, unfamiliar molecular structures and class imbalance to assess ADMET prediction in practical research settings.
 
 | Field | Details |
 | --- | --- |
@@ -178,7 +178,7 @@ Date: **2026-05-18** · Published · Category: Core papers.
 
 Date: **2026-02-28** · 🟠 **Preprint** · Category: Preprints.
 
-**In one sentence:** Checks whether leading TDC models run, contain data leakage and reproduce their reported ADMET results.
+**Overview:** Checks whether leading TDC models run, contain data leakage and reproduce their reported ADMET results.
 
 | Field | Details |
 | --- | --- |
@@ -196,7 +196,7 @@ Date: **2026-02-28** · 🟠 **Preprint** · Category: Preprints.
 
 Date: **2026-02-14** · Published · Category: Further reading.
 
-**In one sentence:** Exchanges information across atoms, substructures and whole molecules in a hierarchical graph network for property and selected ADMET predictions.
+**Overview:** Exchanges information across atoms, substructures and whole molecules in a hierarchical graph network for property and selected ADMET predictions.
 
 | Field | Details |
 | --- | --- |
@@ -216,7 +216,7 @@ Date: **2026-02-14** · Published · Category: Further reading.
 
 Date: **2025-12-22** · Published · Category: Core papers.
 
-**In one sentence:** Combines molecular fingerprints, physicochemical descriptors and automated machine learning to predict permeability through the Caco-2 intestinal cell model.
+**Overview:** Combines molecular fingerprints, physicochemical descriptors and automated machine learning to predict permeability through the Caco-2 intestinal cell model.
 
 | Field | Details |
 | --- | --- |
@@ -234,7 +234,7 @@ Date: **2025-12-22** · Published · Category: Core papers.
 
 Date: **2025-09-26** · Published · Category: Core papers.
 
-**In one sentence:** Predicts animal pharmacokinetic parameters, then combines them with molecular features to estimate human intravenous clearance, distribution volume and half-life.
+**Overview:** Predicts animal pharmacokinetic parameters, then combines them with molecular features to estimate human intravenous clearance, distribution volume and half-life.
 
 | Field | Details |
 | --- | --- |
@@ -252,7 +252,7 @@ Date: **2025-09-26** · Published · Category: Core papers.
 
 Date: **2025-08** · Published · Category: Core papers.
 
-**In one sentence:** Fuses SMILES, fingerprints and molecular graphs to separately predict P-gp inhibition and transport-substrate status.
+**Overview:** Fuses SMILES, fingerprints and molecular graphs to separately predict P-gp inhibition and transport-substrate status.
 
 | Field | Details |
 | --- | --- |
@@ -270,7 +270,7 @@ Date: **2025-08** · Published · Category: Core papers.
 
 Date: **2025-07-24** · Published · Category: Core papers.
 
-**In one sentence:** Combines docking and ensemble models to identify compounds likely to block the cardiac hERG ion channel in large candidate collections.
+**Overview:** Combines docking and ensemble models to identify compounds likely to block the cardiac hERG ion channel in large candidate collections.
 
 | Field | Details |
 | --- | --- |
@@ -288,7 +288,7 @@ Date: **2025-07-24** · Published · Category: Core papers.
 
 Date: **2025-01-06** · Published · Category: Further reading.
 
-**In one sentence:** Learns molecular, scaffold and local-context representations, then combines them by task for property and bioactivity prediction.
+**Overview:** Learns molecular, scaffold and local-context representations, then combines them by task for property and bioactivity prediction.
 
 | Field | Details |
 | --- | --- |
@@ -308,7 +308,7 @@ Date: **2025-01-06** · Published · Category: Further reading.
 
 Date: **2024-11-12** · Published · Category: Core papers.
 
-**In one sentence:** Pretrains on a large collection of molecular graphs, adds supervised biological-task training, and fine-tunes for ADMET prediction.
+**Overview:** Pretrains on a large collection of molecular graphs, adds supervised biological-task training, and fine-tunes for ADMET prediction.
 
 | Field | Details |
 | --- | --- |
@@ -326,7 +326,7 @@ Date: **2024-11-12** · Published · Category: Core papers.
 
 Date: **2024-09-10** · Published · Category: Data and benchmarks.
 
-**In one sentence:** Uses language models to extract assay conditions, then cleans and harmonizes ADMET records to build better-specified benchmarks.
+**Overview:** Uses language models to extract assay conditions, then cleans and harmonizes ADMET records to build better-specified benchmarks.
 
 | Field | Details |
 | --- | --- |
@@ -344,7 +344,7 @@ Date: **2024-09-10** · Published · Category: Data and benchmarks.
 
 Date: **2024-07-09** · Published · Category: Further reading.
 
-**In one sentence:** Predicts blood–brain barrier permeability with a molecular language model and XGBoost, then tests selected compounds in human-derived 3D BBB spheroids.
+**Overview:** Predicts blood–brain barrier permeability with a molecular language model and XGBoost, then tests selected compounds in human-derived 3D BBB spheroids.
 
 | Field | Details |
 | --- | --- |
@@ -362,7 +362,7 @@ Date: **2024-07-09** · Published · Category: Further reading.
 
 Date: **2024-06-24** · Published · Category: Core papers.
 
-**In one sentence:** Packages graph neural networks into web and local tools that predict multiple ADMET properties for large compound libraries.
+**Overview:** Packages graph neural networks into web and local tools that predict multiple ADMET properties for large compound libraries.
 
 | Field | Details |
 | --- | --- |
@@ -380,7 +380,7 @@ Date: **2024-06-24** · Published · Category: Core papers.
 
 Date: **2024-04-22** · Published · Category: Further reading.
 
-**In one sentence:** Integrates ADMET data search, property prediction and structural optimization suggestions to help identify suitable candidates.
+**Overview:** Integrates ADMET data search, property prediction and structural optimization suggestions to help identify suitable candidates.
 
 | Field | Details |
 | --- | --- |
@@ -398,7 +398,7 @@ Date: **2024-04-22** · Published · Category: Further reading.
 
 Date: **2024-04-04** · Published · Category: Further reading.
 
-**In one sentence:** Provides online ADMET and physicochemical predictions with uncertainty estimates, an API and decision-support tools.
+**Overview:** Provides online ADMET and physicochemical predictions with uncertainty estimates, an API and decision-support tools.
 
 | Field | Details |
 | --- | --- |
@@ -418,7 +418,7 @@ Date: **2024-04-04** · Published · Category: Further reading.
 
 Date: **2023-11-21** · Published · Category: Core papers.
 
-**In one sentence:** Incorporates fingerprints and physicochemical descriptors into graph pretraining to learn representations for ADMET and other molecular properties.
+**Overview:** Incorporates fingerprints and physicochemical descriptors into graph pretraining to learn representations for ADMET and other molecular properties.
 
 | Field | Details |
 | --- | --- |
@@ -436,7 +436,7 @@ Date: **2023-11-21** · Published · Category: Core papers.
 
 Date: **2023-11** · Published · Category: Core papers.
 
-**In one sentence:** Selects useful auxiliary tasks for each ADMET endpoint to reduce interference during multitask training.
+**Overview:** Selects useful auxiliary tasks for each ADMET endpoint to reduce interference during multitask training.
 
 | Field | Details |
 | --- | --- |
@@ -454,7 +454,7 @@ Date: **2023-11** · Published · Category: Core papers.
 
 Date: **2023-09-29** · 🟠 **Preprint** · Category: Preprints.
 
-**In one sentence:** Combines molecular fingerprints and descriptors in CatBoost models to assess the strength of conventional features for ADMET prediction.
+**Overview:** Combines molecular fingerprints and descriptors in CatBoost models to assess the strength of conventional features for ADMET prediction.
 
 | Field | Details |
 | --- | --- |
@@ -472,7 +472,7 @@ Date: **2023-09-29** · 🟠 **Preprint** · Category: Preprints.
 
 Date: **2023-04-26** · Published · Category: Reviews.
 
-**In one sentence:** Surveys machine-learning and deep-learning approaches by toxicity task and collects public datasets and prediction tools for model development.
+**Overview:** Surveys machine-learning and deep-learning approaches by toxicity task and collects public datasets and prediction tools for model development.
 
 | Field | Details |
 | --- | --- |
@@ -490,7 +490,7 @@ Date: **2023-04-26** · Published · Category: Reviews.
 
 Date: **2023-04-24** · 🟠 **Preprint** · Category: Preprints.
 
-**In one sentence:** Automatically combines fingerprints, descriptors and pretrained 1D, 2D and 3D molecular representations with tuning and stacked ensembles for ADMET prediction.
+**Overview:** Automatically combines fingerprints, descriptors and pretrained 1D, 2D and 3D molecular representations with tuning and stacked ensembles for ADMET prediction.
 
 | Field | Details |
 | --- | --- |
@@ -508,7 +508,7 @@ Date: **2023-04-24** · 🟠 **Preprint** · Category: Preprints.
 
 Date: **2023** · Workshop · Category: Further reading.
 
-**In one sentence:** Builds chemically meaningful molecular fragments so graph models can predict ADMET properties and identify fragments contributing to each prediction.
+**Overview:** Builds chemically meaningful molecular fragments so graph models can predict ADMET properties and identify fragments contributing to each prediction.
 
 | Field | Details |
 | --- | --- |
@@ -528,7 +528,7 @@ Date: **2023** · Workshop · Category: Further reading.
 
 Date: **2022-12-01** · Published · Category: Data and benchmarks.
 
-**In one sentence:** Evaluates structurally similar molecules with large activity differences to expose model weaknesses hidden by average prediction errors.
+**Overview:** Evaluates structurally similar molecules with large activity differences to expose model weaknesses hidden by average prediction errors.
 
 | Field | Details |
 | --- | --- |
@@ -546,7 +546,7 @@ Date: **2022-12-01** · Published · Category: Data and benchmarks.
 
 Date: **2022-09-06** · Published · Category: Further reading.
 
-**In one sentence:** Learns Ames outcomes for five bacterial strains jointly, retaining strain-specific information alongside the overall mutagenicity label.
+**Overview:** Learns Ames outcomes for five bacterial strains jointly, retaining strain-specific information alongside the overall mutagenicity label.
 
 | Field | Details |
 | --- | --- |
@@ -566,7 +566,7 @@ Date: **2022-09-06** · Published · Category: Further reading.
 
 Date: **2021-11-27** · Published · Category: Further reading.
 
-**In one sentence:** Trains a graph neural network on labeled and unlabeled molecules to improve Tox21 toxicity prediction through semi-supervised learning.
+**Overview:** Trains a graph neural network on labeled and unlabeled molecules to improve Tox21 toxicity prediction through semi-supervised learning.
 
 | Field | Details |
 | --- | --- |
@@ -584,7 +584,7 @@ Date: **2021-11-27** · Published · Category: Further reading.
 
 Date: **2021-08-16** · Published · Category: Further reading.
 
-**In one sentence:** Combines neural-network predictions from different molecular representations to identify hERG blockers and tests them on three external datasets.
+**Overview:** Combines neural-network predictions from different molecular representations to identify hERG blockers and tests them on three external datasets.
 
 | Field | Details |
 | --- | --- |
@@ -602,7 +602,7 @@ Date: **2021-08-16** · Published · Category: Further reading.
 
 Date: **2021-05-27** · Published · Category: Further reading.
 
-**In one sentence:** Adds conformal prediction to toxicity models, returning one or multiple candidate labels at a chosen confidence level and assessing uncertainty and missed toxic compounds.
+**Overview:** Adds conformal prediction to toxicity models, returning one or multiple candidate labels at a chosen confidence level and assessing uncertainty and missed toxic compounds.
 
 | Field | Details |
 | --- | --- |
@@ -620,7 +620,7 @@ Date: **2021-05-27** · Published · Category: Further reading.
 
 Date: **2021** · Published · Category: Data and benchmarks.
 
-**In one sentence:** Organizes drug-discovery datasets and tasks into shared interfaces and benchmarks for consistent model comparison.
+**Overview:** Organizes drug-discovery datasets and tasks into shared interfaces and benchmarks for consistent model comparison.
 
 | Field | Details |
 | --- | --- |
@@ -640,7 +640,7 @@ Date: **2021** · Published · Category: Data and benchmarks.
 
 Date: **2020-11-03** · Published · Category: Data and benchmarks.
 
-**In one sentence:** Explains how the Tox21 library combines agency collections, high-throughput experiments and traceable chemical annotations to produce toxicity data.
+**Overview:** Explains how the Tox21 library combines agency collections, high-throughput experiments and traceable chemical annotations to produce toxicity data.
 
 | Field | Details |
 | --- | --- |
@@ -660,7 +660,7 @@ Date: **2020-11-03** · Published · Category: Data and benchmarks.
 
 Date: **2019-07-30** · Published · Category: Foundational methods.
 
-**In one sentence:** Learns molecular representations by passing messages along directed chemical bonds and evaluates property prediction on public and industrial data.
+**Overview:** Learns molecular representations by passing messages along directed chemical bonds and evaluates property prediction on public and industrial data.
 
 | Field | Details |
 | --- | --- |
@@ -678,7 +678,7 @@ Date: **2019-07-30** · Published · Category: Foundational methods.
 
 Date: **2019** · Published · Category: Foundational methods.
 
-**In one sentence:** Learns which atoms and neighborhoods to emphasize when aggregating molecular information for property prediction and structural attribution.
+**Overview:** Learns which atoms and neighborhoods to emphasize when aggregating molecular information for property prediction and structural attribution.
 
 | Field | Details |
 | --- | --- |
@@ -698,7 +698,7 @@ Date: **2019** · Published · Category: Foundational methods.
 
 Date: **2017-10-31** · Published · Category: Data and benchmarks.
 
-**In one sentence:** Brings molecular datasets, splits, metrics and algorithms into a shared benchmark for property prediction.
+**Overview:** Brings molecular datasets, splits, metrics and algorithms into a shared benchmark for property prediction.
 
 | Field | Details |
 | --- | --- |

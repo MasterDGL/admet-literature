@@ -8,7 +8,7 @@
 
 Prioritize ADMET and pharmacokinetic studies with clear research questions, substantial methodological or data contributions, and traceable experimental information. Classic methods explain technical development, recent studies introduce new questions and advances, and benchmarks and platforms provide practical entry points.
 
-Each entry includes a one-sentence summary, publication information, research problem, datasets, method and findings, with experimental settings, analysis, paper and code links. Selection also considers how a paper complements existing topics.
+Each entry includes a brief overview, publication information, research problem, datasets, method and findings, with experimental settings, analysis, paper and code links. Selection also considers how a paper complements existing topics.
 
 ## Publication information
 

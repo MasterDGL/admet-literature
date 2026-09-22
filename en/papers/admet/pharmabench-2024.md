@@ -6,7 +6,7 @@
 
 [ADMET and pharmacokinetics index](../../topics/admet.md) · [Home](../../../README.md)
 
-**In one sentence:** Uses language models to extract assay conditions, then cleans and harmonizes ADMET records to build better-specified benchmarks.
+**Overview:** Uses language models to extract assay conditions, then cleans and harmonizes ADMET records to build better-specified benchmarks.
 
 Category: Data and benchmarks. Topics: Data curation, Assay conditions.
 

@@ -6,7 +6,7 @@
 
 [Methods and benchmarks index](../../topics/foundations.md) · [Home](../../../README.md)
 
-**In one sentence:** Evaluates structurally similar molecules with large activity differences to expose model weaknesses hidden by average prediction errors.
+**Overview:** Evaluates structurally similar molecules with large activity differences to expose model weaknesses hidden by average prediction errors.
 
 Category: Data and benchmarks. Topics: Activity cliffs, Bioactivity, Evaluation.
 

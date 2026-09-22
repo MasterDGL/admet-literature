@@ -6,7 +6,7 @@
 
 [ADMET and pharmacokinetics index](../../topics/admet.md) · [Home](../../../README.md)
 
-**In one sentence:** Combines representations from two pretrained models with chemical fingerprints to predict 97 ADMET properties.
+**Overview:** Combines representations from two pretrained models with chemical fingerprints to predict 97 ADMET properties.
 
 Category: Core papers. Topics: ADMET, Pretraining, Representation fusion.
 

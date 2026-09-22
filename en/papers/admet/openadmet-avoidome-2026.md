@@ -6,7 +6,7 @@
 
 [ADMET and pharmacokinetics index](../../topics/admet.md) · [Home](../../../README.md)
 
-**In one sentence:** Proposes combining open experimental data, protein structures, active learning and blind challenges to improve mechanistic ADMET prediction.
+**Overview:** Proposes combining open experimental data, protein structures, active learning and blind challenges to improve mechanistic ADMET prediction.
 
 Category: Perspectives. Topics: Mechanisms, Open data, Perspective.
 

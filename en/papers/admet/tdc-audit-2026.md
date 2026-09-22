@@ -6,7 +6,7 @@
 
 [ADMET and pharmacokinetics index](../../topics/admet.md) · [Home](../../../README.md)
 
-**In one sentence:** Checks whether leading TDC models run, contain data leakage and reproduce their reported ADMET results.
+**Overview:** Checks whether leading TDC models run, contain data leakage and reproduce their reported ADMET results.
 
 Category: Preprints. Topics: Reproducibility, Data leakage, Model audit.
 

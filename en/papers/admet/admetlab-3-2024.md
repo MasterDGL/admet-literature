@@ -6,7 +6,7 @@
 
 [ADMET and pharmacokinetics index](../../topics/admet.md) · [Home](../../../README.md)
 
-**In one sentence:** Provides online ADMET and physicochemical predictions with uncertainty estimates, an API and decision-support tools.
+**Overview:** Provides online ADMET and physicochemical predictions with uncertainty estimates, an API and decision-support tools.
 
 Category: Further reading. Topics: ADMET, Platform, Uncertainty.
 

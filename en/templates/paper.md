@@ -6,7 +6,7 @@
 
 Full title:
 
-One-sentence summary (what the study investigates and how):
+Overview (what the study investigates and how):
 
 | Field | Details |
 | --- | --- |

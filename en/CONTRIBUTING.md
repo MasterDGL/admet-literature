@@ -16,7 +16,7 @@ Identify the publication status and distinguish methods, reviews, perspectives a
 
 Edit shared metadata and Chinese notes in `data/papers.json`; edit the corresponding English entry in `data/papers.en.json`, keyed by the same paper ID. Titles, dates, DOI, URLs and source-review dates are shared. English fields translate the scientific notes, citation text, tags, code status and source labels.
 
-Write `one_liner` as a direct explanation of what the study investigates and how it does so. Both READMEs display this sentence and the five core fields. Describe results through specific tasks, metrics and baselines.
+Write `one_liner` as a brief overview in one or two sentences explaining what the study investigates and how it does so. Both READMEs display it under the overview label alongside the five core fields. Describe results through specific tasks, metrics and baselines.
 
 After reviewing the English entry against its source, obtain the source fingerprint:
 

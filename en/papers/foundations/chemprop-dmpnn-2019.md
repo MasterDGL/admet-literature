@@ -6,7 +6,7 @@
 
 [Methods and benchmarks index](../../topics/foundations.md) · [Home](../../../README.md)
 
-**In one sentence:** Learns molecular representations by passing messages along directed chemical bonds and evaluates property prediction on public and industrial data.
+**Overview:** Learns molecular representations by passing messages along directed chemical bonds and evaluates property prediction on public and industrial data.
 
 Category: Foundational methods. Topics: Molecular graphs, D-MPNN, Industrial data.
 

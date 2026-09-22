@@ -94,7 +94,7 @@ def card(p):
 
 [返回{TOPICS[p['topic']]}总表](../../topics/{p['topic']}.md) · [返回首页](../../README.md)
 
-**一句话概括：** {p['one_liner']}
+**内容概述：** {p['one_liner']}
 
 分类：{p['group']}。主题：{'、'.join(p['tags'])}。
 
@@ -127,7 +127,7 @@ def build(papers):
         ['ADMET 与药代动力学', f'{topic_count["admet"]} 篇', '[论文总表](topics/admet.md)'],
         ['基础方法与基准', f'{topic_count["foundations"]} 篇；分子表示、数据与评测', '[基础阅读](topics/foundations.md)'],
         ['其他 AIDD 方向', '扩展计划，尚未纳入独立专题', '[研究范围](docs/scope.md)']])
-    core = table(['论文', '期刊/会议', '发表时间', '一句话概括'], [
+    core = table(['论文', '期刊/会议', '发表时间', '内容概述'], [
         [f'[{p["name"]}]({note_path(p)})', p['publication']['venue'], p['publication']['date'], p['one_liner']]
         for p in papers if p['group'] == '核心论文'])
     overview = []
@@ -144,7 +144,7 @@ def build(papers):
                   ['方法', p['method']], ['结论', p['conclusion']]]
         overview.append(f'#### {p["name"]}\n\n**{p["title"]}**\n\n'
                         f'发表时间：**{p["publication"]["date"]}** · {build_en.publication_label(p, en=False)} · 分类：{p["group"]}。\n\n'
-                        f'**一句话概括：** {p["one_liner"]}\n\n'
+                        f'**内容概述：** {p["one_liner"]}\n\n'
                         + table(['字段', '内容'], fields) + '\n\n' + links)
     year_nav = ' · '.join(f'[{year}](#{year})' for year in dict.fromkeys(p['publication']['year'] for p in papers))
     readme_papers = '\n\n'.join(overview)
@@ -152,7 +152,7 @@ def build(papers):
 
 ADMET literature notes, with supporting methods and benchmarks for AI-aided drug discovery.
 
-梳理 **ADMET 与药代动力学预测** 的研究进展，整理代表论文、数据集与代码资源。每篇用一句话介绍研究内容，再展开 **发表期刊/会议与时间、主要痛点、数据集、方法和结论**。分子表示与基准文献提供相关基础知识。
+梳理 **ADMET 与药代动力学预测** 的研究进展，整理代表论文、数据集与代码资源。每篇先简要介绍研究内容，再展开 **发表期刊/会议与时间、主要痛点、数据集、方法和结论**。分子表示与基准文献提供相关基础知识。
 
 目前收录 **{len(papers)} 篇**：**{topic_count['admet']} 篇 ADMET 与药代动力学**、**{topic_count['foundations']} 篇基础方法与基准**，其中 {count['核心论文']} 篇列为核心精读。正式研究与数据论文 {formal_research} 篇、综述 {count['综述']} 篇、观点文章 {count['观点文章']} 篇、预印本 {count['预印本']} 篇。最近一批资料核对日期：**{latest}**；各篇记录具体来源和核对日期。
 
@@ -170,7 +170,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 - [基础方法与基准](topics/foundations.md)：Chemprop、AttentiveFP、MoleculeNet、MoleculeACE。
 - [知识地图说明](docs/knowledge-map.md)：从研究问题找到方法、任务和阅读入口。
 - [优先精读](#优先精读)：先建立研究问题、数据和方法的认识。
-- [论文梳理](#论文梳理)：直接在本页查看全部 {len(papers)} 篇的一句话概括、发表信息、痛点、数据集、方法和结论。
+- [论文梳理](#论文梳理)：直接在本页查看全部 {len(papers)} 篇的内容概述、发表信息、痛点、数据集、方法和结论。
 - [选文与整理方法](docs/curation.md)：选文标准、实验比较和资料来源。
 - [AIDD 研究范围](docs/scope.md)：当前覆盖与后续专题。
 - [讨论区](https://github.com/MasterDGL/admet-literature/discussions)：提问与推荐论文。
@@ -244,12 +244,12 @@ python scripts/build.py --check
 
 {intro}
 
-本专题共 **{topic_count[topic]} 篇**，按发表日期从新到旧排列。点击论文名查看一句话概括、实验设置、结果分析和资料来源。
+本专题共 **{topic_count[topic]} 篇**，按发表日期从新到旧排列。点击论文名查看内容概述、实验设置、结果分析和资料来源。
 
 ''' + listing + '\n'
     buf = io.StringIO(newline='')
     writer = csv.writer(buf, lineterminator='\n')
-    writer.writerow(['ID','论文简称','完整题名','一句话概括','专题','分类','主题','期刊或会议','发表时间','日期口径','发表状态','主要痛点','数据集','方法','结论','评测设置','限制','原文URL','代码URL','代码状态','核验日期','核对范围'])
+    writer.writerow(['ID','论文简称','完整题名','内容概述','专题','分类','主题','期刊或会议','发表时间','日期口径','发表状态','主要痛点','数据集','方法','结论','评测设置','限制','原文URL','代码URL','代码状态','核验日期','核对范围'])
     for p in papers:
         pub = p['publication']
         writer.writerow([p['id'],p['name'],p['title'],p['one_liner'],TOPICS[p['topic']],p['group'],'; '.join(p['tags']),pub['venue'],pub['date'],pub['date_basis'],pub['status'],p['pain_point'],p['datasets'],p['method'],p['conclusion'],p['evaluation'],p['limitations'],p['paper_url'],p.get('code_url') or '',p['code_status'],p['verified_on'],p['verification_scope']])

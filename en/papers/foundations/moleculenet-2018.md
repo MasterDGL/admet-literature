@@ -6,7 +6,7 @@
 
 [Methods and benchmarks index](../../topics/foundations.md) · [Home](../../../README.md)
 
-**In one sentence:** Brings molecular datasets, splits, metrics and algorithms into a shared benchmark for property prediction.
+**Overview:** Brings molecular datasets, splits, metrics and algorithms into a shared benchmark for property prediction.
 
 Category: Data and benchmarks. Topics: Datasets, Benchmarks, Evaluation.
 

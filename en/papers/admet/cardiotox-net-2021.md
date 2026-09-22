@@ -6,7 +6,7 @@
 
 [ADMET and pharmacokinetics index](../../topics/admet.md) · [Home](../../../README.md)
 
-**In one sentence:** Combines neural-network predictions from different molecular representations to identify hERG blockers and tests them on three external datasets.
+**Overview:** Combines neural-network predictions from different molecular representations to identify hERG blockers and tests them on three external datasets.
 
 Category: Further reading. Topics: hERG, Ensembles, External validation.
 

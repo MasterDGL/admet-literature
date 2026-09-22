@@ -6,7 +6,7 @@
 
 [ADMET and pharmacokinetics index](../../topics/admet.md) · [Home](../../../README.md)
 
-**In one sentence:** Integrates ADMET data search, property prediction and structural optimization suggestions to help identify suitable candidates.
+**Overview:** Integrates ADMET data search, property prediction and structural optimization suggestions to help identify suitable candidates.
 
 Category: Further reading. Topics: ADMET, Platform, Structural optimization.
 

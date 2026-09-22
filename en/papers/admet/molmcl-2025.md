@@ -6,7 +6,7 @@
 
 [ADMET and pharmacokinetics index](../../topics/admet.md) · [Home](../../../README.md)
 
-**In one sentence:** Learns molecular, scaffold and local-context representations, then combines them by task for property and bioactivity prediction.
+**Overview:** Learns molecular, scaffold and local-context representations, then combines them by task for property and bioactivity prediction.
 
 Category: Further reading. Topics: Multichannel pretraining, Activity cliffs.
 

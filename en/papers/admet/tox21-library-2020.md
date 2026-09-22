@@ -6,7 +6,7 @@
 
 [ADMET and pharmacokinetics index](../../topics/admet.md) · [Home](../../../README.md)
 
-**In one sentence:** Explains how the Tox21 library combines agency collections, high-throughput experiments and traceable chemical annotations to produce toxicity data.
+**Overview:** Explains how the Tox21 library combines agency collections, high-throughput experiments and traceable chemical annotations to produce toxicity data.
 
 Category: Data and benchmarks. Topics: Toxicity, Data resources.
 

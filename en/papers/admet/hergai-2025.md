@@ -6,7 +6,7 @@
 
 [ADMET and pharmacokinetics index](../../topics/admet.md) · [Home](../../../README.md)
 
-**In one sentence:** Combines docking and ensemble models to identify compounds likely to block the cardiac hERG ion channel in large candidate collections.
+**Overview:** Combines docking and ensemble models to identify compounds likely to block the cardiac hERG ion channel in large candidate collections.
 
 Category: Core papers. Topics: hERG, Docking, Class imbalance.
 
