@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1500" height="950" viewBox="0 0 1500 950" role="img" aria-labelledby="title desc">
   <title id="title">AIDD 研究方向知识层级</title>
-  <desc id="desc">从基础到应用：数据与研究问题、分子与蛋白表示、预测任务、设计与优化、实验验证与迭代。当前仓库重点是 ADMET 和基础方法与基准；其他方向待扩展。实验结果反馈到数据，评测贯穿各层。层级不代表重要性排名。</desc>
+  <desc id="desc">从基础到应用：数据与研究问题、分子与蛋白表示、预测任务、设计与优化、实验验证与迭代。当前仓库重点是 ADMET 和基础方法与基准；其他方向待扩展。实验结果反馈到数据，评测贯穿各层。</desc>
   <defs>
     <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#8192aa"/></marker>
   </defs>
@@ -56,6 +56,6 @@
 
     <rect x="57" y="816" width="943" height="45" rx="22" fill="#e9f0f7"/>
     <text x="528" y="845" text-anchor="middle" font-size="20" fill="#334f6d">贯穿各层：数据质量 · 不确定性 · 泛化评测 · 可复现性</text>
-    <text x="60" y="903" font-size="18" fill="#52657c">本图是仓库的阅读导航，不是唯一分类；层级与面积不代表研究价值或论文质量。</text>
+    <text x="60" y="903" font-size="18" fill="#52657c">阅读顺序：理解数据与表示 → 研究预测方法 → 连接分子设计与实验验证。</text>
   </g>
 </svg>

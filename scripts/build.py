@@ -78,7 +78,8 @@ def card(p):
               ['主要痛点', p['pain_point']], ['数据集', p['datasets']],
               ['方法', p['method']], ['结论', p['conclusion']]]
     sources = '\n'.join(f'- [{s["label"]}]({s["url"]})' for s in p['sources'])
-    code = f'[代码或项目入口]({p["code_url"]})' if p.get('code_url') else p['code_status']
+    code = (f'[代码与项目]({p["code_url"]})\n\n{p["code_status"]}。'
+            if p.get('code_url') else p['code_status'] + '。')
     doi = f'\nDOI：`{p["doi"]}`\n' if p.get('doi') else ''
     return f'''# {p['name']}
 
@@ -92,19 +93,17 @@ def card(p):
 
 {table(['字段', '内容'], fields)}
 {doi}
-## 评测与结论适用范围
+## 实验设置与结果分析
 
 {p['evaluation']}
 
 {p['limitations']}
 
-## 代码与证据
+## 代码与参考资料
 
 {code}
 
-代码状态：{p['code_status']}。复现状态：本仓库未独立复现实验。
-
-内容核验日期：**{p['verified_on']}**。核对范围：{p['verification_scope']}。
+资料核对：**{p['verified_on']}**。{p['verification_scope']}。
 
 {sources}
 '''
@@ -129,7 +128,7 @@ def build(papers):
         for p in papers:
             if p['group'] != group:
                 continue
-            links = f'[论文原文]({p["paper_url"]}) · [评测细节与局限]({note_path(p)})'
+            links = f'[论文原文]({p["paper_url"]}) · [详细解读]({note_path(p)})'
             if p.get('code_url'):
                 links += f' · [代码/项目]({p["code_url"]})'
             fields = [['发表期刊/会议与时间', p['publication']['citation']],
@@ -143,15 +142,15 @@ def build(papers):
 
 ADMET literature notes, with supporting methods and benchmarks for AI-aided drug discovery.
 
-围绕 **ADMET 与药代动力学预测** 整理论文，并补充分子表示、数据和评测等 AIDD 基础文献。每篇记录 **一句话概括、发表期刊/会议与时间、主要痛点、数据集、方法、结论**，并提供评测条件、原文与代码链接。
+梳理 **ADMET 与药代动力学预测** 的研究进展，整理代表论文、数据集与代码资源。每篇用一句话介绍研究内容，再展开 **发表期刊/会议与时间、主要痛点、数据集、方法和结论**。分子表示与基准文献提供相关基础知识。
 
-目前收录 **{len(papers)} 篇**：**{topic_count['admet']} 篇 ADMET 与药代动力学**、**{topic_count['foundations']} 篇基础方法与基准**。按发表类型分为 {formal_research} 篇正式研究/数据基准论文、{count['观点文章']} 篇正式观点文章和 {count['预印本']} 篇预印本；其中 {count['核心论文']} 篇列为核心精读。最近一批内容核验日期为 **{latest}**；具体核验范围和日期见各条目，不表示全部旧条目已重新审计。
+目前收录 **{len(papers)} 篇**：**{topic_count['admet']} 篇 ADMET 与药代动力学**、**{topic_count['foundations']} 篇基础方法与基准**，其中 {count['核心论文']} 篇列为核心精读。正式研究与数据论文 {formal_research} 篇、观点文章 {count['观点文章']} 篇、预印本 {count['预印本']} 篇。最近一批资料核对日期：**{latest}**；各篇记录具体来源和核对日期。
 
 ## AIDD 知识地图
 
 ![AIDD 五层知识地图：自下而上为数据与研究问题、分子与蛋白表示、预测任务、设计与优化、实验验证与迭代；ADMET 是当前重点，实验结果反馈到数据。](assets/aidd-knowledge-pyramid.svg)
 
-这是一张用于阅读导航的知识层级图：越往上，越接近设计和实验决策；层级与面积不表示研究价值或论文质量。ADMET 与结合、活性预测同属预测层，并参与多参数优化。实际研究会反复迭代，评测贯穿各层。[查看各层说明与论文入口](docs/knowledge-map.md)。
+从数据和分子表示出发，逐步了解性质预测、分子设计与实验验证。ADMET 是当前阅读主线，也是多参数优化的重要依据；实验结果再反馈到数据与模型。[查看各层说明与阅读路线](docs/knowledge-map.md)。
 
 ## 导航
 
@@ -160,7 +159,7 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 - [知识地图说明](docs/knowledge-map.md)：从研究问题找到方法、任务和阅读入口。
 - [优先精读](#优先精读)：先建立研究问题、数据和方法的认识。
 - [论文梳理](#论文梳理)：直接在本页查看全部 {len(papers)} 篇的一句话概括、发表信息、痛点、数据集、方法和结论。
-- [筛选与 SOTA 判定](docs/curation.md)：如何判断结论可比、证据充分。
+- [选文与整理方法](docs/curation.md)：选文标准、实验比较和资料来源。
 - [AIDD 研究范围](docs/scope.md)：当前覆盖与后续专题。
 - [贡献方式](CONTRIBUTING.md)：推荐论文、纠正信息或补充实验依据。
 - [结构化数据](data/papers.json) · [CSV 总表](data/papers.csv)。
@@ -173,17 +172,15 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 建议顺序：**真实场景评测 → 单端点与人体 PK → 表示学习与多任务方法 → 平台应用**。专题总表另列数据基准、观点文章和预印本，便于区分它们提供的证据。
 
-## 怎样理解这里的 SOTA
+## 阅读与比较
 
-领先结论必须对应 **任务、数据版本、数据划分、指标、比较对象和时间**。本仓库保留论文报告和公开榜单的适用范围，不将历史领先结果统一标为当前最优。所有条目均为文献整理，尚未由本仓库独立复现实验。
-
-每篇论文有独立解读页；代码入口、权重可用性与实验复现分别记录。正式发表的 Perspective 也会明确标注，避免当作新模型的性能证据。
+比较模型时，重点看 **预测任务、数据来源、训练/测试划分、指标和对照方法**。单篇解读会列出这些实验设置，说明结果及其对后续研究的启发。历史榜单成绩附查询日期，预印本与正式发表版本分别标注。
 
 ## 论文梳理
 
 [核心论文](#核心论文) · [专题补读](#专题补读) · [基础方法](#基础方法) · [数据与基准](#数据与基准) · [观点文章](#观点文章) · [预印本](#预印本)
 
-下列内容均在本页展开。结论保留原文的比较范围；更完整的评测设置和局限见各条目的解读页。
+下列条目介绍每篇论文的研究问题、方法与主要发现；实验设置、结果分析和参考资料见详细解读。
 
 {readme_papers}
 
@@ -196,11 +193,11 @@ python scripts/build.py
 python scripts/build.py --check
 ```
 
-第一条命令更新首页、专题总表、单篇解读及 CSV；第二条检查必填字段、重复记录、日期口径、URL 格式、内部链接和生成文件一致性。该检查不替代文献事实核验或外部链接在线检查。
+第一条命令更新首页、专题总表、单篇解读及 CSV；第二条检查必填字段、重复记录、日期格式、URL 格式、内部链接和生成文件一致性。
 
 ## 参考与致谢
 
-组织方式参考 [awesome-AIDD](https://github.com/daiyun02211/awesome-AIDD) 的主题导航、[Awesome-Deepfakes-Detection](https://github.com/Daisy-Zhang/Awesome-Deepfakes-Detection) 的论文与代码索引。关注 [OpenADMET](https://github.com/OpenADMET) 的开放数据与评测实践。本仓库是独立的文献整理项目。
+组织方式参考 [awesome-AIDD](https://github.com/daiyun02211/awesome-AIDD) 的主题导航、[Awesome-Deepfakes-Detection](https://github.com/Daisy-Zhang/Awesome-Deepfakes-Detection) 的论文与代码索引，以及 [OpenADMET](https://github.com/OpenADMET) 的开放数据与评测实践。
 
 原创整理内容和维护脚本采用 [MIT License](LICENSE)。所引用论文、数据与第三方代码遵循各自的许可；本仓库提供链接与原创摘要，不分发论文全文。
 '''
@@ -217,14 +214,14 @@ python scripts/build.py --check
             sections.append(f'## {group}\n\n' + table(['论文与解读', '期刊/会议与时间', '主要痛点', '数据集', '方法', '结论'], rows))
         intro = ('ADMET 指吸收、分布、代谢、排泄和毒性；相关理化性质与人体 PK 也在本专题范围内。'
                  if topic == 'admet' else
-                 '这些文献提供分子表示、数据与评测基础，不作为当前 ADMET SOTA 排名。MoleculeACE 主要研究生物活性悬崖。')
+                 '这些文献介绍分子表示、公共数据与评测方法，为阅读 ADMET 研究提供基础。MoleculeACE 专门讨论生物活性悬崖。')
         artifacts[f'topics/{topic}.md'] = f'''# {title}
 
 [返回首页](../README.md) · [知识地图](../docs/knowledge-map.md) · [筛选规则](../docs/curation.md) · [下载 CSV](../data/papers.csv)
 
 {intro}
 
-本专题共 **{topic_count[topic]} 篇**。组内按记录的发表日期倒序；内容核验日期与范围见各篇。点击论文名查看一句话概括、评测设置和限制。
+本专题共 **{topic_count[topic]} 篇**，组内按发表日期倒序排列。点击论文名查看一句话概括、实验设置、结果分析和资料来源。
 
 ''' + '\n\n'.join(sections) + '\n'
     buf = io.StringIO(newline='')

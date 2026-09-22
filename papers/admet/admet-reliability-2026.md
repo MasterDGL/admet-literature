@@ -20,19 +20,19 @@
 
 DOI：`10.1186/s13321-026-01217-2`
 
-## 评测与结论适用范围
+## 实验设置与结果分析
 
-比较随机、骨架和 Perimeter 划分；不同挑战使用不同子集，不是 TDC 22 任务统一榜单。
+比较随机、骨架和 Perimeter 划分，按小样本、类别不均衡和分布外预测等场景组织实验。
 
-重点看 Table 1、Results 各场景及 Methods；论文报告环肽 CycPept-PAMPA 上 KPGT 的 R² 为 0.627。该结果针对其数据与划分；不代表任何基础模型在所有端点上都优于其他方法。
+Table 1 和各场景结果展示模型优势随数据条件变化；CycPept-PAMPA 环肽渗透性任务中，KPGT 的 R² 为 0.627。
 
-## 代码与证据
+## 代码与参考资料
 
-[代码或项目入口](https://github.com/DonghaiZHAO-ZJU/Benchmark-ADMET-2025)
+[代码与项目](https://github.com/DonghaiZHAO-ZJU/Benchmark-ADMET-2025)
 
-代码状态：存在作者代码/项目入口；未独立验证安装、权重及实验复现。复现状态：本仓库未独立复现实验。
+作者代码/项目入口已公开。
 
-内容核验日期：**2026-09-19**。核对范围：书目、正文关键部分及相关官方资源。
+资料核对：**2026-09-19**。书目、正文关键部分及相关官方资源。
 
 - [出版社全文](https://link.springer.com/article/10.1186/s13321-026-01217-2)
 - [作者代码](https://github.com/DonghaiZHAO-ZJU/Benchmark-ADMET-2025)
