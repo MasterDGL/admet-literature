@@ -1,8 +1,10 @@
 # MoleculeNet
 
+[English](../../en/papers/foundations/moleculenet-2018.md) | **简体中文**
+
 **MoleculeNet: a benchmark for molecular machine learning**
 
-[返回基础方法与基准总表](../../topics/foundations.md) · [返回首页](../../README.md)
+[返回基础方法与基准总表](../../topics/foundations.md) · [返回首页](../../README.zh-CN.md)
 
 **一句话概括：** 把分散的分子数据集、划分、指标与算法组织成基准，让性质预测方法有共同的比较起点。
 

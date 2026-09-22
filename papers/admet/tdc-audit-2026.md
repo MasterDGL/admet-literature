@@ -1,8 +1,10 @@
 # TDC模型审计
 
+[English](../../en/papers/admet/tdc-audit-2026.md) | **简体中文**
+
 **Critical Assessment of ML models for ADMET Prediction in TDC leaderboards**
 
-[返回ADMET 与药代动力学总表](../../topics/admet.md) · [返回首页](../../README.md)
+[返回ADMET 与药代动力学总表](../../topics/admet.md) · [返回首页](../../README.zh-CN.md)
 
 **一句话概括：** 检查 TDC 榜单领先模型能否运行、有无数据泄漏，以及报告的 ADMET 成绩能否复现。
 

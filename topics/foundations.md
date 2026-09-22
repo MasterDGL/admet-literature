@@ -1,6 +1,8 @@
 # 基础方法与基准
 
-[返回首页](../README.md) · [知识地图](../docs/knowledge-map.md) · [筛选规则](../docs/curation.md) · [下载 CSV](../data/papers.csv)
+[English](../en/topics/foundations.md) | **简体中文**
+
+[返回首页](../README.zh-CN.md) · [知识地图](../docs/knowledge-map.md) · [筛选规则](../docs/curation.md) · [下载 CSV](../data/papers.csv)
 
 这些文献介绍分子表示、公共数据与评测方法，为阅读 ADMET 研究提供基础。MoleculeACE 专门讨论生物活性悬崖。
 

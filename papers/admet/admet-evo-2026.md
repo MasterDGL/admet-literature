@@ -1,8 +1,10 @@
 # ADMET-EvO
 
+[English](../../en/papers/admet/admet-evo-2026.md) | **简体中文**
+
 **ADMET-EvO: a self-evolving scientific agent for sustained research across heterogeneous tasks**
 
-[返回ADMET 与药代动力学总表](../../topics/admet.md) · [返回首页](../../README.md)
+[返回ADMET 与药代动力学总表](../../topics/admet.md) · [返回首页](../../README.zh-CN.md)
 
 **一句话概括：** 让研究智能体针对不同 ADMET 任务探索特征和模型，并通过固定测试流程评价预测效果与研究效率。
 

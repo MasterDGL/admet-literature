@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="950" viewBox="0 0 1500 950" role="img" aria-labelledby="title desc">
+  <title id="title">AIDD research map</title>
+  <desc id="desc">Five levels: data and research questions, molecular and protein representations, prediction, design, and experimental validation. Current focus: ADMET and foundational methods. Experiments feed back into data; evaluation spans all levels.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#8192aa" /></marker>
+  </defs>
+  <rect width="1500" height="950" rx="24" fill="#f7f9fc" />
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="58" y="67" font-size="34" font-weight="700" fill="#152b46">AIDD research map</text>
+    <text x="60" y="105" font-size="19" fill="#52657c">From data to experiments · Current reading focus: ADMET</text>
+    <text x="1100" y="145" font-size="20" font-weight="700" fill="#152b46">Reading entry points</text>
+
+    <path d="M520 140L340 266H700Z" fill="#45566f" />
+    <text x="520" y="233" text-anchor="middle" font-size="25" font-weight="700" fill="white">Validate &amp; iterate</text>
+    <path d="M348 283H692L782 391H258Z" fill="#617591" />
+    <text x="520" y="327" text-anchor="middle" font-size="27" font-weight="700" fill="white">Design &amp; optimization</text>
+    <text x="520" y="364" text-anchor="middle" font-size="20" fill="#ffffff">Generation · Optimization · Synthesis</text>
+
+    <path d="M266 408H774L864 516H176Z" fill="#087d82" />
+    <text x="520" y="450" text-anchor="middle" font-size="28" font-weight="700" fill="white">Prediction tasks</text>
+    <text x="520" y="487" text-anchor="middle" font-size="21" fill="white">ADMET / PK · Activity &amp; binding · Docking &amp; screening</text>
+
+    <path d="M184 533H856L946 641H94Z" fill="#d7e6f5" />
+    <text x="520" y="577" text-anchor="middle" font-size="25" font-weight="700" fill="#173d64">Molecular &amp; protein representations</text>
+    <text x="520" y="614" text-anchor="middle" font-size="22" fill="#244c73">Fingerprints · Graphs · SMILES · 3D · Protein sequences</text>
+
+    <path d="M102 658H938L1028 766H12Z" fill="#e4edf6" />
+    <text x="520" y="702" text-anchor="middle" font-size="27" font-weight="700" fill="#173d64">Data &amp; research questions</text>
+    <text x="520" y="739" text-anchor="middle" font-size="22" fill="#244c73">Endpoints · Data curation · Labels &amp; assays · Benchmarks &amp; splits</text>
+
+    <g fill="none" stroke="#c0cbda" stroke-width="2">
+      <path d="M720 233H1060" />
+      <path d="M800 340H1060" />
+      <path d="M878 465H1060" />
+      <path d="M960 588H1060" />
+      <path d="M1040 710H1060" />
+    </g>
+    <g font-size="21" fill="#243e5c">
+      <text x="1100" y="215" font-weight="700">Prospective validation</text>
+      <text x="1100" y="248" font-size="18" fill="#63758b">BBB in vitro case study available</text>
+      <text x="1100" y="274" font-size="18" fill="#63758b">Full experimental cycles: planned</text>
+      <text x="1100" y="327" font-weight="700">Generation &amp; optimization</text>
+      <text x="1100" y="359" font-size="18" fill="#63758b">Planned topic</text>
+      <text x="1100" y="433" font-weight="700" fill="#087d82">Current focus: ADMET &amp; PK</text>
+      <text x="1100" y="465" font-size="18">hERG · P-gp · BBB · AMES</text>
+      <text x="1100" y="493" font-size="18">Human PK · Multi-endpoint models</text>
+      <text x="1100" y="557" font-weight="700">Representation methods</text>
+      <text x="1100" y="589" font-size="18">Chemprop · AttentiveFP</text>
+      <text x="1100" y="617" font-size="18">Protein representations: planned</text>
+      <text x="1100" y="681" font-weight="700">Data &amp; evaluation foundations</text>
+      <text x="1100" y="713" font-size="18">MoleculeNet · TDC</text>
+      <text x="1100" y="741" font-size="18">MoleculeACE · PharmaBench</text>
+    </g>
+    <path d="M1442 202H1462V800H1030" fill="none" stroke="#8192aa" stroke-width="2" stroke-dasharray="6 6" marker-end="url(#arrow)" />
+    <text x="1290" y="826" text-anchor="middle" font-size="18" fill="#52657c">Experiments inform new data</text>
+
+    <rect x="57" y="816" width="943" height="45" rx="22" fill="#e9f0f7" />
+    <text x="528" y="845" text-anchor="middle" font-size="20" fill="#334f6d">Across all levels: data quality · uncertainty · generalization · reproducibility</text>
+    <text x="60" y="903" font-size="18" fill="#52657c">Reading route: data &amp; representations → prediction → molecular design &amp; experimental validation.</text>
+  </g>
+</svg>

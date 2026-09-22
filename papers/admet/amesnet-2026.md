@@ -1,8 +1,10 @@
 # AmesNet
 
+[English](../../en/papers/admet/amesnet-2026.md) | **简体中文**
+
 **AmesNet: A Task-Conditioned Deep Learning Model with Enhanced Sensitivity and Generalization in Ames Mutagenicity Prediction**
 
-[返回ADMET 与药代动力学总表](../../topics/admet.md) · [返回首页](../../README.md)
+[返回ADMET 与药代动力学总表](../../topics/admet.md) · [返回首页](../../README.zh-CN.md)
 
 **一句话概括：** 将分子结构、菌株与代谢活化条件一起输入模型，提高陌生化学结构的 Ames 致突变性识别能力。
 

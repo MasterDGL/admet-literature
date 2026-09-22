@@ -5,11 +5,13 @@ import argparse
 import csv
 import io
 import json
+import posixpath
 import re
 from collections import Counter
 from datetime import date
 from pathlib import Path
 from urllib.parse import urlparse
+import build_en
 
 ROOT = Path(__file__).resolve().parents[1]
 GROUPS = ['核心论文', '专题补读', '基础方法', '数据与基准', '观点文章', '预印本']
@@ -186,14 +188,14 @@ ADMET literature notes, with supporting methods and benchmarks for AI-aided drug
 
 ## 数据与维护
 
-`data/papers.json` 是论文条目的维护入口。使用 Python 3.10 或更新版本，无第三方依赖：
+`data/papers.json` 保存共享元数据与中文笔记，`data/papers.en.json` 按论文 ID 保存英文翻译。中英文页面一起生成，使用 Python 3.10 或更新版本，无第三方依赖：
 
 ```bash
 python scripts/build.py
 python scripts/build.py --check
 ```
 
-第一条命令更新首页、专题总表、单篇解读及 CSV；第二条检查必填字段、重复记录、日期格式、URL 格式、内部链接和生成文件一致性。
+第一条命令更新双语首页、专题总表、单篇解读及 CSV；第二条检查必填字段、重复记录、日期、URL、内部链接、翻译覆盖与同步状态，以及生成文件一致性。翻译维护步骤见[贡献方式](CONTRIBUTING.md)。
 
 ## 参考与致谢
 
@@ -247,14 +249,41 @@ def check_links(artifacts):
                 raise ValueError(f'Broken local link in {relative}: {target}')
 
 
+def bilingual(papers, translations):
+    chinese = {}
+    for path, content in build(papers).items():
+        if path.endswith('.md'):
+            content = content.replace('README.md)', 'README.zh-CN.md)')
+        chinese['README.zh-CN.md' if path == 'README.md' else path] = content
+    english = build_en.build(build_en.localize(papers, translations), table)
+    for en_path in list(english):
+        if not en_path.endswith('.md'):
+            continue
+        zh_path = 'README.zh-CN.md' if en_path == 'README.md' else en_path.removeprefix('en/')
+        for path, other, store, lang in [(en_path, zh_path, english, 'en'), (zh_path, en_path, chinese, 'zh')]:
+            target = posixpath.relpath(other, posixpath.dirname(path) or '.')
+            switch = f'**English** | [简体中文]({target})' if lang == 'en' else f'[English]({target}) | **简体中文**'
+            heading, body = store[path].split('\n', 1)
+            store[path] = heading + '\n\n' + switch + '\n' + body
+    return chinese | english
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--check', action='store_true')
+    parser.add_argument('--translation-hash', metavar='PAPER_ID', help='Print the current source hash after reviewing a translation.')
     args = parser.parse_args()
     catalog = json.loads((ROOT / 'data/papers.json').read_text(encoding='utf-8'))
     papers = catalog['papers']
     validate(papers)
-    artifacts = build(papers)
+    if args.translation_hash:
+        matches = [p for p in papers if p['id'] == args.translation_hash]
+        if not matches:
+            raise SystemExit('Unknown paper ID: ' + args.translation_hash)
+        print(build_en.source_hash(matches[0]))
+        return
+    translations = json.loads((ROOT / 'data/papers.en.json').read_text(encoding='utf-8'))['papers']
+    artifacts = bilingual(papers, translations)
     stale = []
     for relative, content in artifacts.items():
         dest = ROOT / relative
@@ -268,9 +297,10 @@ def main():
         raise SystemExit('Generated files differ: ' + ', '.join(stale))
     all_markdown = {f.relative_to(ROOT).as_posix(): f.read_text(encoding='utf-8') for f in ROOT.rglob('*.md')}
     check_links(all_markdown)
-    for f in (ROOT / 'papers').rglob('*.md'):
-        if f.relative_to(ROOT).as_posix() not in artifacts:
-            raise ValueError(f'Unexpected paper file: {f.name}')
+    for directory in ['papers', 'en/papers']:
+        for f in (ROOT / directory).rglob('*.md'):
+            if f.relative_to(ROOT).as_posix() not in artifacts:
+                raise ValueError(f'Unexpected paper file: {f.name}')
     print(f'{len(papers)} records validated; {len(artifacts)} generated files checked.' if args.check else f'Built {len(papers)} paper cards and catalog.')
 
 

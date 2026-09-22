@@ -1,8 +1,10 @@
 # Trimole-Hybrid
 
+[English](../../en/papers/admet/trimole-hybrid-2026.md) | **简体中文**
+
 **A multimodal representation learning platform for accurate molecular ADMET prediction**
 
-[返回ADMET 与药代动力学总表](../../topics/admet.md) · [返回首页](../../README.md)
+[返回ADMET 与药代动力学总表](../../topics/admet.md) · [返回首页](../../README.zh-CN.md)
 
 **一句话概括：** 融合分子序列、分子图、三维结构和化学先验，并按 ADMET 任务选择预测模型或集成方案。
 

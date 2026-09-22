@@ -1,6 +1,8 @@
 # AIDD 研究范围
 
-[返回首页](../README.md)
+[English](../en/docs/scope.md) | **简体中文**
+
+[返回首页](../README.zh-CN.md)
 
 本仓库以 [ADMET 与药代动力学](../topics/admet.md) 为主线，结合 [基础方法与基准](../topics/foundations.md) 建立阅读体系。[知识地图](knowledge-map.md)展示各方向的关系，后续按下表扩展专题。
 

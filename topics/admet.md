@@ -1,6 +1,8 @@
 # ADMET 与药代动力学
 
-[返回首页](../README.md) · [知识地图](../docs/knowledge-map.md) · [筛选规则](../docs/curation.md) · [下载 CSV](../data/papers.csv)
+[English](../en/topics/admet.md) | **简体中文**
+
+[返回首页](../README.zh-CN.md) · [知识地图](../docs/knowledge-map.md) · [筛选规则](../docs/curation.md) · [下载 CSV](../data/papers.csv)
 
 ADMET 指吸收、分布、代谢、排泄和毒性；相关理化性质与人体 PK 也在本专题范围内。
 

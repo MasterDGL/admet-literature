@@ -1,8 +1,10 @@
 # PKSmart
 
+[English](../../en/papers/admet/pksmart-2025.md) | **简体中文**
+
 **PKSmart: an open-source computational model to predict intravenous pharmacokinetics of small molecules**
 
-[返回ADMET 与药代动力学总表](../../topics/admet.md) · [返回首页](../../README.md)
+[返回ADMET 与药代动力学总表](../../topics/admet.md) · [返回首页](../../README.zh-CN.md)
 
 **一句话概括：** 先预测动物体内的药代参数，再结合分子结构预测人体静脉给药后的清除率、分布容积和半衰期等指标。
 

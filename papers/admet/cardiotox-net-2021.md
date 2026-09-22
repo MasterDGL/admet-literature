@@ -1,8 +1,10 @@
 # CardioTox net
 
+[English](../../en/papers/admet/cardiotox-net-2021.md) | **简体中文**
+
 **CardioTox net: a robust predictor for hERG channel blockade based on deep learning meta-feature ensembles**
 
-[返回ADMET 与药代动力学总表](../../topics/admet.md) · [返回首页](../../README.md)
+[返回ADMET 与药代动力学总表](../../topics/admet.md) · [返回首页](../../README.zh-CN.md)
 
 **一句话概括：** 融合不同分子表示的神经网络预测，改善 hERG 阻断剂识别，并在三个外部测试集上检验效果。
 

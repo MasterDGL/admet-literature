@@ -1,6 +1,8 @@
 # AIDD 知识地图与阅读路线
 
-[返回首页](../README.md) · [ADMET 总表](../topics/admet.md) · [基础方法与基准](../topics/foundations.md)
+[English](../en/docs/knowledge-map.md) | **简体中文**
+
+[返回首页](../README.zh-CN.md) · [ADMET 总表](../topics/admet.md) · [基础方法与基准](../topics/foundations.md)
 
 ![AIDD 五层知识地图](../assets/aidd-knowledge-pyramid.svg)
 

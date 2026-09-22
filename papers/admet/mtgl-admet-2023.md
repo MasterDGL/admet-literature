@@ -1,8 +1,10 @@
 # MTGL-ADMET
 
+[English](../../en/papers/admet/mtgl-admet-2023.md) | **简体中文**
+
 **ADMET property prediction via multi-task graph learning under adaptive auxiliary task selection**
 
-[返回ADMET 与药代动力学总表](../../topics/admet.md) · [返回首页](../../README.md)
+[返回ADMET 与药代动力学总表](../../topics/admet.md) · [返回首页](../../README.zh-CN.md)
 
 **一句话概括：** 为每个 ADMET 预测任务自动挑选有帮助的辅助任务，减少多任务联合训练时的相互干扰。
 

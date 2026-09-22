@@ -1,8 +1,10 @@
 # MoleculeACE
 
+[English](../../en/papers/foundations/moleculeace-2022.md) | **简体中文**
+
 **Exposing the Limitations of Molecular Machine Learning with Activity Cliffs**
 
-[返回基础方法与基准总表](../../topics/foundations.md) · [返回首页](../../README.md)
+[返回基础方法与基准总表](../../topics/foundations.md) · [返回首页](../../README.zh-CN.md)
 
 **一句话概括：** 专门检查结构很相似、活性却差很多的分子，揭示平均预测误差容易掩盖的模型弱点。
 

@@ -1,0 +1,761 @@
+{
+  "schema_version": 1,
+  "papers": {
+    "admet-reliability-2026": {
+      "name": "ADMET reliability benchmark",
+      "tags": [
+        "Generalization",
+        "Small data",
+        "Evaluation"
+      ],
+      "one_liner": "Compares model families under limited data, unfamiliar molecular structures and class imbalance to assess ADMET prediction in practical research settings.",
+      "pain_point": "Average benchmark scores miss reliability issues involving small datasets, out-of-distribution prediction, class imbalance, beyond-rule-of-five molecules and activity cliffs.",
+      "datasets": "14 property/ADMET datasets covering hERG, BBBP, Caco-2, half-life, VDss, CYP and peptide properties, plus 30 bioactivity tasks from MoleculeACE.",
+      "method": "Compares KPGT, Uni-Mol, TabPFNv2, classical machine learning and AutoML in a common framework, using random, scaffold and Perimeter splits, resampling and ensembles.",
+      "conclusion": "TabPFNv2 often performs well in the evaluated small-data/OOD settings. Undersampling ensembles help with imbalance, while KPGT performs strongly on cyclic-peptide permeability with more training data. Activity cliffs remain difficult across models.",
+      "evaluation": "Uses random, scaffold and Perimeter splits, organizing experiments around small datasets, class imbalance and out-of-distribution prediction.",
+      "limitations": "Table 1 and scenario-specific results show how model strengths change with data conditions. KPGT achieves R² = 0.627 on CycPept-PAMPA cyclic-peptide permeability.",
+      "code_status": "The authors provide a public code/project page.",
+      "verification_scope": "Bibliographic metadata, key sections of the paper and related official resources.",
+      "publication": {
+        "citation": "Journal of Cheminformatics 18, 95; 2026-05-18",
+        "date_basis": "Publisher online publication date"
+      },
+      "source_labels": [
+        "Publisher full text",
+        "Author code"
+      ],
+      "source_sha256": "d8227dc939534670b4226ccaa189dfb0744050ed388815ffe99ec9fe784e2d05"
+    },
+    "caliciboost-2025": {
+      "tags": [
+        "Absorption",
+        "Caco-2",
+        "AutoML"
+      ],
+      "one_liner": "Combines molecular fingerprints, physicochemical descriptors and automated machine learning to predict permeability through the Caco-2 intestinal cell model.",
+      "pain_point": "Caco-2 permeability data are limited and assay conditions vary, making it difficult to identify effective molecular features and modeling strategies.",
+      "datasets": "TDC Caco2_Wang contains 906 molecules. A separate OCHEM collection was reduced from 9,402 raw records to 5,481 modeling records through filtering and cleaning. The two datasets are modeled and evaluated separately.",
+      "method": "Compares fingerprints, RDKit/PaDEL/Mordred descriptors and CDDD representations, combining AutoGluon with feature selection, interpretation and hyperparameter optimization.",
+      "conclusion": "Feature selection and ensemble learning improve Caco-2 prediction. The official TDC Caco-2 leaderboard snapshot dated 2026-09-19 lists MAE = 0.256 ± 0.006 and ranks CaliciBoost first.",
+      "evaluation": "Evaluates TDC Caco2_Wang and the curated OCHEM data separately. The 2026-09-19 TDC snapshot reports MAE = 0.256 ± 0.006.",
+      "limitations": "Results illustrate the contribution of feature selection and ensembles. Some OCHEM records lack the assay direction, leaving label consistency as a data-quality issue.",
+      "name": "CaliciBoost",
+      "code_status": "The authors provide a public code/project page.",
+      "verification_scope": "Bibliographic metadata, key sections of the paper and related official resources.",
+      "publication": {
+        "citation": "Journal of Cheminformatics 17, 184; 2025-12-22; preceded by a 2025 preprint.",
+        "date_basis": "Publisher online publication date"
+      },
+      "source_labels": [
+        "Publisher full text",
+        "Author code",
+        "TDC Caco-2 leaderboard"
+      ],
+      "source_sha256": "e0c678ce939f97a373082f6a168649eb85ed75055d656fc4b85b81e8eee92770"
+    },
+    "pksmart-2025": {
+      "tags": [
+        "Human PK",
+        "Cross-species prediction",
+        "External validation"
+      ],
+      "one_liner": "Predicts animal pharmacokinetic parameters, then combines them with molecular features to estimate human intravenous clearance, distribution volume and half-life.",
+      "pain_point": "Human PK data are scarce, limiting structure-only models. The study examines how preclinical species information can improve human parameter prediction.",
+      "datasets": "Human intravenous PK data for 1,283 distinct compounds, covering VDss, clearance, half-life, unbound fraction and mean residence time; preclinical animal data for another collection of 371 compounds. Label availability varies by endpoint.",
+      "method": "First predicts rat, dog and monkey PK parameters from molecular features, then combines these predictions with molecular features in human random-forest models. Uses repeated nested cross-validation and external validation.",
+      "conclusion": "Reported external R² values are 0.39 for VDss and 0.46 for clearance, indicating that cross-species predictions can improve selected human PK endpoints.",
+      "evaluation": "Repeated nested cross-validation and external validation; external R² is 0.39 for VDss and 0.46 for clearance.",
+      "limitations": "The study concerns human intravenous PK. Two-stage model comparisons assess the contribution of animal PK information, while external R² values also show the remaining prediction error.",
+      "name": "PKSmart",
+      "code_status": "The authors provide a public code/project page.",
+      "verification_scope": "Bibliographic metadata, key sections of the paper and related official resources.",
+      "publication": {
+        "citation": "Journal of Cheminformatics 17, 147; 2025-09-26",
+        "date_basis": "Publisher online publication date"
+      },
+      "source_labels": [
+        "Publisher full text",
+        "Author code"
+      ],
+      "source_sha256": "10ab58c227f76f3bd52fb90b97dd178b5292b11394b53da8d0920fc03fbb9fdf"
+    },
+    "dcpm-admet-2026": {
+      "tags": [
+        "ADMET",
+        "Pretraining",
+        "Representation fusion"
+      ],
+      "one_liner": "Combines representations from two pretrained models with chemical fingerprints to predict 97 ADMET properties.",
+      "pain_point": "A single representation struggles to capture semantic, structural and physicochemical information together, while ADMET labels are sparse and endpoints heterogeneous.",
+      "datasets": "Pretraining uses approximately 111 million PubChem records. The ADMET collection contains 97 endpoints: 43 regression and 54 classification tasks, with 465,470 endpoint records. Also evaluates 10 MoleculeNet datasets.",
+      "method": "Fuses XLNet semantic representations, a GRU component incorporating SMILES-to-InChI and property learning, and ECFP fingerprints; combines single-task random forests, multitask neural networks and parameter optimization.",
+      "conclusion": "Reports improvements over the ECFP baseline on 67/97 endpoints and the best results among compared methods on 5 of 10 MoleculeNet tasks.",
+      "evaluation": "Uses scaffold splits and model/feature comparisons; 67 of 97 endpoints outperform the paper's ECFP baseline.",
+      "limitations": "Fusion ablations examine the contribution of each representation. The platform offers 133 outputs: 97 model predictions and 36 calculated properties.",
+      "name": "DCPM-ADMET",
+      "code_status": "The authors provide a public code/project page.",
+      "verification_scope": "Bibliographic metadata, key sections of the paper and related official resources.",
+      "publication": {
+        "citation": "Journal of Cheminformatics 18, 126; 2026-06-20",
+        "date_basis": "Publisher online publication date"
+      },
+      "source_labels": [
+        "Publisher full text",
+        "Author code"
+      ],
+      "source_sha256": "dfdab6892b24ebbe1d4f50353c5432a66cadf07f2ee3363f19204c4ad1846e30"
+    },
+    "kpgt-2023": {
+      "tags": [
+        "Graph pretraining",
+        "Chemical knowledge"
+      ],
+      "one_liner": "Incorporates fingerprints and physicochemical descriptors into graph pretraining to learn representations for ADMET and other molecular properties.",
+      "pain_point": "Graph-pretraining objectives can diverge from downstream needs; representations must retain chemical knowledge and transfer effectively.",
+      "datasets": "Approximately 2 million ChEMBL29 molecules for pretraining; 63 downstream datasets comprising 11 common property datasets, 22 TDC ADMET tasks and 30 MoleculeACE tasks.",
+      "method": "Uses the LiGhT line-graph Transformer with descriptor- and fingerprint-guided pretraining, followed by downstream fine-tuning.",
+      "conclusion": "Figure 2c and Supplementary Table 8 report the best performance among the models compared at publication on 16/22 TDC ADMET tasks.",
+      "evaluation": "Evaluates TDC, MoleculeNet and MoleculeACE separately. Figure 2c and Supplementary Table 8 show the best compared results on 16 of 22 TDC tasks.",
+      "limitations": "Pretraining uses approximately 2 million ChEMBL29 molecules; MoleculeACE further tests activity-cliff prediction. Ablations help assess knowledge-guided pretraining and downstream transfer.",
+      "name": "KPGT",
+      "code_status": "The authors provide a public code/project page.",
+      "verification_scope": "Bibliographic metadata, key sections of the paper and related official resources.",
+      "publication": {
+        "citation": "Nature Communications 14, 7568; 2023-11-21. An earlier version appeared at KDD 2022; these notes cover the journal paper.",
+        "date_basis": "Publisher online publication date"
+      },
+      "source_labels": [
+        "Publisher full text",
+        "Author code"
+      ],
+      "source_sha256": "43ffcb65c484195d8b72b5f6647f2bfdb0c2c50b7fd89ca4a74377ac3a35ef58"
+    },
+    "mole-2024": {
+      "tags": [
+        "Graph foundation model",
+        "Large-scale pretraining"
+      ],
+      "one_liner": "Pretrains on a large collection of molecular graphs, adds supervised biological-task training, and fine-tunes for ADMET prediction.",
+      "pain_point": "The study addresses how to learn transferable representations from very large unlabeled molecular collections and combine them with labeled biological information.",
+      "datasets": "Approximately 842 million molecular graphs from ZINC20 and ExCAPE-DB for self-supervised learning, followed by supervised multitask pretraining; ADMET evaluation covers 22 TDC tasks.",
+      "method": "Decoupled attention models atom content and relative graph position. Training proceeds from atom-environment prediction to supervised pretraining and downstream fine-tuning.",
+      "conclusion": "Reports results exceeding the best published methods in a September 2023 TDC snapshot on 10/22 tasks, with means and standard deviations across multiple runs.",
+      "evaluation": "Evaluates 22 TDC tasks over multiple runs; comparisons use a September 2023 snapshot of published TDC methods.",
+      "limitations": "The paper describes excluding test molecules from pretraining. Reproduction also involves large-scale pretraining resources; checkpoint download instructions still contained a TODO when reviewed.",
+      "name": "MolE",
+      "code_status": "Implementation is public. Checkpoint download instructions contained a TODO when reviewed; availability of all weights is unconfirmed.",
+      "verification_scope": "Bibliographic metadata, key sections of the paper and related official resources.",
+      "publication": {
+        "citation": "Nature Communications 15, 9431; 2024-11-12.",
+        "date_basis": "Publisher online publication date"
+      },
+      "source_labels": [
+        "Publisher full text",
+        "Author code"
+      ],
+      "source_sha256": "a96eeca814399f37f90012c289f47d57362456f84a4ad27c8b8138f9dfacbb9c"
+    },
+    "admet-ai-2024": {
+      "tags": [
+        "ADMET",
+        "Platform",
+        "High throughput"
+      ],
+      "one_liner": "Packages graph neural networks into web and local tools that predict multiple ADMET properties for large compound libraries.",
+      "pain_point": "Large-scale screening requires accurate multi-endpoint predictions, high throughput and local deployment.",
+      "datasets": "41 TDC prediction tasks: 31 classification and 10 regression tasks. Performance rankings use the 22-task ADMET Benchmark Group subset.",
+      "method": "The paper uses Chemprop D-MPNN with 200 RDKit descriptors, separate multitask classification and regression models, and model ensembles.",
+      "conclusion": "At publication, the authors reported a leading average TDC ADMET rank and high batch-processing efficiency, with both web and local tools available.",
+      "evaluation": "Training covers 41 tasks; performance rankings use 22 ADMET benchmark tasks. Figure 1B–C compares predictive performance and runtime.",
+      "limitations": "Inference speed depends on hardware and batch size. Version 2 changes the Chemprop version and feature configuration, so paper reproduction requires the corresponding software version.",
+      "name": "ADMET-AI",
+      "code_status": "The authors provide a public code/project page.",
+      "verification_scope": "Bibliographic metadata, key sections of the paper and related official resources.",
+      "publication": {
+        "citation": "Bioinformatics 40(7), btae416; online 2024-06-24; July 2024 issue.",
+        "date_basis": "Publisher online publication date"
+      },
+      "source_labels": [
+        "Full text",
+        "Author code and version notes"
+      ],
+      "source_sha256": "5af98bc0de558090d537aad09a209ee3c08a8db3d3e577a52c8aae74fd41cbb2"
+    },
+    "mtgl-admet-2023": {
+      "tags": [
+        "Multitask learning",
+        "Auxiliary tasks",
+        "Negative transfer"
+      ],
+      "one_liner": "Selects useful auxiliary tasks for each ADMET endpoint to reduce interference during multitask training.",
+      "pain_point": "Training all ADMET tasks together can cause negative transfer; each primary task may need a different auxiliary-task set.",
+      "datasets": "24 endpoints collected from 8 publications: 18 classification and 6 regression tasks, covering 43,291 compounds and including ADMET plus 2 physicochemical endpoints.",
+      "method": "Uses state theory and maximum flow for auxiliary-task selection, together with shared atom representations, task-specific attention and a primary-task-centered gating module.",
+      "conclusion": "Comparisons and ablations show that adaptive task selection and gating improve prediction, supporting auxiliary-task selection tailored to the primary task.",
+      "evaluation": "Table 1 uses a random 8:1:1 split and 10 random seeds, with AUROC for classification and R² for regression.",
+      "limitations": "Comparisons focus on auxiliary-task selection and gating. The 24-endpoint collection differs from TDC's 22 tasks in data composition and splitting.",
+      "name": "MTGL-ADMET",
+      "code_status": "The authors provide a public code/project page.",
+      "verification_scope": "Bibliographic metadata, key sections of the paper and related official resources.",
+      "publication": {
+        "citation": "iScience 26(11), 108285; November 2023 issue. Preceded by a RECOMB 2023 conference paper.",
+        "date_basis": "Journal issue month"
+      },
+      "source_labels": [
+        "Full text",
+        "Alternative full text",
+        "Author code"
+      ],
+      "source_sha256": "8918238905be124fae31efda41790aa6fa6cbf43b529ec2a236275ced8a31c6d"
+    },
+    "himnet-2026": {
+      "tags": [
+        "Hierarchical GNN",
+        "Metabolic stability"
+      ],
+      "one_liner": "Exchanges information across atoms, substructures and whole molecules in a hierarchical graph network for property and selected ADMET predictions.",
+      "pain_point": "Limited interaction across atom, substructure and molecular levels can leave property-relevant information out of single-level representations.",
+      "datasets": "11 datasets: 8 MoleculeNet subsets plus Malaria, LMC and MetStab. BBBP, Tox21, SIDER, ClinTox and metabolic-stability tasks directly concern ADMET; others assess broader properties or bioactivity.",
+      "method": "Hierarchical message passing and attention combine directed message paths, cross-level interactions and consistency information from multiple fingerprints.",
+      "conclusion": "Tables 1–2 report best or near-best results on several tasks among the compared methods, supporting hierarchical feature fusion.",
+      "evaluation": "Tables 1–2 summarize 11 property/activity datasets. These notes cover the main comparisons; task-specific splits and hyperparameters remain to be added.",
+      "limitations": "Useful for studying hierarchical feature fusion alongside metabolic-stability tasks, especially how representations at different levels affect performance.",
+      "name": "HimNet",
+      "code_status": "Code link to be added.",
+      "verification_scope": "Bibliographic metadata, key sections of the paper and related official resources.",
+      "publication": {
+        "citation": "Communications Chemistry 9, 150; 2026-02-14",
+        "date_basis": "Publisher online publication date"
+      },
+      "source_labels": [
+        "Publisher full text"
+      ],
+      "source_sha256": "05278ad7f133d14e8336aceef8ab6eb2735e8b6f32d39760f4c1097293cdf0aa"
+    },
+    "molmcl-2025": {
+      "tags": [
+        "Multichannel pretraining",
+        "Activity cliffs"
+      ],
+      "one_liner": "Learns molecular, scaffold and local-context representations, then combines them by task for property and bioactivity prediction.",
+      "pain_point": "Tasks depend on different structural levels, making fixed graph representations and readouts difficult to adapt across tasks.",
+      "datasets": "ZINC15 for pretraining; 7 MoleculeNet datasets and 30 MoleculeACE bioactivity tasks for downstream evaluation.",
+      "method": "Multichannel learning over molecular, scaffold and contextual information, using molecular perturbations, contrastive learning and prompt-guided readout.",
+      "conclusion": "Multichannel learning and task adaptation improve representations on the evaluated molecular tasks, with activity-cliff experiments demonstrating the design's value.",
+      "evaluation": "Downstream experiments cover 7 MoleculeNet subsets and 30 MoleculeACE bioactivity tasks.",
+      "limitations": "Activity-cliff experiments help examine representation sensitivity to local structural changes. This MolMCL and MoleMCL in Bioinformatics are separate studies.",
+      "name": "MolMCL",
+      "code_status": "The authors provide a public code/project page.",
+      "verification_scope": "Bibliographic metadata, key sections of the paper and related official resources.",
+      "publication": {
+        "citation": "Nature Communications 16, 413; 2025-01-06. The DOI contains 2024; publication was in 2025.",
+        "date_basis": "Publisher online publication date"
+      },
+      "source_labels": [
+        "Publisher full text",
+        "Author code"
+      ],
+      "source_sha256": "a7fbfac883a26e1a13b4f3f0c575f3b8d05055a9140faebafe485657b2e3b4d9"
+    },
+    "admetlab-3-2024": {
+      "tags": [
+        "ADMET",
+        "Platform",
+        "Uncertainty"
+      ],
+      "one_liner": "Provides online ADMET and physicochemical predictions with uncertainty estimates, an API and decision-support tools.",
+      "pain_point": "Limited property coverage, inconvenient access and point predictions alone constrain platform support for compound selection.",
+      "datasets": "More than 400,000 records support model development; the platform provides 119 property/assessment outputs, including predicted endpoints and calculated properties.",
+      "method": "Multitask directed message passing and descriptor-based modeling, combined with predictive uncertainty, API access and decision support.",
+      "conclusion": "Expands property coverage and integrates batch processing, API access and uncertainty estimation for ADMET screening.",
+      "evaluation": "These notes cover platform functions, data scale and modeling methods; endpoint-specific experimental settings remain to be added.",
+      "limitations": "Platform comparisons can examine endpoint coverage, batch inference, uncertainty outputs and access options. See the review record for training-code and weight availability.",
+      "name": "ADMETlab 3.0",
+      "code_status": "Code link to be added.",
+      "verification_scope": "Bibliographic metadata, abstract and accessible project documentation.",
+      "publication": {
+        "citation": "Nucleic Acids Research 52(W1), W422–W431; online 2024-04-04; July 2024 issue.",
+        "date_basis": "Publisher online publication date"
+      },
+      "source_labels": [
+        "Publisher paper"
+      ],
+      "source_sha256": "5bdbcee33758972dd0ccc759208a3b34ae0710f164fe671c74c0d282a3a4fed5"
+    },
+    "admetsar-3-2024": {
+      "tags": [
+        "ADMET",
+        "Platform",
+        "Structural optimization"
+      ],
+      "one_liner": "Integrates ADMET data search, property prediction and structural optimization suggestions to help identify suitable candidates.",
+      "pain_point": "Users need both property predictions and ways to find similar compounds and structural modifications that improve ADMET.",
+      "datasets": "More than 370,000 experimental records covering 104,652 distinct compounds and 119 ADMET endpoints.",
+      "method": "Multitask graph neural networks with database retrieval, similarity search, structural transformations and scaffold-hopping tools.",
+      "conclusion": "Combines molecular exploration, property prediction and optimization suggestions in one platform for multiparameter screening and design.",
+      "evaluation": "These notes cover data scale, prediction and optimization features; endpoint-specific experimental settings remain to be added.",
+      "limitations": "The platform illustrates how to connect structural exploration, property prediction and optimization. Suggested molecules still require experimental assessment.",
+      "name": "admetSAR3.0",
+      "code_status": "Code link to be added.",
+      "verification_scope": "Bibliographic metadata, abstract and accessible project documentation.",
+      "publication": {
+        "citation": "Nucleic Acids Research 52(W1), W432–W438; online 2024-04-22; July 2024 issue.",
+        "date_basis": "Publisher online publication date"
+      },
+      "source_labels": [
+        "Publisher paper",
+        "Platform"
+      ],
+      "source_sha256": "b4efef05537db7f0c5bd9bd61a52c0217ff761c7f51bf9f0caba0fdb1c4161a5"
+    },
+    "tdc-2021": {
+      "tags": [
+        "Data benchmarks",
+        "Evaluation protocols"
+      ],
+      "one_liner": "Organizes drug-discovery datasets and tasks into shared interfaces and benchmarks for consistent model comparison.",
+      "pain_point": "Fragmented datasets, task interfaces, splits and evaluation protocols make fair comparisons difficult.",
+      "datasets": "A collection spanning drug discovery and development. These notes focus on its 22-task ADMET Benchmark Group; the conference paper covers a broader set of tasks.",
+      "method": "Defines tasks, data interfaces, standardized benchmarks and public leaderboards.",
+      "conclusion": "Provides data loading, task splits and evaluation tools for comparing drug-discovery models under common settings.",
+      "evaluation": "The ADMET Benchmark Group uses task-specific metrics and scaffold splits, with evaluation across multiple random seeds.",
+      "limitations": "Toxicity tasks among the 22 endpoints include hERG, AMES, DILI and LD50. TDC also hosts other drug-discovery data; select tasks by benchmark group.",
+      "name": "TDC",
+      "code_status": "Code link to be added.",
+      "verification_scope": "Bibliographic metadata, key sections of the paper and related official resources.",
+      "publication": {
+        "citation": "NeurIPS 2021 Datasets and Benchmarks Track. The related 2022 Nature Chemical Biology paper is a separate publication.",
+        "date_basis": "Conference year"
+      },
+      "source_labels": [
+        "Conference paper",
+        "Official ADMET benchmark",
+        "Related 2022 paper"
+      ],
+      "source_sha256": "c11e7cdf8fd37bdeda520034764d143289552bff6071a1e2f67ddc0c93d0593d"
+    },
+    "pharmabench-2024": {
+      "tags": [
+        "Data curation",
+        "Assay conditions"
+      ],
+      "one_liner": "Uses language models to extract assay conditions, then cleans and harmonizes ADMET records to build better-specified benchmarks.",
+      "pain_point": "Inconsistent assay conditions and endpoint definitions reduce benchmark quality when labels are simply pooled.",
+      "datasets": "156,618 raw records from 14,401 bioassays, curated into 52,482 records across 11 ADMET datasets.",
+      "method": "Language-model-assisted assay-information extraction, followed by curation of structures, units, duplicates and assay conditions, with modeling splits provided.",
+      "conclusion": "Harmonizes assay conditions and data processing to provide ADMET modeling datasets with clearer experimental context.",
+      "evaluation": "Benchmark construction focuses on assay conditions, units, structure cleaning and data splitting.",
+      "limitations": "The workflow can guide data cleaning and label harmonization. Merging with other public data requires duplicate checks by source and molecular structure.",
+      "name": "PharmaBench",
+      "code_status": "The authors provide a public code/project page.",
+      "verification_scope": "Bibliographic metadata, key sections of the paper and related official resources.",
+      "publication": {
+        "citation": "Scientific Data 11, 985; 2024-09-10",
+        "date_basis": "Publisher online publication date"
+      },
+      "source_labels": [
+        "Publisher full text",
+        "Author resources"
+      ],
+      "source_sha256": "44aa789834c3605087e011598660a3412588b8c151fd6f2a853d41042a43bcb0"
+    },
+    "openadmet-avoidome-2026": {
+      "tags": [
+        "Mechanisms",
+        "Open data",
+        "Perspective"
+      ],
+      "one_liner": "Proposes combining open experimental data, protein structures, active learning and blind challenges to improve mechanistic ADMET prediction.",
+      "pain_point": "Public ADMET data are scarce and assays inconsistent; limited structural mechanistic information constrains model-guided optimization.",
+      "datasets": "Discusses open, mechanism-oriented data generation and experimental plans involving CYPs, transporters, PXR and hERG.",
+      "method": "Connects high-throughput chemistry, functional assays, structural biology, active learning and blind challenges to study ADMET-related anti-targets.",
+      "conclusion": "Outlines a research program using open experimental data and mechanistic modeling to support multiparameter drug design.",
+      "evaluation": "This Perspective develops a research agenda around open data, mechanistic modeling and blind challenges.",
+      "limitations": "Provides context for OpenADMET's motivation and plans for CYP, transporter and safety-related mechanistic datasets.",
+      "name": "OpenADMET / Avoid-ome",
+      "code_status": "Links to the OpenADMET organization and its data, tools and challenge projects.",
+      "verification_scope": "Bibliographic metadata, key sections of the paper and related official resources.",
+      "publication": {
+        "citation": "Nature Communications 17, 4644; 2026-05-25; Perspective.",
+        "date_basis": "Publisher online publication date"
+      },
+      "source_labels": [
+        "Publisher full text",
+        "Official OpenADMET resources"
+      ],
+      "source_sha256": "6a88b50c761434db29c79b64152f2e42ba49121bfa39fd83f6f6b2b5d4656518"
+    },
+    "maplight-2023": {
+      "tags": [
+        "Fingerprints",
+        "CatBoost",
+        "Baselines"
+      ],
+      "one_liner": "Combines molecular fingerprints and descriptors in CatBoost models to assess the strength of conventional features for ADMET prediction.",
+      "pain_point": "Can simple, computationally inexpensive feature-based models remain competitive with deep learning?",
+      "datasets": "22 TDC ADMET tasks.",
+      "method": "Combines ECFP, Avalon, ErG and molecular descriptors in CatBoost, with an additional variant incorporating GNN representations.",
+      "conclusion": "Fingerprint combinations perform well on multiple ADMET endpoints and provide useful baselines. A subsequent third-party audit reports that two MapLight variants passed its checks.",
+      "evaluation": "Evaluates model variants on 22 TDC ADMET tasks; a separate third-party preprint audits the reproducibility of two variants.",
+      "limitations": "Fingerprint combinations offer practical endpoint-modeling baselines. Read third-party audit results alongside the code versions and checks used.",
+      "name": "MapLight",
+      "code_status": "The authors provide a public code/project page.",
+      "verification_scope": "Bibliographic metadata, key sections of the paper and related official resources.",
+      "publication": {
+        "citation": "arXiv preprint, initially submitted 2023-09-29; these notes cover that version.",
+        "date_basis": "Initial arXiv submission date; revisions listed in the citation"
+      },
+      "source_labels": [
+        "Preprint",
+        "Author code"
+      ],
+      "source_sha256": "450b55ee3a3e2181ff887d0390817455becab0598788fb7c2a79589aeb786f2a"
+    },
+    "tdc-audit-2026": {
+      "name": "TDC model audit",
+      "tags": [
+        "Reproducibility",
+        "Data leakage",
+        "Model audit"
+      ],
+      "one_liner": "Checks whether leading TDC models run, contain data leakage and reproduce their reported ADMET results.",
+      "pain_point": "Leaderboard results may depend on pretraining leakage, validation/test overlap or environment problems that affect reproducibility.",
+      "datasets": "10 leading methods selected from the 22-task TDC ADMET benchmark, using the audit's leaderboard snapshot and code versions.",
+      "method": "Sequentially checks environment availability, pretraining leakage, validation/test overlap and result reproduction.",
+      "conclusion": "The authors report that only MapLight, MapLight+GNN and CaliciBoost pass all checks. CaliciBoost addresses Caco-2 specifically, rather than all 22 tasks.",
+      "evaluation": "Audits 10 leading methods for execution, leakage, validation/test overlap and reproduction, recording the relevant leaderboard snapshot and code versions.",
+      "limitations": "The audit separates environment failures from experimental-design issues and can inform reproduction workflows. These notes summarize the preprint's findings.",
+      "code_status": "The authors provide a public code/project page.",
+      "verification_scope": "Bibliographic metadata, abstract and accessible project documentation.",
+      "publication": {
+        "citation": "bioRxiv preprint, 2026; Crossref publication date 2026-02-28; the DOI contains 02-26.",
+        "date_basis": "Crossref preprint publication date; DOI date recorded separately"
+      },
+      "source_labels": [
+        "Preprint",
+        "Audit code and documentation"
+      ],
+      "source_sha256": "cdb9e6c32e1da292d9cc9c51c192fc49464da9b53fcb607b078726e281f0727f"
+    },
+    "trimole-hybrid-2026": {
+      "tags": [
+        "Multimodal learning",
+        "Model ensembles"
+      ],
+      "one_liner": "Fuses sequences, molecular graphs, 3D structures and chemical priors, selecting prediction models or ensembles for each ADMET task.",
+      "pain_point": "A single representation may not suit all endpoints; complementary modalities must be combined with a controlled model-selection process.",
+      "datasets": "22 TDC ADMET tasks.",
+      "method": "Combines SMILES, molecular graphs, 3D geometry and chemical priors with task-specific prediction heads, model selection and ensembles.",
+      "conclusion": "Reports scores above the top entry on 10/22 tasks and within the top ten on 21/22 tasks in the selected public leaderboard snapshot.",
+      "evaluation": "Evaluates multimodal combinations on 22 TDC tasks against the public leaderboard snapshot selected in the paper.",
+      "limitations": "The repository provides implementation and review materials. Complete trained weights, official datasets and cached representations require separate preparation.",
+      "name": "Trimole-Hybrid",
+      "code_status": "Implementation and review materials are public; complete trained weights, official datasets and cached representations are not included.",
+      "verification_scope": "Bibliographic metadata, abstract and accessible project documentation.",
+      "publication": {
+        "citation": "bioRxiv preprint; Crossref publication date 2026-08-25; the DOI contains 08-24. The author repository labels it under review.",
+        "date_basis": "Crossref preprint publication date; DOI date recorded separately"
+      },
+      "source_labels": [
+        "Preprint",
+        "Author code"
+      ],
+      "source_sha256": "3c87759e7c3fdb500308e0ea5768cbe3566da75d829115d3b53a314078c2b77f"
+    },
+    "admet-evo-2026": {
+      "tags": [
+        "Research agents",
+        "Automated modeling"
+      ],
+      "one_liner": "Uses a research agent to explore features and models for ADMET tasks, evaluating prediction and research efficiency through a fixed testing workflow.",
+      "pain_point": "Different endpoints need different features, models and optimization strategies, making repeated manual exploration costly. Automated research also needs test-independent model selection.",
+      "datasets": "22 TDC ADMET tasks plus 43 toxicity tasks.",
+      "method": "An evidence-gated research agent explores hypotheses, features and models. The paper describes freezing the workflow before held-out testing and validation over multiple seeds.",
+      "conclusion": "Reports a task-normalized aggregate score of 96.77 and reduced cumulative model-fitting time under the stated comparisons and resource constraints.",
+      "evaluation": "Uses preprint v2, covering 22 TDC tasks and 43 toxicity tasks with the authors' task-normalized aggregate metric.",
+      "limitations": "96.77 is the paper's aggregate score. Model-fitting time is compared under the specified resource constraints; repository access status is recorded below.",
+      "name": "ADMET-EvO",
+      "code_status": "The repository link in the paper could not be accessed during review.",
+      "verification_scope": "Bibliographic metadata, key sections of the paper and related official resources.",
+      "publication": {
+        "citation": "arXiv preprint, initially submitted 2026-09-09; updated to v2 on 2026-09-10.",
+        "date_basis": "Initial arXiv submission date; revisions listed in the citation"
+      },
+      "source_labels": [
+        "Preprint",
+        "Version 2 full text"
+      ],
+      "source_sha256": "1b2c4c29b553f518abf1396e5fc73093066c83a30f12d4b82983042674cf01e8"
+    },
+    "hergai-2025": {
+      "tags": [
+        "hERG",
+        "Docking",
+        "Class imbalance"
+      ],
+      "one_liner": "Combines docking and ensemble models to identify compounds likely to block the cardiac hERG ion channel in large candidate collections.",
+      "pain_point": "Small or positive-enriched test sets poorly represent screening collections containing many negatives and few hERG blockers.",
+      "datasets": "299,927 curated PubChem/ChEMBL molecules: 1,937 positives and 297,990 negatives. Uses an IC50 threshold of 20 μM and an approximately 3:1 train/test allocation grouped by Bemis–Murcko scaffold.",
+      "method": "Selects poses after Smina docking and extracts protein–ligand PLEC fingerprints. RF, XGBoost and DNN base models feed a DNN stacking model; oversampling occurs within training folds.",
+      "conclusion": "Reports test recall of approximately 86% for blockers with IC50 ≤ 20 μM and 94% for those with IC50 ≤ 1 μM. Screening enrichment exceeds the generic docking scores compared in the paper.",
+      "evaluation": "Five-fold training-set cross-validation for tuning; reports recall, specificity, balanced accuracy and enrichment. The 86%/94% values are positive recall at two activity thresholds.",
+      "limitations": "Test-set screening performance informed the choice of pose-scoring scheme. High recall comes with false positives, so specificity and enrichment matter; the workflow also requires docking and structural fingerprint calculation.",
+      "name": "HERGAI",
+      "code_status": "Author code and data are accessible; the repository was archived on 2026-01-01.",
+      "verification_scope": "Bibliographic metadata, relevant methods and results, and the listed official resources.",
+      "publication": {
+        "citation": "Journal of Cheminformatics 17, 110; 2025-07-24",
+        "date_basis": "Publisher online publication date"
+      },
+      "source_labels": [
+        "Publisher full text",
+        "Author code"
+      ],
+      "source_sha256": "b58e589f773e955df24f2667ae2eb9a865f88ad126dde9f329721fc69ca9760e"
+    },
+    "cardiotox-net-2021": {
+      "tags": [
+        "hERG",
+        "Ensembles",
+        "External validation"
+      ],
+      "one_liner": "Combines neural-network predictions from different molecular representations to identify hERG blockers and tests them on three external datasets.",
+      "pain_point": "Single representations can omit relevant information, while simple model combinations struggle to balance sensitivity, specificity and predictive accuracy.",
+      "datasets": "12,620 training molecules from BindingDB, ChEMBL and literature: 6,643 blockers and 5,977 non-blockers. Three external sets contain 44, 41 and 839 molecules, using an IC50 threshold of 10 μM.",
+      "method": "Five base neural networks process different chemical features; a separate neural network combines their predictions. A 70/10/10/10 allocation supports base-model training/validation and meta-model training/validation.",
+      "conclusion": "External MCC values are 0.599/0.452/0.220 and accuracies 0.810/0.755/0.746. Several metrics improve over selected earlier methods, but PPV on the third, imbalanced set is only 0.113.",
+      "evaluation": "The Data preparation section describes the training and three external datasets and analyzes their chemical similarity.",
+      "limitations": "Two external sets are small; the third has a low positive fraction. Its PPV of 0.113 highlights false positives under imbalance and should be read alongside recall.",
+      "name": "CardioTox net",
+      "code_status": "The authors provide a public code/project page.",
+      "verification_scope": "Bibliographic metadata, relevant methods and results, and the listed official resources.",
+      "publication": {
+        "citation": "Journal of Cheminformatics 13, 60; 2021-08-16",
+        "date_basis": "Publisher online publication date"
+      },
+      "source_labels": [
+        "Publisher full text",
+        "Author code"
+      ],
+      "source_sha256": "867886a2b8a70343541e78936738c4723fe913910b728f0abe475caf445da1ab"
+    },
+    "bbb-megamolbart-2024": {
+      "tags": [
+        "BBB",
+        "Molecular language models",
+        "In vitro validation"
+      ],
+      "one_liner": "Predicts blood–brain barrier permeability with a molecular language model and XGBoost, then tests selected compounds in human-derived 3D BBB spheroids.",
+      "pain_point": "BBB labels are limited; the study tests whether pretrained molecular representations improve prediction and receive experimental support in vitro.",
+      "datasets": "B3DB: 7,807 molecules (4,956 BBB+, 2,851 BBB−); CMUH: 2,499 (105 BBB+, 2,394 BBB−). B3DB includes 1,058 logBB values. Spheroid experiments select 21 predicted permeable and 5 predicted impermeable candidates, with controls.",
+      "method": "MegaMolBART encodes SMILES for XGBoost classification/regression, compared with Morgan fingerprints. BBB spheroids contain human brain microvascular endothelial cells, pericytes and astrocytes; LC–MS/MS measures permeability.",
+      "conclusion": "Reports a final held-out AUROC of 0.88. Spheroid results agree with prediction directions for the selected candidates, supporting exploratory BBB screening.",
+      "evaluation": "Compares B3DB-only training, CMUH external testing and mixed-data settings. The final classifier splits B3DB/CMUH 80/10/10, achieving held-out AUROC = 0.88.",
+      "limitations": "Spheroid experiments select candidates with very high or low scores, supporting their in vitro permeability classification. Intermediate-score compounds and human permeability need further experiments.",
+      "name": "BBB MegaMolBART",
+      "code_status": "The paper links B3DB and MegaMolBART components; a link to the complete training workflow remains to be added.",
+      "verification_scope": "Bibliographic metadata, relevant methods and results, and the listed official resources.",
+      "publication": {
+        "citation": "Scientific Reports 14, 15844; 2024-07-09",
+        "date_basis": "Publisher online publication date"
+      },
+      "source_labels": [
+        "Publisher full text and supplements",
+        "B3DB data source"
+      ],
+      "source_sha256": "aa30cfc5a61eb547629ddec51041590da89a7145c660c42d810344ddf5b0381c"
+    },
+    "mc-pgp-2025": {
+      "tags": [
+        "P-gp",
+        "Multimodal learning",
+        "External validation"
+      ],
+      "one_liner": "Fuses SMILES, fingerprints and molecular graphs to separately predict P-gp inhibition and transport-substrate status.",
+      "pain_point": "Single representations miss P-gp-related structural information. Inhibitors and substrates require distinct tasks and evaluation on compounds from new sources.",
+      "datasets": "Public databases/literature: 5,943 molecules for inhibition (4,558 positives, 1,385 negatives) and 4,018 for substrate prediction (2,455 positives, 1,563 negatives). Independent external sets contain 140 and 185 molecules, respectively.",
+      "method": "Attention fuses SMILES sequences, fingerprints and graphs. Graph contrastive learning aligns local and global structure, with analysis of relevant functional groups.",
+      "conclusion": "External inhibitor AUROC is 0.906 ± 0.015. The authors report relative AUROC improvements of 9.82%/10.62% over the next-best method on the inhibitor/substrate external sets.",
+      "evaluation": "Internal comparisons use random and scaffold splits; Tables 4–5 report external results. The 9.82%/10.62% values are relative AUROC improvements over the next-best method.",
+      "limitations": "Inhibition and substrate status are evaluated separately, each with positive and negative examples. The corresponding TDC Pgp_Broccatelli task concerns inhibitor classification.",
+      "name": "MC-PGP",
+      "code_status": "Public availability of the complete training implementation remains to be verified.",
+      "verification_scope": "Bibliographic metadata, relevant methods and results, and the listed official resources.",
+      "publication": {
+        "citation": "Journal of Pharmaceutical Analysis 15(8), 101313; August 2025 issue (PubMed article date: 2025-04-16).",
+        "date_basis": "Journal issue month; PubMed article date listed separately"
+      },
+      "source_labels": [
+        "Open full text and result tables",
+        "Journal page",
+        "TDC P-gp task definition"
+      ],
+      "source_sha256": "7beffe66e95285fc5d52f5035eac317fa2ae5432619576c062f8d9aa5660584d"
+    },
+    "ames-multitask-2022": {
+      "name": "AMES multitask DNN",
+      "tags": [
+        "AMES",
+        "Strain-level labels",
+        "Multitask learning"
+      ],
+      "one_liner": "Learns Ames outcomes for five bacterial strains jointly, retaining strain-specific information alongside the overall mutagenicity label.",
+      "pain_point": "Collapsing results across strains into one label discards strain-level information useful for mutagenicity prediction.",
+      "datasets": "Authors' Mendeley v2 data: 5,536 ISSSTY-curated molecules with 1,360 Mordred descriptors, labels for TA98, TA100, TA102, TA1535 and TA1537 plus Overall, including undetermined labels. Train/Internal/External partitions are provided.",
+      "method": "A shared-representation multitask DNN learns five strain outcomes and is compared with overall-label single-task models, strain-specific models and their ensembles. Compounds with partially undetermined labels are retained.",
+      "conclusion": "The published abstract reports improvements over overall-label single-task models and ensembles of strain-specific models, supporting the use of strain-level information.",
+      "evaluation": "The authors' data.py provides Train/Internal/External partitions and five-fold cross-validation, stratifying multitask folds by Overall labels. Individual scores await checking against the published tables.",
+      "limitations": "Five strain labels provide information about different mutation sensitivities. The code README retains submission-stage wording; citations use the published JCIM version.",
+      "code_status": "The authors provide a public code/project page.",
+      "verification_scope": "Published metadata/abstract, authors' Mendeley v2 documentation, code README and data.py; published result tables have not been fully checked.",
+      "publication": {
+        "citation": "Journal of Chemical Information and Modeling 62(24), 6342–6351; online 2022-09-06.",
+        "date_basis": "Publisher online publication date"
+      },
+      "source_labels": [
+        "Published-version abstract",
+        "Author data v2",
+        "Author code"
+      ],
+      "source_sha256": "9f14c4caaafef5f95c87828ef5f38c9166f8b1951d76d0e752d0dd9d255750e0"
+    },
+    "amesnet-2026": {
+      "tags": [
+        "AMES",
+        "Assay conditions",
+        "Out-of-distribution prediction"
+      ],
+      "one_liner": "Combines molecular structure, bacterial strain and metabolic-activation conditions to improve Ames mutagenicity detection in unfamiliar chemical space.",
+      "pain_point": "Models miss mutagenic compounds outside the training domain, while increasing sensitivity alone can produce many false positives.",
+      "datasets": "Strain/S9-conditioned data compiled by Lui et al. After the published version's cleaning, training/validation contains 40,129 records and testing 4,208. Each record is a compound–strain–S9 combination. Foil data lacking strain/S9 information are evaluated separately.",
+      "method": "A molecular encoder and strain/±S9 condition channel form two branches. Compares single-task, ordinary/grouped multitask models and condition-augmented encoders including ChemProp and GROVER.",
+      "conclusion": "The published main OOD evaluation reports sensitivity 0.72 (95% CI 0.68–0.76) and balanced accuracy 0.81 (0.78–0.83). The supplementary Foil evaluation gives balanced accuracy 0.72.",
+      "evaluation": "Uses the source study's OOD partitions and removes identical non-stereochemical SMILES across partitions. Main-task and Foil metrics are separate; international Ames/QSAR challenge results provide background comparisons.",
+      "limitations": "The published test set contains 4,208 records with sensitivity 0.72; preprint v2 uses 4,528 and reports 0.73. The revision changes data cleaning; these notes use the published results.",
+      "name": "AmesNet",
+      "code_status": "TCL comparison models, predictions and statistical code are public, with some large files on Hugging Face. Availability of the complete AmesNet implementation and weights is unconfirmed.",
+      "verification_scope": "Published metadata/abstract, searchable publisher methods, supplementary material, preprint v2 methods and author repository; continuous access to the ACS full text was restricted.",
+      "publication": {
+        "citation": "Chemical Research in Toxicology; online 2026-06-29.",
+        "date_basis": "Publisher online publication date"
+      },
+      "source_labels": [
+        "Published version",
+        "Published abstract",
+        "Published supplement",
+        "Author code and predictions"
+      ],
+      "source_sha256": "289e52f4f0c01a3708a156845325c7d76f1d3a263c02ca4d03241860e253409d"
+    },
+    "chemprop-dmpnn-2019": {
+      "tags": [
+        "Molecular graphs",
+        "D-MPNN",
+        "Industrial data"
+      ],
+      "one_liner": "Learns molecular representations by passing messages along directed chemical bonds and evaluates property prediction on public and industrial data.",
+      "pain_point": "Evidence was limited on whether learned representations outperform handcrafted descriptors and generalize to industrial data and new chemical space.",
+      "datasets": "19 public and 16 private industrial datasets spanning multiple chemical endpoints.",
+      "method": "Directed-bond message passing (D-MPNN), molecular-level computed features and hyperparameter optimization, compared with fixed descriptors and earlier graph networks.",
+      "conclusion": "Matches or exceeds several baselines on the evaluated public/industrial tasks, demonstrating the practical value of learned representations. Performance remains below experimental reproducibility and varies by task and split.",
+      "evaluation": "Compares random, scaffold and available temporal splits to assess generalization to new chemical space and industrial data.",
+      "limitations": "The 2019 paper establishes Chemprop's methodological foundation. Later software development makes version, feature and split control important for reproduction.",
+      "name": "Chemprop / D-MPNN",
+      "code_status": "The authors provide a public code/project page.",
+      "verification_scope": "Bibliographic metadata, relevant methods and results, and the listed official resources.",
+      "publication": {
+        "citation": "Journal of Chemical Information and Modeling 59(8), 3370–3388; 2019-07-30",
+        "date_basis": "Publisher online publication date"
+      },
+      "source_labels": [
+        "Published paper",
+        "Author manuscript",
+        "Author PDF",
+        "Chemprop project"
+      ],
+      "source_sha256": "2736e65a3ba7366c4987ae88e50aa52099bbeea5e734b5ba1c992b39f75251ae"
+    },
+    "attentivefp-2019": {
+      "tags": [
+        "Molecular graphs",
+        "Attention",
+        "Molecular representations"
+      ],
+      "one_liner": "Learns which atoms and neighborhoods to emphasize when aggregating molecular information for property prediction and structural attribution.",
+      "pain_point": "Representations must capture local and longer-range structural relationships while making model-selected chemical features easier to inspect.",
+      "datasets": "The authors' repository provides BBBP, HIV, BACE, ClinTox, SIDER, Tox21, ToxCast, ESOL (delaney), FreeSolv (SAMPL), Lipophilicity, QM9 and aromaticity examples, covering ADMET, activity, physicochemical and quantum-chemical tasks.",
+      "method": "Attention in molecular-graph message aggregation and graph-level readout produces learned fingerprints; attention visualization explores structural information.",
+      "conclusion": "Reports advanced performance at publication on the tested tasks and visual examples of learned nonlocal intramolecular relationships.",
+      "evaluation": "The data directory includes classification, regression and aromaticity examples. Comparisons require aligned splits and training configurations.",
+      "limitations": "Attention visualizations show structures emphasized by the model. Online-date fields differ: Crossref/ACS page header gives 2019-08-13, while ACS history gives 2019-08-27; the catalog records the year.",
+      "name": "AttentiveFP",
+      "code_status": "Author code and accompanying data are accessible; rebuild the original Code Ocean environment following the reproduction instructions.",
+      "verification_scope": "Metadata and conflicting dates, original abstract, author implementation, data directory and REPRODUCING.md; dataset-level result tables have not been fully checked.",
+      "publication": {
+        "citation": "Journal of Medicinal Chemistry 63(16), 8749–8760; online in 2019; issue date 2020-08-27.",
+        "date_basis": "Online publication year; exact-date fields conflict, with issue date listed separately"
+      },
+      "source_labels": [
+        "Published paper",
+        "Bibliographic metadata",
+        "Author implementation",
+        "Author data directory"
+      ],
+      "source_sha256": "481d80fb6713f139fac5caf6ea6abbcc3f9dc0f1bcdff3d7c22829f853796094"
+    },
+    "moleculenet-2018": {
+      "tags": [
+        "Datasets",
+        "Benchmarks",
+        "Evaluation"
+      ],
+      "one_liner": "Brings molecular datasets, splits, metrics and algorithms into a shared benchmark for property prediction.",
+      "pain_point": "Different choices of datasets, metrics and implementations make model improvements difficult to separate from evaluation effects.",
+      "datasets": "Public quantum-chemical, physicochemical, biophysical and physiological datasets, including ESOL, FreeSolv, Lipophilicity, BBBP, Tox21, ClinTox, SIDER, BACE, HIV and QM collections, with task-specific metrics and splits.",
+      "method": "DeepChem data loaders, molecular featurizers and learning algorithms support systematic comparisons of fixed descriptors and learned representations.",
+      "conclusion": "Learned representations work across multiple tasks, while small datasets and imbalance remain challenging. Physically informed features can matter more than algorithm choice in quantum/biophysical tasks.",
+      "evaluation": "Metrics and splits are task-specific; comparisons should record the subset, data version, cleaning steps and split.",
+      "limitations": "Coverage includes ADMET, activity, physicochemical and quantum-chemical tasks. DeepChem loading workflows evolve. Publication metadata records the publisher's 2017-10-31 online date alongside the 2018 issue.",
+      "name": "MoleculeNet",
+      "code_status": "The authors provide a public code/project page.",
+      "verification_scope": "Publisher metadata, abstract/benchmark description and official DeepChem resources; individual subsets have not been run.",
+      "publication": {
+        "citation": "Chemical Science 9(2), 513–530 (2018 issue); online 2017-10-31.",
+        "date_basis": "Publisher online publication date"
+      },
+      "source_labels": [
+        "Publisher article",
+        "DeepChem"
+      ],
+      "source_sha256": "cf21bc23a928a7441bbf72848be890ca2d4265a8c582d84ae6fbe57609a94083"
+    },
+    "moleculeace-2022": {
+      "tags": [
+        "Activity cliffs",
+        "Bioactivity",
+        "Evaluation"
+      ],
+      "one_liner": "Evaluates structurally similar molecules with large activity differences to expose model weaknesses hidden by average prediction errors.",
+      "pain_point": "Overall error does not adequately capture activity-cliff performance, which matters for lead optimization.",
+      "datasets": "Curated bioactivity datasets for 30 macromolecular targets, comparing 24 machine-learning strategies. The authors provide data and evaluation workflows.",
+      "method": "Defines structurally similar pairs with large activity differences and reports overall RMSE alongside cliff-molecule RMSEcliff, comparing descriptor models with graph/sequence neural networks.",
+      "conclusion": "Several descriptor-based methods outperform more complex deep models in the tested activity-cliff settings. Performance varies by target, supporting separate cliff metrics.",
+      "evaluation": "Analyzes overall RMSE and RMSEcliff with fixed data/code versions and cliff definitions. A 2023 correction revises the early-stopping description.",
+      "limitations": "The focus is bioactivity differences among similar structures. Original-paper and later implementation results are recorded separately to track changes in data and code.",
+      "name": "MoleculeACE",
+      "code_status": "The authors provide a public code/project page.",
+      "verification_scope": "Bibliographic metadata, relevant methods and results, and the listed official resources.",
+      "publication": {
+        "citation": "Journal of Chemical Information and Modeling 62(23), 5938–5951; 2022-12-01; with a 2023 correction.",
+        "date_basis": "Publisher online publication date"
+      },
+      "source_labels": [
+        "Published paper",
+        "Published correction",
+        "Author benchmark"
+      ],
+      "source_sha256": "0cff82f33face532b1d206f03ceb0032cb299a52990b0849e513ac59ef557d54"
+    }
+  }
+}

@@ -1,8 +1,10 @@
 # MapLight
 
+[English](../../en/papers/admet/maplight-2023.md) | **简体中文**
+
 **ADMET property prediction through combinations of molecular fingerprints**
 
-[返回ADMET 与药代动力学总表](../../topics/admet.md) · [返回首页](../../README.md)
+[返回ADMET 与药代动力学总表](../../topics/admet.md) · [返回首页](../../README.zh-CN.md)
 
 **一句话概括：** 组合多种分子指纹和描述符，用 CatBoost 建立 ADMET 预测模型，检验传统特征方法的竞争力。
 

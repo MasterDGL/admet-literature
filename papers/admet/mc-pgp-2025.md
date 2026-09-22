@@ -1,8 +1,10 @@
 # MC-PGP
 
+[English](../../en/papers/admet/mc-pgp-2025.md) | **简体中文**
+
 **A multimodal contrastive learning framework for predicting P-glycoprotein substrates and inhibitors**
 
-[返回ADMET 与药代动力学总表](../../topics/admet.md) · [返回首页](../../README.md)
+[返回ADMET 与药代动力学总表](../../topics/admet.md) · [返回首页](../../README.zh-CN.md)
 
 **一句话概括：** 融合 SMILES、指纹和分子图，分别判断分子是否抑制 P-gp、是否会被 P-gp 转运。
 

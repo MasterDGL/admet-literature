@@ -1,0 +1,23 @@
+# Methods and benchmarks
+
+**English** | [简体中文](../../topics/foundations.md)
+
+[Home](../../README.md) · [Knowledge map](../docs/knowledge-map.md) · [Curation](../docs/curation.md) · [Download CSV](../../data/papers.en.csv)
+
+These papers introduce molecular representations, public datasets and evaluation methods for reading ADMET research. MoleculeACE focuses on bioactivity cliffs.
+
+**4 papers**, sorted by publication date within each category. Follow a paper title for its summary, experiments, analysis and sources.
+
+## Foundational methods
+
+| Paper and notes | Publication and date | Research problem | Datasets | Method | Findings |
+| --- | --- | --- | --- | --- | --- |
+| [Chemprop / D-MPNN](../papers/foundations/chemprop-dmpnn-2019.md) · [Paper](https://doi.org/10.1021/acs.jcim.9b00237) | Journal of Chemical Information and Modeling 59(8), 3370–3388; 2019-07-30 | Evidence was limited on whether learned representations outperform handcrafted descriptors and generalize to industrial data and new chemical space. | 19 public and 16 private industrial datasets spanning multiple chemical endpoints. | Directed-bond message passing (D-MPNN), molecular-level computed features and hyperparameter optimization, compared with fixed descriptors and earlier graph networks. | Matches or exceeds several baselines on the evaluated public/industrial tasks, demonstrating the practical value of learned representations. Performance remains below experimental reproducibility and varies by task and split. |
+| [AttentiveFP](../papers/foundations/attentivefp-2019.md) · [Paper](https://doi.org/10.1021/acs.jmedchem.9b00959) | Journal of Medicinal Chemistry 63(16), 8749–8760; online in 2019; issue date 2020-08-27. | Representations must capture local and longer-range structural relationships while making model-selected chemical features easier to inspect. | The authors' repository provides BBBP, HIV, BACE, ClinTox, SIDER, Tox21, ToxCast, ESOL (delaney), FreeSolv (SAMPL), Lipophilicity, QM9 and aromaticity examples, covering ADMET, activity, physicochemical and quantum-chemical tasks. | Attention in molecular-graph message aggregation and graph-level readout produces learned fingerprints; attention visualization explores structural information. | Reports advanced performance at publication on the tested tasks and visual examples of learned nonlocal intramolecular relationships. |
+
+## Data and benchmarks
+
+| Paper and notes | Publication and date | Research problem | Datasets | Method | Findings |
+| --- | --- | --- | --- | --- | --- |
+| [MoleculeACE](../papers/foundations/moleculeace-2022.md) · [Paper](https://doi.org/10.1021/acs.jcim.2c01073) | Journal of Chemical Information and Modeling 62(23), 5938–5951; 2022-12-01; with a 2023 correction. | Overall error does not adequately capture activity-cliff performance, which matters for lead optimization. | Curated bioactivity datasets for 30 macromolecular targets, comparing 24 machine-learning strategies. The authors provide data and evaluation workflows. | Defines structurally similar pairs with large activity differences and reports overall RMSE alongside cliff-molecule RMSEcliff, comparing descriptor models with graph/sequence neural networks. | Several descriptor-based methods outperform more complex deep models in the tested activity-cliff settings. Performance varies by target, supporting separate cliff metrics. |
+| [MoleculeNet](../papers/foundations/moleculenet-2018.md) · [Paper](https://doi.org/10.1039/C7SC02664A) | Chemical Science 9(2), 513–530 (2018 issue); online 2017-10-31. | Different choices of datasets, metrics and implementations make model improvements difficult to separate from evaluation effects. | Public quantum-chemical, physicochemical, biophysical and physiological datasets, including ESOL, FreeSolv, Lipophilicity, BBBP, Tox21, ClinTox, SIDER, BACE, HIV and QM collections, with task-specific metrics and splits. | DeepChem data loaders, molecular featurizers and learning algorithms support systematic comparisons of fixed descriptors and learned representations. | Learned representations work across multiple tasks, while small datasets and imbalance remain challenging. Physically informed features can matter more than algorithm choice in quantum/biophysical tasks. |
